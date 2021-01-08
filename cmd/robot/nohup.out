@@ -1,0 +1,1048 @@
+RoBOT Server Started Port 443
+signal: terminated
+RoBOT Server Started Port 443
+RoBOT Server Started Port 443
+2020/12/26 09:02:52 http: TLS handshake error from 104.248.146.28:56934: EOF
+signal: terminated
+RoBOT Server Started Port 443
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 RB-LB72420 lift:FB25-12 62B44CE9/V2018 stock 2019-05-02 12:48:35 +0000 UTC 100 100 180 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/26 10:37:59 http: TLS handshake error from 104.248.146.28:35960: EOF
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {18379490319274152217 AGV-LB24107-MY-S2 lift 20A1B01/V2020 customer 2020-12-25 13:28:00 +0000 UTC 43 88 107 4.89 22.6 121.526 31.2731 close {198 true}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {102 RB-LB72428 lift:FB15 20A1B01/V2020 stock 2020-09-11 10:12:00 +0000 UTC 100 100 240 0 55 135.527 34.6874 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/26 13:24:05 http: TLS handshake error from 104.152.52.31:48019: EOF
+2020/12/26 15:01:37 http: TLS handshake error from 192.241.217.68:51422: read tcp 172.17.0.2:443->192.241.217.68:51422: read: connection reset by peer
+2020/12/26 15:01:38 http: TLS handshake error from 192.241.217.68:51808: read tcp 172.17.0.2:443->192.241.217.68:51808: read: connection reset by peer
+2020/12/26 15:01:39 http: TLS handshake error from 192.241.217.68:52514: read tcp 172.17.0.2:443->192.241.217.68:52514: read: connection reset by peer
+2020/12/26 15:01:39 http: TLS handshake error from 192.241.217.68:54044: read tcp 172.17.0.2:443->192.241.217.68:54044: read: connection reset by peer
+2020/12/26 15:01:39 http: TLS handshake error from 192.241.217.68:54168: read tcp 172.17.0.2:443->192.241.217.68:54168: read: connection reset by peer
+2020/12/26 15:01:39 http: TLS handshake error from 192.241.217.68:54264: read tcp 172.17.0.2:443->192.241.217.68:54264: read: connection reset by peer
+2020/12/26 15:01:40 http: TLS handshake error from 192.241.217.68:54396: read tcp 172.17.0.2:443->192.241.217.68:54396: read: connection reset by peer
+2020/12/26 15:01:43 http: TLS handshake error from 192.241.217.68:54666: read tcp 172.17.0.2:443->192.241.217.68:54666: read: connection reset by peer
+2020/12/26 15:01:43 http: TLS handshake error from 192.241.217.68:56780: read tcp 172.17.0.2:443->192.241.217.68:56780: read: connection reset by peer
+2020/12/26 15:01:43 http: TLS handshake error from 192.241.217.68:56824: read tcp 172.17.0.2:443->192.241.217.68:56824: read: connection reset by peer
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {18379490319274152217 AGV-LB24107-MY-S2 lift 20A1B01/V2020 customer 2020-12-25 13:28:00 +0000 UTC 43 88 107 4.89 22.6 121.526 31.2731 close {198 true}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/26 16:37:03 http: TLS handshake error from 216.139.241.125:54046: EOF
+2020/12/26 18:45:47 http: TLS handshake error from 145.239.1.18:50360: EOF
+2020/12/26 19:36:13 http: TLS handshake error from 104.248.146.28:42290: EOF
+2020/12/26 21:27:15 http: TLS handshake error from 104.248.146.28:49510: EOF
+2020/12/26 21:28:40 http: TLS handshake error from 80.82.70.118:60000: EOF
+2020/12/26 23:13:33 http: TLS handshake error from 104.248.146.28:57086: EOF
+2020/12/27 00:45:55 http: TLS handshake error from 104.248.146.28:36878: EOF
+2020/12/27 01:21:24 http: TLS handshake error from 45.79.186.139:61000: EOF
+2020/12/27 01:47:39 http: TLS handshake error from 209.17.96.194:51310: EOF
+2020/12/27 02:03:41 http: TLS handshake error from 167.248.133.56:60926: read tcp 172.17.0.2:443->167.248.133.56:60926: read: connection reset by peer
+2020/12/27 03:42:25 http: TLS handshake error from 88.80.189.24:50826: EOF
+2020/12/27 04:29:50 http: TLS handshake error from 104.248.146.28:44948: EOF
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 RB-LB72420 lift:FB25-12 62B44CE9/V2018 stock 2019-05-02 12:48:35 +0000 UTC 100 100 180 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+[{{101 1000 lease 2020-11-01 00:00:00 +0000 UTC 2021-05-01 00:00:00 +0000 UTC 2021-04-17 00:00:00 +0000 UTC} {101 RB-LB48240 lift:7FB25 62B44CE9/V2018 customer 2020-11-29 14:15:00 +0000 UTC 80 67 220 3.33 47.4 135.451 34.8058 normal {0 false}} {1000 Komato developer robotics Horikawa 1921-05-21 00:00:00 +0000 UTC 9230302 23 horikawa@dev.komato.com 0761433900}}]
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 RB-LB72420 lift:FB25-12 62B44CE9/V2018 stock 2019-05-02 12:48:35 +0000 UTC 100 100 180 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {18379490319274152217 AGV-LB24107-MY-S2 lift 20A1B01/V2020 customer 2020-12-25 13:28:00 +0000 UTC 43 88 107 4.89 22.6 121.526 31.2731 close {198 true}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/27 06:31:24 http: TLS handshake error from 104.248.146.28:52132: EOF
+2020/12/27 06:43:05 http: TLS handshake error from 74.82.47.5:33062: tls: client offered only unsupported versions: []
+2020/12/27 06:43:38 http: TLS handshake error from 74.82.47.5:52148: tls: no cipher suite supported by both client and server
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 RB-LB72420 lift:FB25-12 62B44CE9/V2018 stock 2019-05-02 12:48:35 +0000 UTC 100 100 180 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/27 06:45:35 http: TLS handshake error from 74.82.47.5:32860: read tcp 172.17.0.2:443->74.82.47.5:32860: read: connection reset by peer
+2020/12/27 06:45:35 http: TLS handshake error from 74.82.47.5:36102: read tcp 172.17.0.2:443->74.82.47.5:36102: read: connection reset by peer
+2020/12/27 06:45:37 http: TLS handshake error from 74.82.47.5:46558: read tcp 172.17.0.2:443->74.82.47.5:46558: read: connection reset by peer
+2020/12/27 06:45:38 http: TLS handshake error from 74.82.47.5:49462: read tcp 172.17.0.2:443->74.82.47.5:49462: read: connection reset by peer
+2020/12/27 06:45:38 http: TLS handshake error from 74.82.47.5:60140: read tcp 172.17.0.2:443->74.82.47.5:60140: read: connection reset by peer
+2020/12/27 06:45:40 http: TLS handshake error from 74.82.47.5:45514: read tcp 172.17.0.2:443->74.82.47.5:45514: read: connection reset by peer
+2020/12/27 06:45:41 http: TLS handshake error from 74.82.47.5:48388: read tcp 172.17.0.2:443->74.82.47.5:48388: read: connection reset by peer
+2020/12/27 06:45:41 http: TLS handshake error from 74.82.47.5:34708: read tcp 172.17.0.2:443->74.82.47.5:34708: read: connection reset by peer
+2020/12/27 06:45:52 http: TLS handshake error from 74.82.47.5:39138: read tcp 172.17.0.2:443->74.82.47.5:39138: read: connection reset by peer
+2020/12/27 06:45:56 http: TLS handshake error from 74.82.47.5:51196: read tcp 172.17.0.2:443->74.82.47.5:51196: read: connection reset by peer
+[{{101 1000 lease 2020-11-01 00:00:00 +0000 UTC 2021-05-01 00:00:00 +0000 UTC 2021-04-17 00:00:00 +0000 UTC} {101 RB-LB48240 lift:7FB25 62B44CE9/V2018 customer 2020-11-29 14:15:00 +0000 UTC 80 67 220 3.33 47.4 135.451 34.8058 normal {0 false}} {1000 Komato developer robotics Horikawa 1921-05-21 00:00:00 +0000 UTC 9230302 23 horikawa@dev.komato.com 0761433900}}]
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {102 RB-LB72428 lift:FB15 20A1B01/V2020 stock 2020-09-11 10:12:00 +0000 UTC 100 100 240 0 55 135.527 34.6874 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {1229782938247300000 RB-LB72428 Cold Storage 20A1B01/V2020 shipping 2020-12-24 05:28:00 +0000 UTC 100 100 240 0 53.34 121.526 31.2731 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {18379490319274152217 AGV-LB24107-MY-S2 lift 20A1B01/V2020 customer 2020-12-25 13:28:00 +0000 UTC 43 88 107 4.89 22.6 121.526 31.2731 close {198 true}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/27 07:06:28 http: TLS handshake error from 145.239.1.18:57473: EOF
+2020/12/27 08:37:32 http: TLS handshake error from 61.219.11.153:61535: tls: first record does not look like a TLS handshake
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {1229782938247300000 RB-LB72428 Cold Storage 20A1B01/V2020 shipping 2020-12-24 05:28:00 +0000 UTC 100 100 240 0 53.34 121.526 31.2731 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+[{{101 1000 lease 2020-11-01 00:00:00 +0000 UTC 2021-05-01 00:00:00 +0000 UTC 2021-04-17 00:00:00 +0000 UTC} {101 RB-LB48240 lift:7FB25 62B44CE9/V2018 customer 2020-11-29 14:15:00 +0000 UTC 80 67 220 3.33 47.4 135.451 34.8058 normal {0 false}} {1000 Komato developer robotics Horikawa 1921-05-21 00:00:00 +0000 UTC 9230302 23 horikawa@dev.komato.com 0761433900}}]
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {102 RB-LB72428 lift:FB15 20A1B01/V2020 stock 2020-09-11 10:12:00 +0000 UTC 100 100 240 0 55 135.527 34.6874 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {18379490319274152217 AGV-LB24107-MY-S2 lift 20A1B01/V2020 customer 2020-12-25 13:28:00 +0000 UTC 43 88 107 4.89 22.6 121.526 31.2731 close {198 true}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/27 08:43:29 http: TLS handshake error from 104.248.146.28:59954: EOF
+2020/12/27 10:14:21 http: TLS handshake error from 104.248.146.28:40040: EOF
+2020/12/27 13:14:03 http: TLS handshake error from 192.35.168.80:53284: tls: no cipher suite supported by both client and server
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 RB-LB72420 lift:FB25-12 62B44CE9/V2018 stock 2019-05-02 12:48:35 +0000 UTC 100 100 180 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/27 16:58:20 http: TLS handshake error from 74.120.14.37:44120: read tcp 172.17.0.2:443->74.120.14.37:44120: read: connection reset by peer
+2020/12/27 17:34:23 http: TLS handshake error from 192.241.196.70:55506: read tcp 172.17.0.2:443->192.241.196.70:55506: read: connection reset by peer
+2020/12/27 17:34:23 http: TLS handshake error from 192.241.196.70:58328: read tcp 172.17.0.2:443->192.241.196.70:58328: read: connection reset by peer
+2020/12/27 17:34:23 http: TLS handshake error from 192.241.196.70:58822: read tcp 172.17.0.2:443->192.241.196.70:58822: read: connection reset by peer
+2020/12/27 17:34:24 http: TLS handshake error from 192.241.196.70:59354: read tcp 172.17.0.2:443->192.241.196.70:59354: read: connection reset by peer
+2020/12/27 17:34:24 http: TLS handshake error from 192.241.196.70:59892: read tcp 172.17.0.2:443->192.241.196.70:59892: read: connection reset by peer
+2020/12/27 17:34:24 http: TLS handshake error from 192.241.196.70:60450: read tcp 172.17.0.2:443->192.241.196.70:60450: read: connection reset by peer
+2020/12/27 17:34:24 http: TLS handshake error from 192.241.196.70:60928: read tcp 172.17.0.2:443->192.241.196.70:60928: read: connection reset by peer
+2020/12/27 17:34:24 http: TLS handshake error from 192.241.196.70:33152: read tcp 172.17.0.2:443->192.241.196.70:33152: read: connection reset by peer
+2020/12/27 17:34:25 http: TLS handshake error from 192.241.196.70:33624: read tcp 172.17.0.2:443->192.241.196.70:33624: read: connection reset by peer
+2020/12/27 17:34:25 http: TLS handshake error from 192.241.196.70:34068: read tcp 172.17.0.2:443->192.241.196.70:34068: read: connection reset by peer
+2020/12/27 19:37:10 http: TLS handshake error from 104.248.146.28:46964: EOF
+2020/12/27 21:05:33 http: TLS handshake error from 159.89.6.189:60370: read tcp 172.17.0.2:443->159.89.6.189:60370: read: connection reset by peer
+2020/12/27 21:05:34 http: TLS handshake error from 159.89.6.189:60892: read tcp 172.17.0.2:443->159.89.6.189:60892: read: connection reset by peer
+2020/12/27 21:05:34 http: TLS handshake error from 159.89.6.189:33296: read tcp 172.17.0.2:443->159.89.6.189:33296: read: connection reset by peer
+2020/12/27 21:05:35 http: TLS handshake error from 159.89.6.189:33942: read tcp 172.17.0.2:443->159.89.6.189:33942: read: connection reset by peer
+2020/12/27 21:05:35 http: TLS handshake error from 159.89.6.189:34454: read tcp 172.17.0.2:443->159.89.6.189:34454: read: connection reset by peer
+2020/12/27 21:05:36 http: TLS handshake error from 159.89.6.189:35082: read tcp 172.17.0.2:443->159.89.6.189:35082: read: connection reset by peer
+2020/12/27 21:05:36 http: TLS handshake error from 159.89.6.189:35710: read tcp 172.17.0.2:443->159.89.6.189:35710: read: connection reset by peer
+2020/12/27 21:05:37 http: TLS handshake error from 159.89.6.189:36432: read tcp 172.17.0.2:443->159.89.6.189:36432: read: connection reset by peer
+2020/12/27 21:05:37 http: TLS handshake error from 159.89.6.189:37104: read tcp 172.17.0.2:443->159.89.6.189:37104: read: connection reset by peer
+2020/12/27 21:05:38 http: TLS handshake error from 159.89.6.189:37600: read tcp 172.17.0.2:443->159.89.6.189:37600: read: connection reset by peer
+2020/12/27 21:27:33 http: TLS handshake error from 209.17.96.138:56709: EOF
+2020/12/27 23:22:03 http: TLS handshake error from 104.248.146.28:54818: EOF
+2020/12/28 01:21:05 http: TLS handshake error from 50.116.52.28:61000: EOF
+2020/12/28 01:31:49 http: TLS handshake error from 172.104.242.173:42053: tls: first record does not look like a TLS handshake
+2020/12/28 03:40:38 http: TLS handshake error from 88.80.189.24:35714: EOF
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 RB-LB72420 lift:FB25-12 62B44CE9/V2018 stock 2019-05-02 12:48:35 +0000 UTC 100 100 180 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/28 04:34:49 http: TLS handshake error from 104.248.146.28:40198: EOF
+2020/12/28 05:32:00 http: TLS handshake error from 46.101.120.147:38202: read tcp 172.17.0.2:443->46.101.120.147:38202: read: connection reset by peer
+2020/12/28 05:32:00 http: TLS handshake error from 46.101.120.147:38808: read tcp 172.17.0.2:443->46.101.120.147:38808: read: connection reset by peer
+2020/12/28 05:32:01 http: TLS handshake error from 46.101.120.147:39412: read tcp 172.17.0.2:443->46.101.120.147:39412: read: connection reset by peer
+2020/12/28 05:32:01 http: TLS handshake error from 46.101.120.147:39884: read tcp 172.17.0.2:443->46.101.120.147:39884: read: connection reset by peer
+2020/12/28 05:32:02 http: TLS handshake error from 46.101.120.147:40606: read tcp 172.17.0.2:443->46.101.120.147:40606: read: connection reset by peer
+2020/12/28 05:32:02 http: TLS handshake error from 46.101.120.147:41160: read tcp 172.17.0.2:443->46.101.120.147:41160: read: connection reset by peer
+2020/12/28 05:32:03 http: TLS handshake error from 46.101.120.147:41740: read tcp 172.17.0.2:443->46.101.120.147:41740: read: connection reset by peer
+2020/12/28 05:32:03 http: TLS handshake error from 46.101.120.147:42470: read tcp 172.17.0.2:443->46.101.120.147:42470: read: connection reset by peer
+2020/12/28 05:32:04 http: TLS handshake error from 46.101.120.147:43148: read tcp 172.17.0.2:443->46.101.120.147:43148: read: connection reset by peer
+2020/12/28 05:32:04 http: TLS handshake error from 46.101.120.147:43868: read tcp 172.17.0.2:443->46.101.120.147:43868: read: connection reset by peer
+2020/12/28 06:27:40 http: TLS handshake error from 104.248.146.28:55692: EOF
+2020/12/28 06:36:29 http: TLS handshake error from 74.82.47.2:47174: tls: client offered only unsupported versions: []
+2020/12/28 06:37:14 http: TLS handshake error from 74.82.47.2:60014: tls: no cipher suite supported by both client and server
+2020/12/28 06:42:49 http: TLS handshake error from 74.82.47.2:40784: read tcp 172.17.0.2:443->74.82.47.2:40784: read: connection reset by peer
+2020/12/28 06:42:49 http: TLS handshake error from 74.82.47.2:44658: read tcp 172.17.0.2:443->74.82.47.2:44658: read: connection reset by peer
+2020/12/28 06:42:50 http: TLS handshake error from 74.82.47.2:48456: read tcp 172.17.0.2:443->74.82.47.2:48456: read: connection reset by peer
+2020/12/28 06:42:50 http: TLS handshake error from 74.82.47.2:52126: read tcp 172.17.0.2:443->74.82.47.2:52126: read: connection reset by peer
+2020/12/28 06:42:50 http: TLS handshake error from 74.82.47.2:55854: read tcp 172.17.0.2:443->74.82.47.2:55854: read: connection reset by peer
+2020/12/28 06:42:51 http: TLS handshake error from 74.82.47.2:59700: read tcp 172.17.0.2:443->74.82.47.2:59700: read: connection reset by peer
+2020/12/28 06:42:51 http: TLS handshake error from 74.82.47.2:35226: read tcp 172.17.0.2:443->74.82.47.2:35226: read: connection reset by peer
+2020/12/28 06:42:51 http: TLS handshake error from 74.82.47.2:38756: read tcp 172.17.0.2:443->74.82.47.2:38756: read: connection reset by peer
+2020/12/28 06:42:52 http: TLS handshake error from 74.82.47.2:42304: read tcp 172.17.0.2:443->74.82.47.2:42304: read: connection reset by peer
+2020/12/28 06:42:52 http: TLS handshake error from 74.82.47.2:46012: read tcp 172.17.0.2:443->74.82.47.2:46012: read: connection reset by peer
+2020/12/28 09:20:45 http: TLS handshake error from 104.248.146.28:40798: EOF
+signal: terminated
+RoBOT Server Started Port 443
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 RB-LB72420 lift:FB25-12 62B44CE9/V2018 stock 2019-05-02 12:48:35 +0000 UTC 100 100 180 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {1229782938247300000 RB-LB72428 Cold Storage 20A1B01/V2020 shipping 2020-12-24 05:28:00 +0000 UTC 100 100 240 0 53.34 121.526 31.2731 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/28 11:29:40 http: TLS handshake error from 74.120.14.39:33344: read tcp 172.17.0.2:443->74.120.14.39:33344: read: connection reset by peer
+2020/12/28 12:47:07 http: TLS handshake error from 162.221.74.150:35220: EOF
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 RB-LB72420 lift:FB25-12 62B44CE9/V2018 stock 2019-05-02 12:48:35 +0000 UTC 100 100 180 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/28 15:54:10 http: TLS handshake error from 164.68.112.178:47432: EOF
+2020/12/28 20:07:19 http: TLS handshake error from 104.248.146.28:49122: EOF
+2020/12/28 20:46:34 http: TLS handshake error from 192.241.213.236:60084: read tcp 172.17.0.2:443->192.241.213.236:60084: read: connection reset by peer
+2020/12/28 20:46:35 http: TLS handshake error from 192.241.213.236:60294: read tcp 172.17.0.2:443->192.241.213.236:60294: read: connection reset by peer
+2020/12/28 20:46:35 http: TLS handshake error from 192.241.213.236:60500: read tcp 172.17.0.2:443->192.241.213.236:60500: read: connection reset by peer
+2020/12/28 20:46:35 http: TLS handshake error from 192.241.213.236:60736: read tcp 172.17.0.2:443->192.241.213.236:60736: read: connection reset by peer
+2020/12/28 20:46:35 http: TLS handshake error from 192.241.213.236:33104: read tcp 172.17.0.2:443->192.241.213.236:33104: read: connection reset by peer
+2020/12/28 20:46:35 http: TLS handshake error from 192.241.213.236:33546: read tcp 172.17.0.2:443->192.241.213.236:33546: read: connection reset by peer
+2020/12/28 20:46:36 http: TLS handshake error from 192.241.213.236:33828: read tcp 172.17.0.2:443->192.241.213.236:33828: read: connection reset by peer
+2020/12/28 20:46:36 http: TLS handshake error from 192.241.213.236:34078: read tcp 172.17.0.2:443->192.241.213.236:34078: read: connection reset by peer
+2020/12/28 20:46:36 http: TLS handshake error from 192.241.213.236:34476: read tcp 172.17.0.2:443->192.241.213.236:34476: read: connection reset by peer
+2020/12/28 20:46:36 http: TLS handshake error from 192.241.213.236:35388: read tcp 172.17.0.2:443->192.241.213.236:35388: read: connection reset by peer
+2020/12/28 21:33:34 http: TLS handshake error from 104.248.146.28:57454: EOF
+2020/12/28 23:00:22 http: TLS handshake error from 104.248.146.28:39032: EOF
+2020/12/28 23:36:23 http: TLS handshake error from 52.38.228.83:59222: EOF
+2020/12/29 01:21:13 http: TLS handshake error from 50.116.53.42:61000: EOF
+2020/12/29 01:37:50 http: TLS handshake error from 184.105.247.252:37246: tls: client offered only unsupported versions: []
+2020/12/29 01:38:20 http: TLS handshake error from 184.105.247.252:41558: tls: no cipher suite supported by both client and server
+2020/12/29 01:42:07 http: TLS handshake error from 184.105.247.252:42784: read tcp 172.17.0.2:443->184.105.247.252:42784: read: connection reset by peer
+2020/12/29 01:42:08 http: TLS handshake error from 184.105.247.252:46580: read tcp 172.17.0.2:443->184.105.247.252:46580: read: connection reset by peer
+2020/12/29 01:42:08 http: TLS handshake error from 184.105.247.252:50362: read tcp 172.17.0.2:443->184.105.247.252:50362: read: connection reset by peer
+2020/12/29 01:42:08 http: TLS handshake error from 184.105.247.252:53960: read tcp 172.17.0.2:443->184.105.247.252:53960: read: connection reset by peer
+2020/12/29 01:42:09 http: TLS handshake error from 184.105.247.252:57630: read tcp 172.17.0.2:443->184.105.247.252:57630: read: connection reset by peer
+2020/12/29 01:42:09 http: TLS handshake error from 184.105.247.252:33278: read tcp 172.17.0.2:443->184.105.247.252:33278: read: connection reset by peer
+2020/12/29 01:42:09 http: TLS handshake error from 184.105.247.252:36974: read tcp 172.17.0.2:443->184.105.247.252:36974: read: connection reset by peer
+2020/12/29 01:42:10 http: TLS handshake error from 184.105.247.252:40730: read tcp 172.17.0.2:443->184.105.247.252:40730: read: connection reset by peer
+2020/12/29 01:42:10 http: TLS handshake error from 184.105.247.252:44338: read tcp 172.17.0.2:443->184.105.247.252:44338: read: connection reset by peer
+2020/12/29 01:42:10 http: TLS handshake error from 184.105.247.252:48016: read tcp 172.17.0.2:443->184.105.247.252:48016: read: connection reset by peer
+2020/12/29 03:27:45 http: TLS handshake error from 88.80.189.24:37970: EOF
+2020/12/29 03:49:03 http: TLS handshake error from 137.226.113.9:50438: read tcp 172.17.0.2:443->137.226.113.9:50438: read: connection reset by peer
+2020/12/29 03:49:03 http: TLS handshake error from 137.226.113.9:59851: read tcp 172.17.0.2:443->137.226.113.9:59851: read: connection reset by peer
+2020/12/29 03:49:03 http: TLS handshake error from 137.226.113.9:45733: read tcp 172.17.0.2:443->137.226.113.9:45733: read: connection reset by peer
+2020/12/29 03:49:03 http: TLS handshake error from 137.226.113.9:36323: read tcp 172.17.0.2:443->137.226.113.9:36323: read: connection reset by peer
+2020/12/29 03:49:03 http: TLS handshake error from 137.226.113.9:41028: read tcp 172.17.0.2:443->137.226.113.9:41028: read: connection reset by peer
+2020/12/29 03:49:03 http: TLS handshake error from 137.226.113.9:55143: read tcp 172.17.0.2:443->137.226.113.9:55143: read: connection reset by peer
+2020/12/29 05:24:19 http: TLS handshake error from 209.17.96.58:56294: EOF
+2020/12/29 07:32:20 http: TLS handshake error from 45.33.80.76:42906: EOF
+2020/12/29 08:10:46 http: TLS handshake error from 199.30.231.5:5820: EOF
+2020/12/29 08:51:34 http: TLS handshake error from 167.248.133.40:56236: read tcp 172.17.0.2:443->167.248.133.40:56236: read: connection reset by peer
+2020/12/29 09:01:33 http: TLS handshake error from 102.165.30.5:52036: EOF
+2020/12/29 09:43:44 http: TLS handshake error from 104.248.146.28:51642: EOF
+2020/12/29 10:53:31 http: TLS handshake error from 192.241.199.23:47732: tls: client used the legacy version field to negotiate TLS 1.3
+2020/12/29 12:26:04 http: TLS handshake error from 61.219.11.153:64821: tls: first record does not look like a TLS handshake
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {102 RB-LB72428 lift:FB15 20A1B01/V2020 stock 2020-09-11 10:12:00 +0000 UTC 100 100 240 0 55 135.527 34.6874 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/29 21:49:48 http: TLS handshake error from 209.17.96.250:50371: EOF
+2020/12/30 00:03:29 http: TLS handshake error from 192.241.223.39:48740: read tcp 172.17.0.2:443->192.241.223.39:48740: read: connection reset by peer
+2020/12/30 00:03:29 http: TLS handshake error from 192.241.223.39:49176: read tcp 172.17.0.2:443->192.241.223.39:49176: read: connection reset by peer
+2020/12/30 00:03:29 http: TLS handshake error from 192.241.223.39:49800: read tcp 172.17.0.2:443->192.241.223.39:49800: read: connection reset by peer
+2020/12/30 00:03:31 http: TLS handshake error from 192.241.223.39:50826: read tcp 172.17.0.2:443->192.241.223.39:50826: read: connection reset by peer
+2020/12/30 00:03:31 http: TLS handshake error from 192.241.223.39:52666: read tcp 172.17.0.2:443->192.241.223.39:52666: read: connection reset by peer
+2020/12/30 00:03:31 http: TLS handshake error from 192.241.223.39:52978: read tcp 172.17.0.2:443->192.241.223.39:52978: read: connection reset by peer
+2020/12/30 00:03:32 http: TLS handshake error from 192.241.223.39:53294: read tcp 172.17.0.2:443->192.241.223.39:53294: read: connection reset by peer
+2020/12/30 00:03:34 http: TLS handshake error from 192.241.223.39:55162: read tcp 172.17.0.2:443->192.241.223.39:55162: read: connection reset by peer
+2020/12/30 00:03:35 http: TLS handshake error from 192.241.223.39:57786: read tcp 172.17.0.2:443->192.241.223.39:57786: read: connection reset by peer
+2020/12/30 00:03:35 http: TLS handshake error from 192.241.223.39:59662: read tcp 172.17.0.2:443->192.241.223.39:59662: read: connection reset by peer
+2020/12/30 01:21:31 http: TLS handshake error from 66.228.40.187:61000: EOF
+2020/12/30 02:31:56 http: TLS handshake error from 88.80.189.24:35944: EOF
+2020/12/30 03:39:09 http: TLS handshake error from 184.105.247.196:58068: tls: client offered only unsupported versions: []
+2020/12/30 03:39:41 http: TLS handshake error from 184.105.247.196:53028: tls: no cipher suite supported by both client and server
+2020/12/30 03:43:27 http: TLS handshake error from 184.105.247.196:54026: read tcp 172.17.0.2:443->184.105.247.196:54026: read: connection reset by peer
+2020/12/30 03:43:29 http: TLS handshake error from 184.105.247.196:33252: read tcp 172.17.0.2:443->184.105.247.196:33252: read: connection reset by peer
+2020/12/30 03:43:32 http: TLS handshake error from 184.105.247.196:41082: read tcp 172.17.0.2:443->184.105.247.196:41082: read: connection reset by peer
+2020/12/30 03:43:33 http: TLS handshake error from 184.105.247.196:60912: read tcp 172.17.0.2:443->184.105.247.196:60912: read: connection reset by peer
+2020/12/30 03:43:34 http: TLS handshake error from 184.105.247.196:34766: read tcp 172.17.0.2:443->184.105.247.196:34766: read: connection reset by peer
+2020/12/30 03:43:34 http: TLS handshake error from 184.105.247.196:42972: read tcp 172.17.0.2:443->184.105.247.196:42972: read: connection reset by peer
+2020/12/30 03:43:35 http: TLS handshake error from 184.105.247.196:45064: read tcp 172.17.0.2:443->184.105.247.196:45064: read: connection reset by peer
+2020/12/30 03:43:38 http: TLS handshake error from 184.105.247.196:47112: read tcp 172.17.0.2:443->184.105.247.196:47112: read: connection reset by peer
+2020/12/30 03:43:39 http: TLS handshake error from 184.105.247.196:38798: read tcp 172.17.0.2:443->184.105.247.196:38798: read: connection reset by peer
+2020/12/30 03:43:43 http: TLS handshake error from 184.105.247.196:59580: read tcp 172.17.0.2:443->184.105.247.196:59580: read: connection reset by peer
+2020/12/30 05:03:55 http: TLS handshake error from 192.35.168.160:61492: tls: client offered only unsupported versions: []
+2020/12/30 06:06:02 http: TLS handshake error from 104.248.146.28:36112: EOF
+2020/12/30 06:20:47 http: TLS handshake error from 5.188.206.50:63876: tls: first record does not look like a TLS handshake
+2020/12/30 09:14:22 http: TLS handshake error from 104.248.146.28:48436: EOF
+2020/12/30 10:43:06 http: TLS handshake error from 193.29.13.47:1169: tls: first record does not look like a TLS handshake
+2020/12/30 10:44:35 http: TLS handshake error from 104.248.146.28:59684: EOF
+2020/12/30 13:35:04 http: TLS handshake error from 104.155.87.196:17312: tls: no cipher suite supported by both client and server
+2020/12/30 13:51:49 http: TLS handshake error from 172.104.242.173:34785: tls: first record does not look like a TLS handshake
+2020/12/30 14:43:04 http: TLS handshake error from 83.97.20.29:60848: EOF
+2020/12/30 14:43:58 http: TLS handshake error from 83.97.20.29:60345: EOF
+2020/12/30 14:44:02 http: TLS handshake error from 83.97.20.29:18659: tls: first record does not look like a TLS handshake
+2020/12/30 17:59:14 http: TLS handshake error from 46.101.17.84:46972: read tcp 172.17.0.2:443->46.101.17.84:46972: read: connection reset by peer
+2020/12/30 20:33:46 http: TLS handshake error from 89.248.167.131:35992: EOF
+2020/12/30 20:33:47 http: TLS handshake error from 89.248.167.131:36280: EOF
+2020/12/30 20:33:48 http: TLS handshake error from 89.248.167.131:36468: EOF
+2020/12/30 20:33:48 http: TLS handshake error from 89.248.167.131:36684: EOF
+2020/12/30 20:33:49 http: TLS handshake error from 89.248.167.131:37158: EOF
+2020/12/30 20:33:49 http: TLS handshake error from 89.248.167.131:37464: EOF
+2020/12/30 20:33:50 http: TLS handshake error from 89.248.167.131:37722: EOF
+2020/12/30 20:33:50 http: TLS handshake error from 89.248.167.131:38032: EOF
+2020/12/30 20:33:51 http: TLS handshake error from 89.248.167.131:38330: EOF
+2020/12/30 20:33:51 http: TLS handshake error from 89.248.167.131:38690: EOF
+2020/12/30 20:33:54 http: TLS handshake error from 89.248.167.131:39916: tls: unsupported SSLv2 handshake received
+2020/12/30 20:33:55 http: TLS handshake error from 89.248.167.131:40384: tls: client offered only unsupported versions: []
+2020/12/30 20:34:17 http: TLS handshake error from 89.248.167.131:52580: tls: no cipher suite supported by both client and server
+2020/12/30 20:34:18 http: TLS handshake error from 89.248.167.131:53378: tls: no cipher suite supported by both client and server
+2020/12/30 21:21:18 http: TLS handshake error from 209.17.97.26:61752: EOF
+2020/12/31 00:09:44 http: TLS handshake error from 198.199.95.201:43964: read tcp 172.17.0.2:443->198.199.95.201:43964: read: connection reset by peer
+2020/12/31 00:09:44 http: TLS handshake error from 198.199.95.201:44366: read tcp 172.17.0.2:443->198.199.95.201:44366: read: connection reset by peer
+2020/12/31 00:09:44 http: TLS handshake error from 198.199.95.201:44734: read tcp 172.17.0.2:443->198.199.95.201:44734: read: connection reset by peer
+2020/12/31 00:09:45 http: TLS handshake error from 198.199.95.201:45142: read tcp 172.17.0.2:443->198.199.95.201:45142: read: connection reset by peer
+2020/12/31 00:09:46 http: TLS handshake error from 198.199.95.201:45538: read tcp 172.17.0.2:443->198.199.95.201:45538: read: connection reset by peer
+2020/12/31 00:09:46 http: TLS handshake error from 198.199.95.201:48178: read tcp 172.17.0.2:443->198.199.95.201:48178: read: connection reset by peer
+2020/12/31 00:09:46 http: TLS handshake error from 198.199.95.201:48600: read tcp 172.17.0.2:443->198.199.95.201:48600: read: connection reset by peer
+2020/12/31 00:09:47 http: TLS handshake error from 198.199.95.201:49056: read tcp 172.17.0.2:443->198.199.95.201:49056: read: connection reset by peer
+2020/12/31 00:09:47 http: TLS handshake error from 198.199.95.201:49482: read tcp 172.17.0.2:443->198.199.95.201:49482: read: connection reset by peer
+2020/12/31 00:09:48 http: TLS handshake error from 198.199.95.201:50028: read tcp 172.17.0.2:443->198.199.95.201:50028: read: connection reset by peer
+2020/12/31 01:02:08 http: TLS handshake error from 216.218.206.69:37546: tls: client offered only unsupported versions: []
+2020/12/31 01:02:43 http: TLS handshake error from 216.218.206.69:58114: tls: no cipher suite supported by both client and server
+2020/12/31 01:06:34 http: TLS handshake error from 216.218.206.69:55274: read tcp 172.17.0.2:443->216.218.206.69:55274: read: connection reset by peer
+2020/12/31 01:06:35 http: TLS handshake error from 216.218.206.69:58834: read tcp 172.17.0.2:443->216.218.206.69:58834: read: connection reset by peer
+2020/12/31 01:06:35 http: TLS handshake error from 216.218.206.69:34240: read tcp 172.17.0.2:443->216.218.206.69:34240: read: connection reset by peer
+2020/12/31 01:06:35 http: TLS handshake error from 216.218.206.69:37672: read tcp 172.17.0.2:443->216.218.206.69:37672: read: connection reset by peer
+2020/12/31 01:06:36 http: TLS handshake error from 216.218.206.69:41174: read tcp 172.17.0.2:443->216.218.206.69:41174: read: connection reset by peer
+2020/12/31 01:06:37 http: TLS handshake error from 216.218.206.69:44714: read tcp 172.17.0.2:443->216.218.206.69:44714: read: connection reset by peer
+2020/12/31 01:06:37 http: TLS handshake error from 216.218.206.69:58186: read tcp 172.17.0.2:443->216.218.206.69:58186: read: connection reset by peer
+2020/12/31 01:06:38 http: TLS handshake error from 216.218.206.69:33466: read tcp 172.17.0.2:443->216.218.206.69:33466: read: connection reset by peer
+2020/12/31 01:06:38 http: TLS handshake error from 216.218.206.69:36900: read tcp 172.17.0.2:443->216.218.206.69:36900: read: connection reset by peer
+2020/12/31 01:06:39 http: TLS handshake error from 216.218.206.69:40628: read tcp 172.17.0.2:443->216.218.206.69:40628: read: connection reset by peer
+2020/12/31 01:22:37 http: TLS handshake error from 23.92.21.63:61000: EOF
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 RB-LB72420 lift:FB25-12 62B44CE9/V2018 stock 2019-05-02 12:48:35 +0000 UTC 100 100 180 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2020/12/31 02:16:42 http: TLS handshake error from 104.248.146.28:43938: EOF
+2020/12/31 02:18:29 http: TLS handshake error from 162.142.125.55:49228: read tcp 172.17.0.2:443->162.142.125.55:49228: read: connection reset by peer
+2020/12/31 02:37:37 http: TLS handshake error from 88.80.189.24:39778: EOF
+2020/12/31 02:43:40 http: TLS handshake error from 192.35.168.160:16460: tls: no cipher suite supported by both client and server
+2020/12/31 03:55:34 http: TLS handshake error from 61.219.11.153:61061: tls: first record does not look like a TLS handshake
+2020/12/31 05:33:01 http: TLS handshake error from 104.248.146.28:56338: EOF
+2020/12/31 06:41:29 http: TLS handshake error from 113.106.8.55:54562: EOF
+2020/12/31 07:09:19 http: TLS handshake error from 192.35.168.96:46652: tls: no cipher suite supported by both client and server
+2020/12/31 07:15:04 http: TLS handshake error from 209.11.168.94:39876: EOF
+2020/12/31 07:15:05 http: TLS handshake error from 209.11.168.94:40472: tls: unsupported SSLv2 handshake received
+2020/12/31 07:15:06 http: TLS handshake error from 209.11.168.94:40708: tls: client offered only unsupported versions: []
+2020/12/31 07:28:22 http: TLS handshake error from 222.186.136.150:33061: tls: first record does not look like a TLS handshake
+2020/12/31 10:19:06 http: TLS handshake error from 104.248.146.28:40240: EOF
+2020/12/31 20:19:12 http: TLS handshake error from 104.248.146.28:49440: EOF
+2021/01/01 00:58:46 http: TLS handshake error from 45.146.164.179:60916: tls: first record does not look like a TLS handshake
+2021/01/01 01:21:33 http: TLS handshake error from 45.79.154.182:61000: EOF
+2021/01/01 01:38:08 http: TLS handshake error from 209.17.96.98:61817: EOF
+2021/01/01 02:43:38 http: TLS handshake error from 88.80.189.24:40182: EOF
+2021/01/01 02:57:30 http: TLS handshake error from 196.52.43.113:49793: EOF
+2021/01/01 03:28:45 http: TLS handshake error from 192.241.215.237:47180: read tcp 172.17.0.2:443->192.241.215.237:47180: read: connection reset by peer
+2021/01/01 03:28:45 http: TLS handshake error from 192.241.215.237:48724: read tcp 172.17.0.2:443->192.241.215.237:48724: read: connection reset by peer
+2021/01/01 03:28:46 http: TLS handshake error from 192.241.215.237:50180: read tcp 172.17.0.2:443->192.241.215.237:50180: read: connection reset by peer
+2021/01/01 03:28:46 http: TLS handshake error from 192.241.215.237:51554: read tcp 172.17.0.2:443->192.241.215.237:51554: read: connection reset by peer
+2021/01/01 03:28:47 http: TLS handshake error from 192.241.215.237:53086: read tcp 172.17.0.2:443->192.241.215.237:53086: read: connection reset by peer
+2021/01/01 03:28:47 http: TLS handshake error from 192.241.215.237:54530: read tcp 172.17.0.2:443->192.241.215.237:54530: read: connection reset by peer
+2021/01/01 03:28:47 http: TLS handshake error from 192.241.215.237:56088: read tcp 172.17.0.2:443->192.241.215.237:56088: read: connection reset by peer
+2021/01/01 03:28:48 http: TLS handshake error from 192.241.215.237:57362: read tcp 172.17.0.2:443->192.241.215.237:57362: read: connection reset by peer
+2021/01/01 03:28:48 http: TLS handshake error from 192.241.215.237:59052: read tcp 172.17.0.2:443->192.241.215.237:59052: read: connection reset by peer
+2021/01/01 03:28:49 http: TLS handshake error from 192.241.215.237:60488: read tcp 172.17.0.2:443->192.241.215.237:60488: read: connection reset by peer
+2021/01/01 04:28:26 http: TLS handshake error from 184.105.139.69:49184: tls: client offered only unsupported versions: []
+2021/01/01 04:28:53 http: TLS handshake error from 184.105.139.69:43274: tls: no cipher suite supported by both client and server
+2021/01/01 04:29:20 http: TLS handshake error from 184.105.139.69:42258: read tcp 172.17.0.2:443->184.105.139.69:42258: read: connection reset by peer
+2021/01/01 04:29:20 http: TLS handshake error from 184.105.139.69:45750: read tcp 172.17.0.2:443->184.105.139.69:45750: read: connection reset by peer
+2021/01/01 04:29:20 http: TLS handshake error from 184.105.139.69:49538: read tcp 172.17.0.2:443->184.105.139.69:49538: read: connection reset by peer
+2021/01/01 04:29:21 http: TLS handshake error from 184.105.139.69:53156: read tcp 172.17.0.2:443->184.105.139.69:53156: read: connection reset by peer
+2021/01/01 04:29:21 http: TLS handshake error from 184.105.139.69:56682: read tcp 172.17.0.2:443->184.105.139.69:56682: read: connection reset by peer
+2021/01/01 04:29:21 http: TLS handshake error from 184.105.139.69:60174: read tcp 172.17.0.2:443->184.105.139.69:60174: read: connection reset by peer
+2021/01/01 04:29:21 http: TLS handshake error from 184.105.139.69:35662: read tcp 172.17.0.2:443->184.105.139.69:35662: read: connection reset by peer
+2021/01/01 04:29:22 http: TLS handshake error from 184.105.139.69:39212: read tcp 172.17.0.2:443->184.105.139.69:39212: read: connection reset by peer
+2021/01/01 04:29:22 http: TLS handshake error from 184.105.139.69:42778: read tcp 172.17.0.2:443->184.105.139.69:42778: read: connection reset by peer
+2021/01/01 04:29:22 http: TLS handshake error from 184.105.139.69:46258: read tcp 172.17.0.2:443->184.105.139.69:46258: read: connection reset by peer
+2021/01/01 05:51:12 http2: panic serving 125.11.128.185:53902: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 871 [running]:
+net/http.(*http2serverConn).runHandler.func1(0xc0001b10f0, 0xc0000c5f8e, 0xc000120000)
+	/usr/local/go/src/net/http/h2_bundle.go:5712 +0x16f
+panic(0x6e2620, 0xc000150ad0)
+	/usr/local/go/src/runtime/panic.go:969 +0x1b9
+_/go/src/app/internal/restapi.UnitsView(0x7a7b80, 0xc0001b10f0, 0xc0000d8500)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7b80, 0xc0001b10f0, 0xc0000d8500)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7b80, 0xc0001b10f0, 0xc0000d8300)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7b80, 0xc0001b10f0, 0xc0000d8300)
+	/root/go/src/github.com/gorilla/handlers/cors.go:138 +0x2a8
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7b80, 0xc0001b10f0, 0xc0000d8300)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.initALPNRequest.ServeHTTP(0x7a8540, 0xc000134060, 0xc00015e000, 0xc0000d6000, 0x7a7b80, 0xc0001b10f0, 0xc0000d8300)
+	/usr/local/go/src/net/http/server.go:3415 +0x8d
+net/http.(*http2serverConn).runHandler(0xc000120000, 0xc0001b10f0, 0xc0000d8300, 0xc0001704c0)
+	/usr/local/go/src/net/http/h2_bundle.go:5719 +0x8b
+created by net/http.(*http2serverConn).processHeaders
+	/usr/local/go/src/net/http/h2_bundle.go:5453 +0x505
+2021/01/01 05:51:35 http2: panic serving 125.11.128.185:53902: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 877 [running]:
+net/http.(*http2serverConn).runHandler.func1(0xc0001b1150, 0xc0000c5f8e, 0xc000120000)
+	/usr/local/go/src/net/http/h2_bundle.go:5712 +0x16f
+panic(0x6e2620, 0xc000150cd0)
+	/usr/local/go/src/runtime/panic.go:969 +0x1b9
+_/go/src/app/internal/restapi.UnitsView(0x7a7b80, 0xc0001b1150, 0xc0000d8900)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7b80, 0xc0001b1150, 0xc0000d8900)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7b80, 0xc0001b1150, 0xc0000d8700)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7b80, 0xc0001b1150, 0xc0000d8700)
+	/root/go/src/github.com/gorilla/handlers/cors.go:138 +0x2a8
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7b80, 0xc0001b1150, 0xc0000d8700)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.initALPNRequest.ServeHTTP(0x7a8540, 0xc000134060, 0xc00015e000, 0xc0000d6000, 0x7a7b80, 0xc0001b1150, 0xc0000d8700)
+	/usr/local/go/src/net/http/server.go:3415 +0x8d
+net/http.(*http2serverConn).runHandler(0xc000120000, 0xc0001b1150, 0xc0000d8700, 0xc000171dc0)
+	/usr/local/go/src/net/http/h2_bundle.go:5719 +0x8b
+created by net/http.(*http2serverConn).processHeaders
+	/usr/local/go/src/net/http/h2_bundle.go:5453 +0x505
+2021/01/01 11:59:37 http: TLS handshake error from 104.248.146.28:57808: EOF
+2021/01/01 12:14:28 http: TLS handshake error from 3.101.74.235:51648: tls: unsupported SSLv2 handshake received
+2021/01/01 21:45:26 http: TLS handshake error from 45.146.164.179:61878: read tcp 172.17.0.2:443->45.146.164.179:61878: read: connection reset by peer
+2021/01/02 01:02:40 http: TLS handshake error from 178.73.215.171:58745: EOF
+2021/01/02 01:21:22 http: TLS handshake error from 97.107.142.44:61000: EOF
+2021/01/02 02:23:51 http: TLS handshake error from 209.17.96.2:59806: EOF
+2021/01/02 02:31:07 http: TLS handshake error from 159.65.232.21:54562: EOF
+2021/01/02 03:42:32 http: TLS handshake error from 88.80.189.24:47696: EOF
+2021/01/02 05:05:52 http: TLS handshake error from 104.248.146.28:35078: EOF
+2021/01/02 07:28:27 http: TLS handshake error from 184.105.247.196:34122: tls: client offered only unsupported versions: []
+2021/01/02 07:29:13 http: TLS handshake error from 184.105.247.196:52362: tls: no cipher suite supported by both client and server
+2021/01/02 07:31:16 http: TLS handshake error from 184.105.247.196:34180: read tcp 172.17.0.2:443->184.105.247.196:34180: read: connection reset by peer
+2021/01/02 07:31:17 http: TLS handshake error from 184.105.247.196:37076: read tcp 172.17.0.2:443->184.105.247.196:37076: read: connection reset by peer
+2021/01/02 07:31:18 http: TLS handshake error from 184.105.247.196:39904: read tcp 172.17.0.2:443->184.105.247.196:39904: read: connection reset by peer
+2021/01/02 07:31:18 http: TLS handshake error from 184.105.247.196:46860: read tcp 172.17.0.2:443->184.105.247.196:46860: read: connection reset by peer
+2021/01/02 07:31:18 http: TLS handshake error from 184.105.247.196:49790: read tcp 172.17.0.2:443->184.105.247.196:49790: read: connection reset by peer
+2021/01/02 07:31:19 http: TLS handshake error from 184.105.247.196:52784: read tcp 172.17.0.2:443->184.105.247.196:52784: read: connection reset by peer
+2021/01/02 07:31:19 http: TLS handshake error from 184.105.247.196:55826: read tcp 172.17.0.2:443->184.105.247.196:55826: read: connection reset by peer
+2021/01/02 07:31:19 http: TLS handshake error from 184.105.247.196:58760: read tcp 172.17.0.2:443->184.105.247.196:58760: read: connection reset by peer
+2021/01/02 07:31:20 http: TLS handshake error from 184.105.247.196:33542: read tcp 172.17.0.2:443->184.105.247.196:33542: read: connection reset by peer
+2021/01/02 07:31:20 http: TLS handshake error from 184.105.247.196:36854: read tcp 172.17.0.2:443->184.105.247.196:36854: read: connection reset by peer
+2021/01/02 08:56:46 http: TLS handshake error from 104.248.146.28:41180: EOF
+2021/01/02 10:22:10 http: TLS handshake error from 104.248.146.28:47912: EOF
+2021/01/02 10:42:48 http: TLS handshake error from 137.226.113.9:34672: read tcp 172.17.0.2:443->137.226.113.9:34672: read: connection reset by peer
+2021/01/02 11:47:27 http: TLS handshake error from 193.29.13.47:1118: tls: first record does not look like a TLS handshake
+2021/01/02 12:47:44 http: TLS handshake error from 172.104.242.173:59431: tls: first record does not look like a TLS handshake
+2021/01/02 18:31:14 http: TLS handshake error from 192.241.204.136:49064: read tcp 172.17.0.2:443->192.241.204.136:49064: read: connection reset by peer
+2021/01/02 18:31:14 http: TLS handshake error from 192.241.204.136:49584: read tcp 172.17.0.2:443->192.241.204.136:49584: read: connection reset by peer
+2021/01/02 18:31:14 http: TLS handshake error from 192.241.204.136:50332: read tcp 172.17.0.2:443->192.241.204.136:50332: read: connection reset by peer
+2021/01/02 18:31:14 http: TLS handshake error from 192.241.204.136:50704: read tcp 172.17.0.2:443->192.241.204.136:50704: read: connection reset by peer
+2021/01/02 18:31:14 http: TLS handshake error from 192.241.204.136:51098: read tcp 172.17.0.2:443->192.241.204.136:51098: read: connection reset by peer
+2021/01/02 18:31:15 http: TLS handshake error from 192.241.204.136:51326: read tcp 172.17.0.2:443->192.241.204.136:51326: read: connection reset by peer
+2021/01/02 20:33:46 http: TLS handshake error from 104.248.146.28:53948: EOF
+2021/01/03 01:04:01 http: TLS handshake error from 104.248.146.28:32890: EOF
+2021/01/03 01:05:49 http: TLS handshake error from 198.143.129.162:36657: tls: client offered only unsupported versions: []
+2021/01/03 01:05:50 http: TLS handshake error from 198.143.129.162:42128: tls: unsupported SSLv2 handshake received
+2021/01/03 01:05:50 http: TLS handshake error from 198.143.129.162:38688: tls: no cipher suite supported by both client and server
+2021/01/03 01:21:22 http: TLS handshake error from 50.116.59.137:61000: EOF
+2021/01/03 02:32:32 http: TLS handshake error from 88.80.189.24:39984: EOF
+2021/01/03 02:58:14 http: TLS handshake error from 167.248.133.40:44338: read tcp 172.17.0.2:443->167.248.133.40:44338: read: connection reset by peer
+2021/01/03 03:19:12 http: TLS handshake error from 209.17.97.10:63073: EOF
+2021/01/03 03:23:47 http: TLS handshake error from 192.241.213.55:46724: tls: client used the legacy version field to negotiate TLS 1.3
+2021/01/03 04:27:04 http: TLS handshake error from 104.248.146.28:41250: EOF
+2021/01/03 04:35:45 http: TLS handshake error from 192.241.223.63:35212: tls: client offered only unsupported versions: []
+2021/01/03 04:46:08 http: TLS handshake error from 192.241.224.58:59484: tls: client used the legacy version field to negotiate TLS 1.3
+2021/01/03 05:10:45 http: TLS handshake error from 61.219.11.153:64927: read tcp 172.17.0.2:443->61.219.11.153:64927: read: connection reset by peer
+2021/01/03 06:42:37 http: TLS handshake error from 104.248.146.28:48420: EOF
+2021/01/03 07:53:26 http: TLS handshake error from 184.105.139.67:42038: tls: client offered only unsupported versions: []
+2021/01/03 07:54:08 http: TLS handshake error from 184.105.139.67:57240: tls: no cipher suite supported by both client and server
+2021/01/03 08:00:27 http: TLS handshake error from 184.105.139.67:42230: read tcp 172.17.0.2:443->184.105.139.67:42230: read: connection reset by peer
+2021/01/03 08:00:28 http: TLS handshake error from 184.105.139.67:44964: read tcp 172.17.0.2:443->184.105.139.67:44964: read: connection reset by peer
+2021/01/03 08:00:28 http: TLS handshake error from 184.105.139.67:47812: read tcp 172.17.0.2:443->184.105.139.67:47812: read: connection reset by peer
+2021/01/03 08:00:29 http: TLS handshake error from 184.105.139.67:50784: read tcp 172.17.0.2:443->184.105.139.67:50784: read: connection reset by peer
+2021/01/03 08:00:30 http: TLS handshake error from 184.105.139.67:33634: read tcp 172.17.0.2:443->184.105.139.67:33634: read: connection reset by peer
+2021/01/03 08:00:30 http: TLS handshake error from 184.105.139.67:36676: read tcp 172.17.0.2:443->184.105.139.67:36676: read: connection reset by peer
+2021/01/03 08:00:30 http: TLS handshake error from 184.105.139.67:39594: read tcp 172.17.0.2:443->184.105.139.67:39594: read: connection reset by peer
+2021/01/03 08:00:31 http: TLS handshake error from 184.105.139.67:42450: read tcp 172.17.0.2:443->184.105.139.67:42450: read: connection reset by peer
+2021/01/03 08:00:31 http: TLS handshake error from 184.105.139.67:45082: read tcp 172.17.0.2:443->184.105.139.67:45082: read: connection reset by peer
+2021/01/03 08:00:32 http: TLS handshake error from 184.105.139.67:47846: read tcp 172.17.0.2:443->184.105.139.67:47846: read: connection reset by peer
+2021/01/03 09:04:09 http: TLS handshake error from 192.35.168.16:13402: tls: no cipher suite supported by both client and server
+2021/01/03 10:39:16 http: TLS handshake error from 104.248.146.28:55154: EOF
+2021/01/03 12:14:17 http: TLS handshake error from 74.120.14.37:43016: read tcp 172.17.0.2:443->74.120.14.37:43016: read: connection reset by peer
+2021/01/03 16:12:24 http: TLS handshake error from 61.219.11.153:61148: tls: first record does not look like a TLS handshake
+2021/01/03 19:00:21 http: TLS handshake error from 104.248.146.28:33400: EOF
+2021/01/03 19:09:46 http: TLS handshake error from 209.17.96.138:54888: EOF
+2021/01/03 19:58:37 http: TLS handshake error from 68.183.149.60:49326: read tcp 172.17.0.2:443->68.183.149.60:49326: read: connection reset by peer
+2021/01/03 20:34:39 http: TLS handshake error from 64.225.62.133:36508: tls: client offered only unsupported versions: []
+2021/01/03 20:34:50 http: TLS handshake error from 64.225.62.133:40972: read tcp 172.17.0.2:443->64.225.62.133:40972: read: connection reset by peer
+2021/01/03 21:16:21 http: TLS handshake error from 104.248.146.28:39114: EOF
+2021/01/03 21:24:22 http: TLS handshake error from 74.120.14.53:41636: read tcp 172.17.0.2:443->74.120.14.53:41636: read: connection reset by peer
+2021/01/03 22:08:40 http: TLS handshake error from 192.241.219.140:37172: read tcp 172.17.0.2:443->192.241.219.140:37172: read: connection reset by peer
+2021/01/03 22:08:40 http: TLS handshake error from 192.241.219.140:37564: read tcp 172.17.0.2:443->192.241.219.140:37564: read: connection reset by peer
+2021/01/03 22:08:40 http: TLS handshake error from 192.241.219.140:38100: read tcp 172.17.0.2:443->192.241.219.140:38100: read: connection reset by peer
+2021/01/03 22:08:40 http: TLS handshake error from 192.241.219.140:38814: read tcp 172.17.0.2:443->192.241.219.140:38814: read: connection reset by peer
+2021/01/03 22:08:41 http: TLS handshake error from 192.241.219.140:39236: read tcp 172.17.0.2:443->192.241.219.140:39236: read: connection reset by peer
+2021/01/03 22:08:41 http: TLS handshake error from 192.241.219.140:39582: read tcp 172.17.0.2:443->192.241.219.140:39582: read: connection reset by peer
+2021/01/03 22:08:41 http: TLS handshake error from 192.241.219.140:39966: read tcp 172.17.0.2:443->192.241.219.140:39966: read: connection reset by peer
+2021/01/03 22:08:44 http: TLS handshake error from 192.241.219.140:40474: read tcp 172.17.0.2:443->192.241.219.140:40474: read: connection reset by peer
+2021/01/03 22:08:52 http: TLS handshake error from 192.241.219.140:48296: read tcp 172.17.0.2:443->192.241.219.140:48296: read: connection reset by peer
+2021/01/03 22:08:52 http: TLS handshake error from 192.241.219.140:35632: read tcp 172.17.0.2:443->192.241.219.140:35632: read: connection reset by peer
+2021/01/03 22:42:29 http: TLS handshake error from 104.248.146.28:47566: EOF
+2021/01/04 01:21:07 http: TLS handshake error from 172.104.15.183:61000: EOF
+2021/01/04 01:51:30 http: TLS handshake error from 104.248.146.28:58108: EOF
+2021/01/04 03:03:22 http: TLS handshake error from 88.80.189.24:60656: EOF
+2021/01/04 04:19:46 http: TLS handshake error from 184.105.247.194:60586: tls: client offered only unsupported versions: []
+2021/01/04 04:20:16 http: TLS handshake error from 184.105.247.194:50844: tls: no cipher suite supported by both client and server
+2021/01/04 04:23:20 http: TLS handshake error from 184.105.247.194:40726: read tcp 172.17.0.2:443->184.105.247.194:40726: read: connection reset by peer
+2021/01/04 04:23:21 http: TLS handshake error from 184.105.247.194:44944: read tcp 172.17.0.2:443->184.105.247.194:44944: read: connection reset by peer
+2021/01/04 04:23:21 http: TLS handshake error from 184.105.247.194:49252: read tcp 172.17.0.2:443->184.105.247.194:49252: read: connection reset by peer
+2021/01/04 04:23:22 http: TLS handshake error from 184.105.247.194:53440: read tcp 172.17.0.2:443->184.105.247.194:53440: read: connection reset by peer
+2021/01/04 04:23:22 http: TLS handshake error from 184.105.247.194:57578: read tcp 172.17.0.2:443->184.105.247.194:57578: read: connection reset by peer
+2021/01/04 04:23:22 http: TLS handshake error from 184.105.247.194:33344: read tcp 172.17.0.2:443->184.105.247.194:33344: read: connection reset by peer
+2021/01/04 04:23:23 http: TLS handshake error from 184.105.247.194:37416: read tcp 172.17.0.2:443->184.105.247.194:37416: read: connection reset by peer
+2021/01/04 04:23:23 http: TLS handshake error from 184.105.247.194:41512: read tcp 172.17.0.2:443->184.105.247.194:41512: read: connection reset by peer
+2021/01/04 04:23:23 http: TLS handshake error from 184.105.247.194:45502: read tcp 172.17.0.2:443->184.105.247.194:45502: read: connection reset by peer
+2021/01/04 04:23:24 http: TLS handshake error from 184.105.247.194:49552: read tcp 172.17.0.2:443->184.105.247.194:49552: read: connection reset by peer
+2021/01/04 04:29:47 http: TLS handshake error from 104.248.146.28:43290: EOF
+2021/01/04 05:04:59 http: TLS handshake error from 167.99.182.225:50070: EOF
+2021/01/04 07:14:13 http: TLS handshake error from 193.29.13.47:1516: tls: first record does not look like a TLS handshake
+2021/01/04 07:34:25 http: TLS handshake error from 178.128.113.103:37042: read tcp 172.17.0.2:443->178.128.113.103:37042: read: connection reset by peer
+2021/01/04 07:34:25 http: TLS handshake error from 178.128.113.103:37196: read tcp 172.17.0.2:443->178.128.113.103:37196: read: connection reset by peer
+2021/01/04 07:34:25 http: TLS handshake error from 178.128.113.103:37336: read tcp 172.17.0.2:443->178.128.113.103:37336: read: connection reset by peer
+2021/01/04 07:34:25 http: TLS handshake error from 178.128.113.103:37466: read tcp 172.17.0.2:443->178.128.113.103:37466: read: connection reset by peer
+2021/01/04 07:34:25 http: TLS handshake error from 178.128.113.103:37608: read tcp 172.17.0.2:443->178.128.113.103:37608: read: connection reset by peer
+2021/01/04 07:34:26 http: TLS handshake error from 178.128.113.103:37732: read tcp 172.17.0.2:443->178.128.113.103:37732: read: connection reset by peer
+2021/01/04 07:34:26 http: TLS handshake error from 178.128.113.103:37878: read tcp 172.17.0.2:443->178.128.113.103:37878: read: connection reset by peer
+2021/01/04 07:34:26 http: TLS handshake error from 178.128.113.103:37984: read tcp 172.17.0.2:443->178.128.113.103:37984: read: connection reset by peer
+2021/01/04 07:34:26 http: TLS handshake error from 178.128.113.103:38102: read tcp 172.17.0.2:443->178.128.113.103:38102: read: connection reset by peer
+2021/01/04 07:34:26 http: TLS handshake error from 178.128.113.103:38252: read tcp 172.17.0.2:443->178.128.113.103:38252: read: connection reset by peer
+2021/01/04 07:46:47 http: TLS handshake error from 104.248.146.28:56762: EOF
+2021/01/04 09:09:41 http: TLS handshake error from 104.236.121.216:36650: EOF
+2021/01/04 09:48:11 http: TLS handshake error from 104.248.146.28:42792: EOF
+2021/01/04 11:29:24 http: TLS handshake error from 172.105.77.209:48401: tls: first record does not look like a TLS handshake
+2021/01/04 11:31:33 http: TLS handshake error from 104.248.146.28:56334: EOF
+2021/01/04 14:30:20 http: TLS handshake error from 80.82.65.74:34242: tls: first record does not look like a TLS handshake
+2021/01/04 14:31:21 http: TLS handshake error from 80.82.65.74:39950: unexpected EOF
+2021/01/04 16:19:31 http: TLS handshake error from 164.68.112.178:51663: EOF
+2021/01/04 18:57:15 http: TLS handshake error from 104.248.146.28:37152: EOF
+2021/01/04 19:06:47 http: TLS handshake error from 80.82.77.33:37724: EOF
+2021/01/04 19:06:47 http: TLS handshake error from 80.82.77.33:38518: EOF
+2021/01/04 19:06:48 http: TLS handshake error from 80.82.77.33:39122: EOF
+2021/01/04 19:06:48 http: TLS handshake error from 80.82.77.33:39976: EOF
+2021/01/04 19:06:49 http: TLS handshake error from 80.82.77.33:40434: EOF
+2021/01/04 19:06:49 http: TLS handshake error from 80.82.77.33:40926: EOF
+2021/01/04 19:06:50 http: TLS handshake error from 80.82.77.33:41428: EOF
+2021/01/04 19:06:50 http: TLS handshake error from 80.82.77.33:42498: EOF
+2021/01/04 19:06:51 http: TLS handshake error from 80.82.77.33:43276: EOF
+2021/01/04 19:06:51 http: TLS handshake error from 80.82.77.33:43802: EOF
+2021/01/04 19:06:52 http: TLS handshake error from 80.82.77.33:44906: tls: unsupported SSLv2 handshake received
+2021/01/04 19:06:53 http: TLS handshake error from 80.82.77.33:46064: tls: client offered only unsupported versions: []
+2021/01/04 19:07:07 http: TLS handshake error from 80.82.77.33:33536: tls: no cipher suite supported by both client and server
+2021/01/04 19:07:07 http: TLS handshake error from 80.82.77.33:34050: tls: no cipher suite supported by both client and server
+2021/01/04 21:14:49 http: TLS handshake error from 104.248.146.28:43682: EOF
+2021/01/04 23:12:12 http: TLS handshake error from 104.248.146.28:53074: EOF
+2021/01/05 00:30:20 http: TLS handshake error from 209.17.96.138:63263: EOF
+2021/01/05 00:53:51 http: TLS handshake error from 192.241.213.101:45764: read tcp 172.17.0.2:443->192.241.213.101:45764: read: connection reset by peer
+2021/01/05 00:53:52 http: TLS handshake error from 192.241.213.101:46212: read tcp 172.17.0.2:443->192.241.213.101:46212: read: connection reset by peer
+2021/01/05 00:53:53 http: TLS handshake error from 192.241.213.101:48968: read tcp 172.17.0.2:443->192.241.213.101:48968: read: connection reset by peer
+2021/01/05 00:53:53 http: TLS handshake error from 192.241.213.101:49488: read tcp 172.17.0.2:443->192.241.213.101:49488: read: connection reset by peer
+2021/01/05 00:53:53 http: TLS handshake error from 192.241.213.101:49892: read tcp 172.17.0.2:443->192.241.213.101:49892: read: connection reset by peer
+2021/01/05 00:53:53 http: TLS handshake error from 192.241.213.101:50286: read tcp 172.17.0.2:443->192.241.213.101:50286: read: connection reset by peer
+2021/01/05 00:53:54 http: TLS handshake error from 192.241.213.101:50740: read tcp 172.17.0.2:443->192.241.213.101:50740: read: connection reset by peer
+2021/01/05 00:53:55 http: TLS handshake error from 192.241.213.101:51694: read tcp 172.17.0.2:443->192.241.213.101:51694: read: connection reset by peer
+2021/01/05 00:53:55 http: TLS handshake error from 192.241.213.101:55004: read tcp 172.17.0.2:443->192.241.213.101:55004: read: connection reset by peer
+2021/01/05 00:53:55 http: TLS handshake error from 192.241.213.101:55390: read tcp 172.17.0.2:443->192.241.213.101:55390: read: connection reset by peer
+2021/01/05 01:22:14 http: TLS handshake error from 173.255.236.120:61000: EOF
+2021/01/05 01:24:06 http: TLS handshake error from 104.248.146.28:37424: EOF
+2021/01/05 03:22:01 http: TLS handshake error from 88.80.189.24:55696: EOF
+2021/01/05 05:21:21 http: TLS handshake error from 65.49.20.68:38278: tls: client offered only unsupported versions: []
+2021/01/05 05:22:01 http: TLS handshake error from 65.49.20.68:35812: tls: no cipher suite supported by both client and server
+2021/01/05 05:23:55 http: TLS handshake error from 65.49.20.68:59256: read tcp 172.17.0.2:443->65.49.20.68:59256: read: connection reset by peer
+2021/01/05 05:23:56 http: TLS handshake error from 65.49.20.68:41430: read tcp 172.17.0.2:443->65.49.20.68:41430: read: connection reset by peer
+2021/01/05 05:23:56 http: TLS handshake error from 65.49.20.68:44214: read tcp 172.17.0.2:443->65.49.20.68:44214: read: connection reset by peer
+2021/01/05 05:23:57 http: TLS handshake error from 65.49.20.68:46956: read tcp 172.17.0.2:443->65.49.20.68:46956: read: connection reset by peer
+2021/01/05 05:23:57 http: TLS handshake error from 65.49.20.68:49704: read tcp 172.17.0.2:443->65.49.20.68:49704: read: connection reset by peer
+2021/01/05 05:23:57 http: TLS handshake error from 65.49.20.68:52546: read tcp 172.17.0.2:443->65.49.20.68:52546: read: connection reset by peer
+2021/01/05 05:23:59 http: TLS handshake error from 65.49.20.68:37512: read tcp 172.17.0.2:443->65.49.20.68:37512: read: connection reset by peer
+2021/01/05 05:24:00 http: TLS handshake error from 65.49.20.68:40638: read tcp 172.17.0.2:443->65.49.20.68:40638: read: connection reset by peer
+2021/01/05 05:24:00 http: TLS handshake error from 65.49.20.68:43674: read tcp 172.17.0.2:443->65.49.20.68:43674: read: connection reset by peer
+2021/01/05 05:24:14 http: TLS handshake error from 65.49.20.68:55398: read tcp 172.17.0.2:443->65.49.20.68:55398: read: connection reset by peer
+2021/01/05 06:02:39 http: TLS handshake error from 104.248.146.28:52542: EOF
+2021/01/05 06:25:55 http: TLS handshake error from 199.30.231.5:10392: EOF
+2021/01/05 06:53:42 http: TLS handshake error from 162.142.125.55:46172: read tcp 172.17.0.2:443->162.142.125.55:46172: read: connection reset by peer
+2021/01/05 07:35:16 http: TLS handshake error from 104.248.146.28:39556: EOF
+2021/01/05 07:37:31 http2: panic serving 113.36.80.210:60803: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 1770 [running]:
+net/http.(*http2serverConn).runHandler.func1(0xc0001b10f0, 0xc0000c9f8e, 0xc000120000)
+	/usr/local/go/src/net/http/h2_bundle.go:5712 +0x16f
+panic(0x6e2620, 0xc000150ae0)
+	/usr/local/go/src/runtime/panic.go:969 +0x1b9
+_/go/src/app/internal/restapi.UnitsView(0x7a7b80, 0xc0001b10f0, 0xc0000a0500)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7b80, 0xc0001b10f0, 0xc0000a0500)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7b80, 0xc0001b10f0, 0xc0000a0300)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7b80, 0xc0001b10f0, 0xc0000a0300)
+	/root/go/src/github.com/gorilla/handlers/cors.go:138 +0x2a8
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7b80, 0xc0001b10f0, 0xc0000a0300)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.initALPNRequest.ServeHTTP(0x7a8540, 0xc00017c060, 0xc000078000, 0xc0000d6000, 0x7a7b80, 0xc0001b10f0, 0xc0000a0300)
+	/usr/local/go/src/net/http/server.go:3415 +0x8d
+net/http.(*http2serverConn).runHandler(0xc000120000, 0xc0001b10f0, 0xc0000a0300, 0xc0002642c0)
+	/usr/local/go/src/net/http/h2_bundle.go:5719 +0x8b
+created by net/http.(*http2serverConn).processHeaders
+	/usr/local/go/src/net/http/h2_bundle.go:5453 +0x505
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {18379490319274152217 AGV-LB24107-MY-S2 lift 20A1B01/V2020 customer 2020-12-25 13:28:00 +0000 UTC 43 88 107 4.89 22.6 121.526 31.2731 close {198 true}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {18379490319274152217 AGV-LB24107-MY-S2 lift 20A1B01/V2020 customer 2020-12-25 13:28:00 +0000 UTC 43 88 107 4.89 22.6 121.526 31.2731 close {198 true}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2021/01/05 07:44:59 http: panic serving 113.36.80.210:62798: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 1812 [running]:
+net/http.(*conn).serve.func1(0xc000082a00)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x6e2620, 0xc000151100)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.UnitsView(0x7a7c40, 0xc0000d6540, 0xc0000a0e00)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7c40, 0xc0000d6540, 0xc0000a0e00)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d6540, 0xc0000a0c00)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d6540, 0xc0000a0c00)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d6540, 0xc0000a0c00)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000082a00, 0x7a8480, 0xc000054000)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 07:45:00 http: panic serving 113.36.80.210:62849: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 1826 [running]:
+net/http.(*conn).serve.func1(0xc000083ae0)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x6e2620, 0xc0001513b0)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.UnitsView(0x7a7c40, 0xc0000d6700, 0xc0000a1500)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7c40, 0xc0000d6700, 0xc0000a1500)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d6700, 0xc0000a1300)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d6700, 0xc0000a1300)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d6700, 0xc0000a1300)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000083ae0, 0x7a8480, 0xc000054580)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 07:45:21 http: panic serving 113.36.80.210:62931: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 1832 [running]:
+net/http.(*conn).serve.func1(0xc000083cc0)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x6e2620, 0xc0001516d0)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.UnitsView(0x7a7c40, 0xc0000d68c0, 0xc0000a1c00)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7c40, 0xc0000d68c0, 0xc0000a1c00)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d68c0, 0xc0000a1a00)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d68c0, 0xc0000a1a00)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d68c0, 0xc0000a1a00)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000083cc0, 0x7a8480, 0xc000054700)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 07:45:42 http: panic serving 113.36.80.210:63004: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 1838 [running]:
+net/http.(*conn).serve.func1(0xc000083ea0)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x6e2620, 0xc000151be0)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.UnitsView(0x7a7c40, 0xc0000d6b60, 0xc00018c600)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7c40, 0xc0000d6b60, 0xc00018c600)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d6b60, 0xc00018c400)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d6b60, 0xc00018c400)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d6b60, 0xc00018c400)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000083ea0, 0x7a8480, 0xc000054900)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 07:47:10 http2: panic serving 113.36.80.210:63387: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 1947 [running]:
+net/http.(*http2serverConn).runHandler.func1(0xc0001b1220, 0xc0000c7f8e, 0xc000121500)
+	/usr/local/go/src/net/http/h2_bundle.go:5712 +0x16f
+panic(0x6e2620, 0xc000151c60)
+	/usr/local/go/src/runtime/panic.go:969 +0x1b9
+_/go/src/app/internal/restapi.UnitsView(0x7a7b80, 0xc0001b1220, 0xc0000f8300)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7b80, 0xc0001b1220, 0xc0000f8300)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7b80, 0xc0001b1220, 0xc0000f8100)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7b80, 0xc0001b1220, 0xc0000f8100)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7b80, 0xc0001b1220, 0xc0000f8100)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.initALPNRequest.ServeHTTP(0x7a8540, 0xc000134060, 0xc000078380, 0xc0000d6000, 0x7a7b80, 0xc0001b1220, 0xc0000f8100)
+	/usr/local/go/src/net/http/server.go:3415 +0x8d
+net/http.(*http2serverConn).runHandler(0xc000121500, 0xc0001b1220, 0xc0000f8100, 0xc000210720)
+	/usr/local/go/src/net/http/h2_bundle.go:5719 +0x8b
+created by net/http.(*http2serverConn).processHeaders
+	/usr/local/go/src/net/http/h2_bundle.go:5453 +0x505
+2021/01/05 08:01:40 http: panic serving 60.148.221.234:44959: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 1960 [running]:
+net/http.(*conn).serve.func1(0xc000082280)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x6e2620, 0xc000012fa0)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.UnitsView(0x7a7c40, 0xc0000d60e0, 0xc0000a0300)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7c40, 0xc0000d60e0, 0xc0000a0300)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d60e0, 0xc0000a0100)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d60e0, 0xc0000a0100)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d60e0, 0xc0000a0100)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000082280, 0x7a8480, 0xc000054000)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 08:02:31 http: panic serving 60.148.221.234:44250: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 1965 [running]:
+net/http.(*conn).serve.func1(0xc000082a00)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x6e2620, 0xc0000131b0)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.UnitsView(0x7a7c40, 0xc0000d61c0, 0xc0000a0800)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7c40, 0xc0000d61c0, 0xc0000a0800)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d61c0, 0xc0000a0500)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d61c0, 0xc0000a0500)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d61c0, 0xc0000a0500)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000082a00, 0x7a8480, 0xc0000543c0)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 08:03:33 http: panic serving 60.148.221.234:41120: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 1970 [running]:
+net/http.(*conn).serve.func1(0xc000082280)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x6e2620, 0xc000013020)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.UnitsView(0x7a7c40, 0xc0000d61c0, 0xc0000a0600)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7c40, 0xc0000d61c0, 0xc0000a0600)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d61c0, 0xc0000a0400)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d61c0, 0xc0000a0400)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d61c0, 0xc0000a0400)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000082280, 0x7a8480, 0xc000054000)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 08:03:35 http: panic serving 60.148.221.234:40880: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 1976 [running]:
+net/http.(*conn).serve.func1(0xc000082a00)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x6e2620, 0xc000013210)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.UnitsView(0x7a7c40, 0xc0000d62a0, 0xc0000a0b00)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7c40, 0xc0000d62a0, 0xc0000a0b00)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d62a0, 0xc0000a0900)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d62a0, 0xc0000a0900)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d62a0, 0xc0000a0900)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000082a00, 0x7a8480, 0xc000054440)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 08:04:50 http2: panic serving 60.148.221.234:47944: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 2001 [running]:
+net/http.(*http2serverConn).runHandler.func1(0xc0001b1260, 0xc0001fff8e, 0xc000121500)
+	/usr/local/go/src/net/http/h2_bundle.go:5712 +0x16f
+panic(0x6e2620, 0xc000013810)
+	/usr/local/go/src/runtime/panic.go:969 +0x1b9
+_/go/src/app/internal/restapi.UnitsView(0x7a7b80, 0xc0001b1260, 0xc000166300)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7b80, 0xc0001b1260, 0xc000166300)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7b80, 0xc0001b1260, 0xc000166100)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7b80, 0xc0001b1260, 0xc000166100)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7b80, 0xc0001b1260, 0xc000166100)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.initALPNRequest.ServeHTTP(0x7a8540, 0xc00017d3e0, 0xc000078700, 0xc0000d6000, 0x7a7b80, 0xc0001b1260, 0xc000166100)
+	/usr/local/go/src/net/http/server.go:3415 +0x8d
+net/http.(*http2serverConn).runHandler(0xc000121500, 0xc0001b1260, 0xc000166100, 0xc000264440)
+	/usr/local/go/src/net/http/h2_bundle.go:5719 +0x8b
+created by net/http.(*http2serverConn).processHeaders
+	/usr/local/go/src/net/http/h2_bundle.go:5453 +0x505
+[{1000 Komato developer robotics Horikawa 1921-05-21 00:00:00 +0000 UTC 9230302 23 horikawa@dev.komato.com 0761433900} {1001 Aquty sales robotics Ononuma 1967-02-03 00:00:00 +0000 UTC 1030027 3-12-2 朝日ビルディング7階 ononuma@sale.aquty.com 0368541411} {1002 日本物流 manager transportation 大森勇志 1987-06-05 00:00:00 +0000 UTC 9830034 7-2-5 omori-yuji@jpt.com 0222591544}]
+[{1000 Komato developer robotics Horikawa 1921-05-21 00:00:00 +0000 UTC 9230302 23 horikawa@dev.komato.com 0761433900} {1001 Aquty sales robotics Ononuma 1967-02-03 00:00:00 +0000 UTC 1030027 3-12-2 朝日ビルディング7階 ononuma@sale.aquty.com 0368541411} {1002 日本物流 manager transportation 大森勇志 1987-06-05 00:00:00 +0000 UTC 9830034 7-2-5 omori-yuji@jpt.com 0222591544}]
+2021/01/05 08:12:16 http: panic serving 60.148.221.234:43094: runtime error: index out of range [0] with length 0
+goroutine 2247 [running]:
+net/http.(*conn).serve.func1(0xc000082280)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x724ba0, 0xc000204580)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.DetaileView(0x7a7c40, 0xc0000d6620, 0xc000166c00)
+	/go/src/app/internal/restapi/detaile.go:23 +0x7ec
+net/http.HandlerFunc.ServeHTTP(0x75cb90, 0x7a7c40, 0xc0000d6620, 0xc000166c00)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d6620, 0xc000166900)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d6620, 0xc000166900)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d6620, 0xc000166900)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000082280, 0x7a8480, 0xc000054000)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 08:12:47 http: panic serving 60.148.221.234:38738: runtime error: index out of range [0] with length 0
+goroutine 2261 [running]:
+net/http.(*conn).serve.func1(0xc000083ae0)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x724ba0, 0xc000205280)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.DetaileView(0x7a7c40, 0xc0000d68c0, 0xc000167200)
+	/go/src/app/internal/restapi/detaile.go:23 +0x7ec
+net/http.HandlerFunc.ServeHTTP(0x75cb90, 0x7a7c40, 0xc0000d68c0, 0xc000167200)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d68c0, 0xc000167000)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d68c0, 0xc000167000)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d68c0, 0xc000167000)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000083ae0, 0x7a8480, 0xc000054580)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 08:13:01 http: panic serving 60.148.221.234:47331: runtime error: index out of range [0] with length 0
+goroutine 2266 [running]:
+net/http.(*conn).serve.func1(0xc000082280)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x724ba0, 0xc000204ce0)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.CustomerView(0x7a7c40, 0xc0000d60e0, 0xc0000a0300)
+	/go/src/app/internal/restapi/customer.go:23 +0x9ac
+net/http.HandlerFunc.ServeHTTP(0x75cb80, 0x7a7c40, 0xc0000d60e0, 0xc0000a0300)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d60e0, 0xc0000a0100)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d60e0, 0xc0000a0100)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d60e0, 0xc0000a0100)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000082280, 0x7a8480, 0xc000054000)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 08:13:47 http: panic serving 60.148.221.234:37665: runtime error: index out of range [0] with length 0
+goroutine 2269 [running]:
+net/http.(*conn).serve.func1(0xc0000828c0)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x724ba0, 0xc000205740)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.CustomerView(0x7a7c40, 0xc0000d62a0, 0xc0000a0900)
+	/go/src/app/internal/restapi/customer.go:23 +0x9ac
+net/http.HandlerFunc.ServeHTTP(0x75cb80, 0x7a7c40, 0xc0000d62a0, 0xc0000a0900)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d62a0, 0xc0000a0600)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d62a0, 0xc0000a0600)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d62a0, 0xc0000a0600)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc0000828c0, 0x7a8480, 0xc0000543c0)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 08:13:54 http: panic serving 60.148.221.234:45975: runtime error: index out of range [0] with length 0
+goroutine 2273 [running]:
+net/http.(*conn).serve.func1(0xc000082960)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x724ba0, 0xc0000183c0)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.DetaileView(0x7a7c40, 0xc0000d6540, 0xc0000a0e00)
+	/go/src/app/internal/restapi/detaile.go:23 +0x7ec
+net/http.HandlerFunc.ServeHTTP(0x75cb90, 0x7a7c40, 0xc0000d6540, 0xc0000a0e00)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d6540, 0xc0000a0b00)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d6540, 0xc0000a0b00)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d6540, 0xc0000a0b00)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000082960, 0x7a8480, 0xc000054600)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 RB-LB72420 lift:FB25-12 62B44CE9/V2018 stock 2019-05-02 12:48:35 +0000 UTC 100 100 180 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2021/01/05 08:14:18 http: panic serving 60.148.221.234:44465: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 2276 [running]:
+net/http.(*conn).serve.func1(0xc000082a00)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x6e2620, 0xc000150fe0)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.UnitsView(0x7a7c40, 0xc0000d67e0, 0xc0000a1800)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7c40, 0xc0000d67e0, 0xc0000a1800)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d67e0, 0xc0000a1600)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d67e0, 0xc0000a1600)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d67e0, 0xc0000a1600)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000082a00, 0x7a8480, 0xc000054740)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+2021/01/05 08:17:01 http: panic serving 60.148.221.234:45938: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 2286 [running]:
+net/http.(*conn).serve.func1(0xc000082280)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x6e2620, 0xc000150a30)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.UnitsView(0x7a7c40, 0xc0000d61c0, 0xc0000a0600)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75cb98, 0x7a7c40, 0xc0000d61c0, 0xc0000a0600)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a7c40, 0xc0000d61c0, 0xc0000a0400)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a7c40, 0xc0000d61c0, 0xc0000a0400)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a7c40, 0xc0000d61c0, 0xc0000a0400)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc000082280, 0x7a8480, 0xc000054000)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+signal: terminated
+RoBOT Server Started Port 443
+2021/01/05 08:21:20 http2: panic serving 60.148.221.234:48675: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 25 [running]:
+net/http.(*http2serverConn).runHandler.func1(0xc0000100e0, 0xc0000c3f8e, 0xc000114000)
+	/usr/local/go/src/net/http/h2_bundle.go:5712 +0x16f
+panic(0x6e3760, 0xc00012cd20)
+	/usr/local/go/src/runtime/panic.go:969 +0x1b9
+_/go/src/app/internal/restapi.UnitsView(0x7a9360, 0xc0000100e0, 0xc000104d00)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75e248, 0x7a9360, 0xc0000100e0, 0xc000104d00)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a9360, 0xc0000100e0, 0xc000104b00)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a9360, 0xc0000100e0, 0xc000104b00)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a9360, 0xc0000100e0, 0xc000104b00)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.initALPNRequest.ServeHTTP(0x7a9d60, 0xc0000739e0, 0xc000079880, 0xc0000d6000, 0x7a9360, 0xc0000100e0, 0xc000104b00)
+	/usr/local/go/src/net/http/server.go:3415 +0x8d
+net/http.(*http2serverConn).runHandler(0xc000114000, 0xc0000100e0, 0xc000104b00, 0xc00000f9a0)
+	/usr/local/go/src/net/http/h2_bundle.go:5719 +0x8b
+created by net/http.(*http2serverConn).processHeaders
+	/usr/local/go/src/net/http/h2_bundle.go:5453 +0x505
+2021/01/05 08:21:28 http: panic serving 60.148.221.234:46968: sql: Scan error on column index 1, name "unit_type": converting NULL to string is unsupported
+goroutine 30 [running]:
+net/http.(*conn).serve.func1(0xc00014a0a0)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x6e3760, 0xc00012cec0)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.UnitsView(0x7a9420, 0xc0000d6460, 0xc000105400)
+	/go/src/app/internal/restapi/units.go:97 +0x6ff
+net/http.HandlerFunc.ServeHTTP(0x75e248, 0x7a9420, 0xc0000d6460, 0xc000105400)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a9420, 0xc0000d6460, 0xc000105200)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a9420, 0xc0000d6460, 0xc000105200)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a9420, 0xc0000d6460, 0xc000105200)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc00014a0a0, 0x7a9ca0, 0xc0000547c0)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+[{1000 Komato developer robotics Horikawa 1921-05-21 00:00:00 +0000 UTC 9230302 23 horikawa@dev.komato.com 0761433900} {1001 Aquty sales robotics Ononuma 1967-02-03 00:00:00 +0000 UTC 1030027 3-12-2 朝日ビルディング7階 ononuma@sale.aquty.com 0368541411} {1002 日本物流 manager transportation 大森勇志 1987-06-05 00:00:00 +0000 UTC 9830034 7-2-5 omori-yuji@jpt.com 0222591544}]
+2021/01/05 08:36:23 http: panic serving 60.148.221.234:37289: runtime error: index out of range [0] with length 0
+goroutine 64 [running]:
+net/http.(*conn).serve.func1(0xc00014b2c0)
+	/usr/local/go/src/net/http/server.go:1801 +0x147
+panic(0x725d80, 0xc000255940)
+	/usr/local/go/src/runtime/panic.go:975 +0x47a
+_/go/src/app/internal/restapi.DetaileView(0x7a9420, 0xc0000d6ee0, 0xc0001d1f00)
+	/go/src/app/internal/restapi/detaile.go:23 +0x7ec
+net/http.HandlerFunc.ServeHTTP(0x75e238, 0x7a9420, 0xc0000d6ee0, 0xc0001d1f00)
+	/usr/local/go/src/net/http/server.go:2042 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000ca000, 0x7a9420, 0xc0000d6ee0, 0xc0001d1d00)
+	/root/go/src/github.com/gorilla/mux/mux.go:210 +0xd3
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000cc090, 0x7a9420, 0xc0000d6ee0, 0xc0001d1d00)
+	/root/go/src/github.com/gorilla/handlers/cors.go:54 +0x103e
+net/http.serverHandler.ServeHTTP(0xc0000d6000, 0x7a9420, 0xc0000d6ee0, 0xc0001d1d00)
+	/usr/local/go/src/net/http/server.go:2843 +0xa3
+net/http.(*conn).serve(0xc00014b2c0, 0x7a9ca0, 0xc000286140)
+	/usr/local/go/src/net/http/server.go:1925 +0x8ad
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:2969 +0x36c
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 RB-LB72420 lift:FB25-12 62B44CE9/V2018 stock 2019-05-02 12:48:35 +0000 UTC 100 100 180 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+{100 {0 false}  {RB-LB72420 lift:FB25-12 {135.525 34.8217}} {false false 100 100 180 0 38.1} {0001-01-01 00:00:00 +0000 UTC 2019-05-02 12:48:35 +0000 UTC} 0     }
+2021/01/05 09:10:57 http: TLS handshake error from 104.248.146.28:56280: EOF
+2021/01/05 10:51:14 http: TLS handshake error from 104.248.146.28:43304: EOF
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 RB-LB72420 lift:FB25-12 62B44CE9/V2018 stock 2019-05-02 12:48:35 +0000 UTC 100 100 180 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2021/01/05 15:54:14 http: TLS handshake error from 222.186.136.150:36484: tls: first record does not look like a TLS handshake
+2021/01/05 16:12:38 http: TLS handshake error from 27.224.136.222:54900: EOF
+2021/01/05 19:07:48 http: TLS handshake error from 104.248.146.28:54750: EOF
+2021/01/05 19:16:10 http: TLS handshake error from 192.241.221.93:34382: tls: client offered only unsupported versions: []
+2021/01/05 20:34:29 http: TLS handshake error from 209.17.96.138:63798: EOF
+2021/01/05 21:54:24 http: TLS handshake error from 104.248.146.28:35204: EOF
+2021/01/05 22:49:17 http: TLS handshake error from 74.217.65.19:34032: EOF
+2021/01/06 00:28:48 http: TLS handshake error from 104.248.146.28:48696: EOF
+2021/01/06 01:03:15 http: TLS handshake error from 192.241.219.75:58386: read tcp 172.17.0.2:443->192.241.219.75:58386: read: connection reset by peer
+2021/01/06 01:03:16 http: TLS handshake error from 192.241.219.75:32922: read tcp 172.17.0.2:443->192.241.219.75:32922: read: connection reset by peer
+2021/01/06 01:03:16 http: TLS handshake error from 192.241.219.75:35358: read tcp 172.17.0.2:443->192.241.219.75:35358: read: connection reset by peer
+2021/01/06 01:03:16 http: TLS handshake error from 192.241.219.75:35760: read tcp 172.17.0.2:443->192.241.219.75:35760: read: connection reset by peer
+2021/01/06 01:03:17 http: TLS handshake error from 192.241.219.75:36162: read tcp 172.17.0.2:443->192.241.219.75:36162: read: connection reset by peer
+2021/01/06 01:03:20 http: TLS handshake error from 192.241.219.75:36602: read tcp 172.17.0.2:443->192.241.219.75:36602: read: connection reset by peer
+2021/01/06 01:03:20 http: TLS handshake error from 192.241.219.75:42186: read tcp 172.17.0.2:443->192.241.219.75:42186: read: connection reset by peer
+2021/01/06 01:03:20 http: TLS handshake error from 192.241.219.75:42808: read tcp 172.17.0.2:443->192.241.219.75:42808: read: connection reset by peer
+2021/01/06 01:03:20 http: TLS handshake error from 192.241.219.75:43152: read tcp 172.17.0.2:443->192.241.219.75:43152: read: connection reset by peer
+2021/01/06 01:03:21 http: TLS handshake error from 192.241.219.75:43500: read tcp 172.17.0.2:443->192.241.219.75:43500: read: connection reset by peer
+2021/01/06 01:21:56 http: TLS handshake error from 178.62.91.137:34788: EOF
+2021/01/06 01:21:56 http: TLS handshake error from 178.62.91.137:36166: tls: first record does not look like a TLS handshake
+2021/01/06 01:24:34 http: TLS handshake error from 97.107.137.80:61000: EOF
+2021/01/06 02:04:30 http: TLS handshake error from 104.248.146.28:37830: EOF
+2021/01/06 02:49:02 http: TLS handshake error from 88.80.189.24:45932: EOF
+2021/01/06 03:15:46 http: TLS handshake error from 192.35.168.32:35024: tls: client offered only unsupported versions: []
+2021/01/06 03:59:02 http: TLS handshake error from 167.248.133.40:46250: read tcp 172.17.0.2:443->167.248.133.40:46250: read: connection reset by peer
+2021/01/06 04:06:55 http: TLS handshake error from 104.248.146.28:54866: EOF
+2021/01/06 06:29:41 http: TLS handshake error from 104.248.146.28:43808: EOF
+2021/01/06 07:36:01 http: TLS handshake error from 86.83.165.29:42995: EOF
+2021/01/06 08:02:45 http: TLS handshake error from 104.248.146.28:33088: EOF
+2021/01/06 09:05:53 http: TLS handshake error from 95.123.41.94:41966: EOF
+2021/01/06 11:05:23 http: TLS handshake error from 104.248.146.28:50382: EOF
+2021/01/06 11:16:29 http: TLS handshake error from 192.241.222.163:37044: tls: client used the legacy version field to negotiate TLS 1.3
+2021/01/06 12:49:04 http: TLS handshake error from 130.204.161.3:59154: tls: first record does not look like a TLS handshake
+2021/01/06 14:27:13 http: TLS handshake error from 92.118.161.41:59879: EOF
+2021/01/06 16:54:45 http: TLS handshake error from 74.82.47.4:38176: tls: client offered only unsupported versions: []
+2021/01/06 16:55:13 http: TLS handshake error from 74.82.47.4:57264: tls: no cipher suite supported by both client and server
+2021/01/06 16:59:13 http: TLS handshake error from 74.82.47.4:52408: read tcp 172.17.0.2:443->74.82.47.4:52408: read: connection reset by peer
+2021/01/06 16:59:14 http: TLS handshake error from 74.82.47.4:55702: read tcp 172.17.0.2:443->74.82.47.4:55702: read: connection reset by peer
+2021/01/06 16:59:14 http: TLS handshake error from 74.82.47.4:59054: read tcp 172.17.0.2:443->74.82.47.4:59054: read: connection reset by peer
+2021/01/06 16:59:14 http: TLS handshake error from 74.82.47.4:34062: read tcp 172.17.0.2:443->74.82.47.4:34062: read: connection reset by peer
+2021/01/06 16:59:14 http: TLS handshake error from 74.82.47.4:37502: read tcp 172.17.0.2:443->74.82.47.4:37502: read: connection reset by peer
+2021/01/06 16:59:14 http: TLS handshake error from 74.82.47.4:40750: read tcp 172.17.0.2:443->74.82.47.4:40750: read: connection reset by peer
+2021/01/06 16:59:15 http: TLS handshake error from 74.82.47.4:44234: read tcp 172.17.0.2:443->74.82.47.4:44234: read: connection reset by peer
+2021/01/06 16:59:15 http: TLS handshake error from 74.82.47.4:47498: read tcp 172.17.0.2:443->74.82.47.4:47498: read: connection reset by peer
+2021/01/06 16:59:15 http: TLS handshake error from 74.82.47.4:50822: read tcp 172.17.0.2:443->74.82.47.4:50822: read: connection reset by peer
+2021/01/06 16:59:15 http: TLS handshake error from 74.82.47.4:54028: read tcp 172.17.0.2:443->74.82.47.4:54028: read: connection reset by peer
+2021/01/06 18:16:36 http: TLS handshake error from 209.17.96.114:57782: EOF
+2021/01/06 19:58:36 http: TLS handshake error from 193.29.13.47:1678: tls: first record does not look like a TLS handshake
+2021/01/06 20:00:08 http: TLS handshake error from 104.248.146.28:35544: EOF
+2021/01/06 21:48:24 http: TLS handshake error from 208.93.152.32:26126: EOF
+2021/01/06 21:48:24 http: TLS handshake error from 208.93.152.32:53176: tls: unsupported SSLv2 handshake received
+2021/01/06 21:48:24 http: TLS handshake error from 208.93.152.32:31467: tls: client offered only unsupported versions: []
+2021/01/06 22:43:38 http: TLS handshake error from 162.142.125.39:55140: read tcp 172.17.0.2:443->162.142.125.39:55140: read: connection reset by peer
+2021/01/06 23:27:15 http: TLS handshake error from 104.248.146.28:48054: EOF
+2021/01/07 01:26:55 http: TLS handshake error from 216.218.206.69:48484: tls: client offered only unsupported versions: []
+2021/01/07 01:27:38 http: TLS handshake error from 216.218.206.69:56974: tls: no cipher suite supported by both client and server
+2021/01/07 01:29:10 http: TLS handshake error from 50.116.52.97:61000: EOF
+2021/01/07 01:29:30 http: TLS handshake error from 216.218.206.69:55218: read tcp 172.17.0.2:443->216.218.206.69:55218: read: connection reset by peer
+2021/01/07 01:29:31 http: TLS handshake error from 216.218.206.69:57604: read tcp 172.17.0.2:443->216.218.206.69:57604: read: connection reset by peer
+2021/01/07 01:29:33 http: TLS handshake error from 216.218.206.69:46760: read tcp 172.17.0.2:443->216.218.206.69:46760: read: connection reset by peer
+2021/01/07 01:29:35 http: TLS handshake error from 216.218.206.69:48658: read tcp 172.17.0.2:443->216.218.206.69:48658: read: connection reset by peer
+2021/01/07 01:29:36 http: TLS handshake error from 216.218.206.69:56502: read tcp 172.17.0.2:443->216.218.206.69:56502: read: connection reset by peer
+2021/01/07 01:29:36 http: TLS handshake error from 216.218.206.69:34144: read tcp 172.17.0.2:443->216.218.206.69:34144: read: connection reset by peer
+2021/01/07 01:29:48 http: TLS handshake error from 216.218.206.69:60012: read tcp 172.17.0.2:443->216.218.206.69:60012: read: connection reset by peer
+2021/01/07 02:20:36 http: TLS handshake error from 104.248.146.28:38010: EOF
+2021/01/07 02:39:00 http: TLS handshake error from 88.80.189.24:46562: EOF
+2021/01/07 04:18:07 http: TLS handshake error from 192.241.209.120:35580: read tcp 172.17.0.2:443->192.241.209.120:35580: read: connection reset by peer
+2021/01/07 04:18:08 http: TLS handshake error from 192.241.209.120:41240: read tcp 172.17.0.2:443->192.241.209.120:41240: read: connection reset by peer
+2021/01/07 04:18:08 http: TLS handshake error from 192.241.209.120:41534: read tcp 172.17.0.2:443->192.241.209.120:41534: read: connection reset by peer
+2021/01/07 04:18:08 http: TLS handshake error from 192.241.209.120:41810: read tcp 172.17.0.2:443->192.241.209.120:41810: read: connection reset by peer
+2021/01/07 04:18:08 http: TLS handshake error from 192.241.209.120:42124: read tcp 172.17.0.2:443->192.241.209.120:42124: read: connection reset by peer
+2021/01/07 04:18:09 http: TLS handshake error from 192.241.209.120:42690: read tcp 172.17.0.2:443->192.241.209.120:42690: read: connection reset by peer
+2021/01/07 04:18:10 http: TLS handshake error from 192.241.209.120:44416: read tcp 172.17.0.2:443->192.241.209.120:44416: read: connection reset by peer
+2021/01/07 04:18:10 http: TLS handshake error from 192.241.209.120:44688: read tcp 172.17.0.2:443->192.241.209.120:44688: read: connection reset by peer
+2021/01/07 04:18:10 http: TLS handshake error from 192.241.209.120:44928: read tcp 172.17.0.2:443->192.241.209.120:44928: read: connection reset by peer
+2021/01/07 04:18:13 http: TLS handshake error from 192.241.209.120:45208: read tcp 172.17.0.2:443->192.241.209.120:45208: read: connection reset by peer
+2021/01/07 05:40:16 http: TLS handshake error from 192.35.168.128:20076: tls: no cipher suite supported by both client and server
+2021/01/07 05:56:30 http: TLS handshake error from 192.35.168.80:24490: tls: no cipher suite supported by both client and server
+2021/01/07 07:01:51 http: TLS handshake error from 104.248.146.28:56894: EOF
+2021/01/07 07:52:00 http: TLS handshake error from 61.219.11.153:63664: read tcp 172.17.0.2:443->61.219.11.153:63664: read: connection reset by peer
+2021/01/07 08:44:59 http: TLS handshake error from 104.248.146.28:50282: EOF
+2021/01/07 09:21:35 http: TLS handshake error from 193.27.228.9:56751: read tcp 172.17.0.2:443->193.27.228.9:56751: read: connection reset by peer
+2021/01/07 13:43:23 http: TLS handshake error from 193.27.228.9:62012: read tcp 172.17.0.2:443->193.27.228.9:62012: read: connection reset by peer
+signal: terminated
+RoBOT Server Started Port 443
+signal: interrupt
+RoBOT Server Started Port 443
+2021/01/07 20:32:16 http: TLS handshake error from 104.248.146.28:38528: EOF
+2021/01/07 23:17:16 http: TLS handshake error from 104.248.146.28:54552: EOF
+2021/01/08 01:28:45 http: TLS handshake error from 69.164.209.138:61000: EOF
+2021/01/08 02:53:06 http: TLS handshake error from 104.248.146.28:46852: EOF
+2021/01/08 03:13:46 http: TLS handshake error from 88.80.189.24:36860: EOF
+2021/01/08 04:21:28 http: TLS handshake error from 104.248.146.28:39490: EOF
+2021/01/08 05:01:43 http: TLS handshake error from 209.17.96.242:53875: EOF
+2021/01/08 05:44:33 http: TLS handshake error from 104.248.146.28:33024: EOF
+2021/01/08 06:04:32 http: TLS handshake error from 184.105.247.196:57972: tls: client offered only unsupported versions: []
+2021/01/08 06:05:05 http: TLS handshake error from 184.105.247.196:48740: tls: no cipher suite supported by both client and server
+2021/01/08 06:08:31 http: TLS handshake error from 184.105.247.196:60536: read tcp 172.17.0.2:443->184.105.247.196:60536: read: connection reset by peer
+2021/01/08 06:08:31 http: TLS handshake error from 184.105.247.196:36314: read tcp 172.17.0.2:443->184.105.247.196:36314: read: connection reset by peer
+2021/01/08 06:08:31 http: TLS handshake error from 184.105.247.196:40258: read tcp 172.17.0.2:443->184.105.247.196:40258: read: connection reset by peer
+2021/01/08 06:08:32 http: TLS handshake error from 184.105.247.196:43940: read tcp 172.17.0.2:443->184.105.247.196:43940: read: connection reset by peer
+2021/01/08 06:08:32 http: TLS handshake error from 184.105.247.196:48078: read tcp 172.17.0.2:443->184.105.247.196:48078: read: connection reset by peer
+2021/01/08 06:08:32 http: TLS handshake error from 184.105.247.196:52094: read tcp 172.17.0.2:443->184.105.247.196:52094: read: connection reset by peer
+2021/01/08 06:08:33 http: TLS handshake error from 184.105.247.196:55932: read tcp 172.17.0.2:443->184.105.247.196:55932: read: connection reset by peer
+2021/01/08 06:08:33 http: TLS handshake error from 184.105.247.196:60122: read tcp 172.17.0.2:443->184.105.247.196:60122: read: connection reset by peer
+2021/01/08 06:08:33 http: TLS handshake error from 184.105.247.196:35674: read tcp 172.17.0.2:443->184.105.247.196:35674: read: connection reset by peer
+2021/01/08 06:08:33 http: TLS handshake error from 184.105.247.196:39558: read tcp 172.17.0.2:443->184.105.247.196:39558: read: connection reset by peer
+2021/01/08 07:30:27 http: TLS handshake error from 104.248.146.28:54732: EOF
+2021/01/08 08:57:56 http: TLS handshake error from 104.248.146.28:49062: EOF
+2021/01/08 09:17:00 http: TLS handshake error from 45.33.80.76:35192: EOF
+2021/01/08 11:17:45 http: TLS handshake error from 104.248.146.28:59116: EOF

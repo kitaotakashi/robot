@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charaset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>rest test</title>
+    <script language="javascript" type="text/javascript">
+        function OnButtonClick() {
+          // Create a request variable and assign a new XMLHttpRequest object to it.
+          var request = new XMLHttpRequest()
+
+          // Open a new connection, using the GET request on the URL endpoint
+          //request.open('GET', 'http://18.180.144.98:80/api/v1/units/', true)
+          //request.open('GET', 'https://jugem.live/api/v1/units/', true)//for https
+          //request.open('GET', 'http://18.180.144.98:443/api/v1/customers/', true)
+          request.open('GET', 'http://localhost:8080/api/v1/detail/?unit_id=101', true)
+          //request.open('GET', 'http://18.180.144.98:443/api/v1/customer/?account_id=1000', true)
+          //request.open('GET', 'http://18.180.144.98:443/api/v1/unit', true)
+          //request.open('GET', 'https://jugem.live/api/v1/units', true)//kitao追加
+          request.onload = function () {
+            // Begin accessing JSON data here
+            var data = JSON.parse(this.response)
+
+            if  (request.status >= 200 && request.status < 400) {
+              console.log(data)
+            }else{
+              concole.log("error")
+            }
+          }
+
+          // Send request
+          request.send()
+        }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="send get" onclick="OnButtonClick();"/><br />
+  </body>
+</html>
