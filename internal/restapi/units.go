@@ -2,9 +2,8 @@ package db
 
 import (
 	//"fmt"
-	//"database/sql"
+	"database/sql"
 	"github.com/guregu/null"
-	//"database/sql"
 	"net/http"
 	"strconv"
 	"time"
@@ -20,13 +19,13 @@ type unitProfile struct {
 	Location geoLocation `json:"location"`
 }
 type unitStatus struct {
-	IsCharging bool    `json:"is_charging"`
-	IsWorking  bool    `json:"is_working"`
-	Soc        int     `json:"soc"`
-	Soh        int     `json:"soh"`
-	Capacity   int     `json:"capacity"`
-	Current    float32 `json:"current"`
-	Voltage    float32 `json:"voltage"`
+	IsCharging bool          `json:"is_charging"`
+	IsWorking  bool          `json:"is_working"`
+	Soc        int           `json:"soc"`
+	Soh        sql.NullInt32 `json:"soh"`
+	Capacity   sql.NullInt32 `json:"capacity"`
+	Current    float32       `json:"current"`
+	Voltage    float32       `json:"voltage"`
 }
 type unitTimeStamp struct {
 	RegisterdAt time.Time `json:"registerd_at"`

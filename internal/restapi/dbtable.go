@@ -40,8 +40,8 @@ type unitElm struct { //要素名を変更
 	Time       time.Time   `json:"time"`
 	//IsWorking  string    `json:"is_working"`
 	Soc        int           `json:"soc"`
-	Soh        int           `json:"soh"`
-	Capacity   int           `json:"capacity"`
+	Soh        sql.NullInt32 `json:"soh"`
+	Capacity   sql.NullInt32 `json:"capacity"`
 	Current    float32       `json:"current"`
 	Voltage    float32       `json:"voltage"`
 	Latitude   float32       `json:"latitude"`
