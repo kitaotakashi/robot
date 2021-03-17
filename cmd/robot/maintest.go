@@ -9,11 +9,16 @@ import (
 
 	//"../../internal/view"
 	//"../../db"
+	//db "app/internal/restapi"
 	db "../../internal/restapi"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
+
+func challengetoken(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "rt0cYZ6L4gPOOYaPQgipkdG2ELQ0uQ21Ao46YjxsS98.XDi_5t34FW25GEQBQJPUAU2OKcjJutOUYefqngHTYxk")
+}
 
 func main() {
 	Server()
@@ -31,11 +36,12 @@ func Server() error {
 	router.HandleFunc("/api/v1/detail", db.DetailedView).Methods("GET")
 	router.HandleFunc("/api/v1/customer", db.CustomerView).Methods("GET")
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")
+	//router.HandleFunc("/.well-known/acme-challenge/rt0cYZ6L4gPOOYaPQgipkdG2ELQ0uQ21Ao46YjxsS98", challengetoken)//encryptの証明のために必要
 	fmt.Println("RoBOT Server Started Port 443")
 
 	//return http.ListenAndServe(fmt.Sprintf(":%d", 80), router)
 	//return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain.pem", "../../ssl/server.key", router) //kitao追加 https
-	return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain.pem", "../../ssl/server.key", handlers.CORS(handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"}), handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"}), handlers.AllowedOrigins([]string{"*", "http://localhost:3000/"}))(router))
+	return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain_new.pem", "../../ssl/server_new.key", handlers.CORS(handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"}), handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"}), handlers.AllowedOrigins([]string{"*", "http://localhost:3000/"}))(router))
 
 	// http://18.180.144.98:80/
 	// https://jugem.live/
