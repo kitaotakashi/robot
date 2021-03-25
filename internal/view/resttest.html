@@ -11,12 +11,22 @@
 
           // Open a new connection, using the GET request on the URL endpoint
           //request.open('GET', 'http://18.180.144.98:80/api/v1/units/', true)
-          request.open('GET', 'https://jugem.live/api/v1/units/', true)//for https
+          //request.open('GET', 'https://jugem.live/api/v1/units/', true)//for https
           //request.open('GET', 'http://18.180.144.98:443/api/v1/customers/', true)
           //request.open('GET', 'http://18.180.144.98:443/api/v1/detail/?unit_id=101', true)
           //request.open('GET', 'http://18.180.144.98:443/api/v1/customer/?account_id=1000', true)
           //request.open('GET', 'http://18.180.144.98:443/api/v1/unit', true)
           //request.open('GET', 'https://jugem.live/api/v1/units', true)//kitao追加
+
+          let person = new Object();
+          person.ID = 124;
+          person.FirstName = "kitao";
+          let json = JSON.stringify(person);
+          console.log(json);
+          request.open('POST', 'https://jugem.live/api/v1/customertest')//for https
+          //request.setRequestHeader("Content-Type", "application/json");
+          
+          /*
           request.onload = function () {
             // Begin accessing JSON data here
             var data = JSON.parse(this.response)
@@ -27,13 +37,15 @@
               concole.log("error")
             }
           }
+          */
 
           // Send request
-          request.send()
+          request.send(json)
+          //request.send()
         }
     </script>
   </head>
   <body>
-    <input type="button" value="send get" onclick="OnButtonClick();"/><br />
+    <input type="button" value="send request" onclick="OnButtonClick();"/><br />
   </body>
 </html>

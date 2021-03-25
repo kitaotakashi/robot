@@ -9,15 +9,15 @@ import (
 // customerElm は顧客情報を格納する
 type customerElm struct {
 	AccountID       int       `json:"account_id"`
-	CorporationName string    `json:"corporation_name"`
-	Position        string    `json:"position"`
-	Sector          string    `json:"sector"`
-	Name            string    `json:"name"`
+	CorporationName null.String    `json:"corporation_name"`
+	Position        null.String    `json:"position"`
+	Sector          null.String    `json:"sector"`
+	Name            null.String    `json:"name"`
 	DateOfBirth     time.Time `json:"date_of_birth"`
-	PostalCode      string    `json:"postal_code"`
-	Address         string    `json:"address"`
-	Mail            string    `json:"mail"`
-	Phone           string    `json:"phone"`
+	PostalCode      null.String    `json:"postal_code"`
+	Address         null.String    `json:"address"`
+	Mail            null.String    `json:"mail"`
+	Phone           null.String    `json:"phone"`
 }
 
 // contractElm は契約情報を格納する

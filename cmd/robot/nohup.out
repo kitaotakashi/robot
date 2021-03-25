@@ -2224,3 +2224,453 @@ RoBOT Server Started Port 443
 2021/03/17 18:24:43 http: TLS handshake error from 45.79.169.54:61000: EOF
 signal: terminated
 RoBOT Server Started Port 443
+2021/03/17 20:41:26 http: TLS handshake error from 104.248.146.28:37252: EOF
+2021/03/17 22:23:33 http: TLS handshake error from 45.33.74.221:61000: EOF
+2021/03/17 22:46:33 http: TLS handshake error from 209.17.96.10:61056: EOF
+2021/03/17 23:08:06 http: TLS handshake error from 104.248.146.28:45860: EOF
+2021/03/17 23:43:15 http: TLS handshake error from 194.147.140.11:61000: EOF
+2021/03/18 00:14:24 http: TLS handshake error from 45.79.130.156:61000: EOF
+2021/03/18 01:29:53 http: TLS handshake error from 198.74.59.118:61000: EOF
+2021/03/18 02:05:51 http: TLS handshake error from 104.248.146.28:59146: EOF
+2021/03/18 02:14:15 http: TLS handshake error from 45.56.96.80:61000: EOF
+2021/03/18 03:03:23 http: TLS handshake error from 45.79.76.236:39054: EOF
+2021/03/18 03:03:24 http: TLS handshake error from 45.79.76.236:40596: tls: first record does not look like a TLS handshake
+2021/03/18 03:03:24 http: TLS handshake error from 45.79.76.236:40746: tls: client offered only unsupported versions: []
+2021/03/18 03:17:55 http: TLS handshake error from 192.35.168.176:53080: tls: no cipher suite supported by both client and server
+2021/03/18 03:30:33 http: TLS handshake error from 104.248.146.28:47316: EOF
+2021/03/18 03:44:01 http: TLS handshake error from 88.80.189.24:45750: EOF
+2021/03/18 04:14:17 http: TLS handshake error from 96.126.106.155:61000: EOF
+2021/03/18 05:16:11 http: TLS handshake error from 184.105.247.196:38738: tls: client offered only unsupported versions: []
+2021/03/18 05:16:38 http: TLS handshake error from 184.105.247.196:59460: tls: no cipher suite supported by both client and server
+2021/03/18 05:19:56 http: TLS handshake error from 184.105.247.196:42418: read tcp 172.17.0.2:443->184.105.247.196:42418: read: connection reset by peer
+2021/03/18 05:19:57 http: TLS handshake error from 184.105.247.196:57460: read tcp 172.17.0.2:443->184.105.247.196:57460: read: connection reset by peer
+2021/03/18 05:19:57 http: TLS handshake error from 184.105.247.196:33320: read tcp 172.17.0.2:443->184.105.247.196:33320: read: connection reset by peer
+2021/03/18 05:19:58 http: TLS handshake error from 184.105.247.196:37864: read tcp 172.17.0.2:443->184.105.247.196:37864: read: connection reset by peer
+2021/03/18 05:19:58 http: TLS handshake error from 184.105.247.196:42190: read tcp 172.17.0.2:443->184.105.247.196:42190: read: connection reset by peer
+2021/03/18 05:19:58 http: TLS handshake error from 184.105.247.196:45888: read tcp 172.17.0.2:443->184.105.247.196:45888: read: connection reset by peer
+2021/03/18 05:19:59 http: TLS handshake error from 184.105.247.196:49598: read tcp 172.17.0.2:443->184.105.247.196:49598: read: connection reset by peer
+2021/03/18 05:19:59 http: TLS handshake error from 184.105.247.196:53264: read tcp 172.17.0.2:443->184.105.247.196:53264: read: connection reset by peer
+2021/03/18 05:20:01 http: TLS handshake error from 184.105.247.196:56974: read tcp 172.17.0.2:443->184.105.247.196:56974: read: connection reset by peer
+2021/03/18 05:20:01 http: TLS handshake error from 184.105.247.196:44106: read tcp 172.17.0.2:443->184.105.247.196:44106: read: connection reset by peer
+2021/03/18 05:23:10 http: TLS handshake error from 104.248.146.28:35450: EOF
+2021/03/18 05:37:06 http: TLS handshake error from 223.30.222.76:59122: EOF
+2021/03/18 06:46:59 http: TLS handshake error from 104.248.146.28:51286: EOF
+2021/03/18 08:13:41 http: TLS handshake error from 104.248.146.28:39924: EOF
+2021/03/18 08:14:31 http: TLS handshake error from 97.107.138.50:61000: EOF
+2021/03/18 10:32:49 http: TLS handshake error from 192.35.168.96:39666: tls: no cipher suite supported by both client and server
+2021/03/18 12:14:18 http: TLS handshake error from 96.126.106.155:61000: EOF
+2021/03/18 13:25:18 http: TLS handshake error from 167.248.133.37:42408: read tcp 172.17.0.2:443->167.248.133.37:42408: read: connection reset by peer
+2021/03/18 14:15:00 http: TLS handshake error from 97.107.138.50:61000: EOF
+2021/03/18 15:13:37 http: TLS handshake error from 162.142.125.39:42264: read tcp 172.17.0.2:443->162.142.125.39:42264: read: connection reset by peer
+2021/03/18 16:15:34 http: TLS handshake error from 96.126.106.155:61000: EOF
+2021/03/18 18:14:25 http: TLS handshake error from 97.107.138.50:61000: EOF
+2021/03/18 20:14:21 http: TLS handshake error from 96.126.106.155:61000: EOF
+2021/03/18 20:34:18 http: TLS handshake error from 104.248.146.28:51042: EOF
+2021/03/18 21:03:14 http: TLS handshake error from 192.241.221.83:58128: read tcp 172.17.0.2:443->192.241.221.83:58128: read: connection reset by peer
+2021/03/18 21:03:15 http: TLS handshake error from 192.241.221.83:58358: read tcp 172.17.0.2:443->192.241.221.83:58358: read: connection reset by peer
+2021/03/18 21:03:15 http: TLS handshake error from 192.241.221.83:59902: read tcp 172.17.0.2:443->192.241.221.83:59902: read: connection reset by peer
+2021/03/18 21:03:15 http: TLS handshake error from 192.241.221.83:60172: read tcp 172.17.0.2:443->192.241.221.83:60172: read: connection reset by peer
+2021/03/18 21:03:16 http: TLS handshake error from 192.241.221.83:60476: read tcp 172.17.0.2:443->192.241.221.83:60476: read: connection reset by peer
+2021/03/18 21:03:18 http: TLS handshake error from 192.241.221.83:34034: read tcp 172.17.0.2:443->192.241.221.83:34034: read: connection reset by peer
+2021/03/18 21:03:18 http: TLS handshake error from 192.241.221.83:36114: read tcp 172.17.0.2:443->192.241.221.83:36114: read: connection reset by peer
+2021/03/18 21:03:18 http: TLS handshake error from 192.241.221.83:36416: read tcp 172.17.0.2:443->192.241.221.83:36416: read: connection reset by peer
+2021/03/18 21:03:19 http: TLS handshake error from 192.241.221.83:36686: read tcp 172.17.0.2:443->192.241.221.83:36686: read: connection reset by peer
+2021/03/18 21:03:21 http: TLS handshake error from 192.241.221.83:38232: read tcp 172.17.0.2:443->192.241.221.83:38232: read: connection reset by peer
+2021/03/18 21:39:35 http: TLS handshake error from 71.6.142.85:33550: EOF
+2021/03/18 21:44:30 http: TLS handshake error from 209.17.96.26:51047: EOF
+2021/03/18 22:14:23 http: TLS handshake error from 97.107.138.50:61000: EOF
+2021/03/18 22:51:29 http: TLS handshake error from 172.104.242.173:40787: tls: first record does not look like a TLS handshake
+2021/03/18 22:55:39 http: TLS handshake error from 104.248.146.28:60818: EOF
+2021/03/19 00:14:51 http: TLS handshake error from 173.255.234.17:61000: EOF
+2021/03/19 00:20:29 http: TLS handshake error from 89.248.165.24:65333: tls: first record does not look like a TLS handshake
+2021/03/19 01:06:13 http: TLS handshake error from 104.248.146.28:46178: EOF
+2021/03/19 01:30:25 http: TLS handshake error from 45.79.130.207:61000: EOF
+2021/03/19 02:14:01 http: TLS handshake error from 45.79.145.137:61000: EOF
+2021/03/19 02:39:58 http: TLS handshake error from 104.248.146.28:33686: EOF
+2021/03/19 03:58:52 http: TLS handshake error from 88.80.189.24:35368: EOF
+2021/03/19 04:14:28 http: TLS handshake error from 45.33.64.238:61000: EOF
+2021/03/19 04:46:05 http: TLS handshake error from 104.143.83.241:47908: EOF
+2021/03/19 04:46:05 http: TLS handshake error from 104.143.83.241:48796: EOF
+2021/03/19 04:46:06 http: TLS handshake error from 104.143.83.241:49660: read tcp 172.17.0.2:443->104.143.83.241:49660: read: connection reset by peer
+2021/03/19 04:46:06 http: TLS handshake error from 104.143.83.241:50484: read tcp 172.17.0.2:443->104.143.83.241:50484: read: connection reset by peer
+2021/03/19 04:46:07 http: TLS handshake error from 104.143.83.241:51414: read tcp 172.17.0.2:443->104.143.83.241:51414: read: connection reset by peer
+2021/03/19 04:46:07 http: TLS handshake error from 104.143.83.241:52578: read tcp 172.17.0.2:443->104.143.83.241:52578: read: connection reset by peer
+2021/03/19 04:46:08 http: TLS handshake error from 104.143.83.241:53934: read tcp 172.17.0.2:443->104.143.83.241:53934: read: connection reset by peer
+2021/03/19 04:46:08 http: TLS handshake error from 104.143.83.241:55628: read tcp 172.17.0.2:443->104.143.83.241:55628: read: connection reset by peer
+2021/03/19 04:46:09 http: TLS handshake error from 104.143.83.241:56748: read tcp 172.17.0.2:443->104.143.83.241:56748: read: connection reset by peer
+2021/03/19 04:46:09 http: TLS handshake error from 104.143.83.241:57810: read tcp 172.17.0.2:443->104.143.83.241:57810: read: connection reset by peer
+{1229782938256251289 {0 false}  {{{ false}} {{ false}} {0 0}} {false true 91 {0 false} {0 false} -0.6 53} {0001-01-01 00:00:00 +0000 UTC 2021-03-19 04:58:46 +0000 UTC} 0     }
+2021/03/19 06:14:48 http: TLS handshake error from 45.79.145.137:61000: EOF
+2021/03/19 06:49:17 http: TLS handshake error from 74.82.47.5:52508: tls: client offered only unsupported versions: []
+2021/03/19 06:49:45 http: TLS handshake error from 74.82.47.5:47438: tls: no cipher suite supported by both client and server
+2021/03/19 06:51:09 http: TLS handshake error from 74.82.47.5:58928: read tcp 172.17.0.2:443->74.82.47.5:58928: read: connection reset by peer
+2021/03/19 06:51:09 http: TLS handshake error from 74.82.47.5:35142: read tcp 172.17.0.2:443->74.82.47.5:35142: read: connection reset by peer
+2021/03/19 06:51:10 http: TLS handshake error from 74.82.47.5:39632: read tcp 172.17.0.2:443->74.82.47.5:39632: read: connection reset by peer
+2021/03/19 06:51:10 http: TLS handshake error from 74.82.47.5:44132: read tcp 172.17.0.2:443->74.82.47.5:44132: read: connection reset by peer
+2021/03/19 06:51:10 http: TLS handshake error from 74.82.47.5:48556: read tcp 172.17.0.2:443->74.82.47.5:48556: read: connection reset by peer
+2021/03/19 06:51:11 http: TLS handshake error from 74.82.47.5:52924: read tcp 172.17.0.2:443->74.82.47.5:52924: read: connection reset by peer
+2021/03/19 06:51:11 http: TLS handshake error from 74.82.47.5:56970: read tcp 172.17.0.2:443->74.82.47.5:56970: read: connection reset by peer
+2021/03/19 06:51:12 http: TLS handshake error from 74.82.47.5:60964: read tcp 172.17.0.2:443->74.82.47.5:60964: read: connection reset by peer
+2021/03/19 06:51:12 http: TLS handshake error from 74.82.47.5:36906: read tcp 172.17.0.2:443->74.82.47.5:36906: read: connection reset by peer
+2021/03/19 06:51:12 http: TLS handshake error from 74.82.47.5:40922: read tcp 172.17.0.2:443->74.82.47.5:40922: read: connection reset by peer
+2021/03/19 06:53:34 http: TLS handshake error from 104.248.146.28:50206: EOF
+2021/03/19 06:55:58 http: TLS handshake error from 89.248.165.24:63128: tls: first record does not look like a TLS handshake
+2021/03/19 08:14:32 http: TLS handshake error from 23.239.15.137:61000: EOF
+2021/03/19 08:21:22 http: TLS handshake error from 104.248.146.28:38980: EOF
+2021/03/19 09:53:48 http: TLS handshake error from 104.248.146.28:55140: EOF
+2021/03/19 10:01:11 http: TLS handshake error from 35.196.49.212:13622: tls: no cipher suite supported by both client and server
+2021/03/19 10:14:28 http: TLS handshake error from 45.79.130.207:61000: EOF
+2021/03/19 11:38:39 http: TLS handshake error from 52.189.228.155:58332: EOF
+2021/03/19 11:53:37 http: TLS handshake error from 178.73.215.171:41291: read tcp 172.17.0.2:443->178.73.215.171:41291: read: connection reset by peer
+2021/03/19 11:53:37 http: TLS handshake error from 178.73.215.171:31344: read tcp 172.17.0.2:443->178.73.215.171:31344: read: connection reset by peer
+2021/03/19 11:53:37 http: TLS handshake error from 178.73.215.171:39322: read tcp 172.17.0.2:443->178.73.215.171:39322: read: connection reset by peer
+2021/03/19 11:53:37 http: TLS handshake error from 178.73.215.171:47042: read tcp 172.17.0.2:443->178.73.215.171:47042: read: connection reset by peer
+2021/03/19 11:53:37 http: TLS handshake error from 178.73.215.171:58447: read tcp 172.17.0.2:443->178.73.215.171:58447: read: connection reset by peer
+2021/03/19 11:53:37 http: TLS handshake error from 178.73.215.171:23122: read tcp 172.17.0.2:443->178.73.215.171:23122: read: connection reset by peer
+2021/03/19 11:53:37 http: TLS handshake error from 178.73.215.171:14744: read tcp 172.17.0.2:443->178.73.215.171:14744: read: connection reset by peer
+2021/03/19 11:53:37 http: TLS handshake error from 178.73.215.171:48989: read tcp 172.17.0.2:443->178.73.215.171:48989: read: connection reset by peer
+2021/03/19 11:53:37 http: TLS handshake error from 178.73.215.171:6646: read tcp 172.17.0.2:443->178.73.215.171:6646: read: connection reset by peer
+2021/03/19 11:53:37 http: TLS handshake error from 178.73.215.171:54700: read tcp 172.17.0.2:443->178.73.215.171:54700: read: connection reset by peer
+2021/03/19 11:56:55 http: TLS handshake error from 162.142.125.38:36172: read tcp 172.17.0.2:443->162.142.125.38:36172: read: connection reset by peer
+2021/03/19 12:05:55 http: TLS handshake error from 172.104.242.173:34909: tls: first record does not look like a TLS handshake
+2021/03/19 12:14:54 http: TLS handshake error from 23.239.15.137:61000: EOF
+2021/03/19 14:15:41 http: TLS handshake error from 45.79.130.207:61000: EOF
+2021/03/19 14:43:22 http: TLS handshake error from 89.248.165.24:62596: tls: first record does not look like a TLS handshake
+2021/03/19 16:19:58 http: TLS handshake error from 104.200.30.222:61000: EOF
+2021/03/19 18:14:12 http: TLS handshake error from 45.56.105.84:61000: EOF
+2021/03/19 19:50:35 http: TLS handshake error from 104.248.146.28:37772: EOF
+2021/03/19 21:06:49 http: TLS handshake error from 61.219.11.153:65515: tls: first record does not look like a TLS handshake
+2021/03/19 21:14:01 http: TLS handshake error from 104.248.146.28:44368: EOF
+2021/03/19 21:40:03 http: TLS handshake error from 212.83.8.80:51772: EOF
+2021/03/19 21:40:05 http: TLS handshake error from 212.83.8.80:52014: EOF
+2021/03/19 21:40:05 http: TLS handshake error from 212.83.8.80:52254: EOF
+2021/03/19 21:40:06 http: TLS handshake error from 212.83.8.80:52494: EOF
+2021/03/19 21:40:09 http: TLS handshake error from 212.83.8.80:52732: EOF
+2021/03/19 21:40:11 http: TLS handshake error from 212.83.8.80:53214: EOF
+2021/03/19 21:40:11 http: TLS handshake error from 212.83.8.80:53454: EOF
+2021/03/19 21:40:11 http: TLS handshake error from 212.83.8.80:53692: EOF
+2021/03/19 21:40:11 http: TLS handshake error from 212.83.8.80:52972: EOF
+2021/03/19 21:40:15 http: TLS handshake error from 212.83.8.80:53774: EOF
+2021/03/19 21:55:47 http: TLS handshake error from 138.68.169.44:42586: read tcp 172.17.0.2:443->138.68.169.44:42586: read: connection reset by peer
+2021/03/19 21:55:47 http: TLS handshake error from 138.68.169.44:45740: read tcp 172.17.0.2:443->138.68.169.44:45740: read: connection reset by peer
+2021/03/19 21:55:48 http: TLS handshake error from 138.68.169.44:48850: read tcp 172.17.0.2:443->138.68.169.44:48850: read: connection reset by peer
+2021/03/19 21:55:49 http: TLS handshake error from 138.68.169.44:52324: read tcp 172.17.0.2:443->138.68.169.44:52324: read: connection reset by peer
+2021/03/19 21:55:49 http: TLS handshake error from 138.68.169.44:55618: read tcp 172.17.0.2:443->138.68.169.44:55618: read: connection reset by peer
+2021/03/19 21:55:50 http: TLS handshake error from 138.68.169.44:58540: read tcp 172.17.0.2:443->138.68.169.44:58540: read: connection reset by peer
+2021/03/19 21:55:51 http: TLS handshake error from 138.68.169.44:34286: read tcp 172.17.0.2:443->138.68.169.44:34286: read: connection reset by peer
+2021/03/19 21:55:51 http: TLS handshake error from 138.68.169.44:37984: read tcp 172.17.0.2:443->138.68.169.44:37984: read: connection reset by peer
+2021/03/19 21:55:52 http: TLS handshake error from 138.68.169.44:41484: read tcp 172.17.0.2:443->138.68.169.44:41484: read: connection reset by peer
+2021/03/19 21:55:53 http: TLS handshake error from 138.68.169.44:44900: read tcp 172.17.0.2:443->138.68.169.44:44900: read: connection reset by peer
+2021/03/19 22:14:32 http: TLS handshake error from 97.107.138.50:61000: EOF
+2021/03/19 22:38:48 http: TLS handshake error from 89.248.165.24:64141: read tcp 172.17.0.2:443->89.248.165.24:64141: read: connection reset by peer
+2021/03/19 23:10:04 http: TLS handshake error from 104.248.146.28:52016: EOF
+2021/03/20 00:14:08 http: TLS handshake error from 45.33.64.238:61000: EOF
+2021/03/20 00:18:37 http: TLS handshake error from 209.17.97.2:49854: EOF
+2021/03/20 01:29:28 http: TLS handshake error from 66.228.40.94:61000: EOF
+2021/03/20 02:14:15 http: TLS handshake error from 104.237.149.229:61000: EOF
+2021/03/20 03:20:40 http: TLS handshake error from 88.80.189.24:60814: EOF
+2021/03/20 03:24:07 http: TLS handshake error from 104.248.146.28:33400: EOF
+2021/03/20 04:08:41 http: TLS handshake error from 89.248.165.25:63662: tls: first record does not look like a TLS handshake
+2021/03/20 04:16:17 http: TLS handshake error from 45.79.131.157:61000: EOF
+2021/03/20 06:10:22 http: TLS handshake error from 104.248.146.28:42500: EOF
+2021/03/20 06:15:25 http: TLS handshake error from 45.33.75.246:61000: EOF
+2021/03/20 07:38:13 http: TLS handshake error from 104.248.146.28:51146: EOF
+2021/03/20 08:14:48 http: TLS handshake error from 104.237.149.229:61000: EOF
+2021/03/20 09:16:59 http: TLS handshake error from 104.248.146.28:60226: EOF
+2021/03/20 10:14:58 http: TLS handshake error from 66.228.40.94:61000: EOF
+2021/03/20 12:14:44 http: TLS handshake error from 104.237.149.229:61000: EOF
+2021/03/20 12:44:56 http: TLS handshake error from 74.120.14.40:54884: read tcp 172.17.0.2:443->74.120.14.40:54884: read: connection reset by peer
+2021/03/20 13:27:32 http: TLS handshake error from 167.248.133.56:47866: read tcp 172.17.0.2:443->167.248.133.56:47866: read: connection reset by peer
+2021/03/20 14:14:51 http: TLS handshake error from 66.228.40.94:61000: EOF
+2021/03/20 15:37:41 http: TLS handshake error from 162.142.125.54:50374: read tcp 172.17.0.2:443->162.142.125.54:50374: read: connection reset by peer
+2021/03/20 16:14:48 http: TLS handshake error from 104.237.149.229:61000: EOF
+2021/03/20 17:31:25 http: TLS handshake error from 92.118.160.33:64394: EOF
+2021/03/20 18:14:54 http: TLS handshake error from 66.228.40.94:61000: EOF
+2021/03/20 19:01:00 http: TLS handshake error from 104.248.146.28:40050: EOF
+2021/03/20 20:14:39 http: TLS handshake error from 104.237.149.229:61000: EOF
+2021/03/20 22:17:14 http: TLS handshake error from 66.228.40.94:61000: EOF
+2021/03/21 00:14:28 http: TLS handshake error from 104.237.149.229:61000: EOF
+2021/03/21 01:11:55 http: TLS handshake error from 61.219.11.153:61273: tls: first record does not look like a TLS handshake
+2021/03/21 01:30:02 http: TLS handshake error from 66.228.40.94:61000: EOF
+2021/03/21 02:14:30 http: TLS handshake error from 45.33.75.246:61000: EOF
+2021/03/21 02:59:40 http: TLS handshake error from 162.142.125.53:34898: read tcp 172.17.0.2:443->162.142.125.53:34898: read: connection reset by peer
+2021/03/21 03:29:49 http: TLS handshake error from 47.241.122.153:41898: tls: first record does not look like a TLS handshake
+2021/03/21 03:30:00 http: TLS handshake error from 47.241.122.153:42128: tls: first record does not look like a TLS handshake
+2021/03/21 03:30:13 http: TLS handshake error from 47.241.122.153:38690: unexpected EOF
+2021/03/21 03:40:47 http: TLS handshake error from 88.80.189.24:46334: EOF
+2021/03/21 04:07:44 http: TLS handshake error from 183.136.225.20:41006: EOF
+2021/03/21 04:15:08 http: TLS handshake error from 45.79.131.157:61000: EOF
+2021/03/21 04:29:15 http: TLS handshake error from 209.17.96.10:53647: EOF
+2021/03/21 04:57:02 http: TLS handshake error from 192.35.168.80:64804: tls: no cipher suite supported by both client and server
+2021/03/21 05:14:14 http: TLS handshake error from 161.35.230.183:45940: tls: first record does not look like a TLS handshake
+2021/03/21 05:44:13 http: TLS handshake error from 165.227.76.114:51568: read tcp 172.17.0.2:443->165.227.76.114:51568: read: connection reset by peer
+2021/03/21 05:44:13 http: TLS handshake error from 165.227.76.114:52756: read tcp 172.17.0.2:443->165.227.76.114:52756: read: connection reset by peer
+2021/03/21 05:44:14 http: TLS handshake error from 165.227.76.114:53778: read tcp 172.17.0.2:443->165.227.76.114:53778: read: connection reset by peer
+2021/03/21 05:44:14 http: TLS handshake error from 165.227.76.114:54770: read tcp 172.17.0.2:443->165.227.76.114:54770: read: connection reset by peer
+2021/03/21 05:44:14 http: TLS handshake error from 165.227.76.114:55616: read tcp 172.17.0.2:443->165.227.76.114:55616: read: connection reset by peer
+2021/03/21 05:44:15 http: TLS handshake error from 165.227.76.114:56240: read tcp 172.17.0.2:443->165.227.76.114:56240: read: connection reset by peer
+2021/03/21 05:44:15 http: TLS handshake error from 165.227.76.114:56908: read tcp 172.17.0.2:443->165.227.76.114:56908: read: connection reset by peer
+2021/03/21 05:44:15 http: TLS handshake error from 165.227.76.114:57562: read tcp 172.17.0.2:443->165.227.76.114:57562: read: connection reset by peer
+2021/03/21 05:44:16 http: TLS handshake error from 165.227.76.114:58214: read tcp 172.17.0.2:443->165.227.76.114:58214: read: connection reset by peer
+2021/03/21 05:44:16 http: TLS handshake error from 165.227.76.114:58768: read tcp 172.17.0.2:443->165.227.76.114:58768: read: connection reset by peer
+2021/03/21 05:46:36 http: TLS handshake error from 104.248.146.28:48280: EOF
+2021/03/21 06:16:16 http: TLS handshake error from 45.33.75.246:61000: EOF
+2021/03/21 07:43:26 http: TLS handshake error from 104.248.146.28:57486: EOF
+2021/03/21 08:15:03 http: TLS handshake error from 104.237.149.229:61000: EOF
+2021/03/21 08:34:41 http: TLS handshake error from 162.142.125.53:48726: read tcp 172.17.0.2:443->162.142.125.53:48726: read: connection reset by peer
+2021/03/21 09:55:55 http: TLS handshake error from 66.240.205.34:55462: tls: first record does not look like a TLS handshake
+2021/03/21 10:13:25 http: TLS handshake error from 104.248.146.28:38136: EOF
+2021/03/21 10:15:12 http: TLS handshake error from 66.228.40.94:61000: EOF
+2021/03/21 10:19:07 http: TLS handshake error from 192.241.227.135:58814: read tcp 172.17.0.2:443->192.241.227.135:58814: read: connection reset by peer
+2021/03/21 10:19:07 http: TLS handshake error from 192.241.227.135:59376: read tcp 172.17.0.2:443->192.241.227.135:59376: read: connection reset by peer
+2021/03/21 10:19:07 http: TLS handshake error from 192.241.227.135:59800: read tcp 172.17.0.2:443->192.241.227.135:59800: read: connection reset by peer
+2021/03/21 10:19:07 http: TLS handshake error from 192.241.227.135:60256: read tcp 172.17.0.2:443->192.241.227.135:60256: read: connection reset by peer
+2021/03/21 10:19:07 http: TLS handshake error from 192.241.227.135:60676: read tcp 172.17.0.2:443->192.241.227.135:60676: read: connection reset by peer
+2021/03/21 10:19:08 http: TLS handshake error from 192.241.227.135:32928: read tcp 172.17.0.2:443->192.241.227.135:32928: read: connection reset by peer
+2021/03/21 10:19:08 http: TLS handshake error from 192.241.227.135:33556: read tcp 172.17.0.2:443->192.241.227.135:33556: read: connection reset by peer
+2021/03/21 10:19:09 http: TLS handshake error from 192.241.227.135:34164: read tcp 172.17.0.2:443->192.241.227.135:34164: read: connection reset by peer
+2021/03/21 10:19:09 http: TLS handshake error from 192.241.227.135:37118: read tcp 172.17.0.2:443->192.241.227.135:37118: read: connection reset by peer
+2021/03/21 10:19:10 http: TLS handshake error from 192.241.227.135:37590: read tcp 172.17.0.2:443->192.241.227.135:37590: read: connection reset by peer
+2021/03/21 12:14:28 http: TLS handshake error from 104.237.149.229:61000: EOF
+2021/03/21 13:19:37 http: TLS handshake error from 162.142.125.56:56660: read tcp 172.17.0.2:443->162.142.125.56:56660: read: connection reset by peer
+2021/03/21 13:38:13 http: TLS handshake error from 185.14.28.182:54018: EOF
+2021/03/21 14:15:03 http: TLS handshake error from 66.228.40.94:61000: EOF
+2021/03/21 16:14:10 http: TLS handshake error from 104.237.149.229:61000: EOF
+2021/03/21 18:14:32 http: TLS handshake error from 66.228.40.94:61000: EOF
+2021/03/21 19:19:05 http: TLS handshake error from 104.248.146.28:47722: EOF
+2021/03/21 20:14:50 http: TLS handshake error from 104.237.149.229:61000: EOF
+2021/03/21 22:14:05 http: TLS handshake error from 66.228.40.94:61000: EOF
+2021/03/22 00:22:56 http: TLS handshake error from 172.104.242.173:45405: tls: first record does not look like a TLS handshake
+2021/03/22 00:23:10 http: TLS handshake error from 97.107.136.117:61000: EOF
+{1229782938256251289 {0 false}  {{{ false}} {{ false}} {0 0}} {false false 97 {0 false} {0 false} -0.3 53.2} {0001-01-01 00:00:00 +0000 UTC 2021-03-21 09:20:14 +0000 UTC} 0     }
+2021/03/22 01:15:12 http: TLS handshake error from 182.48.105.210:61535: EOF
+2021/03/22 01:22:14 http: TLS handshake error from 96.126.106.64:61000: EOF
+2021/03/22 02:24:29 http: TLS handshake error from 45.56.109.82:61000: EOF
+2021/03/22 03:23:08 http: TLS handshake error from 104.248.146.28:59768: EOF
+2021/03/22 03:38:18 http: TLS handshake error from 88.80.189.24:44122: EOF
+2021/03/22 04:24:15 http: TLS handshake error from 69.164.220.138:61000: EOF
+2021/03/22 04:32:50 http: TLS handshake error from 184.105.247.196:46686: tls: client offered only unsupported versions: []
+2021/03/22 04:33:17 http: TLS handshake error from 184.105.247.196:40686: tls: no cipher suite supported by both client and server
+2021/03/22 04:37:29 http: TLS handshake error from 184.105.247.196:49040: read tcp 172.17.0.2:443->184.105.247.196:49040: read: connection reset by peer
+2021/03/22 04:37:30 http: TLS handshake error from 184.105.247.196:52882: read tcp 172.17.0.2:443->184.105.247.196:52882: read: connection reset by peer
+2021/03/22 04:37:30 http: TLS handshake error from 184.105.247.196:56612: read tcp 172.17.0.2:443->184.105.247.196:56612: read: connection reset by peer
+2021/03/22 04:37:30 http: TLS handshake error from 184.105.247.196:60538: read tcp 172.17.0.2:443->184.105.247.196:60538: read: connection reset by peer
+2021/03/22 04:37:30 http: TLS handshake error from 184.105.247.196:36408: read tcp 172.17.0.2:443->184.105.247.196:36408: read: connection reset by peer
+2021/03/22 04:37:31 http: TLS handshake error from 184.105.247.196:40198: read tcp 172.17.0.2:443->184.105.247.196:40198: read: connection reset by peer
+2021/03/22 04:37:31 http: TLS handshake error from 184.105.247.196:44148: read tcp 172.17.0.2:443->184.105.247.196:44148: read: connection reset by peer
+2021/03/22 04:37:31 http: TLS handshake error from 184.105.247.196:47980: read tcp 172.17.0.2:443->184.105.247.196:47980: read: connection reset by peer
+2021/03/22 04:37:31 http: TLS handshake error from 184.105.247.196:51728: read tcp 172.17.0.2:443->184.105.247.196:51728: read: connection reset by peer
+2021/03/22 04:37:31 http: TLS handshake error from 184.105.247.196:55586: read tcp 172.17.0.2:443->184.105.247.196:55586: read: connection reset by peer
+2021/03/22 04:47:44 http: TLS handshake error from 209.17.97.34:59804: EOF
+2021/03/22 06:51:23 http: TLS handshake error from 128.199.123.47:44180: read tcp 172.17.0.2:443->128.199.123.47:44180: read: connection reset by peer
+2021/03/22 07:14:33 http: TLS handshake error from 104.248.146.28:49448: EOF
+2021/03/22 08:23:45 http: TLS handshake error from 45.33.78.48:61000: EOF
+2021/03/22 09:07:15 http: TLS handshake error from 104.248.146.28:40224: EOF
+2021/03/22 10:04:52 http: TLS handshake error from 51.81.164.122:64119: EOF
+2021/03/22 10:23:56 http: TLS handshake error from 45.79.168.24:61000: EOF
+2021/03/22 11:49:50 http: TLS handshake error from 199.30.231.5:46612: EOF
+2021/03/22 13:29:36 http: TLS handshake error from 185.236.11.121:44352: tls: first record does not look like a TLS handshake
+2021/03/22 14:23:39 http: TLS handshake error from 45.79.130.156:61000: EOF
+2021/03/22 14:49:07 http: TLS handshake error from 162.142.125.39:46266: read tcp 172.17.0.2:443->162.142.125.39:46266: read: connection reset by peer
+2021/03/22 16:24:21 http: TLS handshake error from 45.33.74.221:61000: EOF
+2021/03/22 16:34:39 http: TLS handshake error from 47.254.179.226:32984: remote error: tls: bad certificate
+2021/03/22 16:34:39 http: TLS handshake error from 47.254.179.226:35158: remote error: tls: bad certificate
+2021/03/22 16:35:09 http: TLS handshake error from 47.254.179.226:44142: remote error: tls: bad certificate
+2021/03/22 16:35:25 http: TLS handshake error from 47.254.179.226:38382: remote error: tls: bad certificate
+2021/03/22 16:35:34 http: TLS handshake error from 47.254.179.226:42464: EOF
+2021/03/22 16:35:49 http: TLS handshake error from 47.254.179.226:48264: remote error: tls: bad certificate
+2021/03/22 16:35:58 http: TLS handshake error from 47.254.179.226:53428: read tcp 172.17.0.2:443->47.254.179.226:53428: read: connection reset by peer
+2021/03/22 16:35:59 http: TLS handshake error from 47.254.179.226:48192: remote error: tls: bad certificate
+2021/03/22 16:36:03 http: TLS handshake error from 47.254.179.226:57294: EOF
+2021/03/22 16:36:39 http: TLS handshake error from 47.254.179.226:55128: read tcp 172.17.0.2:443->47.254.179.226:55128: read: connection timed out
+2021/03/22 16:36:59 http: TLS handshake error from 47.254.179.226:55506: read tcp 172.17.0.2:443->47.254.179.226:55506: read: connection timed out
+2021/03/22 16:37:30 http: TLS handshake error from 47.254.179.226:40160: read tcp 172.17.0.2:443->47.254.179.226:40160: read: connection timed out
+2021/03/22 16:38:10 http: TLS handshake error from 47.254.179.226:52760: read tcp 172.17.0.2:443->47.254.179.226:52760: read: connection timed out
+2021/03/22 16:38:59 http: TLS handshake error from 47.254.179.226:60016: read tcp 172.17.0.2:443->47.254.179.226:60016: read: connection timed out
+2021/03/22 18:24:20 http: TLS handshake error from 45.56.101.62:61000: EOF
+2021/03/22 18:44:31 http: TLS handshake error from 104.248.146.28:53344: EOF
+2021/03/22 20:23:43 http: TLS handshake error from 45.79.164.153:61000: EOF
+2021/03/22 20:45:13 http: TLS handshake error from 104.248.146.28:33416: EOF
+2021/03/22 22:24:39 http: TLS handshake error from 45.33.91.201:61000: EOF
+2021/03/23 00:24:32 http: TLS handshake error from 45.79.135.229:61000: EOF
+2021/03/23 00:30:30 http: TLS handshake error from 209.17.97.34:63447: EOF
+2021/03/23 01:22:26 http: TLS handshake error from 66.228.36.225:61000: EOF
+2021/03/23 02:24:51 http: TLS handshake error from 69.164.217.138:61000: EOF
+2021/03/23 03:36:44 http: TLS handshake error from 104.248.146.28:46356: EOF
+2021/03/23 03:56:56 http: TLS handshake error from 88.80.189.24:40886: EOF
+2021/03/23 04:24:52 http: TLS handshake error from 69.164.208.209:61000: EOF
+2021/03/23 04:29:17 http: TLS handshake error from 170.130.187.30:53862: EOF
+2021/03/23 05:15:18 http: TLS handshake error from 192.241.221.47:47858: read tcp 172.17.0.2:443->192.241.221.47:47858: read: connection reset by peer
+2021/03/23 05:15:20 http: TLS handshake error from 192.241.221.47:50144: read tcp 172.17.0.2:443->192.241.221.47:50144: read: connection reset by peer
+2021/03/23 05:15:20 http: TLS handshake error from 192.241.221.47:52586: read tcp 172.17.0.2:443->192.241.221.47:52586: read: connection reset by peer
+2021/03/23 05:15:20 http: TLS handshake error from 192.241.221.47:53004: read tcp 172.17.0.2:443->192.241.221.47:53004: read: connection reset by peer
+2021/03/23 05:15:20 http: TLS handshake error from 192.241.221.47:53408: read tcp 172.17.0.2:443->192.241.221.47:53408: read: connection reset by peer
+2021/03/23 05:15:21 http: TLS handshake error from 192.241.221.47:53878: read tcp 172.17.0.2:443->192.241.221.47:53878: read: connection reset by peer
+2021/03/23 05:15:22 http: TLS handshake error from 192.241.221.47:54402: read tcp 172.17.0.2:443->192.241.221.47:54402: read: connection reset by peer
+2021/03/23 05:15:22 http: TLS handshake error from 192.241.221.47:56970: read tcp 172.17.0.2:443->192.241.221.47:56970: read: connection reset by peer
+2021/03/23 05:15:22 http: TLS handshake error from 192.241.221.47:57472: read tcp 172.17.0.2:443->192.241.221.47:57472: read: connection reset by peer
+2021/03/23 05:15:22 http: TLS handshake error from 192.241.221.47:57896: read tcp 172.17.0.2:443->192.241.221.47:57896: read: connection reset by peer
+2021/03/23 05:43:14 http: TLS handshake error from 65.49.20.66:59734: tls: client offered only unsupported versions: []
+2021/03/23 05:43:45 http: TLS handshake error from 65.49.20.66:55296: tls: no cipher suite supported by both client and server
+2021/03/23 05:45:30 http: TLS handshake error from 65.49.20.66:54914: read tcp 172.17.0.2:443->65.49.20.66:54914: read: connection reset by peer
+2021/03/23 05:45:31 http: TLS handshake error from 65.49.20.66:59326: read tcp 172.17.0.2:443->65.49.20.66:59326: read: connection reset by peer
+2021/03/23 05:45:31 http: TLS handshake error from 65.49.20.66:35614: read tcp 172.17.0.2:443->65.49.20.66:35614: read: connection reset by peer
+2021/03/23 05:45:31 http: TLS handshake error from 65.49.20.66:40122: read tcp 172.17.0.2:443->65.49.20.66:40122: read: connection reset by peer
+2021/03/23 05:45:32 http: TLS handshake error from 65.49.20.66:44514: read tcp 172.17.0.2:443->65.49.20.66:44514: read: connection reset by peer
+2021/03/23 05:45:32 http: TLS handshake error from 65.49.20.66:49068: read tcp 172.17.0.2:443->65.49.20.66:49068: read: connection reset by peer
+2021/03/23 05:45:32 http: TLS handshake error from 65.49.20.66:53574: read tcp 172.17.0.2:443->65.49.20.66:53574: read: connection reset by peer
+2021/03/23 05:45:33 http: TLS handshake error from 65.49.20.66:58116: read tcp 172.17.0.2:443->65.49.20.66:58116: read: connection reset by peer
+2021/03/23 05:45:33 http: TLS handshake error from 65.49.20.66:34338: read tcp 172.17.0.2:443->65.49.20.66:34338: read: connection reset by peer
+2021/03/23 05:45:33 http: TLS handshake error from 65.49.20.66:38854: read tcp 172.17.0.2:443->65.49.20.66:38854: read: connection reset by peer
+2021/03/23 05:50:25 http: TLS handshake error from 104.248.146.28:36612: EOF
+2021/03/23 06:24:09 http: TLS handshake error from 45.79.168.24:61000: EOF
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {1229782938256251289 {{ false}} {{ false}} {{ false}} {{ false}} 2021-03-22 07:00:48 +0000 UTC 95 {0 false} {0 false} -0.3 53.1 0 0 close {0 true}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+2021/03/23 07:49:35 http: TLS handshake error from 104.248.146.28:54672: EOF
+signal: terminated
+cannot find package "maintest" in any of:
+	/usr/local/go/src/maintest (from $GOROOT)
+	/go/src/maintest (from $GOPATH)
+unexpected directory layout:
+	import path: _/go/src/app/internal/restapi
+	root: /go/src
+	dir: /go/src/app/internal/restapi
+	expand root: /go
+	expand dir: /go/src/app/internal/restapi
+	separator: /
+RoBOT Server Started Port 443
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {100 {{RB-LB72420 true}} {{lift:FB25-12 true}} {{62B44CE9/V2018 true}} {{stock true}} 2019-05-02 12:48:35 +0000 UTC 100 {100 true} {180 true} 0 38.1 135.525 34.8217 close {0 false}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+[{{0 0  0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} {1229782938256251289 {{ false}} {{ false}} {{ false}} {{ false}} 2021-03-22 07:00:48 +0000 UTC 95 {0 false} {0 false} -0.3 53.1 0 0 close {0 true}} {0     0001-01-01 00:00:00 +0000 UTC    }}]
+{1229782938256251289 {0 false}  {{{ false}} {{ false}} {0 0}} {false false 95 {0 false} {0 false} -0.3 53.1} {0001-01-01 00:00:00 +0000 UTC 2021-03-22 07:00:48 +0000 UTC} 0     }
+{1229782938256251289 {0 false}  {{{ false}} {{ false}} {0 0}} {false false 95 {0 false} {0 false} -0.3 53.1} {0001-01-01 00:00:00 +0000 UTC 2021-03-22 07:00:48 +0000 UTC} 0     }
+2021/03/23 10:24:37 http: TLS handshake error from 45.33.91.201:61000: EOF
+{1229782938256251289 {0 false}  {{{ false}} {{ false}} {0 0}} {false false 95 {0 false} {0 false} -0.3 53.1} {0001-01-01 00:00:00 +0000 UTC 2021-03-22 07:00:48 +0000 UTC} 0     }
+signal: terminated
+RoBOT Server Started Port 443
+2021/03/23 12:24:34 http: TLS handshake error from 45.79.133.207:61000: EOF
+2021/03/23 13:25:41 http: TLS handshake error from 47.241.122.153:49652: unexpected EOF
+2021/03/23 13:26:03 http: TLS handshake error from 47.241.122.153:51130: tls: first record does not look like a TLS handshake
+2021/03/23 13:26:40 http: TLS handshake error from 47.241.122.153:38108: tls: first record does not look like a TLS handshake
+2021/03/23 14:24:01 http: TLS handshake error from 45.33.91.201:61000: EOF
+2021/03/23 14:55:07 http: TLS handshake error from 66.240.205.34:51600: tls: first record does not look like a TLS handshake
+2021/03/23 16:24:13 http: TLS handshake error from 45.79.133.207:61000: EOF
+2021/03/23 18:23:31 http: TLS handshake error from 45.33.91.201:61000: EOF
+2021/03/23 18:28:19 http: TLS handshake error from 61.219.11.153:61205: read tcp 172.17.0.2:443->61.219.11.153:61205: read: connection reset by peer
+2021/03/23 20:28:45 http: TLS handshake error from 162.142.125.56:40534: read tcp 172.17.0.2:443->162.142.125.56:40534: read: connection reset by peer
+2021/03/23 20:47:18 http: TLS handshake error from 162.142.125.54:55556: read tcp 172.17.0.2:443->162.142.125.54:55556: read: connection reset by peer
+2021/03/23 22:23:58 http: TLS handshake error from 45.79.133.207:61000: EOF
+2021/03/23 23:02:25 http: TLS handshake error from 162.142.125.56:38586: read tcp 172.17.0.2:443->162.142.125.56:38586: read: connection reset by peer
+2021/03/23 23:27:54 http: TLS handshake error from 209.17.96.66:50408: EOF
+2021/03/24 00:16:16 http: TLS handshake error from 104.237.147.60:61000: EOF
+2021/03/24 01:28:30 http: TLS handshake error from 66.228.32.43:61000: EOF
+2021/03/24 01:59:16 http: TLS handshake error from 167.248.133.55:32980: read tcp 172.17.0.2:443->167.248.133.55:32980: read: connection reset by peer
+2021/03/24 02:23:58 http: TLS handshake error from 96.126.104.114:61000: EOF
+2021/03/24 03:07:26 http: TLS handshake error from 88.80.189.24:46118: EOF
+2021/03/24 03:21:06 http: TLS handshake error from 104.248.146.28:35152: EOF
+2021/03/24 03:39:47 http: TLS handshake error from 185.142.236.43:49672: EOF
+2021/03/24 03:39:47 http: TLS handshake error from 185.142.236.43:50184: EOF
+2021/03/24 03:39:48 http: TLS handshake error from 185.142.236.43:50742: EOF
+2021/03/24 03:39:49 http: TLS handshake error from 185.142.236.43:51162: EOF
+2021/03/24 03:39:49 http: TLS handshake error from 185.142.236.43:51686: EOF
+2021/03/24 03:39:50 http: TLS handshake error from 185.142.236.43:52220: EOF
+2021/03/24 03:39:51 http: TLS handshake error from 185.142.236.43:52914: EOF
+2021/03/24 03:39:51 http: TLS handshake error from 185.142.236.43:53498: EOF
+2021/03/24 03:39:52 http: TLS handshake error from 185.142.236.43:54106: EOF
+2021/03/24 03:39:53 http: TLS handshake error from 185.142.236.43:54734: EOF
+2021/03/24 03:40:11 http: TLS handshake error from 185.142.236.43:41450: tls: unsupported SSLv2 handshake received
+2021/03/24 03:40:26 http: TLS handshake error from 185.142.236.43:55652: tls: client offered only unsupported versions: []
+2021/03/24 03:41:13 http: TLS handshake error from 185.142.236.43:37274: tls: no cipher suite supported by both client and server
+2021/03/24 03:41:13 http: TLS handshake error from 185.142.236.43:37846: tls: no cipher suite supported by both client and server
+2021/03/24 04:24:49 http: TLS handshake error from 45.56.107.211:61000: EOF
+2021/03/24 06:34:14 http: TLS handshake error from 104.248.146.28:53188: EOF
+2021/03/24 07:01:10 http: TLS handshake error from 192.35.168.144:40276: tls: client offered only unsupported versions: []
+2021/03/24 08:20:59 http: TLS handshake error from 104.248.146.28:44188: EOF
+2021/03/24 08:24:51 http: TLS handshake error from 45.33.64.238:61000: EOF
+2021/03/24 09:14:27 http: TLS handshake error from 5.188.210.227:39114: unexpected EOF
+2021/03/24 09:14:34 http: TLS handshake error from 5.188.210.227:51386: unexpected EOF
+2021/03/24 09:14:40 http: TLS handshake error from 5.188.210.227:42443: unexpected EOF
+2021/03/24 09:15:55 http: TLS handshake error from 5.188.210.227:64214: tls: first record does not look like a TLS handshake
+2021/03/24 09:16:39 http: TLS handshake error from 5.188.210.227:43770: tls: first record does not look like a TLS handshake
+2021/03/24 10:23:17 http: TLS handshake error from 45.56.98.29:61000: EOF
+2021/03/24 10:28:40 http: TLS handshake error from 104.152.52.34:41544: EOF
+2021/03/24 11:56:52 http: TLS handshake error from 47.241.122.153:50432: unexpected EOF
+2021/03/24 11:57:09 http: TLS handshake error from 47.241.122.153:35036: tls: first record does not look like a TLS handshake
+2021/03/24 11:57:33 http: TLS handshake error from 47.241.122.153:43546: tls: first record does not look like a TLS handshake
+2021/03/24 11:58:33 http: TLS handshake error from 91.241.19.60:60630: tls: first record does not look like a TLS handshake
+2021/03/24 12:23:19 http: TLS handshake error from 45.56.98.29:61000: EOF
+2021/03/24 12:55:28 http: TLS handshake error from 222.186.136.150:44309: tls: first record does not look like a TLS handshake
+2021/03/24 12:55:28 http: TLS handshake error from 222.186.136.150:44306: tls: first record does not look like a TLS handshake
+2021/03/24 12:55:35 http: TLS handshake error from 222.186.136.150:44295: unexpected EOF
+2021/03/24 12:57:59 http: TLS handshake error from 222.186.136.150:44298: read tcp 172.17.0.2:443->222.186.136.150:44298: read: connection timed out
+signal: terminated
+RoBOT Server Started Port 443
+&{GET /static/js/2.852a69bf.chunk.js.map HTTP/2.0 2 0 map[Accept-Encoding:[gzip, deflate, br] Accept-Language:[ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7] Cookie:[_ga=GA1.1.1038075084.1608914691; _ga_T7Z9GRKXB7=GS1.1.1608914691.1.1.1608914878.0; _legacy_auth0.is.authenticated=true; auth0.is.authenticated=true] Sec-Fetch-Dest:[empty] Sec-Fetch-Mode:[no-cors] Sec-Fetch-Site:[none] User-Agent:[Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36]] 0xc00011c4b0 <nil> 0 [] false jugem.live map[] map[] <nil> map[] 60.148.221.234:38095 /static/js/2.852a69bf.chunk.js.map 0xc00008e370 <nil> <nil> 0xc00011c570}
+&{GET /api/v1/units HTTP/2.0 2 0 map[Accept:[application/json, text/plain, */*] Accept-Encoding:[gzip, deflate, br] Accept-Language:[ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7] Cookie:[_ga=GA1.1.1038075084.1608914691; _ga_T7Z9GRKXB7=GS1.1.1608914691.1.1.1608914878.0; _legacy_auth0.is.authenticated=true; auth0.is.authenticated=true] Referer:[https://jugem.live/units] Sec-Fetch-Dest:[empty] Sec-Fetch-Mode:[cors] Sec-Fetch-Site:[same-origin] User-Agent:[Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36]] 0xc00021c750 <nil> 0 [] false jugem.live map[] map[] <nil> map[] 60.148.221.234:38095 /api/v1/units 0xc00008e370 <nil> <nil> 0xc00021c810}
+signal: terminated
+RoBOT Server Started Port 443
+&{GET /api/v1/units HTTP/2.0 2 0 map[Accept:[application/json, text/plain, */*] Accept-Encoding:[gzip, deflate, br] Accept-Language:[ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7] Cookie:[_ga=GA1.1.1038075084.1608914691; _ga_T7Z9GRKXB7=GS1.1.1608914691.1.1.1608914878.0; _legacy_auth0.is.authenticated=true; auth0.is.authenticated=true] Referer:[https://jugem.live/units] Sec-Fetch-Dest:[empty] Sec-Fetch-Mode:[cors] Sec-Fetch-Site:[same-origin] User-Agent:[Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36]] 0xc00011c2a0 <nil> 0 [] false jugem.live map[] map[] <nil> map[] 60.148.221.234:43368 /api/v1/units 0xc00008e370 <nil> <nil> 0xc00011c360}
+&{GET /api/v1/units HTTP/2.0 2 0 map[Accept:[application/json, text/plain, */*] Accept-Encoding:[gzip, deflate, br] Accept-Language:[ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7] Cookie:[_ga=GA1.1.1038075084.1608914691; _ga_T7Z9GRKXB7=GS1.1.1608914691.1.1.1608914878.0; _legacy_auth0.is.authenticated=true; auth0.is.authenticated=true] Referer:[https://jugem.live/units] Sec-Fetch-Dest:[empty] Sec-Fetch-Mode:[cors] Sec-Fetch-Site:[same-origin] User-Agent:[Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36]] 0xc00011cdb0 <nil> 0 [] false jugem.live map[] map[] <nil> map[] 60.148.221.234:43368 /api/v1/units 0xc00008e370 <nil> <nil> 0xc00011ce70}
+2021/03/24 18:25:35 http: TLS handshake error from 66.228.32.43:61000: EOF
+2021/03/24 18:58:01 http: TLS handshake error from 104.248.146.28:57982: EOF
+2021/03/24 19:27:45 http: TLS handshake error from 61.219.11.153:62729: tls: first record does not look like a TLS handshake
+2021/03/24 20:24:38 http: TLS handshake error from 50.116.48.223:61000: EOF
+2021/03/24 20:41:07 http: TLS handshake error from 64.227.99.233:50484: tls: first record does not look like a TLS handshake
+2021/03/24 21:10:16 http: TLS handshake error from 209.17.97.58:59480: EOF
+&{POST / HTTP/1.1 1 1 map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Connection:[keep-alive] Content-Length:[20] Content-Type:[application/x-www-form-urlencoded] User-Agent:[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36]] 0xc00004a440 <nil> 20 [] false 18.180.144.98 map[] map[] <nil> map[] 34.121.5.85:61403 / 0xc00008e370 <nil> <nil> 0xc00011c8a0}
+2021/03/24 22:23:57 http: TLS handshake error from 66.228.38.191:61000: EOF
+2021/03/24 22:34:43 http: TLS handshake error from 162.142.125.55:39672: read tcp 172.17.0.2:443->162.142.125.55:39672: read: connection reset by peer
+&{GET / HTTP/1.1 1 1 map[] {} <nil> 0 [] false 18.180.144.98:443 map[] map[] <nil> map[] 162.142.125.55:53122 / 0xc00008e2c0 <nil> <nil> 0xc00011c510}
+&{GET / HTTP/1.1 1 1 map[Accept:[*/*] Accept-Encoding:[gzip] User-Agent:[Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)]] {} <nil> 0 [] false 18.180.144.98 map[] map[] <nil> map[] 162.142.125.55:49226 / 0xc00008e370 <nil> <nil> 0xc00011cd20}
+2021/03/24 22:51:43 http: TLS handshake error from 192.46.225.101:51490: EOF
+2021/03/24 23:20:00 http: TLS handshake error from 172.105.13.165:35030: tls: client offered only unsupported versions: []
+&{GET / HTTP/1.0 1 0 map[] {} <nil> 0 [] true  map[] map[] <nil> map[] 172.105.13.165:50738 / 0xc00008e2c0 <nil> <nil> 0xc00011c600}
+&{OPTIONS / HTTP/1.0 1 0 map[] {} <nil> 0 [] true  map[] map[] <nil> map[] 172.105.13.165:14886 / 0xc00008e370 <nil> <nil> 0xc00011ce70}
+&{HEAD / HTTP/1.1 1 1 map[Connection:[close] User-Agent:[Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9a3pre) Gecko/20070330]] {} <nil> 0 [] true localhost map[] map[] <nil> map[] 172.105.13.165:31080 / 0xc00008e2c0 <nil> <nil> 0xc00011c5a0}
+2021/03/25 00:13:40 http: TLS handshake error from 45.33.78.48:61000: EOF
+&{GET / HTTP/1.1 1 1 map[Accept:[*/*] Accept-Encoding:[gzip] User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36]] {} <nil> 0 [] false 18.180.144.98 map[] map[] <nil> map[] 128.14.134.170:58520 / 0xc00008e2c0 <nil> <nil> 0xc00011c5a0}
+&{GET / HTTP/1.1 1 1 map[User-Agent:[Mozilla/5.0 (compatible; Nimbostratus-Bot/v1.3.2; http://cloudsystemnetworks.com)]] {} <nil> 0 [] false 18.180.144.98:443 map[] map[] <nil> map[] 209.17.96.66:58894 / 0xc00008e2c0 <nil> <nil> 0xc00011c4b0}
+2021/03/25 00:18:06 http: TLS handshake error from 104.248.146.28:40918: EOF
+2021/03/25 00:55:31 http: TLS handshake error from 192.241.227.168:49984: read tcp 172.17.0.2:443->192.241.227.168:49984: read: connection reset by peer
+2021/03/25 00:55:31 http: TLS handshake error from 192.241.227.168:53644: read tcp 172.17.0.2:443->192.241.227.168:53644: read: connection reset by peer
+2021/03/25 00:55:32 http: TLS handshake error from 192.241.227.168:54088: read tcp 172.17.0.2:443->192.241.227.168:54088: read: connection reset by peer
+2021/03/25 00:55:33 http: TLS handshake error from 192.241.227.168:54558: read tcp 172.17.0.2:443->192.241.227.168:54558: read: connection reset by peer
+2021/03/25 00:55:36 http: TLS handshake error from 192.241.227.168:57006: read tcp 172.17.0.2:443->192.241.227.168:57006: read: connection reset by peer
+2021/03/25 00:55:36 http: TLS handshake error from 192.241.227.168:35384: read tcp 172.17.0.2:443->192.241.227.168:35384: read: connection reset by peer
+2021/03/25 00:55:36 http: TLS handshake error from 192.241.227.168:36120: read tcp 172.17.0.2:443->192.241.227.168:36120: read: connection reset by peer
+2021/03/25 00:55:37 http: TLS handshake error from 192.241.227.168:36542: read tcp 172.17.0.2:443->192.241.227.168:36542: read: connection reset by peer
+2021/03/25 00:55:37 http: TLS handshake error from 192.241.227.168:36922: read tcp 172.17.0.2:443->192.241.227.168:36922: read: connection reset by peer
+2021/03/25 00:55:38 http: TLS handshake error from 192.241.227.168:37358: read tcp 172.17.0.2:443->192.241.227.168:37358: read: connection reset by peer
+&{HEAD / HTTP/1.1 1 1 map[User-Agent:[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.146 Safari/537.36]] {} <nil> 0 [] false 18.180.144.98 map[] map[] <nil> map[] 138.246.253.24:60604 / 0xc00008e2c0 <nil> <nil> 0xc00011c570}
+2021/03/25 01:28:13 http: TLS handshake error from 104.237.147.60:61000: EOF
+&{GET / HTTP/1.1 1 1 map[] {} <nil> 0 [] false 18.180.144.98 map[] map[] <nil> map[] 64.62.197.2:51474 / 0xc00008e2c0 <nil> <nil> 0xc00011c480}
+2021/03/25 01:54:54 http: TLS handshake error from 64.62.197.2:42140: tls: client offered only unsupported versions: []
+2021/03/25 01:55:17 http: TLS handshake error from 64.62.197.2:41738: tls: no cipher suite supported by both client and server
+2021/03/25 01:57:50 http: TLS handshake error from 64.62.197.2:35912: read tcp 172.17.0.2:443->64.62.197.2:35912: read: connection reset by peer
+2021/03/25 01:57:50 http: TLS handshake error from 64.62.197.2:39906: read tcp 172.17.0.2:443->64.62.197.2:39906: read: connection reset by peer
+2021/03/25 01:57:51 http: TLS handshake error from 64.62.197.2:43778: read tcp 172.17.0.2:443->64.62.197.2:43778: read: connection reset by peer
+2021/03/25 01:57:51 http: TLS handshake error from 64.62.197.2:47658: read tcp 172.17.0.2:443->64.62.197.2:47658: read: connection reset by peer
+2021/03/25 01:57:51 http: TLS handshake error from 64.62.197.2:51552: read tcp 172.17.0.2:443->64.62.197.2:51552: read: connection reset by peer
+2021/03/25 01:57:51 http: TLS handshake error from 64.62.197.2:55410: read tcp 172.17.0.2:443->64.62.197.2:55410: read: connection reset by peer
+2021/03/25 01:57:51 http: TLS handshake error from 64.62.197.2:59274: read tcp 172.17.0.2:443->64.62.197.2:59274: read: connection reset by peer
+2021/03/25 01:57:52 http: TLS handshake error from 64.62.197.2:35140: read tcp 172.17.0.2:443->64.62.197.2:35140: read: connection reset by peer
+2021/03/25 01:57:52 http: TLS handshake error from 64.62.197.2:39024: read tcp 172.17.0.2:443->64.62.197.2:39024: read: connection reset by peer
+2021/03/25 01:57:52 http: TLS handshake error from 64.62.197.2:42978: read tcp 172.17.0.2:443->64.62.197.2:42978: read: connection reset by peer
+2021/03/25 02:14:17 http: TLS handshake error from 97.107.129.179:61000: EOF
+2021/03/25 02:46:56 http: TLS handshake error from 104.248.146.28:58926: EOF
+2021/03/25 03:03:08 http: TLS handshake error from 192.35.168.32:28852: tls: no cipher suite supported by both client and server
+2021/03/25 03:51:16 http: TLS handshake error from 88.80.189.24:53472: EOF
+&{GET / HTTP/2.0 2 0 map[Accept:[*/*] Accept-Encoding:[deflate, gzip, br] User-Agent:[Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)]] 0xc00011c720 <nil> 0 [] false jugem.live map[] map[] <nil> map[] 54.36.148.64:59190 / 0xc00008e370 <nil> <nil> 0xc00011c7e0}
+&{GET / HTTP/1.1 1 1 map[Accept:[*/*] Accept-Encoding:[default] Connection:[close] User-Agent:[Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36]] {} <nil> 0 [] true 18.180.144.98:443 map[] map[] <nil> map[] 52.250.3.61:48876 / 0xc00008e2c0 <nil> <nil> 0xc00011c510}
+2021/03/25 04:14:03 http: TLS handshake error from 69.164.209.73:61000: EOF
+&{POST / HTTP/1.1 1 1 map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Connection:[keep-alive] Content-Length:[15] Content-Type:[application/x-www-form-urlencoded] User-Agent:[Mozilla/5.0 (Macintosh;                 Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML,                 like Gecko) Chrome/39.0.2171.95 Safari/537.36]] 0xc00004af00 <nil> 15 [] false 18.180.144.98 map[] map[] <nil> map[] 203.159.80.127:52250 / 0xc00008e8f0 <nil> <nil> 0xc000069e90}
+2021/03/25 04:28:43 http: TLS handshake error from 104.248.146.28:48962: EOF
+2021/03/25 05:55:26 http: TLS handshake error from 104.248.146.28:38800: EOF
+2021/03/25 06:13:59 http: TLS handshake error from 97.107.129.179:61000: EOF
+2021/03/25 06:26:21 http: TLS handshake error from 74.120.14.56:45584: read tcp 172.17.0.2:443->74.120.14.56:45584: read: connection reset by peer
+&{GET / HTTP/1.1 1 1 map[] {} <nil> 0 [] false 18.180.144.98:443 map[] map[] <nil> map[] 74.120.14.56:44154 / 0xc00008e2c0 <nil> <nil> 0xc000069410}
+&{GET / HTTP/1.1 1 1 map[Accept:[*/*] Accept-Encoding:[gzip] User-Agent:[Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)]] {} <nil> 0 [] false 18.180.144.98 map[] map[] <nil> map[] 74.120.14.56:53154 / 0xc00008e370 <nil> <nil> 0xc000069bc0}
+&{POST / HTTP/1.1 1 1 map[Accept:[*/*] Accept-Encoding:[gzip, deflate] Connection:[keep-alive] Content-Length:[13] Content-Type:[application/x-www-form-urlencoded] User-Agent:[Mozilla/5.0]] 0xc00004a440 <nil> 13 [] false 18.180.144.98 map[] map[] <nil> map[] 167.172.247.12:53907 / 0xc00008e370 <nil> <nil> 0xc000069950}
+2021/03/25 06:36:00 http: TLS handshake error from 167.172.247.12:53858: EOF
+2021/03/25 07:31:59 http: TLS handshake error from 104.248.146.28:57754: EOF
+&{GET /api/v1/units HTTP/2.0 2 0 map[Accept:[application/json, text/plain, */*] Accept-Encoding:[gzip, deflate, br] Accept-Language:[ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7] Cookie:[auth0.is.authenticated=true] Origin:[http://localhost:3000] Referer:[http://localhost:3000/] Sec-Fetch-Dest:[empty] Sec-Fetch-Mode:[cors] Sec-Fetch-Site:[cross-site] User-Agent:[Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36]] 0xc000068ed0 <nil> 0 [] false jugem.live map[] map[] <nil> map[] 124.110.218.120:63107 /api/v1/units 0xc00008e370 <nil> <nil> 0xc000068ff0}
+signal: terminated
+RoBOT Server Started Port 443

@@ -1,8 +1,10 @@
 package db
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
+	"io/ioutil"
 )
 
 // customer は顧客の詳細情報を格納する
@@ -60,4 +62,132 @@ func CustomerView(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println(customer)
 	send(customer, w)
+}
+
+func CreateCustomer(w http.ResponseWriter, r *http.Request) {
+	//var customer customerElm
+	body, err := ioutil.ReadAll(r.Body)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	keyVal := make(map[string]string)
+  	json.Unmarshal(body, &keyVal)
+  	id := keyVal["account_id"]
+	name := keyVal["name"]
+	dob := keyVal["date_of_birth"]
+	print(id)
+	print(name)
+	print(dob)
+	//fmt.Println("new customer name: ", name)
+
+	//json.NewDecoder(r.Body).Decode(&customer)
+    //fmt.Println("new customer: ", customer)
+	//fmt.Println("new customer name: ", customer["name"])
+
+	db := open()
+	defer db.Close()
+
+	stmt, err := db.Prepare("INSERT INTO customers(account_id) VALUES(?)")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE customers SET name = ? WHERE account_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(name,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE customers SET date_of_birth = ? WHERE account_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(dob,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	send("create!", w)
+}
+
+/*
+func UpdateCustomer(w http.ResponseWriter, r *http.Request) {
+	var customer customerElm
+	body, err := ioutil.ReadAll(r.Body)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	keyVal := make(map[string]string)
+  	json.Unmarshal(body, &keyVal)
+  	name := keyVal["name"]
+	//fmt.Println("new customer name: ", name)
+
+	//json.NewDecoder(r.Body).Decode(&customer)
+    //fmt.Println("new customer: ", customer)
+	//fmt.Println("new customer name: ", customer["name"])
+
+	db := open()
+	defer db.Close()
+
+	stmt, err := db.Prepare("INSERT INTO customers(name) VALUES(?)")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+
+	_, err = stmt.Exec(name)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	//test := Test{ID:1, FirstName:"kitao"} 
+	send("update", w)
+}
+*/
+
+func DeleteCustomer(w http.ResponseWriter, r *http.Request) {
+	idtmp := query(r, "account_id")
+	id := idtmp[0]
+	//print(id[0])
+	/*
+	body, err := ioutil.ReadAll(r.Body)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	keyVal := make(map[string]string)
+  	json.Unmarshal(body, &keyVal)
+  	id := keyVal["account_id"]
+	name := keyVal["name"]
+	dob := keyVal["date_of_birth"]
+	
+	//name2 := query(r, "name")//url上で指定
+	//print(keyVal)
+	print(id)
+	print(name)
+	print(dob)
+	//print(name2[0])
+	*/
+	db := open()
+	defer db.Close()
+	
+	//stmt, err := db.Prepare("DELETE FROM customers WHERE name = ?")
+	stmt, err := db.Prepare("DELETE FROM customers WHERE account_id = ?")
+	//stmt, err := db.Prepare("DELETE FROM customers WHERE date_of_birth = ?")
+	if err != nil {
+	  panic(err.Error())
+	}
+	_, err = stmt.Exec(id)
+   	if err != nil {
+	  panic(err.Error())
+	}
+	fmt.Fprintf(w, "Post with account ID = %s was deleted",id)
 }

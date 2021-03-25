@@ -6,18 +6,39 @@ package main
 import (
 	"fmt"      //標準入力など(デバッグ用なので最終的にはいらない...?)
 	"net/http" //サーバを立てるために必要
+	//"log"
 
-	//"../../internal/view"
+	"../../internal/view"
 	//"../../db"
 	//db "app/internal/restapi"
 	db "../../internal/restapi"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/gorilla/handlers"
+	//"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	//"github.com/rs/cors"
 )
 
 func challengetoken(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintf(w, "rt0cYZ6L4gPOOYaPQgipkdG2ELQ0uQ21Ao46YjxsS98.XDi_5t34FW25GEQBQJPUAU2OKcjJutOUYefqngHTYxk")
+}
+
+func forCORS(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println(r)
+		//origin := "http://localhost:3000"
+        w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+        w.Header().Set("Access-Control-Allow-Origin", "*")
+		//w.Header().Set("Access-Control-Allow-Origin", origin)
+        w.Header().Set("Access-Control-Allow-Methods", "GET,POST, DELETE, OPTIONS")
+		//w.Header().Set("Access-Control-Allow-Credentials", "true")
+        // プリフライトリクエストの対応
+        if r.Method == "OPTIONS" {
+            w.WriteHeader(http.StatusOK)
+            return
+        }
+        next.ServeHTTP(w, r)
+        return
+    })
 }
 
 func main() {
@@ -25,23 +46,46 @@ func main() {
 }
 
 // Server はhttpリクエスト毎の処理を登録してサーバーを立てる
-func Server() error {
-	router := mux.NewRouter().StrictSlash(true)
-	//router.HandleFunc("/", OpenHtml.MainHandler)
+func Server() error {//logの場合はreturnがいらないのでerrorを消す
+	//router := mux.NewRouter().StrictSlash(true)->corsが動かない原因かも
+	router := mux.NewRouter()
+	router.Use(forCORS)
+	//front
+	router.HandleFunc("/test/", OpenHtml.MainHandler)
 	router.Handle("/", http.FileServer(http.Dir("../../front/build")))
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("../../front/build/static"))))
+	//api
 	router.HandleFunc("/api/v1/units", db.UnitsView).Methods("GET")
 	router.HandleFunc("/api/v1/customers", db.CustomersView).Methods("GET")
 	router.HandleFunc("/api/v1/detaile", db.DetaileView).Methods("GET")
 	router.HandleFunc("/api/v1/detail", db.DetailedView).Methods("GET")
 	router.HandleFunc("/api/v1/customer", db.CustomerView).Methods("GET")
+
+	router.HandleFunc("/api/v1/customer",db.CreateCustomer).Methods("POST")
+	router.HandleFunc("/api/v1/customer",db.DeleteCustomer).Methods("DELETE")
+
+	//others
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")
-	//router.HandleFunc("/.well-known/acme-challenge/rt0cYZ6L4gPOOYaPQgipkdG2ELQ0uQ21Ao46YjxsS98", challengetoken)//encryptの証明のために必要
+	//router.HandleFunc("/.well-known/acme-challenge/rt0cYZ6L4gPOOYaPQgipkdG2ELQ0uQ21Ao46YjxsS98", challengetoken)//encryptの証明
+
 	fmt.Println("RoBOT Server Started Port 443")
 
+	//log.Fatal(http.ListenAndServeTLS(":443", "../../ssl/fullchain_new.pem", "../../ssl/server_new.key",router))
 	//return http.ListenAndServe(fmt.Sprintf(":%d", 80), router)
-	//return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain.pem", "../../ssl/server.key", router) //kitao追加 https
-	return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain_new.pem", "../../ssl/server_new.key", handlers.CORS(handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"}), handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"}), handlers.AllowedOrigins([]string{"*", "http://localhost:3000/"}))(router))
+	return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain.pem", "../../ssl/server.key", router) //kitao追加 https
+	//return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain.pem", "../../ssl/server.key", handlers.CORS(handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization", "Origin", "application/json"}), handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"}), handlers.AllowedOrigins([]string{"*", "http://localhost:3000"}))(router))
+	
+	/*
+	c := cors.New(cors.Options{
+        AllowedOrigins: []string{"http://localhost:3000", "*"},
+        AllowCredentials: true,
+		AllowedHeaders: []string{"X-Requested-With", "Content-Type", "Authorization","Origin"},
+		AllowedMethods: []string{"GET", "POST", "PUT", "HEAD", "OPTIONS"},
+    })
+
+	handler := c.Handler(router)
+    log.Fatal(http.ListenAndServeTLS(":443", "../../ssl/fullchain_new.pem", "../../ssl/server_new.key",handler))
+	*/
 
 	// http://18.180.144.98:80/
 	// https://jugem.live/

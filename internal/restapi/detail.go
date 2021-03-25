@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strconv"
 	"time"
+	"github.com/guregu/null"
 )
 
 // detailed はバッテリーの詳細情報を格納する
@@ -55,16 +56,17 @@ func DetailedView(w http.ResponseWriter, r *http.Request) {
 		TimeStamps     unitTimeStamp `json:"time_stamps"`
 		// customerInfo
 		CustomerID      int    `json:"customer_id"` //string->int
-		CorporationName string `json:"corporation_name"`
-		Position        string `json:"position"`
-		Name            string `json:"name"`
-		Mail            string `json:"mail"`
-		Phone           string `json:"phone"`
+		CorporationName null.String `json:"corporation_name"`
+		Position        null.String `json:"position"`
+		Name            null.String `json:"name"`
+		Mail            null.String `json:"mail"`
+		Phone           null.String `json:"phone"`
 	}
 	for results1.Next() {
 		var unitElm unitElm
 		Columns := columns(&unitElm)
 		err = results1.Scan(Columns...)
+		fmt.Println(unitElm)
 		if err != nil {
 			panic(err.Error())
 		}
@@ -131,6 +133,6 @@ func DetailedView(w http.ResponseWriter, r *http.Request) {
 		}
 		//details = append(details, detail)
 	}
-	fmt.Println(detail)
+	//fmt.Println(detail)
 	send(detail, w)
 }
