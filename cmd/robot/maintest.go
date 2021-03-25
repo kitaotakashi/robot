@@ -55,14 +55,14 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.Handle("/", http.FileServer(http.Dir("../../front/build")))
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("../../front/build/static"))))
 	//api
-	router.HandleFunc("/api/v1/units", db.UnitsView).Methods("GET")
-	router.HandleFunc("/api/v1/customers", db.CustomersView).Methods("GET")
-	router.HandleFunc("/api/v1/detaile", db.DetaileView).Methods("GET")
-	router.HandleFunc("/api/v1/detail", db.DetailedView).Methods("GET")
-	router.HandleFunc("/api/v1/customer", db.CustomerView).Methods("GET")
+	router.HandleFunc("/api/v1/units/", db.UnitsView).Methods("GET")
+	router.HandleFunc("/api/v1/customers/", db.CustomersView).Methods("GET")
+	router.HandleFunc("/api/v1/detaile/", db.DetaileView).Methods("GET")
+	router.HandleFunc("/api/v1/detail/", db.DetailedView).Methods("GET")
+	router.HandleFunc("/api/v1/customer/", db.CustomerView).Methods("GET")
 
-	router.HandleFunc("/api/v1/customer",db.CreateCustomer).Methods("POST")
-	router.HandleFunc("/api/v1/customer",db.DeleteCustomer).Methods("DELETE")
+	router.HandleFunc("/api/v1/customer/",db.CreateCustomer).Methods("POST")
+	router.HandleFunc("/api/v1/customer/",db.DeleteCustomer).Methods("DELETE")
 
 	//others
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")
