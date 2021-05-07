@@ -74,6 +74,7 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err.Error())
 	}
+	/*
 	var units []struct {
 		UnitID         string      `json:"unit_id"`
 		RequiredAction string      `json:"required_action"`
@@ -82,7 +83,24 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 		IsWorking      bool        `json:"is_working"`
 		Soc            int         `json:"soc"`
 	}
+	*/
+	//unitsベージで必要な情報
+	var units []struct {
+		UnitID         string      `json:"unit_id"`
+		CustomerName   string      `json:"customer_name"`
+		DepartmentName string      `json:"department_name"`
+		ContractID int `json:"contract_id"`
+		//ContractName   string      `json:"contract_name"`
+		//Profile        unitProfile `json:"profile"`
+		IsCharging     bool        `json:"is_charging"`
+		IsWorking      bool        `json:"is_working"`
+		Soc            int         `json:"soc"`
+		RequiredAction string      `json:"required_action"`
+		ErrorCode  	int   `json:"errorcode"`
+	}
+
 	for results1.Next() {
+		/*
 		var unit struct {
 			UnitID         string      `json:"unit_id"`
 			RequiredAction string      `json:"required_action"`
@@ -91,6 +109,20 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 			IsWorking      bool        `json:"is_working"`
 			Soc            int         `json:"soc"`
 		}
+		*/
+		var unit struct{
+			UnitID         string      `json:"unit_id"`
+			CustomerName   string      `json:"customer_name"`
+			DepartmentName string      `json:"department_name"`
+			ContractID int `json:"contract_id"`
+			//ContractName   string      `json:"contract_name"`
+			//Profile        unitProfile `json:"profile"`
+			IsCharging     bool        `json:"is_charging"`
+			IsWorking      bool        `json:"is_working"`
+			Soc            int         `json:"soc"`
+			RequiredAction string      `json:"required_action"`
+			ErrorCode  		int   `json:"errorcode"`
+		}
 		var unitElm unitElm
 		Columns := columns(&unitElm)
 		err = results1.Scan(Columns...)
@@ -98,8 +130,10 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 			panic(err.Error())
 		}
 		unit.UnitID = unitElm.UnitID
+
 		if unitElm.ErrorCode.Valid == true {
 			errorcode := int(unitElm.ErrorCode.Int32)
+			unit.ErrorCode = errorcode
 			results2, err := db.Query("SELECT required_action FROM errors WHERE error_code=" + strconv.Itoa(errorcode))
 			if err != nil {
 				panic(err.Error())
@@ -113,6 +147,46 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 				unit.RequiredAction = errorElm.RequiredAction
 			}
 		}
+
+		//契約IDがnullでない場合、事業所名と企業名を取得
+		//test　db実装まち
+		unit.CustomerName = "test"
+		unit.DepartmentName = "test"
+		unit.ContractID = 1
+		/*
+		if unitElm.ContractID.Valid == true {
+			contract_id := int(unitElm.ContractID.Int32)
+			var departmentElm departmentElm
+			results3, err := db.Query("SELECT * FROM departments WHERE department_id=(SELECT department_id FROM contracts WHERE contract_id=" + strconv.Itoa(contract_id) + ")")
+			if err != nil {
+				panic(err.Error())
+			}
+			for results3.Next() {
+				Columns = columns(&departmentElm)
+				err = results3.Scan(Columns...)
+				if err != nil {
+					panic(err.Error())
+				}
+				unit.DepartmentName = departmentElm.DepartmentName
+
+				var customerElm customerElm
+				department_id := departmentElm.ParentID
+				results4, err := db.Query("SELECT * FROM customers WHERE customer_id = (SELECT parent_id FROM departments WHERE department_id="+ strconv.Itoa(department_id) +")")
+				if err != nil {
+					panic(err.Error())
+				}
+				for results4.Next() {
+					err = results4.Scan(&customerElm.CorporationName)
+					if err != nil {
+						panic(err.Error())
+					}
+					unit.CustomerName = customerElm.CorporationName
+				}
+			}
+		}
+		*/
+
+
 		//unit.UnitDetail.UnitID = unitElm.UnitID
 		//unit.UnitDetail.Profile.UnitID = unitElm.UnitID
 		/*
@@ -149,12 +223,15 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 			//unit.UnitDetail.Status.IsWorking = "on"
 		}
 		unit.Soc = unitElm.Soc
+		//unit profileはここで使わないのでoff
+		/*
 		unit.Profile.Purpose = unitElm.Purpose
 		unit.Profile.UnitType = unitElm.UnitType
 		//unit.UnitDetail.Profile.UnitType = unitElm.UnitType
 		unit.Profile.Location.Latitude = unitElm.Latitude
 		//unit.UnitDetail.Profile.Location.Latitude = unitElm.Latitude
 		unit.Profile.Location.Longitude = unitElm.Longitude
+		*/
 		/*
 			unit.UnitDetail.Profile.Location.Longitude = unitElm.Longitude
 			unit.UnitDetail.Status.Soc = unitElm.Soc

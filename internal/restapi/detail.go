@@ -19,8 +19,8 @@ type detailed struct {
 	Customer customerElm `json:"customer"`
 }
 
-// DetailedView はdetailedページに必要なデータをDBから取得し、JSONで返す
-func DetailedView(w http.ResponseWriter, r *http.Request) {
+// DetailView はdetailedページに必要なデータをDBから取得し、JSONで返す
+func DetailView(w http.ResponseWriter, r *http.Request) {
 	id := query(r, "unit_id")
 	db := open()
 	defer db.Close()

@@ -19,14 +19,15 @@
           //request.open('GET', 'https://jugem.live/api/v1/units', true)//kitao追加
 
           let person = new Object();
-          person.ID = 124;
-          person.FirstName = "kitao";
+          person.account_id = "124";
+          person.name = "takashi";
           let json = JSON.stringify(person);
           console.log(json);
-          request.open('POST', 'https://jugem.live/api/v1/customertest')//for https
+          request.open('POST', 'https://jugem.live/api/v1/customer/')//for https
           //request.setRequestHeader("Content-Type", "application/json");
           
-          /*
+          
+          //when get request, log response
           request.onload = function () {
             // Begin accessing JSON data here
             var data = JSON.parse(this.response)
@@ -37,7 +38,7 @@
               concole.log("error")
             }
           }
-          */
+          
 
           // Send request
           request.send(json)
