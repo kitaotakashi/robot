@@ -1,9 +1,9 @@
 package db
 
 import (
-	//"fmt"
-	"database/sql"
-	"github.com/guregu/null"
+	"fmt"
+	//"database/sql"
+	//"github.com/guregu/null"
 	"net/http"
 	"strconv"
 	"time"
@@ -14,16 +14,17 @@ type geoLocation struct {
 	Longitude float32 `json:"longitude"`
 }
 type unitProfile struct {
-	UnitType null.String `json:"unit_type"`
-	Purpose  null.String `json:"purpose"`
+	//null.stringに変更すること
+	UnitType string `json:"unit_type"`//battery_type_id
+	Purpose  string `json:"purpose"`
 	Location geoLocation `json:"location"`
 }
 type unitStatus struct {
 	IsCharging bool          `json:"is_charging"`
 	IsWorking  bool          `json:"is_working"`
-	Soc        int           `json:"soc"`
-	Soh        sql.NullInt32 `json:"soh"`
-	Capacity   sql.NullInt32 `json:"capacity"`
+	Soc        float32           `json:"soc"`
+	//Soh        sql.NullInt32 `json:"soh"`
+	//Capacity   sql.NullInt32 `json:"capacity"`
 	Current    float32       `json:"current"`
 	Voltage    float32       `json:"voltage"`
 }
@@ -74,6 +75,8 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err.Error())
 	}
+	fmt.Println("chk")
+	fmt.Println(results1)
 	/*
 	var units []struct {
 		UnitID         string      `json:"unit_id"`
@@ -86,17 +89,18 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 	*/
 	//unitsベージで必要な情報
 	var units []struct {
-		UnitID         string      `json:"unit_id"`
-		CustomerName   string      `json:"customer_name"`
-		DepartmentName string      `json:"department_name"`
-		ContractID int `json:"contract_id"`
+		UnitID         string      `json:"unit_id"`//units_DBから取得
+		CustomerName   string      `json:"customer_name"`//contract_DBから取得
+		DepartmentName string      `json:"department_name"`//contract_DBから取得
+		ContractID int `json:"contract_id"`//contract_DBから取得
+		LastIOtime 	   time.Time   `json:"last_io_time"`
 		//ContractName   string      `json:"contract_name"`
-		//Profile        unitProfile `json:"profile"`
-		IsCharging     bool        `json:"is_charging"`
-		IsWorking      bool        `json:"is_working"`
-		Soc            int         `json:"soc"`
-		RequiredAction string      `json:"required_action"`
-		ErrorCode  	int   `json:"errorcode"`
+		Profile        unitProfile `json:"profile"`
+		IsCharging     bool        `json:"is_charging"`//units_DBから取得
+		IsWorking      bool        `json:"is_working"`//last_io_timeから別途計算
+		Soc            float32     `json:"soc"`//units_DBから取得
+		RequiredAction string      `json:"required_action"`//error_DBから取得
+		BatteryError  	int   `json:"battery_error""`//units_DBから取得
 	}
 
 	for results1.Next() {
@@ -111,17 +115,18 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 		}
 		*/
 		var unit struct{
-			UnitID         string      `json:"unit_id"`
-			CustomerName   string      `json:"customer_name"`
-			DepartmentName string      `json:"department_name"`
-			ContractID int `json:"contract_id"`
+			UnitID         string      `json:"unit_id"`//units_DBから取得
+			CustomerName   string      `json:"customer_name"`//contract_DBから取得
+			DepartmentName string      `json:"department_name"`//contract_DBから取得
+			ContractID int `json:"contract_id"`//contract_DBから取得
+			LastIOtime 	   time.Time   `json:"last_io_time"`
 			//ContractName   string      `json:"contract_name"`
-			//Profile        unitProfile `json:"profile"`
-			IsCharging     bool        `json:"is_charging"`
-			IsWorking      bool        `json:"is_working"`
-			Soc            int         `json:"soc"`
-			RequiredAction string      `json:"required_action"`
-			ErrorCode  		int   `json:"errorcode"`
+			Profile        unitProfile `json:"profile"`
+			IsCharging     bool        `json:"is_charging"`//units_DBから取得
+			IsWorking      bool        `json:"is_working"`//last_io_timeから別途計算
+			Soc            float32     `json:"soc"`//units_DBから取得
+			RequiredAction string      `json:"required_action"`//error_DBから取得
+			BatteryError  	int   `json:"battery_error""`//units_DBから取得
 		}
 		var unitElm unitElm
 		Columns := columns(&unitElm)
@@ -130,10 +135,12 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 			panic(err.Error())
 		}
 		unit.UnitID = unitElm.UnitID
+		unit.LastIOtime = unitElm.LastIOtime
 
-		if unitElm.ErrorCode.Valid == true {
-			errorcode := int(unitElm.ErrorCode.Int32)
-			unit.ErrorCode = errorcode
+		if unitElm.BatteryError.Valid == true {
+			errorcode := int(unitElm.BatteryError.Int32)
+			unit.BatteryError = errorcode
+			//error DBから取得
 			results2, err := db.Query("SELECT required_action FROM errors WHERE error_code=" + strconv.Itoa(errorcode))
 			if err != nil {
 				panic(err.Error())
@@ -148,8 +155,9 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		//契約IDがnullでない場合、事業所名と企業名を取得
 		//test　db実装まち
+		//まず battery一覧を取得し、unitIDで問い合わせてcontractIDがあるかどうか
+		//契約IDがnullでない場合、事業所名と企業名を取得
 		unit.CustomerName = "test"
 		unit.DepartmentName = "test"
 		unit.ContractID = 1
@@ -215,7 +223,7 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 		} else {
 			unit.IsCharging = true
 		}
-		if time.Now().Sub(unitElm.Time) > time.Minute*5 {
+		if time.Now().Sub(unitElm.LastIOtime) > time.Minute*5 {
 			unit.IsWorking = false
 			//unit.UnitDetail.Status.IsWorking = "off"
 		} else {
@@ -223,15 +231,14 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 			//unit.UnitDetail.Status.IsWorking = "on"
 		}
 		unit.Soc = unitElm.Soc
-		//unit profileはここで使わないのでoff
-		/*
-		unit.Profile.Purpose = unitElm.Purpose
-		unit.Profile.UnitType = unitElm.UnitType
+
+		unit.Profile.Purpose = "test_forklift"//unitElm.Purpose //from battery DB
+		unit.Profile.UnitType = "test_RB-***"//unitElm.UnitType //from battery DB
 		//unit.UnitDetail.Profile.UnitType = unitElm.UnitType
 		unit.Profile.Location.Latitude = unitElm.Latitude
 		//unit.UnitDetail.Profile.Location.Latitude = unitElm.Latitude
 		unit.Profile.Location.Longitude = unitElm.Longitude
-		*/
+		
 		/*
 			unit.UnitDetail.Profile.Location.Longitude = unitElm.Longitude
 			unit.UnitDetail.Status.Soc = unitElm.Soc
@@ -242,6 +249,7 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 			unit.UnitDetail.Status.Capacity = unitElm.Capacity
 			unit.UnitDetail.TimeStamps.Time = unitElm.Time
 		*/
+		fmt.Println(unit)
 		units = append(units, unit)
 	}
 	send(units, w)

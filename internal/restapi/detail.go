@@ -71,8 +71,8 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 			panic(err.Error())
 		}
 		detail.UnitID = unitElm.UnitID
-		if unitElm.ErrorCode.Valid == true {
-			errorcode := int(unitElm.ErrorCode.Int32)
+		if unitElm.BatteryError.Valid == true {
+			errorcode := int(unitElm.BatteryError.Int32)
 			results2, err := db.Query("SELECT error_code,required_action FROM errors WHERE error_code=" + strconv.Itoa(errorcode))
 			if err != nil {
 				panic(err.Error())
@@ -87,10 +87,13 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 				detail.RequiredAction = errorElm.RequiredAction
 			}
 		}
-		detail.Profile.UnitType = unitElm.UnitType
-		detail.Profile.Purpose = unitElm.Purpose
+		//detail.Profile.UnitType = unitElm.UnitType
+		detail.Profile.UnitType = "test_RB_***"//battery_type_id from batteries DB
+		//detail.Profile.Purpose = unitElm.Purpose//from batteries DB
+		detail.Profile.Purpose = "test_forklift"
 		detail.Profile.Location.Latitude = unitElm.Latitude
 		detail.Profile.Location.Longitude = unitElm.Longitude
+
 		if unitElm.IsCharging == "close" {
 			detail.Status.IsCharging = false
 		} else {
@@ -102,10 +105,10 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 			detail.Status.IsWorking = true
 		}
 		detail.Status.Soc = unitElm.Soc
-		detail.Status.Soh = unitElm.Soh
-		detail.Status.Capacity = unitElm.Capacity
-		detail.Status.Current = unitElm.Current
-		detail.Status.Voltage = unitElm.Voltage
+		//detail.Status.Soh = unitElm.Soh
+		//detail.Status.Capacity = unitElm.Capacity
+		detail.Status.Current = unitElm.OutputCurrent
+		detail.Status.Voltage = unitElm.OutputVoltage
 		detail.TimeStamps.Time = unitElm.Time
 		//cutomerInfo
 		var customerElm customerElm

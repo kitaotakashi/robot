@@ -48,6 +48,7 @@ type contractElm struct {
 }
 
 // unitElm はバッテリー情報を格納する
+/*
 type unitElm struct { //要素名を変更
 	UnitID     string      `json:"unit_id"`
 	UnitType   null.String `json:"unit_type"`
@@ -66,6 +67,43 @@ type unitElm struct { //要素名を変更
 	IsCharging string        `json:"is_charging"`
 	ErrorCode  sql.NullInt32 `json:"error_code"`
 	//ContractID sql.NullInt32 `json:"contract_id"` -> db側で実装まち
+}*/
+//新DB用に変更する
+type unitElm struct { //要素名を変更
+	UnitID     string      `json:"unit_id"`
+	Time       time.Time   `json:"time"`
+	BmsVersion string `json:"bms_version"`
+	LastIOtime time.Time   `json:"last_io_time"`
+	LastChargerError int   `json:"last_charger_error"`
+	LastChargerErrorTime time.Time   `json:"last_charger_error_time"`
+	Latitude   float32     `json:"latitude"`
+	Longitude  float32     `json:"longitude"`
+	ChargeMode string	   `json:"charge_mode"`
+	BatteryCurrent float32 `json:"battery_current"`
+	BatteryVoltage float32 `json:"battery_voltage"`
+	BatteryError sql.NullInt32	   `json:"battery_error"`
+	Soc        float32     `json:"soc"`
+	OutputCurrent    float32     `json:"output_current"`
+	OutputVoltage    float32     `json:"output_voltage"`
+	IsCharging string      `json:"is_charging"`
+	ChargerError int 	   `json:"charger_error"`
+	UsageTime	float32	   `json:"usage_time"`
+	NumberOfCharges int	   `json:"number_of_charges"`
+	MaxCellVoltage float32 `json:"max_cell_voltage"`
+	MinCellVoltage float32 `json:"min_cell_voltage"`
+	MaxTemperature float32 `json:"max_temperature"`
+	MinTemperature float32 `json:"min_temperature"`
+
+	/*
+	UnitType   null.String `json:"unit_type"`
+	Purpose    null.String `json:"purpose"`
+	UnitState  null.String `json:"unit_state"`
+	IsWorking  string    `json:"is_working"`
+	Soh        sql.NullInt32 `json:"soh"`
+	Capacity   sql.NullInt32 `json:"capacity"`
+	ErrorCode  sql.NullInt32 `json:"error_code"`
+	//ContractID sql.NullInt32 `json:"contract_id"` -> db側で実装まち
+	*/
 }
 
 // errorElm はエラー情報を格納する
