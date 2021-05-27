@@ -46,7 +46,7 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 			Phone           string `json:"phone"`
 		}
 	*/
-	var detail struct {
+	var details []struct {
 		// unitInfo
 		UnitID         string        `json:"unit_id"`
 		ErrorCode      sql.NullInt32 `json:"error_code"`
@@ -62,7 +62,25 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 		Mail            null.String `json:"mail"`
 		Phone           null.String `json:"phone"`
 	}
+
 	for results1.Next() {
+		var detail struct {
+			// unitInfo
+			UnitID         string        `json:"unit_id"`
+			ErrorCode      sql.NullInt32 `json:"error_code"`
+			RequiredAction string        `json:"required_action"`
+			Profile        unitProfile   `json:"profile"`
+			Status         unitStatus    `json:"status"`
+			TimeStamps     unitTimeStamp `json:"time_stamps"`
+			// customerInfo
+			CustomerID      int    `json:"customer_id"` //string->int
+			CorporationName null.String `json:"corporation_name"`
+			Position        null.String `json:"position"`
+			Name            null.String `json:"name"`
+			Mail            null.String `json:"mail"`
+			Phone           null.String `json:"phone"`
+		}
+
 		var unitElm unitElm
 		Columns := columns(&unitElm)
 		err = results1.Scan(Columns...)
@@ -86,6 +104,8 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 				detail.ErrorCode = errorElm.ErrorCode
 				detail.RequiredAction = errorElm.RequiredAction
 			}
+		}else{
+			detail.RequiredAction = ""
 		}
 		//detail.Profile.UnitType = unitElm.UnitType
 		detail.Profile.UnitType = "test_RB_***"//battery_type_id from batteries DB
@@ -116,15 +136,17 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 		flag := true
 		if err != nil {
 			flag = false
+			fmt.Println("no customer")
 		}
-		for results2.Next() {
-			Columns = columns(&customerElm)
-			err = results2.Scan(Columns...)
-			if err != nil {
-				panic(err.Error())
-			}
-		}
+
 		if flag == true {
+			for results2.Next() {
+				Columns = columns(&customerElm)
+				err = results2.Scan(Columns...)
+				if err != nil {
+					panic(err.Error())
+				}
+			}
 			detail.CustomerID = customerElm.AccountID
 			detail.CorporationName = customerElm.CorporationName
 			detail.Position = customerElm.Position
@@ -133,9 +155,10 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 			detail.Phone = customerElm.Phone
 		} else {
 			//未登録処理
+			detail.CustomerID = -1
 		}
-		//details = append(details, detail)
+		details = append(details, detail)
 	}
-	//fmt.Println(detail)
-	send(detail, w)
+	fmt.Println(details)
+	send(details, w)
 }

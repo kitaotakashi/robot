@@ -74,12 +74,16 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 	keyVal := make(map[string]string)
   	json.Unmarshal(body, &keyVal)
   	id := keyVal["account_id"]
+	cname := keyVal["corporation_name"]
+	sector := keyVal["sector"]
 	name := keyVal["name"]
-	dob := keyVal["date_of_birth"]
-	print(id)
-	print(name)
-	print(dob)
-	//fmt.Println("new customer name: ", name)
+	position := keyVal["position"]
+	//dob := keyVal["date_of_birth"]
+	postal := keyVal["postal_code"]
+	address := keyVal["address"]
+	mail := keyVal["mail"]
+	phone := keyVal["phone"]
+	fmt.Println(id,cname,sector,name,position,postal,address,mail,phone)
 
 	//json.NewDecoder(r.Body).Decode(&customer)
     //fmt.Println("new customer: ", customer)
@@ -96,6 +100,24 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
   	if err != nil {
     	panic(err.Error())
   	}
+
+	  stmt, err = db.Prepare("UPDATE customers SET corporation_name = ? WHERE account_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(cname,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE customers SET sector = ? WHERE account_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(sector,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
 	
 	stmt, err = db.Prepare("UPDATE customers SET name = ? WHERE account_id = ?")
   	if err != nil {
@@ -105,12 +127,59 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
   	if err != nil {
     	panic(err.Error())
   	}
-
+	
+	stmt, err = db.Prepare("UPDATE customers SET position = ? WHERE account_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(position,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	/*
 	stmt, err = db.Prepare("UPDATE customers SET date_of_birth = ? WHERE account_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
 	_, err = stmt.Exec(dob,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	*/
+	
+	stmt, err = db.Prepare("UPDATE customers SET postal_code = ? WHERE account_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(postal,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE customers SET address = ? WHERE account_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(address,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE customers SET mail = ? WHERE account_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(mail,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE customers SET phone = ? WHERE account_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(phone,id)
   	if err != nil {
     	panic(err.Error())
   	}

@@ -22,7 +22,7 @@ func query(r *http.Request, k string) []string {
 // open はデータベースと接続する
 func open() *sql.DB {
 	//db, err := sql.Open("mysql", "test_user:test_pass@tcp(10.0.1.229:3306)/test_db?parseTime=True")
-	db, err := sql.Open("mysql", "admin:RoBOT_DB_admin@tcp(10.0.1.229:3306)/robot_db?parseTime=True")
+	db, err := sql.Open("mysql", "test_user:test_pass@tcp(10.0.1.229:3306)/robot_db?parseTime=True")
 	if err != nil {
 		panic(err.Error())
 	}

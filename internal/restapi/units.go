@@ -153,6 +153,8 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 				}
 				unit.RequiredAction = errorElm.RequiredAction
 			}
+		}else{
+			unit.RequiredAction = ""
 		}
 
 		//test　db実装まち

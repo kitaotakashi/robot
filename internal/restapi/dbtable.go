@@ -13,7 +13,7 @@ type customerElm struct {
 	Sector          null.String    `json:"sector"`
 	Name            null.String    `json:"name"`
 	Position        null.String    `json:"position"`
-	DateOfBirth     time.Time `json:"date_of_birth"`
+	//DateOfBirth     time.Time `json:"date_of_birth"`
 	PostalCode      null.String    `json:"postal_code"`
 	Address         null.String    `json:"address"`
 	Mail            null.String    `json:"mail"`
@@ -37,14 +37,13 @@ type departmentElm struct {
 
 // contractElm は契約情報を格納する
 type contractElm struct {
-	UnitID         uint      `json:"unit_id"`
+	ContractID		int		`json:"contract_id"`
 	AccountID      int       `json:"account_id"`
-	//ContractID		int		`json:"contract_id"`
-	//DepartmentID	int		`json:"department_id"`
+	ContractName	string   `json:"contract_name"`
 	ContractType   string    `json:"contract_type"`
 	ExecutionDate  time.Time `json:"execution_date"`
 	ExpirationDate time.Time `json:"expiration_date"`
-	BillingDate    time.Time `json:"billing_date"`
+	//BillingDate    time.Time `json:"billing_date"`
 }
 
 // unitElm はバッテリー情報を格納する
@@ -74,8 +73,8 @@ type unitElm struct { //要素名を変更
 	Time       time.Time   `json:"time"`
 	BmsVersion string `json:"bms_version"`
 	LastIOtime time.Time   `json:"last_io_time"`
-	LastChargerError int   `json:"last_charger_error"`
-	LastChargerErrorTime time.Time   `json:"last_charger_error_time"`
+	//LastChargerError int   `json:"last_charger_error"`
+	//LastChargerErrorTime time.Time   `json:"last_charger_error_time"`
 	Latitude   float32     `json:"latitude"`
 	Longitude  float32     `json:"longitude"`
 	ChargeMode string	   `json:"charge_mode"`
