@@ -2,7 +2,7 @@ package db
 
 import (
 	"fmt"
-	//"database/sql"
+	"database/sql"
 	//"github.com/guregu/null"
 	"net/http"
 	"strconv"
@@ -27,6 +27,15 @@ type unitStatus struct {
 	//Capacity   sql.NullInt32 `json:"capacity"`
 	Current    float32       `json:"current"`
 	Voltage    float32       `json:"voltage"`
+	OutputCurrent    float32     `json:"output_current"`
+	OutputVoltage    float32     `json:"output_voltage"`
+	UsageTime	float32	   `json:"usage_time"`
+	NumberOfCharges int	   `json:"number_of_charges"`
+	MaxCellVoltage float32 `json:"max_cell_voltage"`
+	MinCellVoltage float32 `json:"min_cell_voltage"`
+	MaxTemperature float32 `json:"max_temperature"`
+	MinTemperature float32 `json:"min_temperature"`
+	LastIOtime 	   time.Time   `json:"last_io_time"`
 }
 type unitTimeStamp struct {
 	RegisterdAt time.Time `json:"registerd_at"`
@@ -45,18 +54,10 @@ type unitSummary struct {
 */
 
 type unitError struct {
-	ErrorCode      int    `json:"error_code"`
+	ErrorCode      sql.NullInt32    `json:"error_code"`
 	ErrorMessage   string `json:"error_message"`
 	RequiredAction string `json:"required_action"`
-}
-type unitDetail struct {
-	UnitID string    `json:"unit_id"`
-	Error  unitError `json:"error"`
-	//RequiredAction string        `json:"required_action"`
-	Profile    unitProfile   `json:"profile"`
-	Status     unitStatus    `json:"status"`
-	TimeStamps unitTimeStamp `json:"time_stamps"`
-	CustomerID string        `json:"customer_id"`
+	ChargerError int 	   `json:"charger_error"`
 }
 
 /*

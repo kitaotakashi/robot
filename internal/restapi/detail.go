@@ -1,13 +1,24 @@
 package db
 
 import (
-	"database/sql"
+	//"database/sql"
 	"fmt"
 	"net/http"
 	"strconv"
 	"time"
-	"github.com/guregu/null"
+	//"github.com/guregu/null"
 )
+
+type unitDetail struct {
+	UnitID string    `json:"unit_id"`
+	Error  unitError `json:"error"`
+	//RequiredAction string        `json:"required_action"`
+	Profile    unitProfile   `json:"profile"`
+	Status     unitStatus    `json:"status"`
+	TimeStamps unitTimeStamp `json:"time_stamps"`
+	CustomerID string        `json:"customer_id"`
+	CorporationName string `json:"corporation_name"`
+}
 
 // detailed はバッテリーの詳細情報を格納する
 type detailed struct {
@@ -46,6 +57,7 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 			Phone           string `json:"phone"`
 		}
 	*/
+	/*
 	var details []struct {
 		// unitInfo
 		UnitID         string        `json:"unit_id"`
@@ -54,6 +66,7 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 		Profile        unitProfile   `json:"profile"`
 		Status         unitStatus    `json:"status"`
 		TimeStamps     unitTimeStamp `json:"time_stamps"`
+		LastIOtime 	   time.Time   `json:"last_io_time"`
 		// customerInfo
 		CustomerID      int    `json:"customer_id"` //string->int
 		CorporationName null.String `json:"corporation_name"`
@@ -61,9 +74,11 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 		Name            null.String `json:"name"`
 		Mail            null.String `json:"mail"`
 		Phone           null.String `json:"phone"`
-	}
+	}*/
+	var details []unitDetail
 
 	for results1.Next() {
+		/*
 		var detail struct {
 			// unitInfo
 			UnitID         string        `json:"unit_id"`
@@ -72,6 +87,7 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 			Profile        unitProfile   `json:"profile"`
 			Status         unitStatus    `json:"status"`
 			TimeStamps     unitTimeStamp `json:"time_stamps"`
+			LastIOtime 	   time.Time   `json:"last_io_time"`
 			// customerInfo
 			CustomerID      int    `json:"customer_id"` //string->int
 			CorporationName null.String `json:"corporation_name"`
@@ -79,7 +95,9 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 			Name            null.String `json:"name"`
 			Mail            null.String `json:"mail"`
 			Phone           null.String `json:"phone"`
-		}
+		}*/
+
+		var detail unitDetail
 
 		var unitElm unitElm
 		Columns := columns(&unitElm)
@@ -101,11 +119,11 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 				if err != nil {
 					panic(err.Error())
 				}
-				detail.ErrorCode = errorElm.ErrorCode
-				detail.RequiredAction = errorElm.RequiredAction
+				detail.Error.ErrorCode = errorElm.ErrorCode
+				detail.Error.RequiredAction = errorElm.RequiredAction
 			}
 		}else{
-			detail.RequiredAction = ""
+			detail.Error.RequiredAction = ""
 		}
 		//detail.Profile.UnitType = unitElm.UnitType
 		detail.Profile.UnitType = "test_RB_***"//battery_type_id from batteries DB
@@ -130,6 +148,8 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 		detail.Status.Current = unitElm.OutputCurrent
 		detail.Status.Voltage = unitElm.OutputVoltage
 		detail.TimeStamps.Time = unitElm.Time
+		detail.Status.LastIOtime= unitElm.LastIOtime
+
 		//cutomerInfo
 		var customerElm customerElm
 		results2, err := db.Query("SELECT * FROM customers WHERE account_id=(SELECT account_id FROM contracts WHERE unit_id=" + id[0] + ")")
@@ -147,15 +167,19 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 					panic(err.Error())
 				}
 			}
-			detail.CustomerID = customerElm.AccountID
+			detail.CustomerID = string(customerElm.AccountID)
+			detail.CorporationName = customerElm.CorporationName
+			/*
 			detail.CorporationName = customerElm.CorporationName
 			detail.Position = customerElm.Position
 			detail.Name = customerElm.Name
 			detail.Mail = customerElm.Mail
 			detail.Phone = customerElm.Phone
+			*/
 		} else {
 			//未登録処理
-			detail.CustomerID = -1
+			detail.CustomerID = "-1"
+			detail.CorporationName = "no customer"
 		}
 		details = append(details, detail)
 	}
