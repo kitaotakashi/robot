@@ -68,6 +68,10 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/contract/", db.ContractView).Methods("GET")
 	router.HandleFunc("/api/v1/contract/", db.CreateContract).Methods("POST")
 
+	router.HandleFunc("/api/v1/batteries/", db.BatteriesView).Methods("GET")
+	router.HandleFunc("/api/v1/battery/", db.BatteryView).Methods("GET")
+	router.HandleFunc("/api/v1/battery/", db.CreateBattery).Methods("POST")
+
 	//others
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")
 	//router.HandleFunc("/.well-known/acme-challenge/rt0cYZ6L4gPOOYaPQgipkdG2ELQ0uQ21Ao46YjxsS98", challengetoken)//encryptの証明

@@ -152,6 +152,7 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 
 		//cutomerInfo
 		var customerElm customerElm
+		//batteriesからとる
 		results2, err := db.Query("SELECT * FROM customers WHERE account_id=(SELECT account_id FROM contracts WHERE unit_id=" + id[0] + ")")
 		flag := true
 		if err != nil {

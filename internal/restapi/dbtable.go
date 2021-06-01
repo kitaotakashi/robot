@@ -46,6 +46,17 @@ type contractElm struct {
 	//BillingDate    time.Time `json:"billing_date"`
 }
 
+type batteryElm  struct{
+	SerialNumber	int		`json:"serial_number"`
+	UnitID     string      `json:"unit_id"`
+	ContractID		int		`json:"contract_id"`
+	BatteryOptionID	int		`json:"battery_option_id"`
+	DateOfManufacture time.Time `json:"date_of_manufacture"`
+	BatteryTypeID	int 	`json:"battery_type_id"`
+	Purpose			string      `json:"purpose"`
+	UnitState		string		`json:"unit_state"`
+}
+
 // unitElm はバッテリー情報を格納する
 /*
 type unitElm struct { //要素名を変更
