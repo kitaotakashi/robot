@@ -125,10 +125,7 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 		}else{
 			detail.Error.RequiredAction = ""
 		}
-		//detail.Profile.UnitType = unitElm.UnitType
-		detail.Profile.UnitType = "test_RB_***"//battery_type_id from batteries DB
-		//detail.Profile.Purpose = unitElm.Purpose//from batteries DB
-		detail.Profile.Purpose = "test_forklift"
+		
 		detail.Profile.Location.Latitude = unitElm.Latitude
 		detail.Profile.Location.Longitude = unitElm.Longitude
 
@@ -150,9 +147,55 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 		detail.TimeStamps.Time = unitElm.Time
 		detail.Status.LastIOtime= unitElm.LastIOtime
 
+		//batteryDBからとる
+		var flg=0
+		results3, err := db.Query("SELECT * FROM batteries WHERE unit_id=" + unitElm.UnitID)
+		for results3.Next() {
+			flg=1
+			var batteryElm batteryElm
+			Columns := columns(& batteryElm)
+			err = results3.Scan(Columns...)
+
+			if err != nil {
+				panic(err.Error())
+			}
+			//detail.Profile.UnitType = unitElm.UnitType
+			detail.Profile.UnitType = "test_RB_****"//battery_type_id from batteries DB
+			//detail.Profile.Purpose = unitElm.Purpose//from batteries DB
+			detail.Profile.Purpose = batteryElm.Purpose
+
+			results4, err := db.Query("SELECT account_id FROM contracts WHERE contract_id=" + strconv.Itoa(batteryElm.ContractID))
+			for results4.Next() {
+				var contractElm contractElm
+				err = results4.Scan(&contractElm.AccountID)
+				if err != nil {
+					panic(err.Error())
+				}
+
+				detail.CustomerID = strconv.Itoa(contractElm.AccountID)
+
+				results5, err := db.Query("SELECT corporation_name FROM customers WHERE account_id=" + strconv.Itoa(contractElm.AccountID))
+				for results5.Next() {
+					var customerElm customerElm
+					err = results5.Scan(&customerElm.CorporationName)
+					if err != nil {
+						panic(err.Error())
+					}
+					detail.CorporationName = customerElm.CorporationName	
+				}
+			}
+		}
+		if flg==0{
+			detail.Profile.UnitType = ""//battery_type_id from batteries DB
+			detail.Profile.Purpose = ""
+			detail.CustomerID = "-1"
+			detail.CorporationName = ""
+		}
+
+		/*
 		//cutomerInfo
 		var customerElm customerElm
-		//batteriesからとる
+		//batteriesからと
 		results2, err := db.Query("SELECT * FROM customers WHERE account_id=(SELECT account_id FROM contracts WHERE unit_id=" + id[0] + ")")
 		flag := true
 		if err != nil {
@@ -177,11 +220,13 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 			detail.Mail = customerElm.Mail
 			detail.Phone = customerElm.Phone
 			*/
+		/*
 		} else {
 			//未登録処理
 			detail.CustomerID = "-1"
 			detail.CorporationName = "no customer"
 		}
+		*/
 		details = append(details, detail)
 	}
 	fmt.Println(details)
