@@ -22,7 +22,7 @@ type customerElm struct {
 
 type departmentElm struct {
 	DepartmentID	int		`json:"department_id"`
-	DepartmentName	null.String    `json:"department_name"`
+	DepartmentName	string    `json:"department_name"`
 	//AccountID       int       `json:"account_id"`
 	ParentID		int       `json:"parent_id"`
 	PostalCode      null.String    `json:"postal_code"`
