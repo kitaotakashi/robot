@@ -26,16 +26,35 @@ func forCORS(next http.Handler) http.Handler {
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(r)
 		//origin := "http://localhost:3000"
-        w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-        w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		//w.Header().Set("Access-Control-Allow-Origin", origin)
-        w.Header().Set("Access-Control-Allow-Methods", "GET,POST, DELETE, OPTIONS")
+
+        w.Header().Set("Access-Control-Allow-Headers", "origin, X-Requested-With, Content-Type, Accept")
+		//w.Header().Set("Access-Control-Allow-Headers", "*")
+		
+        w.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
 		//w.Header().Set("Access-Control-Allow-Credentials", "true")
         // プリフライトリクエストの対応
         if r.Method == "OPTIONS" {
+			fmt.Println("pf2")
+			w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
+			w.Header().Set("Access-Control-Allow-Methods", "POST")
+			w.Header().Set("Access-Control-Allow-Headers", "*")
+    		//w.WriteHeader(200)
             w.WriteHeader(http.StatusOK)
             return
-        }
+		}
+		/*
+		if r.Method == http.MethodOptions {
+			fmt.Println("pf")
+
+			w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
+			w.Header().Set("Access-Control-Allow-Methods", "POST")
+			w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+			w.Header().Set("Access-Control-Max-Age", "3600")
+			w.WriteHeader(http.StatusNoContent)
+			return
+		}*/
         next.ServeHTTP(w, r)
         return
     })
@@ -60,8 +79,10 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/unit/", db.DetailView).Methods("GET")
 
 	router.HandleFunc("/api/v1/customers/", db.CustomersView).Methods("GET")
+	//router.HandleFunc("/api/v1/customer/",db.CreateCustomer)
 	router.HandleFunc("/api/v1/customer/", db.CustomerView).Methods("GET")
-	router.HandleFunc("/api/v1/customer/",db.CreateCustomer).Methods("POST")
+	//router.HandleFunc("/api/v1/customer/post/",db.CreateCustomer).Methods("POST")
+	router.HandleFunc("/api/v1/customer/post/",db.CreateCustomer)
 	router.HandleFunc("/api/v1/customer/",db.DeleteCustomer).Methods("DELETE")
 
 	router.HandleFunc("/api/v1/contracts/", db.ContractsView).Methods("GET")

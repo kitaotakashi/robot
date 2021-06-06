@@ -9,7 +9,7 @@ import (
 // customerElm は顧客情報を格納する
 type customerElm struct {
 	AccountID       int       `json:"account_id"`
-	CorporationName string    `json:"corporation_name"`
+	CorporationName null.String      `json:"corporation_name"`
 	Sector          null.String    `json:"sector"`
 	Name            null.String    `json:"name"`
 	Position        null.String    `json:"position"`

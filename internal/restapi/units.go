@@ -197,7 +197,7 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 						panic(err.Error())
 					}
 
-					unit.CustomerName = customerElm.CorporationName	
+					unit.CustomerName = customerElm.CorporationName.String	
 				}
 				results6, err := db.Query("SELECT department_name FROM departments WHERE parent_id=" + strconv.Itoa(contractElm.AccountID))
 				for results6.Next() {

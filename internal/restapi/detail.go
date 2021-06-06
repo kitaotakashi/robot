@@ -181,7 +181,7 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 					if err != nil {
 						panic(err.Error())
 					}
-					detail.CorporationName = customerElm.CorporationName	
+					detail.CorporationName = customerElm.CorporationName.String
 				}
 			}
 		}
