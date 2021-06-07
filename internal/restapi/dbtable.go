@@ -11,44 +11,46 @@ type customerElm struct {
 	AccountID       int       `json:"account_id"`
 	CorporationName null.String      `json:"corporation_name"`
 	Sector          null.String    `json:"sector"`
+	PostalCode      null.String    `json:"postal_code"`
+	Address         null.String    `json:"address"`
 	Name            null.String    `json:"name"`
 	Position        null.String    `json:"position"`
 	//DateOfBirth     time.Time `json:"date_of_birth"`
-	PostalCode      null.String    `json:"postal_code"`
-	Address         null.String    `json:"address"`
 	Mail            null.String    `json:"mail"`
 	Phone           null.String    `json:"phone"`
 }
 
 type departmentElm struct {
 	DepartmentID	int		`json:"department_id"`
-	DepartmentName	string    `json:"department_name"`
+	DepartmentName	null.String    `json:"department_name"`
 	//AccountID       int       `json:"account_id"`
 	ParentID		int       `json:"parent_id"`
 	PostalCode      null.String    `json:"postal_code"`
 	Address         null.String    `json:"address"`
-	Name		null.String    `json:"name"`
-	Position        null.String    `json:"position"`
-	Mail            null.String    `json:"mail"`
-	Phone           null.String    `json:"phone"`
 	DailyWorkingHour	sql.NullInt32 `json:"daily_working_hour"`
 	WeeklyHoliday	sql.NullInt32 `json:"weekly_holiday"`
+	Name			null.String		`json:"name"`
+	Position        null.String		`json:"position"`
+	Mail            null.String		`json:"mail"`
+	Phone           null.String		`json:"phone"`
+	//DailyWorkingHour	int `json:"daily_working_hour"`
+	//WeeklyHoliday		int `json:"weekly_holiday"`
 }
 
 // contractElm は契約情報を格納する
 type contractElm struct {
 	ContractID		int		`json:"contract_id"`
-	AccountID      int       `json:"account_id"`
+	AccountID      	int       `json:"account_id"`
 	ContractName	string   `json:"contract_name"`
-	ContractType   string    `json:"contract_type"`
-	ExecutionDate  time.Time `json:"execution_date"`
-	ExpirationDate time.Time `json:"expiration_date"`
+	ContractType   	string    `json:"contract_type"`
+	ExecutionDate  	time.Time `json:"execution_date"`
+	ExpirationDate 	time.Time `json:"expiration_date"`
 	//BillingDate    time.Time `json:"billing_date"`
 }
 
 type batteryElm  struct{
 	SerialNumber	int		`json:"serial_number"`
-	UnitID     string      `json:"unit_id"`
+	UnitID     		string      `json:"unit_id"`
 	ContractID		int		`json:"contract_id"`
 	BatteryOptionID	int		`json:"battery_option_id"`
 	DateOfManufacture time.Time `json:"date_of_manufacture"`

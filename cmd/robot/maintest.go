@@ -87,11 +87,19 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 
 	router.HandleFunc("/api/v1/contracts/", db.ContractsView).Methods("GET")
 	router.HandleFunc("/api/v1/contract/", db.ContractView).Methods("GET")
-	router.HandleFunc("/api/v1/contract/", db.CreateContract).Methods("POST")
+	//router.HandleFunc("/api/v1/contract/", db.CreateContract).Methods("POST")
+	router.HandleFunc("/api/v1/contract/post/", db.CreateContract)
 
 	router.HandleFunc("/api/v1/batteries/", db.BatteriesView).Methods("GET")
 	router.HandleFunc("/api/v1/battery/", db.BatteryView).Methods("GET")
-	router.HandleFunc("/api/v1/battery/", db.CreateBattery).Methods("POST")
+	//router.HandleFunc("/api/v1/battery/", db.CreateBattery).Methods("POST")
+	router.HandleFunc("/api/v1/battery/post/", db.CreateBattery)
+
+	router.HandleFunc("/api/v1/departments/", db.DepartmentsView).Methods("GET")
+	router.HandleFunc("/api/v1/department/", db.DepartmentView).Methods("GET")
+	//router.HandleFunc("/api/v1/department/", db.CreateDepartment).Methods("POST")
+	router.HandleFunc("/api/v1/department/post/", db.CreateDepartment)
+	router.HandleFunc("/api/v1/department/",db.DeleteDepartment).Methods("DELETE")
 
 	//others
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")

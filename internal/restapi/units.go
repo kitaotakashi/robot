@@ -206,7 +206,7 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 					if err != nil {
 						panic(err.Error())
 					}
-					unit.DepartmentName = departmentElm.DepartmentName
+					unit.DepartmentName = departmentElm.DepartmentName.String
 				}
 				
 			}
