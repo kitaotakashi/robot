@@ -134,17 +134,17 @@ type batteryOptionElm  struct{
 	Capacity		sql.NullFloat64		`json:"capacity"`
 	Weight			sql.NullFloat64		`json:"weight"`
 	Vertical		sql.NullInt32			`json:"vertical"`
-	Horizonal		sql.NullInt32			`json:"horizonal"`
+	Horizontal		sql.NullInt32			`json:"horizontal"`
 	Height			sql.NullInt32			`json:"height"`
-	How2Charge		null.String	`json:"how2charge"`
+	How2Change		null.String	`json:"how2change"`
 	DailyWorkingMinute	sql.NullInt32		`json:"daily_working_minute"`
 	DailyChargingMinute	sql.NullInt32		`json:"daily_charging_minute"`
-	NumberOfCharges		sql.NullInt32		`json:"number_of_charge"`
+	NumberOfChanges		sql.NullInt32		`json:"number_of_change"`
 	ForkliftEnvironment	null.String	`json:"forklift_environment"`
 	EnvironmentElse		null.String `json:"environment_else"`
 	InputPlug			null.String `json:"input_plug"`
 	OutputPlug			null.String `json:"output_plug"`
-	ChargeHelp			null.String `json:"charge_help"`
+	ChangeHelp			null.String `json:"change_help"`
 	Comment				null.String	`json:"comment"`
 	PicForklift			[]uint8		`json:"pic_forklift"`
 	PicForkliftPlate	[]uint8		`json:"pic_forklift_plate"`
@@ -154,6 +154,31 @@ type batteryOptionElm  struct{
 	PicBatteryPlug		[]uint8		`json:"pic_battery_plug"`
 	PicForkliftPlug		[]uint8		`json:"pic_forklift_plug"`
 	PicChangeEquipment	[]uint8		`json:"pic_change_equipment"`
+}
+
+type chargerElm  struct{
+	ChargerId	int	`json:"charger_id"`
+	DepartmentID	int `json:"department_id"`
+	ContractID		sql.NullInt32  `json:"contract_id"`
+	UpdateDate		pq.NullTime	`json:"update_date"`
+	InfoType		null.String	`json:"info_type"`
+	ChargerName		null.String `json:"charger_name"`
+	
+	ChargeEnvironment	null.String	`json:"charge_environment"`
+	ChargeEnvironmentElse	null.String	`json:"charge_environment_else"`
+	How2Supply		null.String		`json:"how2supply"`
+	SupplyPlug		null.String		`json:"supply_plug"`
+	SupplyElse		null.String		`json:"supply_else"`
+	PowerSupplyAmpere 	sql.NullInt32  `json:"power_supply_ampere"`
+	Stand			null.String		`json:"stand"`
+	PowerSupply2ChargerCable	sql.NullFloat64	`json:"power_supply2charger_cable_length"`
+	Charger2ForkliftCable	sql.NullFloat64	`json:"charger2forklift_cable_length"`
+	ChargerSettingHelp	null.String		`json:"charger_setting_help"`
+	Comment				null.String		`json:"comment"`
+
+	PicChargerStand			[]uint8		`json:"pic_charger_stand"`
+	PicPowerSupply			[]uint8		`json:"pic_power_supply"`
+	PicSupplyPlug			[]uint8		`json:"pic_supply_plug"`
 }
 
 // errorElm はエラー情報を格納する
