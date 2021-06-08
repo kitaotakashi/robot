@@ -3,6 +3,7 @@ package db
 import (
 	"database/sql"
 	"github.com/guregu/null"
+	"github.com/lib/pq"
 	"time"
 )
 
@@ -116,6 +117,43 @@ type unitElm struct { //要素名を変更
 	ErrorCode  sql.NullInt32 `json:"error_code"`
 	//ContractID sql.NullInt32 `json:"contract_id"` -> db側で実装まち
 	*/
+}
+
+type batteryOptionElm  struct{
+	BatteryOptionId	int	`json:"battery_option_id"`
+	DepartmentID	int `json:"department_id"`
+	ContractID		sql.NullInt32  `json:"contract_id"`
+	UpdateDate		pq.NullTime	`json:"update_date"`
+	//UpdateDate		sql.NullInt32	`json:"update_date"`
+	InfoType		null.String	`json:"info_type"`
+	OptionName		null.String `json:"option_name"`
+	Forklift		null.String `json:"forklift"`
+	Type			null.String `json:"type"`
+	SerialNumber	null.String `json:"serial_number"`
+	Voltage			sql.NullFloat64		`json:"voltage"`
+	Capacity		sql.NullFloat64		`json:"capacity"`
+	Weight			sql.NullFloat64		`json:"weight"`
+	Vertical		sql.NullInt32			`json:"vertical"`
+	Horizonal		sql.NullInt32			`json:"horizonal"`
+	Height			sql.NullInt32			`json:"height"`
+	How2Charge		null.String	`json:"how2charge"`
+	DailyWorkingMinute	sql.NullInt32		`json:"daily_working_minute"`
+	DailyChargingMinute	sql.NullInt32		`json:"daily_charging_minute"`
+	NumberOfCharges		sql.NullInt32		`json:"number_of_charge"`
+	ForkliftEnvironment	null.String	`json:"forklift_environment"`
+	EnvironmentElse		null.String `json:"environment_else"`
+	InputPlug			null.String `json:"input_plug"`
+	OutputPlug			null.String `json:"output_plug"`
+	ChargeHelp			null.String `json:"charge_help"`
+	Comment				null.String	`json:"comment"`
+	PicForklift			[]uint8		`json:"pic_forklift"`
+	PicForkliftPlate	[]uint8		`json:"pic_forklift_plate"`
+	PicBattery			[]uint8		`json:"pic_battery"`
+	PicBatteryPlate		[]uint8		`json:"pic_battery_plate"`
+	PicChargerPlace		[]uint8		`json:"pic_charger_place"`
+	PicBatteryPlug		[]uint8		`json:"pic_battery_plug"`
+	PicForkliftPlug		[]uint8		`json:"pic_forklift_plug"`
+	PicChangeEquipment	[]uint8		`json:"pic_change_equipment"`
 }
 
 // errorElm はエラー情報を格納する

@@ -101,6 +101,13 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/department/post/", db.CreateDepartment)
 	router.HandleFunc("/api/v1/department/",db.DeleteDepartment).Methods("DELETE")
 
+	router.HandleFunc("/api/v1/batteryoptions/", db.BatteryOptionsView).Methods("GET")
+	router.HandleFunc("/api/v1/batteryoption/", db.BatteryOptionView).Methods("GET")
+	router.HandleFunc("/api/v1/customerbatteryoption/", db.CustomerBatteryOptionView).Methods("GET")
+	//router.HandleFunc("/api/v1/department/", db.CreateDepartment).Methods("POST")
+	router.HandleFunc("/api/v1/batteryoption/post/", db.CreateBatteryOption)
+	router.HandleFunc("/api/v1/batteryoption/",db.DeleteBatteryOption).Methods("DELETE")
+
 	//others
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")
 	//router.HandleFunc("/.well-known/acme-challenge/rt0cYZ6L4gPOOYaPQgipkdG2ELQ0uQ21Ao46YjxsS98", challengetoken)//encryptの証明
