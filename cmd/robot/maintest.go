@@ -89,6 +89,7 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/contract/", db.ContractView).Methods("GET")
 	//router.HandleFunc("/api/v1/contract/", db.CreateContract).Methods("POST")
 	router.HandleFunc("/api/v1/contract/post/", db.CreateContract)
+	router.HandleFunc("/api/v1/contract/",db.DeleteContract).Methods("DELETE")
 
 	router.HandleFunc("/api/v1/batteries/", db.BatteriesView).Methods("GET")
 	router.HandleFunc("/api/v1/battery/", db.BatteryView).Methods("GET")
@@ -97,6 +98,7 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 
 	router.HandleFunc("/api/v1/departments/", db.DepartmentsView).Methods("GET")
 	router.HandleFunc("/api/v1/department/", db.DepartmentView).Methods("GET")
+	router.HandleFunc("/api/v1/customerdepartment/", db.CustomerDepartmentView).Methods("GET")
 	//router.HandleFunc("/api/v1/department/", db.CreateDepartment).Methods("POST")
 	router.HandleFunc("/api/v1/department/post/", db.CreateDepartment)
 	router.HandleFunc("/api/v1/department/",db.DeleteDepartment).Methods("DELETE")

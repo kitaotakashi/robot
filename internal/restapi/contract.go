@@ -28,16 +28,18 @@ func ContractView(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err.Error())
 	}
-	var contract contractElm
+	var contracts []contractElm
 	for results1.Next() {
+		var contract contractElm
 		Columns := columns(&contract)
 		err = results1.Scan(Columns...)
 		if err != nil {
 			panic(err.Error())
 		}
+		contracts = append(contracts, contract)
 	}
-	fmt.Println(contract)
-	send(contract, w)
+	fmt.Println(contracts)
+	send(contracts, w)
 }
 
 func CreateContract(w http.ResponseWriter, r *http.Request) {
@@ -116,4 +118,23 @@ func CreateContract(w http.ResponseWriter, r *http.Request) {
   	}
 
 	send("create!", w)
+}
+
+func DeleteContract(w http.ResponseWriter, r *http.Request) {
+	idtmp := query(r, "contract_id")
+	id := idtmp[0]
+
+	db := open()
+	defer db.Close()
+	
+	stmt, err := db.Prepare("DELETE FROM contracts WHERE contract_id = ?")
+
+	if err != nil {
+	  panic(err.Error())
+	}
+	_, err = stmt.Exec(id)
+   	if err != nil {
+	  panic(err.Error())
+	}
+	fmt.Fprintf(w, "contract ID = %s was deleted",id)
 }

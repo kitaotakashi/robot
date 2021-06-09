@@ -21,16 +21,18 @@ func ChargerView(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err.Error())
 	}
-	var charger Charger
+	var chargers []chargerElm
 	for results1.Next() {
-		Columns := columns(&charger.Charger)
+		var charger chargerElm
+		Columns := columns(&charger)
 		err = results1.Scan(Columns...)
 		if err != nil {
 			panic(err.Error())
 		}
+		chargers = append(chargers, charger)
 	}
-	fmt.Println(charger)
-	send(charger, w)
+	fmt.Println(chargers)
+	send(chargers, w)
 }
 
 func CustomerChargerView(w http.ResponseWriter, r *http.Request) {

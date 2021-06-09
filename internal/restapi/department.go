@@ -87,6 +87,30 @@ func DepartmentView(w http.ResponseWriter, r *http.Request) {
 	send(department, w)
 }
 
+func CustomerDepartmentView(w http.ResponseWriter, r *http.Request) {
+	id := query(r, "parent_id")
+	db := open()
+	defer db.Close()
+	results1, err := db.Query("SELECT * FROM departments WHERE parent_id=" + id[0])
+	if err != nil {
+		panic(err.Error())
+	}
+	var departments []departmentElm
+	for results1.Next() {
+		var department departmentElm
+		//var department_input departmentElm
+		//Columns := columns(&department_input)
+		Columns := columns(&department)
+		err = results1.Scan(Columns...)
+		if err != nil {
+			panic(err.Error())
+		}
+		departments = append(departments, department)
+	}
+	fmt.Println(departments)
+	send(departments, w)
+}
+
 func CreateDepartment(w http.ResponseWriter, r *http.Request) {
 	//var customer customerElm
 	body, err := ioutil.ReadAll(r.Body)

@@ -21,16 +21,18 @@ func BatteryOptionView(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err.Error())
 	}
-	var batteryoption BatteryOption
+	var batteryoptions []batteryOptionElm
 	for results1.Next() {
-		Columns := columns(&batteryoption.BatteryOption)
+		var batteryoption batteryOptionElm
+		Columns := columns(&batteryoption)
 		err = results1.Scan(Columns...)
 		if err != nil {
 			panic(err.Error())
 		}
+		batteryoptions = append(batteryoptions, batteryoption)
 	}
-	fmt.Println(batteryoption)
-	send(batteryoption, w)
+	fmt.Println(batteryoptions)
+	send(batteryoptions, w)
 }
 
 func CustomerBatteryOptionView(w http.ResponseWriter, r *http.Request) {
