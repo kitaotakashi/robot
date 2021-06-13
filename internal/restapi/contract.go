@@ -42,6 +42,28 @@ func ContractView(w http.ResponseWriter, r *http.Request) {
 	send(contracts, w)
 }
 
+func CustomerContractView(w http.ResponseWriter, r *http.Request) {
+	id := query(r, "department_id")
+	db := open()
+	defer db.Close()
+	results1, err := db.Query("SELECT * FROM contracts WHERE account_id=" + id[0])
+	if err != nil {
+		panic(err.Error())
+	}
+	var contracts []contractElm
+	for results1.Next() {
+		var contract contractElm
+		Columns := columns(&contract)
+		err = results1.Scan(Columns...)
+		if err != nil {
+			panic(err.Error())
+		}
+		contracts = append(contracts, contract)
+	}
+	fmt.Println(contracts)
+	send(contracts, w)
+}
+
 func CreateContract(w http.ResponseWriter, r *http.Request) {
 	//var customer customerElm
 	body, err := ioutil.ReadAll(r.Body)
