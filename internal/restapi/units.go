@@ -179,17 +179,28 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 
 			//contractIDから取得
 			//var accountId string
-			results4, err := db.Query("SELECT account_id FROM contracts WHERE contract_id=" + strconv.Itoa(batteryElm.ContractID))
+			results4, err := db.Query("SELECT department_id FROM contracts WHERE contract_id=" + strconv.Itoa(batteryElm.ContractID))
 			for results4.Next() {
 				var contractElm contractElm
-				err = results4.Scan(&contractElm.AccountID)
+				err = results4.Scan(&contractElm.DepartmentID)
 				if err != nil {
 					panic(err.Error())
 				}
 
 				//acountId = contractElm.AccountID
+				//department_idからparent_id=account_idを取得
+				var departmentElm departmentElm
+				results7, err := db.Query("SELECT parent_id FROM departments WHERE department_id=" + strconv.Itoa(contractElm.DepartmentID))
+				for results7.Next(){
+					
+					err = results7.Scan(&departmentElm.ParentID)
+					if err != nil {
+						panic(err.Error())
+					}
+				}
 
-				results5, err := db.Query("SELECT corporation_name FROM customers WHERE account_id=" + strconv.Itoa(contractElm.AccountID))
+				//results5, err := db.Query("SELECT corporation_name FROM customers WHERE account_id=" + strconv.Itoa(contractElm.DepartmentID))
+				results5, err := db.Query("SELECT corporation_name FROM customers WHERE account_id=" + strconv.Itoa(departmentElm.ParentID))
 				for results5.Next() {
 					var customerElm customerElm
 					err = results5.Scan(&customerElm.CorporationName)
@@ -199,9 +210,9 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 
 					unit.CustomerName = customerElm.CorporationName.String	
 				}
-				results6, err := db.Query("SELECT department_name FROM departments WHERE parent_id=" + strconv.Itoa(contractElm.AccountID))
+				results6, err := db.Query("SELECT department_name FROM departments WHERE parent_id=" + strconv.Itoa(contractElm.DepartmentID))
 				for results6.Next() {
-					var departmentElm departmentElm
+					//var departmentElm departmentElm
 					err = results6.Scan(&departmentElm.DepartmentName)
 					if err != nil {
 						panic(err.Error())

@@ -10,9 +10,9 @@ import (
 // customer は顧客の詳細情報を格納する
 type customer struct {
 	// 契約情報
-	Contracts []contractElm `json:"contracts"`
+	//Contracts []contractElm `json:"contracts"`
 	// バッテリー情報
-	Units []unitElm `json:"units"`
+	//Units []unitElm `json:"units"`
 	//　顧客情報
 	Customer customerElm `json:"customer"`
 }
@@ -33,6 +33,8 @@ func CustomerView(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			panic(err.Error())
 		}
+		//契約情報
+		/*
 		results2, err := db.Query("SELECT * FROM contracts WHERE account_id=" + id[0])
 		if err != nil {
 			panic(err.Error())
@@ -45,7 +47,9 @@ func CustomerView(w http.ResponseWriter, r *http.Request) {
 				panic(err.Error())
 			}
 			customer.Contracts = append(customer.Contracts, contract)
-		}
+		}*/
+		//バッテリー情報
+		/*
 		results2, err = db.Query("SELECT * FROM units WHERE unit_id=(SELECT unit_id FROM contracts WHERE account_id= " + id[0] + ")")
 		if err != nil {
 			panic(err.Error())
@@ -58,7 +62,7 @@ func CustomerView(w http.ResponseWriter, r *http.Request) {
 				panic(err.Error())
 			}
 			customer.Units = append(customer.Units, unit)
-		}
+		}*/
 	}
 	fmt.Println(customer)
 	send(customer, w)

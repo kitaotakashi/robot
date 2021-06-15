@@ -46,7 +46,7 @@ func CustomerContractView(w http.ResponseWriter, r *http.Request) {
 	id := query(r, "department_id")
 	db := open()
 	defer db.Close()
-	results1, err := db.Query("SELECT * FROM contracts WHERE account_id=" + id[0])
+	results1, err := db.Query("SELECT * FROM contracts WHERE department_id=" + id[0])
 	if err != nil {
 		panic(err.Error())
 	}
@@ -74,7 +74,7 @@ func CreateContract(w http.ResponseWriter, r *http.Request) {
 	keyVal := make(map[string]string)
   	json.Unmarshal(body, &keyVal)
   	id := keyVal["contract_id"]
-	field := keyVal["account_id"]
+	field := keyVal["department_id"]
 	name := keyVal["contract_name"]
 	ctype := keyVal["contract_type"]
 	st_date := keyVal["execution_date"]
@@ -94,7 +94,7 @@ func CreateContract(w http.ResponseWriter, r *http.Request) {
     	panic(err.Error())
   	}
 
-	stmt, err = db.Prepare("UPDATE contracts SET account_id = ? WHERE contract_id = ?")
+	stmt, err = db.Prepare("UPDATE contracts SET department_id = ? WHERE contract_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 

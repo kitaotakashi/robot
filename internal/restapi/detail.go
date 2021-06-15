@@ -164,17 +164,29 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 			//detail.Profile.Purpose = unitElm.Purpose//from batteries DB
 			detail.Profile.Purpose = batteryElm.Purpose
 
-			results4, err := db.Query("SELECT account_id FROM contracts WHERE contract_id=" + strconv.Itoa(batteryElm.ContractID))
+			results4, err := db.Query("SELECT department_id FROM contracts WHERE contract_id=" + strconv.Itoa(batteryElm.ContractID))
 			for results4.Next() {
 				var contractElm contractElm
-				err = results4.Scan(&contractElm.AccountID)
+				err = results4.Scan(&contractElm.DepartmentID)
 				if err != nil {
 					panic(err.Error())
 				}
 
-				detail.CustomerID = strconv.Itoa(contractElm.AccountID)
+				detail.CustomerID = strconv.Itoa(contractElm.DepartmentID)
 
-				results5, err := db.Query("SELECT corporation_name FROM customers WHERE account_id=" + strconv.Itoa(contractElm.AccountID))
+				//department_idからparent_id=account_idを取得
+				var departmentElm departmentElm
+				results7, err := db.Query("SELECT parent_id FROM departments WHERE department_id=" + strconv.Itoa(contractElm.DepartmentID))
+				for results7.Next(){
+					
+					err = results7.Scan(&departmentElm.ParentID)
+					if err != nil {
+						panic(err.Error())
+					}
+				}
+
+				results5, err := db.Query("SELECT corporation_name FROM customers WHERE account_id=" + strconv.Itoa(departmentElm.ParentID))
+				//results5, err := db.Query("SELECT corporation_name FROM customers WHERE department_id=" + strconv.Itoa(contractElm.DepartmentID))
 				for results5.Next() {
 					var customerElm customerElm
 					err = results5.Scan(&customerElm.CorporationName)

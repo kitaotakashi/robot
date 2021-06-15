@@ -25,7 +25,7 @@ type departmentElm struct {
 	DepartmentID	int		`json:"department_id"`
 	DepartmentName	null.String    `json:"department_name"`
 	//AccountID       int       `json:"account_id"`
-	ParentID		int       `json:"parent_id"`
+	ParentID		int			`json:"parent_id"`
 	PostalCode      null.String    `json:"postal_code"`
 	Address         null.String    `json:"address"`
 	DailyWorkingHour	sql.NullInt32 `json:"daily_working_hour"`
@@ -41,7 +41,7 @@ type departmentElm struct {
 // contractElm は契約情報を格納する
 type contractElm struct {
 	ContractID		int		`json:"contract_id"`
-	AccountID      	int       `json:"account_id"`
+	DepartmentID      	int       `json:"department_id"`
 	ContractName	string   `json:"contract_name"`
 	ContractType   	string    `json:"contract_type"`
 	ExecutionDate  	time.Time `json:"execution_date"`
