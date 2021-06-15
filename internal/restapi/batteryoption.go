@@ -128,7 +128,14 @@ func CreateBatteryOption(w http.ResponseWriter, r *http.Request) {
   	if err != nil {
     	panic(err.Error())
   	} 
-	_, err = stmt.Exec(contract,id)
+
+	fmt.Println(err,contract)
+	if contract != "-1" {
+		_, err = stmt.Exec(contract,id)
+	}else{
+		fmt.Println("field registration")
+	}
+
   	if err != nil {
     	panic(err.Error())
   	}

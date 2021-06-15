@@ -29,11 +29,11 @@ func DepartmentView(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err.Error())
 	}
-	var department department
+	var departments []departmentElm
 	for results1.Next() {
-		//var department_input departmentElm
+		var department departmentElm
 		//Columns := columns(&department_input)
-		Columns := columns(&department.Department)
+		Columns := columns(&department)
 		err = results1.Scan(Columns...)
 		if err != nil {
 			panic(err.Error())
@@ -82,9 +82,10 @@ func DepartmentView(w http.ResponseWriter, r *http.Request) {
 			department.Customer = append(department.Customer, customer)
 		}
 		*/
+		departments=append(departments,department)
 	}
-	fmt.Println(department)
-	send(department, w)
+	fmt.Println(departments)
+	send(departments, w)
 }
 
 func CustomerDepartmentView(w http.ResponseWriter, r *http.Request) {
