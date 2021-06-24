@@ -172,7 +172,7 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 					panic(err.Error())
 				}
 
-				detail.CustomerID = strconv.Itoa(contractElm.DepartmentID)
+				//detail.CustomerID = strconv.Itoa(contractElm.DepartmentID)
 
 				//department_idからparent_id=account_idを取得
 				var departmentElm departmentElm
@@ -184,6 +184,8 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 						panic(err.Error())
 					}
 				}
+
+				detail.CustomerID = strconv.Itoa(departmentElm.ParentID)
 
 				results5, err := db.Query("SELECT corporation_name FROM customers WHERE account_id=" + strconv.Itoa(departmentElm.ParentID))
 				//results5, err := db.Query("SELECT corporation_name FROM customers WHERE department_id=" + strconv.Itoa(contractElm.DepartmentID))
