@@ -38,6 +38,13 @@ type departmentElm struct {
 	//WeeklyHoliday		int `json:"weekly_holiday"`
 }
 
+type batteryRequestElm struct {
+	BatteryOptionId	int	`json:"battery_option_id"`
+	OptionName		null.String `json:"option_name"`
+	DepartmentName	null.String    `json:"department_name"`
+	ContractName	string   `json:"contract_name"`
+}
+
 // contractElm は契約情報を格納する
 type contractElm struct {
 	ContractID		int		`json:"contract_id"`

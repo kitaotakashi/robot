@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"io/ioutil"
+	"strconv"
 )
 
 // customer は顧客の詳細情報を格納する
@@ -64,6 +65,51 @@ func CustomerBatteryOptionView(w http.ResponseWriter, r *http.Request) {
 	}
 	*/
 	send(batteryoptions, w)
+}
+
+func BatteryRequestView(w http.ResponseWriter, r *http.Request) {
+	db := open()
+	defer db.Close()
+	results, err := db.Query("SELECT battery_option_id,option_name,department_id,contract_id FROM battery_options WHERE contract_id IS NOT NULL")
+	if err != nil {
+		panic(err.Error())
+	}
+	var batteryrequests []batteryRequestElm
+	for results.Next() {
+		var batteryrequest batteryRequestElm
+		var department_id int
+		var contract_id int
+		err = results.Scan(&batteryrequest.BatteryOptionId,&batteryrequest.OptionName,&department_id,&contract_id)
+		if err != nil {
+			panic(err.Error())
+		}
+		//get department name
+		results2, err := db.Query("SELECT department_name FROM departments WHERE department_id =" + strconv.Itoa(department_id))
+		if err != nil {
+			panic(err.Error())
+		}
+		for results2.Next(){
+			err = results2.Scan(&batteryrequest.DepartmentName)
+			if err != nil {
+				panic(err.Error())
+			}
+		}
+		//get contract name
+		results3, err := db.Query("SELECT contract_name FROM contracts WHERE contract_id =" + strconv.Itoa(contract_id))
+		if err != nil {
+			panic(err.Error())
+		}
+		for results3.Next(){
+			err = results3.Scan(&batteryrequest.ContractName)
+			if err != nil {
+				panic(err.Error())
+			}
+		}
+
+		batteryrequests = append(batteryrequests, batteryrequest) //各customerをcustomersに格納
+	}
+	fmt.Println(batteryrequests)
+	send(batteryrequests, w)
 }
 
 func CreateBatteryOption(w http.ResponseWriter, r *http.Request) {
