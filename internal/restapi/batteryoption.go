@@ -84,23 +84,23 @@ func BatteryRequestView(w http.ResponseWriter, r *http.Request) {
 			panic(err.Error())
 		}
 		//get department name
-		results2, err := db.Query("SELECT department_name FROM departments WHERE department_id =" + strconv.Itoa(department_id))
+		results2, err := db.Query("SELECT department_id,department_name FROM departments WHERE department_id =" + strconv.Itoa(department_id))
 		if err != nil {
 			panic(err.Error())
 		}
 		for results2.Next(){
-			err = results2.Scan(&batteryrequest.DepartmentName)
+			err = results2.Scan(&batteryrequest.DepartmentID,&batteryrequest.DepartmentName)
 			if err != nil {
 				panic(err.Error())
 			}
 		}
 		//get contract name
-		results3, err := db.Query("SELECT contract_name FROM contracts WHERE contract_id =" + strconv.Itoa(contract_id))
+		results3, err := db.Query("SELECT contract_id, contract_name FROM contracts WHERE contract_id =" + strconv.Itoa(contract_id))
 		if err != nil {
 			panic(err.Error())
 		}
 		for results3.Next(){
-			err = results3.Scan(&batteryrequest.ContractName)
+			err = results3.Scan(&batteryrequest.ContractID,&batteryrequest.ContractName)
 			if err != nil {
 				panic(err.Error())
 			}

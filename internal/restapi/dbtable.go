@@ -41,7 +41,9 @@ type departmentElm struct {
 type batteryRequestElm struct {
 	BatteryOptionId	int	`json:"battery_option_id"`
 	OptionName		null.String `json:"option_name"`
+	DepartmentID	int		`json:"department_id"`
 	DepartmentName	null.String    `json:"department_name"`
+	ContractID		int		`json:"contract_id"`
 	ContractName	string   `json:"contract_name"`
 }
 
