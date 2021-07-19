@@ -19,7 +19,7 @@ import (
 )
 
 func challengetoken(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "rt0cYZ6L4gPOOYaPQgipkdG2ELQ0uQ21Ao46YjxsS98.XDi_5t34FW25GEQBQJPUAU2OKcjJutOUYefqngHTYxk")
+    fmt.Fprintf(w, "0aHIYjg2h4AQ0bu6MJOBe5-Qgm1jBpiWTbUSiptyZ40.XDi_5t34FW25GEQBQJPUAU2OKcjJutOUYefqngHTYxk")
 }
 
 func forCORS(next http.Handler) http.Handler {
@@ -111,6 +111,8 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/batteryoption/put/", db.UpdateBatteryOption)
 	router.HandleFunc("/api/v1/batteryoption/",db.DeleteBatteryOption).Methods("DELETE")
 
+	router.HandleFunc("/api/v1/batteryrequests/", db.BatteryRequestView).Methods("GET")
+
 	router.HandleFunc("/api/v1/chargers/", db.ChargersView).Methods("GET")
 	router.HandleFunc("/api/v1/charger/", db.ChargerView).Methods("GET")
 	router.HandleFunc("/api/v1/customercharger/", db.CustomerChargerView).Methods("GET")
@@ -119,14 +121,12 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 
 	//others
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")
-	//router.HandleFunc("/.well-known/acme-challenge/rt0cYZ6L4gPOOYaPQgipkdG2ELQ0uQ21Ao46YjxsS98", challengetoken)//encryptの証明
+	//router.HandleFunc("/.well-known/acme-challenge/0aHIYjg2h4AQ0bu6MJOBe5-Qgm1jBpiWTbUSiptyZ40", challengetoken)//encryptの証明
 
 	fmt.Println("RoBOT Server Started Port 443")
 
-	//log.Fatal(http.ListenAndServeTLS(":443", "../../ssl/fullchain_new.pem", "../../ssl/server_new.key",router))
 	//return http.ListenAndServe(fmt.Sprintf(":%d", 80), router)
 	return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain.pem", "../../ssl/server.key", router) //kitao追加 https
-	//return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain.pem", "../../ssl/server.key", handlers.CORS(handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization", "Origin", "application/json"}), handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"}), handlers.AllowedOrigins([]string{"*", "http://localhost:3000"}))(router))
 	
 	/*
 	c := cors.New(cors.Options{
