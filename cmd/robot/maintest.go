@@ -119,6 +119,9 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/charger/post/", db.CreateCharger)
 	router.HandleFunc("/api/v1/charger/",db.DeleteCharger).Methods("DELETE")
 
+	router.HandleFunc("/api/v1/errors/",db.ErrorsView).Methods("GET")
+	router.HandleFunc("/api/v1/errorstates/",db.ErrorStatesView).Methods("GET")
+
 	//others
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")
 	//router.HandleFunc("/.well-known/acme-challenge/0aHIYjg2h4AQ0bu6MJOBe5-Qgm1jBpiWTbUSiptyZ40", challengetoken)//encryptの証明

@@ -114,12 +114,12 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 				panic(err.Error())
 			}
 			for results2.Next() {
-				var errorElm errorElm
+				var errorElm errorsElm
 				err = results2.Scan(&errorElm.ErrorCode, &errorElm.RequiredAction)
 				if err != nil {
 					panic(err.Error())
 				}
-				detail.Error.ErrorCode = errorElm.ErrorCode
+				detail.Error.ErrorCode.Int32 = int32(errorElm.ErrorCode)
 				detail.Error.RequiredAction = errorElm.RequiredAction
 			}
 		}else{

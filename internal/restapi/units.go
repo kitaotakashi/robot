@@ -147,7 +147,7 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 				panic(err.Error())
 			}
 			for results2.Next() {
-				var errorElm errorElm
+				var errorElm errorsElm
 				err = results2.Scan(&errorElm.RequiredAction)
 				if err != nil {
 					panic(err.Error())

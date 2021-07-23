@@ -5,6 +5,7 @@ import (
 	"github.com/guregu/null"
 	"github.com/lib/pq"
 	"time"
+	//"encoding/json"
 )
 
 // customerElm は顧客情報を格納する
@@ -155,6 +156,7 @@ type batteryOptionElm  struct{
 	OutputPlug			null.String `json:"output_plug"`
 	ChangeHelp			null.String `json:"change_help"`
 	Comment				null.String	`json:"comment"`
+	Request				null.String     `json:"request"`
 	PicForklift			[]uint8		`json:"pic_forklift"`
 	PicForkliftPlate	[]uint8		`json:"pic_forklift_plate"`
 	PicBattery			[]uint8		`json:"pic_battery"`
@@ -184,6 +186,7 @@ type chargerElm  struct{
 	Charger2ForkliftCable	sql.NullFloat64	`json:"charger2forklift_cable_length"`
 	ChargerSettingHelp	null.String		`json:"charger_setting_help"`
 	Comment				null.String		`json:"comment"`
+	Request				null.String     `json:"request"`
 
 	PicChargerStand			[]uint8		`json:"pic_charger_stand"`
 	PicPowerSupply			[]uint8		`json:"pic_power_supply"`
@@ -191,8 +194,16 @@ type chargerElm  struct{
 }
 
 // errorElm はエラー情報を格納する
-type errorElm struct {
-	ErrorCode      sql.NullInt32 `json:"error_code"`
+type errorStatesElm struct {
+	ErrorCode      	int 		`json:"error_code"`
+	ObjectType		string 		`json:"object_type"`
+	ObjectId   		int        	`json:"object_id"`
+	ErrorTime 		time.Time   `json:"error_time"`
+}
+
+type errorsElm struct {
+	ErrorCode      int 			 `json:"error_code"`
+	ErrorCategory	string 		 `json:"error_category"`
 	ErrorMessage   string        `json:"error_message"`
 	RequiredAction string        `json:"required_action"`
 }
