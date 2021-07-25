@@ -120,7 +120,9 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/charger/",db.DeleteCharger).Methods("DELETE")
 
 	router.HandleFunc("/api/v1/errors/",db.ErrorsView).Methods("GET")
+	router.HandleFunc("/api/v1/error/",db.ErrorView).Methods("GET")
 	router.HandleFunc("/api/v1/errorstates/",db.ErrorStatesView).Methods("GET")
+	router.HandleFunc("/api/v1/errorstate/",db.ErrorStateView).Methods("GET")
 
 	//others
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")
