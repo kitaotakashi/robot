@@ -35,7 +35,7 @@ func CustomerView(w http.ResponseWriter, r *http.Request) {
 		}
 		//契約情報
 		/*
-		results2, err := db.Query("SELECT * FROM contracts WHERE account_id=" + id[0])
+		results2, err := db.Query("SELECT * FROM contracts WHERE department_id=" + id[0])
 		if err != nil {
 			panic(err.Error())
 		}
@@ -47,7 +47,7 @@ func CustomerView(w http.ResponseWriter, r *http.Request) {
 				panic(err.Error())
 			}
 			customer.Contracts = append(customer.Contracts, contract)
-		}*/
+		}
 		//バッテリー情報
 		/*
 		results2, err = db.Query("SELECT * FROM units WHERE unit_id=(SELECT unit_id FROM contracts WHERE account_id= " + id[0] + ")")

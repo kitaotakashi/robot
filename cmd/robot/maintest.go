@@ -86,6 +86,7 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/customer/",db.DeleteCustomer).Methods("DELETE")
 
 	router.HandleFunc("/api/v1/contracts/", db.ContractsView).Methods("GET")
+	router.HandleFunc("/api/v1/contractshome/", db.ContractsHomeView).Methods("GET")
 	router.HandleFunc("/api/v1/contract/", db.ContractView).Methods("GET")
 	router.HandleFunc("/api/v1/customercontract/", db.CustomerContractView).Methods("GET")
 	//router.HandleFunc("/api/v1/contract/", db.CreateContract).Methods("POST")

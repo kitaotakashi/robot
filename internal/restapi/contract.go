@@ -19,6 +19,11 @@ type customer struct {
 }
 */
 
+type contractDetail struct{
+	Contract []contractElm `json:"contracts"`
+	DepartmentName string `json:"department_name"`
+}
+
 // CustomerView はCustomerページに必要なデータをDBから取得し、JSONで返す
 func ContractView(w http.ResponseWriter, r *http.Request) {
 	id := query(r, "contract_id")
