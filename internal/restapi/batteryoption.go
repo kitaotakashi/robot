@@ -146,6 +146,15 @@ func CreateBatteryOption(w http.ResponseWriter, r *http.Request) {
 	output := keyVal["output_plug"]
 	help := keyVal["change_help"]
 	comment := keyVal["comment"]
+	request := keyVal["request"]
+	pic1 :=	keyVal["pic_forklift"]
+	pic2 := keyVal["pic_forklift_plate"]
+	pic3 :=	keyVal["pic_battery"]
+	pic4 := keyVal["pic_battery_plate"]
+	pic5 := keyVal["pic_change_place"]
+	pic6 := keyVal["pic_battery_plug"]
+	pic7 := keyVal["pic_forklift_plug"]
+	pic8 := keyVal["pic_change_equipment"]
 
 	fmt.Println(id,did)
 
@@ -380,6 +389,87 @@ func CreateBatteryOption(w http.ResponseWriter, r *http.Request) {
     	panic(err.Error())
   	} 
 	_, err = stmt.Exec(comment,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE battery_options SET request = ? WHERE battery_option_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(request,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE battery_options SET pic_forklift = ? WHERE battery_option_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(pic1,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE battery_options SET pic_forklift_plate = ? WHERE battery_option_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(pic2,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE battery_options SET pic_battery = ? WHERE battery_option_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(pic3,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE battery_options SET pic_battery_plate = ? WHERE battery_option_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(pic4,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE battery_options SET pic_change_place = ? WHERE battery_option_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(pic5,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE battery_options SET pic_battery_plug = ? WHERE battery_option_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(pic6,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE battery_options SET pic_forklift_plug = ? WHERE battery_option_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(pic7,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE battery_options SET pic_change_equipment = ? WHERE battery_option_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(pic8,id)
   	if err != nil {
     	panic(err.Error())
   	}

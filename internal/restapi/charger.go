@@ -82,7 +82,11 @@ func CreateCharger(w http.ResponseWriter, r *http.Request) {
 	//ps2c := keyVal["power_supply2charger_cable_langth"]
 	//c2f := keyVal["charger2forklift_cable_langth"]
 	help := keyVal["charger_setting_help"]
-	comment := keyVal["comment"]	
+	comment := keyVal["comment"]
+	request := keyVal["request"]
+	pic1 :=	keyVal["pic_charger_stand"]
+	pic2 := keyVal["pic_power_supply"]
+	pic3 := keyVal["pic_supply_plug"]
 
 	fmt.Println(id,did)
 
@@ -234,11 +238,47 @@ func CreateCharger(w http.ResponseWriter, r *http.Request) {
     	panic(err.Error())
   	}
 
-	  stmt, err = db.Prepare("UPDATE chargers SET comment = ? WHERE charger_id = ?")
+	stmt, err = db.Prepare("UPDATE chargers SET comment = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
 	_, err = stmt.Exec(comment,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE chargers SET request = ? WHERE charger_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(request,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE chargers SET pic_charger_stand = ? WHERE charger_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(pic1,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE chargers SET pic_power_supply = ? WHERE charger_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(pic2,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE chargers SET pic_supply_plug = ? WHERE charger_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(pic3,id)
   	if err != nil {
     	panic(err.Error())
   	}

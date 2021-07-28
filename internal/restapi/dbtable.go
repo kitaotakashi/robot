@@ -157,14 +157,14 @@ type batteryOptionElm  struct{
 	ChangeHelp			null.String `json:"change_help"`
 	Comment				null.String	`json:"comment"`
 	Request				null.String     `json:"request"`
-	PicForklift			[]uint8		`json:"pic_forklift"`
-	PicForkliftPlate	[]uint8		`json:"pic_forklift_plate"`
-	PicBattery			[]uint8		`json:"pic_battery"`
-	PicBatteryPlate		[]uint8		`json:"pic_battery_plate"`
-	PicChargerPlace		[]uint8		`json:"pic_charger_place"`
-	PicBatteryPlug		[]uint8		`json:"pic_battery_plug"`
-	PicForkliftPlug		[]uint8		`json:"pic_forklift_plug"`
-	PicChangeEquipment	[]uint8		`json:"pic_change_equipment"`
+	PicForklift			null.String		`json:"pic_forklift"`
+	PicForkliftPlate	null.String		`json:"pic_forklift_plate"`
+	PicBattery			null.String		`json:"pic_battery"`
+	PicBatteryPlate		null.String		`json:"pic_battery_plate"`
+	PicChargerPlace		null.String		`json:"pic_charger_place"`
+	PicBatteryPlug		null.String		`json:"pic_battery_plug"`
+	PicForkliftPlug		null.String		`json:"pic_forklift_plug"`
+	PicChangeEquipment	null.String		`json:"pic_change_equipment"`
 }
 
 type chargerElm  struct{
@@ -188,9 +188,9 @@ type chargerElm  struct{
 	Comment				null.String		`json:"comment"`
 	Request				null.String     `json:"request"`
 
-	PicChargerStand			[]uint8		`json:"pic_charger_stand"`
-	PicPowerSupply			[]uint8		`json:"pic_power_supply"`
-	PicSupplyPlug			[]uint8		`json:"pic_supply_plug"`
+	PicChargerStand			null.String		`json:"pic_charger_stand"`
+	PicPowerSupply			null.String		`json:"pic_power_supply"`
+	PicSupplyPlug			null.String		`json:"pic_supply_plug"`
 }
 
 // errorElm はエラー情報を格納する
