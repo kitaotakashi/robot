@@ -112,6 +112,31 @@ func BatteryRequestView(w http.ResponseWriter, r *http.Request) {
 	send(batteryrequests, w)
 }
 
+//契約詳細時に、contractに紐づいたoptionsを全て取得（field以外）
+func ContractBatteryOptionView(w http.ResponseWriter, r *http.Request) {
+	id := query(r, "contract_id")
+	db := open()
+	defer db.Close()
+	results, err := db.Query("SELECT * FROM battery_options WHERE contract_id =" + id[0])
+	if err != nil {
+		panic(err.Error())
+	}
+	var batteryoptions []batteryOptionElm
+	for results.Next() {
+		var batteryoption batteryOptionElm
+		Columns := columns(&batteryoption)
+		err = results.Scan(Columns...)
+		if err != nil {
+			panic(err.Error())
+		}
+		
+		batteryoptions = append(batteryoptions, batteryoption) //各customerをcustomersに格納
+	}
+	fmt.Println(batteryoptions)
+	send(batteryoptions, w)
+}
+
+
 func CreateBatteryOption(w http.ResponseWriter, r *http.Request) {
 
 	body, err := ioutil.ReadAll(r.Body)
