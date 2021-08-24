@@ -57,6 +57,28 @@ func CustomerChargerView(w http.ResponseWriter, r *http.Request) {
 	send(chargers, w)
 }
 
+func ContractChargerView(w http.ResponseWriter, r *http.Request) {
+	id := query(r, "contract_id")
+	db := open()
+	defer db.Close()
+	results1, err := db.Query("SELECT * FROM chargers WHERE contract_id=" + id[0])
+	if err != nil {
+		panic(err.Error())
+	}
+	var chargers []chargerElm
+	for results1.Next() {
+		var charger chargerElm
+		Columns := columns(&charger)
+		err = results1.Scan(Columns...)
+		if err != nil {
+			panic(err.Error())
+		}
+		chargers = append(chargers, charger)
+	}
+	fmt.Println(chargers)
+	send(chargers, w)
+}
+
 func CreateCharger(w http.ResponseWriter, r *http.Request) {
 
 	body, err := ioutil.ReadAll(r.Body)
