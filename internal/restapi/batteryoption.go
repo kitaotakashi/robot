@@ -159,7 +159,7 @@ func CreateBatteryOption(w http.ResponseWriter, r *http.Request) {
 	capacity := keyVal["capacity"]
 	weight := keyVal["weight"]
 	vertical := keyVal["vertical"]
-	horizontal := keyVal["horizonal"]
+	horizontal := keyVal["horizontal"]
 	height := keyVal["height"]
 	how2 := keyVal["how2change"]
 	dwm := keyVal["daily_working_minute"]

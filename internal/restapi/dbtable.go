@@ -161,7 +161,7 @@ type batteryOptionElm  struct{
 	PicForkliftPlate	null.String		`json:"pic_forklift_plate"`
 	PicBattery			null.String		`json:"pic_battery"`
 	PicBatteryPlate		null.String		`json:"pic_battery_plate"`
-	PicChargerPlace		null.String		`json:"pic_charger_place"`
+	PicChangePlace		null.String		`json:"pic_change_place"`
 	PicBatteryPlug		null.String		`json:"pic_battery_plug"`
 	PicForkliftPlug		null.String		`json:"pic_forklift_plug"`
 	PicChangeEquipment	null.String		`json:"pic_change_equipment"`
@@ -187,7 +187,6 @@ type chargerElm  struct{
 	ChargerSettingHelp	null.String		`json:"charger_setting_help"`
 	Comment				null.String		`json:"comment"`
 	Request				null.String     `json:"request"`
-
 	PicChargerStand			null.String		`json:"pic_charger_stand"`
 	PicPowerSupply			null.String		`json:"pic_power_supply"`
 	PicSupplyPlug			null.String		`json:"pic_supply_plug"`
