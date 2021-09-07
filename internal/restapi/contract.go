@@ -177,7 +177,7 @@ func CustomerContractView(w http.ResponseWriter, r *http.Request) {
 	send(contracts, w)
 }
 
-func CustomerContractDefaultView(w http.ResponseWriter, r *http.Request) {
+func DepartmentContractDefaultView(w http.ResponseWriter, r *http.Request) {
 	id := query(r, "department_id")
 	db := open()
 	defer db.Close()
@@ -279,6 +279,113 @@ func CustomerContractDefaultView(w http.ResponseWriter, r *http.Request) {
 		}
 
 		contracts = append(contracts, contract)
+	}
+	fmt.Println(contracts)
+	send(contracts, w)
+}
+
+func CustomerContractDefaultView(w http.ResponseWriter, r *http.Request) {
+	id := query(r, "account_id")
+	db := open()
+	defer db.Close()
+	results1, err := db.Query("SELECT department_id FROM departments WHERE parent_id=" + id[0])
+	if err != nil {
+		panic(err.Error())
+	}
+	var contracts []ContractHomeDefaultElm
+	for results1.Next() {
+		var department_id int
+		err = results1.Scan(&department_id)
+		if err != nil {
+			panic(err.Error())
+		}
+		results2, err := db.Query("SELECT * FROM contracts WHERE department_id=" + strconv.Itoa(department_id))
+		if err != nil {
+			panic(err.Error())
+		}
+		//fmt.Println(results2)
+		for results2.Next() {
+			var contract ContractHomeDefaultElm
+			Columns := columns(&contract.Contract)
+			err = results2.Scan(Columns...)
+			if err != nil {
+				panic(err.Error())
+			}
+
+			//var department_id = contract.Contract.DepartmentID
+
+			var account_id int
+			account_id, err=strconv.Atoi(id[0])
+
+			contract.AccountID = account_id
+
+			//account_idをもとに、customer_nameの取得
+			results3, err := db.Query("SELECT corporation_name FROM customers WHERE account_id=" + strconv.Itoa(account_id))
+			
+			if err != nil {
+				panic(err.Error())
+			}
+			//fmt.Println(results3)
+			for results3.Next() {
+				err = results3.Scan(&contract.CustomerName)
+				if err != nil {
+					panic(err.Error())
+				}
+			}
+
+			//battery optionの種別取得
+			//contract_idをもとにbattery_optionsを取得
+			var contract_id = contract.Contract.ContractID
+			results4, err := db.Query("SELECT battery_option_id,info_type FROM battery_options WHERE contract_id=" + strconv.Itoa(contract_id))
+			if err != nil {
+				panic(err.Error())
+			}
+			//fmt.Println(results4)
+			for results4.Next() {
+				var battery_option_id int
+				var info_type string
+				err = results4.Scan(&battery_option_id,&info_type)
+				if err != nil {
+					panic(err.Error())
+				}
+
+				if (info_type=="field" || info_type==""){
+					contract.BatteryFieldID=append(contract.BatteryFieldID,battery_option_id)
+				} else if info_type=="request"{
+					contract.BatteryRequestID=append(contract.BatteryRequestID,battery_option_id)
+				} else if info_type=="manufacture"{
+					contract.BatteryManuID=append(contract.BatteryManuID,battery_option_id)
+				} else if info_type=="product"{
+					contract.BatteryProductID=append(contract.BatteryProductID,battery_option_id)
+				}
+			}
+
+			//chargerの種別取得
+			results5, err := db.Query("SELECT charger_id,info_type FROM chargers WHERE contract_id=" + strconv.Itoa(contract_id))
+			if err != nil {
+				panic(err.Error())
+			}
+			//fmt.Println(results5)
+			for results5.Next() {
+				var charger_id int
+				var info_type string
+				err = results5.Scan(&charger_id,&info_type)
+				if err != nil {
+					panic(err.Error())
+				}
+
+				if (info_type=="field" || info_type==""){
+					contract.ChargerFieldID=append(contract.ChargerFieldID,charger_id)
+				} else if info_type=="request"{
+					contract.ChargerRequestID=append(contract.ChargerRequestID,charger_id)
+				} else if info_type=="manufacture"{
+					contract.ChargerManuID=append(contract.ChargerManuID,charger_id)
+				} else if info_type=="product"{
+					contract.ChargerProductID=append(contract.ChargerProductID,charger_id)
+				}
+			}
+			contracts = append(contracts, contract)
+		}
 	}
 	fmt.Println(contracts)
 	send(contracts, w)
