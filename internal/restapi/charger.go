@@ -101,8 +101,8 @@ func CreateCharger(w http.ResponseWriter, r *http.Request) {
 	sels := keyVal["supply_else"]
 	psa := keyVal["power_supply_ampere"]
 	stand := keyVal["stand"]
-	//ps2c := keyVal["power_supply2charger_cable_langth"]
-	//c2f := keyVal["charger2forklift_cable_langth"]
+	ps2c := keyVal["power_supply2charger_cable_langth"]
+	c2f := keyVal["charger2forklift_cable_langth"]
 	help := keyVal["charger_setting_help"]
 	comment := keyVal["comment"]
 	request := keyVal["request"]
@@ -231,7 +231,7 @@ func CreateCharger(w http.ResponseWriter, r *http.Request) {
   	if err != nil {
     	panic(err.Error())
   	}
-	/*
+	
 	stmt, err = db.Prepare("UPDATE chargers SET power_supply2charger_cable_langth = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
@@ -239,9 +239,9 @@ func CreateCharger(w http.ResponseWriter, r *http.Request) {
 	_, err = stmt.Exec(ps2c,id)
   	if err != nil {
     	panic(err.Error())
-  	}*/
+  	}
 	
-	/*
+	
 	stmt, err = db.Prepare("UPDATE chargers SET charger2forklift_cable_langth = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
@@ -249,7 +249,7 @@ func CreateCharger(w http.ResponseWriter, r *http.Request) {
 	_, err = stmt.Exec(c2f,id)
   	if err != nil {
     	panic(err.Error())
-  	}*/
+  	}
 
 	stmt, err = db.Prepare("UPDATE chargers SET charger_setting_help = ? WHERE charger_id = ?")
   	if err != nil {
@@ -353,8 +353,8 @@ func UpdateCharger(w http.ResponseWriter, r *http.Request) {
 	sels := keyVal["supply_else"]
 	psa := keyVal["power_supply_ampere"]
 	stand := keyVal["stand"]
-	//ps2c := keyVal["power_supply2charger_cable_langth"]
-	//c2f := keyVal["charger2forklift_cable_langth"]
+	ps2c := keyVal["power_supply2charger_cable_langth"]
+	c2f := keyVal["charger2forklift_cable_langth"]
 	help := keyVal["charger_setting_help"]
 	comment := keyVal["comment"]
 
@@ -468,7 +468,7 @@ func UpdateCharger(w http.ResponseWriter, r *http.Request) {
   	if err != nil {
     	panic(err.Error())
   	}
-	/*
+	
 	stmt, err = db.Prepare("UPDATE chargers SET power_supply2charger_cable_langth = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
@@ -476,9 +476,9 @@ func UpdateCharger(w http.ResponseWriter, r *http.Request) {
 	_, err = stmt.Exec(ps2c,id)
   	if err != nil {
     	panic(err.Error())
-  	}*/
+  	}
 	
-	/*
+	
 	stmt, err = db.Prepare("UPDATE chargers SET charger2forklift_cable_langth = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
@@ -486,7 +486,7 @@ func UpdateCharger(w http.ResponseWriter, r *http.Request) {
 	_, err = stmt.Exec(c2f,id)
   	if err != nil {
     	panic(err.Error())
-  	}*/
+  	}
 	
 	stmt, err = db.Prepare("UPDATE chargers SET charger_setting_help = ? WHERE charger_id = ?")
   	if err != nil {
