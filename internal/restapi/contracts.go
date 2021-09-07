@@ -155,7 +155,7 @@ func ContractsHomeDefaultView(w http.ResponseWriter, r *http.Request) {
 				panic(err.Error())
 			}
 
-			if info_type=="field"{
+			if (info_type=="field" || info_type==""){
 				contract.BatteryFieldID=append(contract.BatteryFieldID,battery_option_id)
 			} else if info_type=="request"{
 				contract.BatteryRequestID=append(contract.BatteryRequestID,battery_option_id)
@@ -180,7 +180,7 @@ func ContractsHomeDefaultView(w http.ResponseWriter, r *http.Request) {
 				panic(err.Error())
 			}
 
-			if info_type=="field"{
+			if (info_type=="field" || info_type==""){
 				contract.ChargerFieldID=append(contract.ChargerFieldID,charger_id)
 			} else if info_type=="request"{
 				contract.ChargerRequestID=append(contract.ChargerRequestID,charger_id)

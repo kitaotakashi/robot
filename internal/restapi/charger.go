@@ -232,7 +232,7 @@ func CreateCharger(w http.ResponseWriter, r *http.Request) {
     	panic(err.Error())
   	}
 	
-	stmt, err = db.Prepare("UPDATE chargers SET power_supply2charger_cable_langth = ? WHERE charger_id = ?")
+	stmt, err = db.Prepare("UPDATE chargers SET power_supply2charger_cable_length = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
@@ -242,7 +242,7 @@ func CreateCharger(w http.ResponseWriter, r *http.Request) {
   	}
 	
 	
-	stmt, err = db.Prepare("UPDATE chargers SET charger2forklift_cable_langth = ? WHERE charger_id = ?")
+	stmt, err = db.Prepare("UPDATE chargers SET charger2forklift_cable_length = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
