@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"io/ioutil"
+	"strconv"
 )
 
 // customer は顧客の詳細情報を格納する
@@ -326,6 +327,34 @@ func DeleteCharger(w http.ResponseWriter, r *http.Request) {
 	  panic(err.Error())
 	}
 	fmt.Fprintf(w, "charger ID = %s was deleted",id)
+}
+
+func DeleteContractCharger(w http.ResponseWriter, r *http.Request) {
+
+	id := query(r, "contract_id")
+	db := open()
+	defer db.Close()
+
+	results, err := db.Query("SELECT charger_id FROM chargers WHERE contract_id="+ id[0])
+	if err != nil {
+		panic(err.Error())
+	}
+	for results.Next() {
+		var charger_id int
+		err = results.Scan(&charger_id)
+		//battery_option_id = strconv.Itoa(battery_option_id)
+
+		stmt, err := db.Prepare("DELETE FROM chargers WHERE charger_id = ?")
+
+		if err != nil {
+		panic(err.Error())
+		}
+		_, err = stmt.Exec(charger_id)
+		if err != nil {
+		panic(err.Error())
+		}
+		fmt.Fprintf(w, "charger ID = %s was deleted",strconv.Itoa(charger_id))
+	}
 }
 
 

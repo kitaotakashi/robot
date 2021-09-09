@@ -556,6 +556,36 @@ func DeleteBatteryOption(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "battery_option ID = %s was deleted",id)
 }
 
+func DeleteContractBatteryOption(w http.ResponseWriter, r *http.Request) {
+	//idtmp := query(r, "contract_id")
+	//id := idtmp[0]
+
+	id := query(r, "contract_id")
+	db := open()
+	defer db.Close()
+
+	results, err := db.Query("SELECT battery_option_id FROM battery_options WHERE contract_id="+ id[0])
+	if err != nil {
+		panic(err.Error())
+	}
+	for results.Next() {
+		var battery_option_id int
+		err = results.Scan(&battery_option_id)
+		//battery_option_id = strconv.Itoa(battery_option_id)
+
+		stmt, err := db.Prepare("DELETE FROM battery_options WHERE battery_option_id = ?")
+
+		if err != nil {
+		panic(err.Error())
+		}
+		_, err = stmt.Exec(battery_option_id)
+		if err != nil {
+		panic(err.Error())
+		}
+		fmt.Fprintf(w, "battery_option ID = %s was deleted",strconv.Itoa(battery_option_id))
+	}
+}
+
 func UpdateBatteryOption(w http.ResponseWriter, r *http.Request) {
 
 	idtmp := query(r, "battery_option_id")
