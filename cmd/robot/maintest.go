@@ -39,6 +39,7 @@ func forCORS(next http.Handler) http.Handler {
 			fmt.Println("pf2")
 			w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 			w.Header().Set("Access-Control-Allow-Methods", "POST")
+			w.Header().Set("Access-Control-Allow-Methods", "DELETE")
 			w.Header().Set("Access-Control-Allow-Headers", "*")
     		//w.WriteHeader(200)
             w.WriteHeader(http.StatusOK)
@@ -83,7 +84,7 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/customer/", db.CustomerView).Methods("GET")
 	//router.HandleFunc("/api/v1/customer/post/",db.CreateCustomer).Methods("POST")
 	router.HandleFunc("/api/v1/customer/post/",db.CreateCustomer)
-	router.HandleFunc("/api/v1/customer/",db.DeleteCustomer).Methods("DELETE")
+	router.HandleFunc("/api/v1/customer/delete/",db.DeleteCustomer)
 
 	router.HandleFunc("/api/v1/contracts/", db.ContractsView).Methods("GET")
 	router.HandleFunc("/api/v1/contractshome/", db.ContractsHomeView).Methods("GET")
@@ -94,7 +95,7 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/customercontractdefault/", db.CustomerContractDefaultView).Methods("GET")
 	//router.HandleFunc("/api/v1/contract/", db.CreateContract).Methods("POST")
 	router.HandleFunc("/api/v1/contract/post/", db.CreateContract)
-	router.HandleFunc("/api/v1/contract/",db.DeleteContract).Methods("DELETE")
+	router.HandleFunc("/api/v1/contract/delete/",db.DeleteContract)
 
 	router.HandleFunc("/api/v1/batteries/", db.BatteriesView).Methods("GET")
 	router.HandleFunc("/api/v1/battery/", db.BatteryView).Methods("GET")
@@ -106,16 +107,16 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/customerdepartment/", db.CustomerDepartmentView).Methods("GET")
 	//router.HandleFunc("/api/v1/department/", db.CreateDepartment).Methods("POST")
 	router.HandleFunc("/api/v1/department/post/", db.CreateDepartment)
-	router.HandleFunc("/api/v1/department/",db.DeleteDepartment).Methods("DELETE")
+	router.HandleFunc("/api/v1/department/delete/",db.DeleteDepartment)
 
 	router.HandleFunc("/api/v1/batteryoptions/", db.BatteryOptionsView).Methods("GET")
 	router.HandleFunc("/api/v1/batteryoption/", db.BatteryOptionView).Methods("GET")
 	router.HandleFunc("/api/v1/customerbatteryoption/", db.CustomerBatteryOptionView).Methods("GET")
 	router.HandleFunc("/api/v1/contractbatteryoption/", db.ContractBatteryOptionView).Methods("GET")
-	router.HandleFunc("/api/v1/contractbatteryoption/", db.DeleteContractBatteryOption).Methods("DELETE")
+	router.HandleFunc("/api/v1/contractbatteryoption/delete/", db.DeleteContractBatteryOption)
 	router.HandleFunc("/api/v1/batteryoption/post/", db.CreateBatteryOption)
 	router.HandleFunc("/api/v1/batteryoption/put/", db.UpdateBatteryOption)
-	router.HandleFunc("/api/v1/batteryoption/",db.DeleteBatteryOption).Methods("DELETE")
+	router.HandleFunc("/api/v1/batteryoption/delete/",db.DeleteBatteryOption)
 
 	router.HandleFunc("/api/v1/batteryrequests/", db.BatteryRequestView).Methods("GET")
 
@@ -123,9 +124,9 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/charger/", db.ChargerView).Methods("GET")
 	router.HandleFunc("/api/v1/customercharger/", db.CustomerChargerView).Methods("GET")
 	router.HandleFunc("/api/v1/contractcharger/", db.ContractChargerView).Methods("GET")
-	router.HandleFunc("/api/v1/contractcharger/", db.DeleteContractCharger).Methods("DELETE")
+	router.HandleFunc("/api/v1/contractcharger/delete/", db.DeleteContractCharger)
 	router.HandleFunc("/api/v1/charger/post/", db.CreateCharger)
-	router.HandleFunc("/api/v1/charger/",db.DeleteCharger).Methods("DELETE")
+	router.HandleFunc("/api/v1/charger/delete/",db.DeleteCharger)
 
 	router.HandleFunc("/api/v1/errors/",db.ErrorsView).Methods("GET")
 	router.HandleFunc("/api/v1/error/",db.ErrorView).Methods("GET")
