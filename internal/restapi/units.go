@@ -1,9 +1,9 @@
 package db
 
 import (
-	//"fmt"
+	"fmt"
 	"database/sql"
-	"github.com/guregu/null"
+	//"github.com/guregu/null"
 	"net/http"
 	"strconv"
 	"time"
@@ -14,18 +14,28 @@ type geoLocation struct {
 	Longitude float32 `json:"longitude"`
 }
 type unitProfile struct {
-	UnitType null.String `json:"unit_type"`
-	Purpose  null.String `json:"purpose"`
+	//null.stringに変更すること
+	UnitType string `json:"unit_type"`//battery_type_id
+	Purpose  string `json:"purpose"`
 	Location geoLocation `json:"location"`
 }
 type unitStatus struct {
 	IsCharging bool          `json:"is_charging"`
 	IsWorking  bool          `json:"is_working"`
-	Soc        int           `json:"soc"`
-	Soh        sql.NullInt32 `json:"soh"`
-	Capacity   sql.NullInt32 `json:"capacity"`
+	Soc        float32           `json:"soc"`
+	//Soh        sql.NullInt32 `json:"soh"`
+	//Capacity   sql.NullInt32 `json:"capacity"`
 	Current    float32       `json:"current"`
 	Voltage    float32       `json:"voltage"`
+	OutputCurrent    float32     `json:"output_current"`
+	OutputVoltage    float32     `json:"output_voltage"`
+	UsageTime	float32	   `json:"usage_time"`
+	NumberOfCharges int	   `json:"number_of_charges"`
+	MaxCellVoltage float32 `json:"max_cell_voltage"`
+	MinCellVoltage float32 `json:"min_cell_voltage"`
+	MaxTemperature float32 `json:"max_temperature"`
+	MinTemperature float32 `json:"min_temperature"`
+	LastIOtime 	   time.Time   `json:"last_io_time"`
 }
 type unitTimeStamp struct {
 	RegisterdAt time.Time `json:"registerd_at"`
@@ -44,18 +54,10 @@ type unitSummary struct {
 */
 
 type unitError struct {
-	ErrorCode      int    `json:"error_code"`
+	ErrorCode      sql.NullInt32    `json:"error_code"`
 	ErrorMessage   string `json:"error_message"`
 	RequiredAction string `json:"required_action"`
-}
-type unitDetail struct {
-	UnitID string    `json:"unit_id"`
-	Error  unitError `json:"error"`
-	//RequiredAction string        `json:"required_action"`
-	Profile    unitProfile   `json:"profile"`
-	Status     unitStatus    `json:"status"`
-	TimeStamps unitTimeStamp `json:"time_stamps"`
-	CustomerID string        `json:"customer_id"`
+	ChargerError int 	   `json:"charger_error"`
 }
 
 /*
@@ -74,6 +76,9 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err.Error())
 	}
+	fmt.Println("chk")
+	fmt.Println(results1)
+	/*
 	var units []struct {
 		UnitID         string      `json:"unit_id"`
 		RequiredAction string      `json:"required_action"`
@@ -82,7 +87,25 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 		IsWorking      bool        `json:"is_working"`
 		Soc            int         `json:"soc"`
 	}
+	*/
+	//unitsベージで必要な情報
+	var units []struct {
+		UnitID         string      `json:"unit_id"`//units_DBから取得
+		CustomerName   string      `json:"customer_name"`//contract_DBから取得
+		DepartmentName string      `json:"department_name"`//contract_DBから取得
+		ContractID int `json:"contract_id"`//contract_DBから取得
+		LastIOtime 	   time.Time   `json:"last_io_time"`
+		//ContractName   string      `json:"contract_name"`
+		Profile        unitProfile `json:"profile"`
+		IsCharging     bool        `json:"is_charging"`//units_DBから取得
+		IsWorking      bool        `json:"is_working"`//last_io_timeから別途計算
+		Soc            float32     `json:"soc"`//units_DBから取得
+		RequiredAction string      `json:"required_action"`//error_DBから取得
+		BatteryError  	int   `json:"battery_error""`//units_DBから取得
+	}
+
 	for results1.Next() {
+		/*
 		var unit struct {
 			UnitID         string      `json:"unit_id"`
 			RequiredAction string      `json:"required_action"`
@@ -91,6 +114,21 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 			IsWorking      bool        `json:"is_working"`
 			Soc            int         `json:"soc"`
 		}
+		*/
+		var unit struct{
+			UnitID         string      `json:"unit_id"`//units_DBから取得
+			CustomerName   string      `json:"customer_name"`//contract_DBから取得
+			DepartmentName string      `json:"department_name"`//contract_DBから取得
+			ContractID int `json:"contract_id"`//contract_DBから取得
+			LastIOtime 	   time.Time   `json:"last_io_time"`
+			//ContractName   string      `json:"contract_name"`
+			Profile        unitProfile `json:"profile"`
+			IsCharging     bool        `json:"is_charging"`//units_DBから取得
+			IsWorking      bool        `json:"is_working"`//last_io_timeから別途計算
+			Soc            float32     `json:"soc"`//units_DBから取得
+			RequiredAction string      `json:"required_action"`//error_DBから取得
+			BatteryError  	int   `json:"battery_error""`//units_DBから取得
+		}
 		var unitElm unitElm
 		Columns := columns(&unitElm)
 		err = results1.Scan(Columns...)
@@ -98,21 +136,134 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 			panic(err.Error())
 		}
 		unit.UnitID = unitElm.UnitID
-		if unitElm.ErrorCode.Valid == true {
-			errorcode := int(unitElm.ErrorCode.Int32)
+		unit.LastIOtime = unitElm.LastIOtime
+
+		if unitElm.BatteryError.Valid == true {
+			errorcode := int(unitElm.BatteryError.Int32)
+			unit.BatteryError = errorcode
+			//error DBから取得
 			results2, err := db.Query("SELECT required_action FROM errors WHERE error_code=" + strconv.Itoa(errorcode))
 			if err != nil {
 				panic(err.Error())
 			}
 			for results2.Next() {
-				var errorElm errorElm
+				var errorElm errorsElm
 				err = results2.Scan(&errorElm.RequiredAction)
 				if err != nil {
 					panic(err.Error())
 				}
 				unit.RequiredAction = errorElm.RequiredAction
 			}
+		}else{
+			unit.RequiredAction = ""
 		}
+
+		//まず battery一覧を取得し、unitIDで問い合わせてcontractIDがあるかどうか
+		//契約IDがnullでない場合、事業所名と企業名を取得
+		var flg=0
+		results3, err := db.Query("SELECT * FROM batteries WHERE unit_id=" + unit.UnitID)
+		
+		for results3.Next() {
+			flg=1
+			var batteryElm batteryElm
+			Columns := columns(& batteryElm)
+			err = results3.Scan(Columns...)
+
+			if err != nil {
+				panic(err.Error())
+			}
+
+			unit.ContractID = batteryElm.ContractID
+			unit.Profile.Purpose = batteryElm.Purpose//unitElm.Purpose //from battery DB
+			unit.Profile.UnitType = "test_RB-***"//<-battery_type_idから製品table取得
+
+			//contractIDから取得
+			//var accountId string
+			results4, err := db.Query("SELECT department_id FROM contracts WHERE contract_id=" + strconv.Itoa(batteryElm.ContractID))
+			for results4.Next() {
+				var contractElm contractElm
+				err = results4.Scan(&contractElm.DepartmentID)
+				if err != nil {
+					panic(err.Error())
+				}
+
+				//acountId = contractElm.AccountID
+				//department_idからparent_id=account_idを取得
+				var departmentElm departmentElm
+				results7, err := db.Query("SELECT parent_id FROM departments WHERE department_id=" + strconv.Itoa(contractElm.DepartmentID))
+				for results7.Next(){
+					
+					err = results7.Scan(&departmentElm.ParentID)
+					if err != nil {
+						panic(err.Error())
+					}
+				}
+
+				//results5, err := db.Query("SELECT corporation_name FROM customers WHERE account_id=" + strconv.Itoa(contractElm.DepartmentID))
+				results5, err := db.Query("SELECT corporation_name FROM customers WHERE account_id=" + strconv.Itoa(departmentElm.ParentID))
+				for results5.Next() {
+					var customerElm customerElm
+					err = results5.Scan(&customerElm.CorporationName)
+					if err != nil {
+						panic(err.Error())
+					}
+
+					unit.CustomerName = customerElm.CorporationName.String	
+				}
+				results6, err := db.Query("SELECT department_name FROM departments WHERE parent_id=" + strconv.Itoa(contractElm.DepartmentID))
+				for results6.Next() {
+					//var departmentElm departmentElm
+					err = results6.Scan(&departmentElm.DepartmentName)
+					if err != nil {
+						panic(err.Error())
+					}
+					unit.DepartmentName = departmentElm.DepartmentName.String
+				}
+				
+			}
+			
+		}
+		//契約がない＝customerがない場合
+		if flg==0{
+			unit.ContractID=-1
+			unit.CustomerName = ""	
+			unit.DepartmentName = ""
+		}
+
+		/*
+		if unitElm.ContractID.Valid == true {
+			contract_id := int(unitElm.ContractID.Int32)
+			var departmentElm departmentElm
+			results3, err := db.Query("SELECT * FROM departments WHERE department_id=(SELECT department_id FROM contracts WHERE contract_id=" + strconv.Itoa(contract_id) + ")")
+			if err != nil {
+				panic(err.Error())
+			}
+			for results3.Next() {
+				Columns = columns(&departmentElm)
+				err = results3.Scan(Columns...)
+				if err != nil {
+					panic(err.Error())
+				}
+				unit.DepartmentName = departmentElm.DepartmentName
+
+				var customerElm customerElm
+				department_id := departmentElm.ParentID
+				results4, err := db.Query("SELECT * FROM customers WHERE customer_id = (SELECT parent_id FROM departments WHERE department_id="+ strconv.Itoa(department_id) +")")
+				if err != nil {
+					panic(err.Error())
+				}
+				for results4.Next() {
+					err = results4.Scan(&customerElm.CorporationName)
+					if err != nil {
+						panic(err.Error())
+					}
+					unit.CustomerName = customerElm.CorporationName
+				}
+			}
+		}
+		*/
+
+
 		//unit.UnitDetail.UnitID = unitElm.UnitID
 		//unit.UnitDetail.Profile.UnitID = unitElm.UnitID
 		/*
@@ -141,7 +292,7 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 		} else {
 			unit.IsCharging = true
 		}
-		if time.Now().Sub(unitElm.Time) > time.Minute*5 {
+		if time.Now().Sub(unitElm.LastIOtime) > time.Minute*5 {
 			unit.IsWorking = false
 			//unit.UnitDetail.Status.IsWorking = "off"
 		} else {
@@ -149,12 +300,12 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 			//unit.UnitDetail.Status.IsWorking = "on"
 		}
 		unit.Soc = unitElm.Soc
-		unit.Profile.Purpose = unitElm.Purpose
-		unit.Profile.UnitType = unitElm.UnitType
+
 		//unit.UnitDetail.Profile.UnitType = unitElm.UnitType
 		unit.Profile.Location.Latitude = unitElm.Latitude
 		//unit.UnitDetail.Profile.Location.Latitude = unitElm.Latitude
 		unit.Profile.Location.Longitude = unitElm.Longitude
+		
 		/*
 			unit.UnitDetail.Profile.Location.Longitude = unitElm.Longitude
 			unit.UnitDetail.Status.Soc = unitElm.Soc
@@ -165,6 +316,7 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 			unit.UnitDetail.Status.Capacity = unitElm.Capacity
 			unit.UnitDetail.TimeStamps.Time = unitElm.Time
 		*/
+		fmt.Println(unit)
 		units = append(units, unit)
 	}
 	send(units, w)

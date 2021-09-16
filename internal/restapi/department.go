@@ -7,35 +7,41 @@ import (
 	"io/ioutil"
 )
 
-// customer は顧客の詳細情報を格納する
-type customer struct {
+// department は顧客の事業所情報を格納する
+type department struct {
 	// 契約情報
 	//Contracts []contractElm `json:"contracts"`
 	// バッテリー情報
 	//Units []unitElm `json:"units"`
 	//　顧客情報
-	Customer customerElm `json:"customer"`
+	//Customer []customerElm `json:"customer"`
+
+	//事業所情報
+	Department []departmentElm `json:"department"`
 }
 
 // CustomerView はCustomerページに必要なデータをDBから取得し、JSONで返す
-func CustomerView(w http.ResponseWriter, r *http.Request) {
-	id := query(r, "account_id")
+func DepartmentView(w http.ResponseWriter, r *http.Request) {
+	id := query(r, "department_id")
 	db := open()
 	defer db.Close()
-	results1, err := db.Query("SELECT * FROM customers WHERE account_id=" + id[0])
+	results1, err := db.Query("SELECT * FROM departments WHERE department_id=" + id[0])
 	if err != nil {
 		panic(err.Error())
 	}
-	var customer customer
+	var departments []departmentElm
 	for results1.Next() {
-		Columns := columns(&customer.Customer)
+		var department departmentElm
+		//Columns := columns(&department_input)
+		Columns := columns(&department)
 		err = results1.Scan(Columns...)
 		if err != nil {
 			panic(err.Error())
 		}
-		//契約情報
+		//department.Department = append(department.Department, department_input)
+		//department.Department = 
 		/*
-		results2, err := db.Query("SELECT * FROM contracts WHERE department_id=" + id[0])
+		results2, err := db.Query("SELECT * FROM contracts WHERE account_id=" + id[0])
 		if err != nil {
 			panic(err.Error())
 		}
@@ -48,8 +54,6 @@ func CustomerView(w http.ResponseWriter, r *http.Request) {
 			}
 			customer.Contracts = append(customer.Contracts, contract)
 		}
-		//バッテリー情報
-		/*
 		results2, err = db.Query("SELECT * FROM units WHERE unit_id=(SELECT unit_id FROM contracts WHERE account_id= " + id[0] + ")")
 		if err != nil {
 			panic(err.Error())
@@ -62,13 +66,53 @@ func CustomerView(w http.ResponseWriter, r *http.Request) {
 				panic(err.Error())
 			}
 			customer.Units = append(customer.Units, unit)
-		}*/
+		}
+		
+		results2, err = db.Query("SELECT * FROM customers WHERE account_id= " +department.Department.parent_id + ")")
+		if err != nil {
+			panic(err.Error())
+		}
+		for results2.Next() {
+			var customer customerElm
+			Columns = columns(&customer)
+			err = results2.Scan(Columns...)
+			if err != nil {
+				panic(err.Error())
+			}
+			department.Customer = append(department.Customer, customer)
+		}
+		*/
+		departments=append(departments,department)
 	}
-	fmt.Println(customer)
-	send(customer, w)
+	fmt.Println(departments)
+	send(departments, w)
 }
 
-func CreateCustomer(w http.ResponseWriter, r *http.Request) {
+func CustomerDepartmentView(w http.ResponseWriter, r *http.Request) {
+	id := query(r, "parent_id")
+	db := open()
+	defer db.Close()
+	results1, err := db.Query("SELECT * FROM departments WHERE parent_id=" + id[0])
+	if err != nil {
+		panic(err.Error())
+	}
+	var departments []departmentElm
+	for results1.Next() {
+		var department departmentElm
+		//var department_input departmentElm
+		//Columns := columns(&department_input)
+		Columns := columns(&department)
+		err = results1.Scan(Columns...)
+		if err != nil {
+			panic(err.Error())
+		}
+		departments = append(departments, department)
+	}
+	fmt.Println(departments)
+	send(departments, w)
+}
+
+func CreateDepartment(w http.ResponseWriter, r *http.Request) {
 	//var customer customerElm
 	body, err := ioutil.ReadAll(r.Body)
   	if err != nil {
@@ -77,9 +121,9 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 	
 	keyVal := make(map[string]string)
   	json.Unmarshal(body, &keyVal)
-  	id := keyVal["account_id"]
-	cname := keyVal["corporation_name"]
-	sector := keyVal["sector"]
+  	id := keyVal["department_id"]
+	dname := keyVal["department_name"]
+	pid := keyVal["parent_id"]//customer->account_id
 	name := keyVal["name"]
 	position := keyVal["position"]
 	//dob := keyVal["date_of_birth"]
@@ -87,7 +131,10 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 	address := keyVal["address"]
 	mail := keyVal["mail"]
 	phone := keyVal["phone"]
-	fmt.Println(id,cname,sector,name,position,postal,address,mail,phone)
+	dwh := keyVal["daily_working_hour"]
+	wh := keyVal["weekly_holiday"]
+
+	fmt.Println(id,dname,pid,name,position,postal,address,mail,phone,dwh,wh)
 
 	//json.NewDecoder(r.Body).Decode(&customer)
     //fmt.Println("new customer: ", customer)
@@ -96,7 +143,7 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 	db := open()
 	defer db.Close()
 
-	stmt, err := db.Prepare("INSERT INTO customers(account_id) VALUES(?)")
+	stmt, err := db.Prepare("INSERT INTO departments(department_id) VALUES(?)")
   	if err != nil {
     	panic(err.Error())
   	} 
@@ -105,34 +152,34 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
     	panic(err.Error())
   	}
 
-	  stmt, err = db.Prepare("UPDATE customers SET corporation_name = ? WHERE account_id = ?")
+	  stmt, err = db.Prepare("UPDATE departments SET department_name = ? WHERE department_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
-	_, err = stmt.Exec(cname,id)
+	_, err = stmt.Exec(dname,id)
   	if err != nil {
     	panic(err.Error())
   	}
 	
-	stmt, err = db.Prepare("UPDATE customers SET sector = ? WHERE account_id = ?")
+	stmt, err = db.Prepare("UPDATE departments SET parent_id = ? WHERE department_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
-	_, err = stmt.Exec(sector,id)
+	_, err = stmt.Exec(pid,id)
   	if err != nil {
     	panic(err.Error())
   	}
 	
-	stmt, err = db.Prepare("UPDATE customers SET name = ? WHERE account_id = ?")
+	stmt, err = db.Prepare("UPDATE departments SET name = ? WHERE department_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
 	_, err = stmt.Exec(name,id)
   	if err != nil {
     	panic(err.Error())
   	}
 	
-	stmt, err = db.Prepare("UPDATE customers SET position = ? WHERE account_id = ?")
+	stmt, err = db.Prepare("UPDATE departments SET position = ? WHERE department_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
@@ -152,7 +199,7 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
   	}
 	*/
 	
-	stmt, err = db.Prepare("UPDATE customers SET postal_code = ? WHERE account_id = ?")
+	stmt, err = db.Prepare("UPDATE departments SET postal_code = ? WHERE department_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
@@ -161,7 +208,7 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
     	panic(err.Error())
   	}
 	
-	stmt, err = db.Prepare("UPDATE customers SET address = ? WHERE account_id = ?")
+	stmt, err = db.Prepare("UPDATE departments SET address = ? WHERE department_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
@@ -170,7 +217,7 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
     	panic(err.Error())
   	}
 	
-	stmt, err = db.Prepare("UPDATE customers SET mail = ? WHERE account_id = ?")
+	stmt, err = db.Prepare("UPDATE departments SET mail = ? WHERE department_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
@@ -179,11 +226,29 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
     	panic(err.Error())
   	}
 	
-	stmt, err = db.Prepare("UPDATE customers SET phone = ? WHERE account_id = ?")
+	stmt, err = db.Prepare("UPDATE departments SET phone = ? WHERE department_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
 	_, err = stmt.Exec(phone,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE departments SET daily_working_hour = ? WHERE department_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(dwh,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE departments SET weekly_holiday = ? WHERE department_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(wh,id)
   	if err != nil {
     	panic(err.Error())
   	}
@@ -226,8 +291,8 @@ func UpdateCustomer(w http.ResponseWriter, r *http.Request) {
 }
 */
 
-func DeleteCustomer(w http.ResponseWriter, r *http.Request) {
-	idtmp := query(r, "account_id")
+func DeleteDepartment(w http.ResponseWriter, r *http.Request) {
+	idtmp := query(r, "department_id")
 	id := idtmp[0]
 	//print(id[0])
 	/*
@@ -253,7 +318,7 @@ func DeleteCustomer(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 	
 	//stmt, err := db.Prepare("DELETE FROM customers WHERE name = ?")
-	stmt, err := db.Prepare("DELETE FROM customers WHERE account_id = ?")
+	stmt, err := db.Prepare("DELETE FROM departments WHERE department_id = ?")
 	//stmt, err := db.Prepare("DELETE FROM customers WHERE date_of_birth = ?")
 	if err != nil {
 	  panic(err.Error())
@@ -262,5 +327,5 @@ func DeleteCustomer(w http.ResponseWriter, r *http.Request) {
    	if err != nil {
 	  panic(err.Error())
 	}
-	fmt.Fprintf(w, "Post with account ID = %s was deleted",id)
+	fmt.Fprintf(w, "Department with department ID = %s was deleted",id)
 }
