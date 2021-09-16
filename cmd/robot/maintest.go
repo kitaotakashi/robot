@@ -19,7 +19,7 @@ import (
 )
 
 func challengetoken(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "0aHIYjg2h4AQ0bu6MJOBe5-Qgm1jBpiWTbUSiptyZ40.XDi_5t34FW25GEQBQJPUAU2OKcjJutOUYefqngHTYxk")
+    fmt.Fprintf(w, "ErDfMRoSvHdn5UZ1ELg5o6YFEmgxivcsuHEPLPUaGWM.XDi_5t34FW25GEQBQJPUAU2OKcjJutOUYefqngHTYxk")
 }
 
 func forCORS(next http.Handler) http.Handler {
@@ -135,7 +135,7 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 
 	//others
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")
-	//router.HandleFunc("/.well-known/acme-challenge/0aHIYjg2h4AQ0bu6MJOBe5-Qgm1jBpiWTbUSiptyZ40", challengetoken)//encryptの証明
+	//router.HandleFunc("/.well-known/acme-challenge/ErDfMRoSvHdn5UZ1ELg5o6YFEmgxivcsuHEPLPUaGWM", challengetoken)//encryptの証明
 
 	fmt.Println("RoBOT Server Started Port 443")
 
