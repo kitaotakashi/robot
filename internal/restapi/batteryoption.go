@@ -136,7 +136,6 @@ func ContractBatteryOptionView(w http.ResponseWriter, r *http.Request) {
 	send(batteryoptions, w)
 }
 
-
 func CreateBatteryOption(w http.ResponseWriter, r *http.Request) {
 
 	body, err := ioutil.ReadAll(r.Body)

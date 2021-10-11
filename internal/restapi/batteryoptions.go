@@ -26,3 +26,27 @@ func BatteryOptionsView(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(batteryoptions)
 	send(batteryoptions, w)
 }
+
+func BatteryManufactureView(w http.ResponseWriter, r *http.Request) {
+	db := open()
+	defer db.Close()
+	results1, err := db.Query("SELECT * FROM battery_options")
+	if err != nil {
+		panic(err.Error())
+	}
+	var batteryoptions []batteryOptionElm
+	for results1.Next() {
+		var batteryoption batteryOptionElm
+		Columns := columns(&batteryoption)
+		err = results1.Scan(Columns...)
+		if err != nil {
+			panic(err.Error())
+		}
+		//fmt.Println(batteryoption.InfoType.String)
+		if batteryoption.InfoType.String == "manufacture"{
+			batteryoptions = append(batteryoptions, batteryoption)
+		}
+	}
+	fmt.Println(batteryoptions)
+	send(batteryoptions, w)
+}
