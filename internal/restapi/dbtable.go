@@ -166,6 +166,14 @@ type batteryOptionElm  struct{
 	PicForkliftPlug		null.String		`json:"pic_forklift_plug"`
 	PicChangeEquipment	null.String		`json:"pic_change_equipment"`
 }
+type batteryTypesElm struct{
+	BatteryTypeId	int			`json:"battery_type_id"`
+	Type			string 		`json:"type"`
+	Purpose			string		`json:"purpose"`
+	Voltage			int			`json:"voltage"`
+	Capacity		int			`json:"capacity"`
+	Power			int			`json:"power"`
+}
 
 type chargerElm  struct{
 	ChargerId	int	`json:"charger_id"`
