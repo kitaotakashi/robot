@@ -32,7 +32,7 @@ func forCORS(next http.Handler) http.Handler {
         w.Header().Set("Access-Control-Allow-Headers", "origin, X-Requested-With, Content-Type, Accept")
 		//w.Header().Set("Access-Control-Allow-Headers", "*")
 		
-        w.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
+        w.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS, PUT")
 		//w.Header().Set("Access-Control-Allow-Credentials", "true")
         // プリフライトリクエストの対応
         if r.Method == "OPTIONS" {
@@ -40,6 +40,7 @@ func forCORS(next http.Handler) http.Handler {
 			w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 			w.Header().Set("Access-Control-Allow-Methods", "POST")
 			w.Header().Set("Access-Control-Allow-Methods", "DELETE")
+			w.Header().Set("Access-Control-Allow-Methods", "PUT")
 			w.Header().Set("Access-Control-Allow-Headers", "*")
     		//w.WriteHeader(200)
             w.WriteHeader(http.StatusOK)
