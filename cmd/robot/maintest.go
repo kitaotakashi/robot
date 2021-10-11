@@ -128,6 +128,7 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/charger/", db.ChargerView).Methods("GET")
 	router.HandleFunc("/api/v1/customercharger/", db.CustomerChargerView).Methods("GET")
 	router.HandleFunc("/api/v1/contractcharger/", db.ContractChargerView).Methods("GET")
+	router.HandleFunc("/api/v1/chargermanufacture/", db.ChargerManufactureView).Methods("GET")
 	router.HandleFunc("/api/v1/contractcharger/delete/", db.DeleteContractCharger)
 	router.HandleFunc("/api/v1/charger/post/", db.CreateCharger)
 	router.HandleFunc("/api/v1/charger/put/", db.UpdateCharger)
