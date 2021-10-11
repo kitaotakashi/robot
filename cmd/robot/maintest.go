@@ -100,6 +100,7 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 
 	router.HandleFunc("/api/v1/batteries/", db.BatteriesView).Methods("GET")
 	router.HandleFunc("/api/v1/battery/", db.BatteryView).Methods("GET")
+	router.HandleFunc("/api/v1/contractbattery/", db.ContractBatteryView).Methods("GET")
 	//router.HandleFunc("/api/v1/battery/", db.CreateBattery).Methods("POST")
 	router.HandleFunc("/api/v1/battery/post/", db.CreateBattery)
 	router.HandleFunc("/api/v1/battery/put/", db.UpdateBattery)
