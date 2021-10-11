@@ -125,3 +125,93 @@ func CreateBattery(w http.ResponseWriter, r *http.Request) {
 
 	send("create!", w)
 }
+
+func UpdateBattery(w http.ResponseWriter, r *http.Request) {
+	idtmp := query(r, "serial_number")
+	id := idtmp[0]
+
+	body, err := ioutil.ReadAll(r.Body)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	keyVal := make(map[string]string)
+  	json.Unmarshal(body, &keyVal)
+	unit := keyVal["unit_id"]
+	contract:= keyVal["contract_id"]
+	option := keyVal["battery_option_id"]
+	btype := keyVal["battery_type_id"]
+	mf_date := keyVal["date_of_manufacture"]
+	purpose := keyVal["purpose"]
+	state := keyVal["unit_state"]
+	fmt.Print(id,unit,contract,option,btype,mf_date,purpose,state)
+	//fmt.Println("new customer name: ", name)
+
+	db := open()
+	defer db.Close()
+
+	stmt, err := db.Prepare("UPDATE batteries SET unit_id = ? WHERE serial_number = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(unit,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE batteries SET contract_id = ? WHERE serial_number = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(contract,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE batteries SET battery_option_id = ? WHERE serial_number = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(option,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE batteries SET battery_type_id = ? WHERE serial_number = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(btype,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE batteries SET date_of_manufacture = ? WHERE serial_number = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(mf_date,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE batteries SET purpose = ? WHERE serial_number = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(purpose,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE batteries SET unit_state = ? WHERE serial_number = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(state,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	send("update!", w)
+}
