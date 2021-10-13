@@ -159,8 +159,22 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 			if err != nil {
 				panic(err.Error())
 			}
-			//detail.Profile.UnitType = unitElm.UnitType
-			detail.Profile.UnitType = "test_RB_****"//battery_type_id from batteries DB
+
+			var battery_type_id = batteryElm.BatteryTypeID
+			results40, err := db.Query("SELECT type FROM battery_types WHERE battery_type_id=" + strconv.Itoa(battery_type_id))
+			for results40.Next() {
+				var battery_type string
+				
+				err = results40.Scan(&battery_type)
+				if err != nil {
+					panic(err.Error())
+				}
+
+				//detail.Profile.UnitType = batteryElm.BatteryTypeID
+				detail.Profile.UnitType = battery_type
+			}
+
+			//detail.Profile.UnitType = "test_RB_****"//battery_type_id from batteries DB
 			//detail.Profile.Purpose = unitElm.Purpose//from batteries DB
 			detail.Profile.Purpose = batteryElm.Purpose
 
@@ -323,8 +337,23 @@ func ContractDetailView(w http.ResponseWriter, r *http.Request) {
 			if err != nil {
 				panic(err.Error())
 			}
+
+
+			var battery_type_id = batteryElm.BatteryTypeID
+			results40, err := db.Query("SELECT type FROM battery_types WHERE battery_type_id=" + strconv.Itoa(battery_type_id))
+			for results40.Next() {
+				var battery_type string
+				
+				err = results40.Scan(&battery_type)
+				if err != nil {
+					panic(err.Error())
+				}
+
+				//detail.Profile.UnitType = batteryElm.BatteryTypeID
+				detail.Profile.UnitType = battery_type
+			}
 			//detail.Profile.UnitType = unitElm.UnitType
-			detail.Profile.UnitType = "test_RB_****"//battery_type_id from batteries DB
+			//detail.Profile.UnitType = "test_RB_****"//battery_type_id from batteries DB
 			//detail.Profile.Purpose = unitElm.Purpose//from batteries DB
 			detail.Profile.Purpose = batteryElm.Purpose
 

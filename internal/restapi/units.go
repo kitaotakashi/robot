@@ -173,9 +173,23 @@ func UnitsView(w http.ResponseWriter, r *http.Request) {
 				panic(err.Error())
 			}
 
+			var battery_type_id = batteryElm.BatteryTypeID
+			results40, err := db.Query("SELECT type FROM battery_types WHERE battery_type_id=" + strconv.Itoa(battery_type_id))
+			for results40.Next() {
+				var battery_type string
+				
+				err = results40.Scan(&battery_type)
+				if err != nil {
+					panic(err.Error())
+				}
+
+				//detail.Profile.UnitType = batteryElm.BatteryTypeID
+				unit.Profile.UnitType = battery_type
+			}
+
 			unit.ContractID = batteryElm.ContractID
 			unit.Profile.Purpose = batteryElm.Purpose//unitElm.Purpose //from battery DB
-			unit.Profile.UnitType = "test_RB-***"//<-battery_type_idから製品table取得
+			//unit.Profile.UnitType = "test_RB-***"//<-battery_type_idから製品table取得
 
 			//contractIDから取得
 			//var accountId string
