@@ -200,12 +200,23 @@ type chargerElm  struct{
 	PicSupplyPlug			null.String		`json:"pic_supply_plug"`
 }
 
+type chargerLabelsElm struct{
+	ChargerId		int		`json:"charger_id"`
+	SerialNumber	string 	`json:"serial_number"`
+	ChargerTypeId	int		`json:"charger_type_id"`
+}
+
 // errorElm はエラー情報を格納する
 type errorStatesElm struct {
 	ErrorCode      	int 		`json:"error_code"`
 	ObjectType		string 		`json:"object_type"`
 	ObjectId   		int        	`json:"object_id"`
 	ErrorTime 		time.Time   `json:"error_time"`
+}
+
+type chargerTypesElm struct{
+	ChargerTypeId	int			`json:"charger_type_id"`
+	Type			string 		`json:"type"`
 }
 
 type errorsElm struct {
