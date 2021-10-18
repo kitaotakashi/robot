@@ -423,7 +423,7 @@ func DeleteFromDepartment(w http.ResponseWriter, r *http.Request) {
 		}
 		for results2.Next() {
 			var charger_id int
-			err = results.Scan(&charger_id)
+			err = results2.Scan(&charger_id)
 
 			stmt, err := db.Prepare("DELETE FROM charger_labels WHERE charger_id = ?")
 			if err != nil {

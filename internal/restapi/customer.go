@@ -322,6 +322,8 @@ func DeleteFromCustomer(w http.ResponseWriter, r *http.Request) {
 		var department_id int
 		err = results.Scan(&department_id)
 
+		//fmt.Fprintf(w,"department id is"+strconv.Itoa(department_id))
+
 		//departmentの削除
 		stmt, err := db.Prepare("DELETE FROM departments WHERE department_id = ?")
 		if err != nil {
@@ -339,7 +341,8 @@ func DeleteFromCustomer(w http.ResponseWriter, r *http.Request) {
 		}
 		for results2.Next() {
 			var contract_id int
-			err = results.Scan(&contract_id)
+			err = results2.Scan(&contract_id)
+			//fmt.Fprintf(w,"contract id is"+strconv.Itoa(contract_id))
 
 			//各contract_idに紐づいたbatteriesの削除
 			stmt, err := db.Prepare("DELETE FROM batteries WHERE contract_id = ?")
@@ -359,7 +362,7 @@ func DeleteFromCustomer(w http.ResponseWriter, r *http.Request) {
 			//charger_labelsの削除
 			for results3.Next() {
 				var charger_id int
-				err = results.Scan(&charger_id)
+				err = results3.Scan(&charger_id)
 	
 				stmt, err := db.Prepare("DELETE FROM charger_labels WHERE charger_id = ?")
 				if err != nil {
