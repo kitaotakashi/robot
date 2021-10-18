@@ -86,7 +86,9 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/customer/", db.CustomerView).Methods("GET")
 	//router.HandleFunc("/api/v1/customer/post/",db.CreateCustomer).Methods("POST")
 	router.HandleFunc("/api/v1/customer/post/",db.CreateCustomer)
+	router.HandleFunc("/api/v1/customer/put/",db.UpdateCustomer)
 	router.HandleFunc("/api/v1/customer/delete/",db.DeleteCustomer)
+	router.HandleFunc("/api/v1/fromcustomer/delete/",db.DeleteFromCustomer)
 
 	router.HandleFunc("/api/v1/contracts/", db.ContractsView).Methods("GET")
 	router.HandleFunc("/api/v1/contractshome/", db.ContractsHomeView).Methods("GET")
@@ -118,7 +120,9 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/customerdepartment/", db.CustomerDepartmentView).Methods("GET")
 	//router.HandleFunc("/api/v1/department/", db.CreateDepartment).Methods("POST")
 	router.HandleFunc("/api/v1/department/post/", db.CreateDepartment)
+	router.HandleFunc("/api/v1/department/put/", db.UpdateDepartment)
 	router.HandleFunc("/api/v1/department/delete/",db.DeleteDepartment)
+	router.HandleFunc("/api/v1/fromdepartment/delete/",db.DeleteFromDepartment)
 
 	router.HandleFunc("/api/v1/batteryoptions/", db.BatteryOptionsView).Methods("GET")
 	router.HandleFunc("/api/v1/batteryoption/", db.BatteryOptionView).Methods("GET")

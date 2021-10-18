@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"io/ioutil"
+	"strconv"
 )
 
 // department は顧客の事業所情報を格納する
@@ -126,7 +127,6 @@ func CreateDepartment(w http.ResponseWriter, r *http.Request) {
 	pid := keyVal["parent_id"]//customer->account_id
 	name := keyVal["name"]
 	position := keyVal["position"]
-	//dob := keyVal["date_of_birth"]
 	postal := keyVal["postal_code"]
 	address := keyVal["address"]
 	mail := keyVal["mail"]
@@ -135,10 +135,6 @@ func CreateDepartment(w http.ResponseWriter, r *http.Request) {
 	wh := keyVal["weekly_holiday"]
 
 	fmt.Println(id,dname,pid,name,position,postal,address,mail,phone,dwh,wh)
-
-	//json.NewDecoder(r.Body).Decode(&customer)
-    //fmt.Println("new customer: ", customer)
-	//fmt.Println("new customer name: ", customer["name"])
 
 	db := open()
 	defer db.Close()
@@ -187,17 +183,6 @@ func CreateDepartment(w http.ResponseWriter, r *http.Request) {
   	if err != nil {
     	panic(err.Error())
   	}
-	
-	/*
-	stmt, err = db.Prepare("UPDATE customers SET date_of_birth = ? WHERE account_id = ?")
-  	if err != nil {
-    	panic(err.Error())
-  	} 
-	_, err = stmt.Exec(dob,id)
-  	if err != nil {
-    	panic(err.Error())
-  	}
-	*/
 	
 	stmt, err = db.Prepare("UPDATE departments SET postal_code = ? WHERE department_id = ?")
   	if err != nil {
@@ -256,9 +241,11 @@ func CreateDepartment(w http.ResponseWriter, r *http.Request) {
 	send("create!", w)
 }
 
-/*
-func UpdateCustomer(w http.ResponseWriter, r *http.Request) {
-	var customer customerElm
+func UpdateDepartment(w http.ResponseWriter, r *http.Request) {
+	idtmp := query(r, "department_id")
+	id := idtmp[0]
+
+	//var customer customerElm
 	body, err := ioutil.ReadAll(r.Body)
   	if err != nil {
     	panic(err.Error())
@@ -266,54 +253,117 @@ func UpdateCustomer(w http.ResponseWriter, r *http.Request) {
 	
 	keyVal := make(map[string]string)
   	json.Unmarshal(body, &keyVal)
-  	name := keyVal["name"]
-	//fmt.Println("new customer name: ", name)
-
-	//json.NewDecoder(r.Body).Decode(&customer)
-    //fmt.Println("new customer: ", customer)
-	//fmt.Println("new customer name: ", customer["name"])
+	dname := keyVal["department_name"]
+	pid := keyVal["parent_id"]//customer->account_id
+	name := keyVal["name"]
+	position := keyVal["position"]
+	postal := keyVal["postal_code"]
+	address := keyVal["address"]
+	mail := keyVal["mail"]
+	phone := keyVal["phone"]
+	dwh := keyVal["daily_working_hour"]
+	wh := keyVal["weekly_holiday"]
 
 	db := open()
 	defer db.Close()
 
-	stmt, err := db.Prepare("INSERT INTO customers(name) VALUES(?)")
+	stmt, err := db.Prepare("UPDATE departments SET department_name = ? WHERE department_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
-
-	_, err = stmt.Exec(name)
+	_, err = stmt.Exec(dname,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE departments SET parent_id = ? WHERE department_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(pid,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE departments SET name = ? WHERE department_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	_, err = stmt.Exec(name,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE departments SET position = ? WHERE department_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(position,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE departments SET postal_code = ? WHERE department_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(postal,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE departments SET address = ? WHERE department_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(address,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE departments SET mail = ? WHERE department_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(mail,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE departments SET phone = ? WHERE department_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(phone,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	
+	stmt, err = db.Prepare("UPDATE departments SET daily_working_hour = ? WHERE department_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(dwh,id)
   	if err != nil {
     	panic(err.Error())
   	}
 
-	//test := Test{ID:1, FirstName:"kitao"} 
-	send("update", w)
+	stmt, err = db.Prepare("UPDATE departments SET weekly_holiday = ? WHERE department_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(wh,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	send("update!", w)
 }
-*/
 
 func DeleteDepartment(w http.ResponseWriter, r *http.Request) {
 	idtmp := query(r, "department_id")
 	id := idtmp[0]
-	//print(id[0])
-	/*
-	body, err := ioutil.ReadAll(r.Body)
-  	if err != nil {
-    	panic(err.Error())
-  	}
-	
-	keyVal := make(map[string]string)
-  	json.Unmarshal(body, &keyVal)
-  	id := keyVal["account_id"]
-	name := keyVal["name"]
-	dob := keyVal["date_of_birth"]
-	
-	//name2 := query(r, "name")//url上で指定
-	//print(keyVal)
-	print(id)
-	print(name)
-	print(dob)
-	//print(name2[0])
-	*/
+
 	db := open()
 	defer db.Close()
 	
@@ -328,4 +378,92 @@ func DeleteDepartment(w http.ResponseWriter, r *http.Request) {
 	  panic(err.Error())
 	}
 	fmt.Fprintf(w, "Department with department ID = %s was deleted",id)
+}
+
+func DeleteFromDepartment(w http.ResponseWriter, r *http.Request) {
+	idtmp := query(r, "department_id")
+	id := idtmp[0]
+
+	db := open()
+	defer db.Close()
+	
+	stmt, err := db.Prepare("DELETE FROM departments WHERE department_id = ?")
+	if err != nil {
+	  panic(err.Error())
+	}
+	_, err = stmt.Exec(id)
+   	if err != nil {
+	  panic(err.Error())
+	}
+	fmt.Fprintf(w, "Department with department ID = %s was deleted",id)
+
+	//department_idに紐づいたcontractの削除
+	results, err := db.Query("SELECT contract_id FROM contracts WHERE department_id="+ id)
+	if err != nil {
+		panic(err.Error())
+	}
+	for results.Next() {
+		var contract_id int
+		err = results.Scan(&contract_id)
+		
+		//かつ各contract_idに紐づいたbatteries,charger_labelsの削除
+		stmt, err := db.Prepare("DELETE FROM batteries WHERE contract_id = ?")
+		if err != nil {
+			panic(err.Error())
+		}
+		_, err = stmt.Exec(contract_id)
+		if err != nil {
+			panic(err.Error())
+		}
+
+		//charger_idでmanuのものを取得
+		results2, err := db.Query("SELECT charger_id FROM chargers WHERE department_id="+ id)
+		if err != nil {
+			panic(err.Error())
+		}
+		for results2.Next() {
+			var charger_id int
+			err = results.Scan(&charger_id)
+
+			stmt, err := db.Prepare("DELETE FROM charger_labels WHERE charger_id = ?")
+			if err != nil {
+				panic(err.Error())
+			}
+			_, err = stmt.Exec(charger_id)
+			if err != nil {
+				panic(err.Error())
+			}
+		}
+
+		//契約削除
+		stmt, err = db.Prepare("DELETE FROM contracts WHERE contract_id = ?")
+		if err != nil {
+			panic(err.Error())
+		}
+		_, err = stmt.Exec(contract_id)
+		if err != nil {
+			panic(err.Error())
+		}
+		fmt.Fprintf(w, "contract ID = %s was deleted",strconv.Itoa(contract_id))
+	}
+
+	//department_idに紐づいたbattery_optionとchargerの削除
+	stmt, err = db.Prepare("DELETE FROM battery_options WHERE department_id = ?")
+	if err != nil {
+	  panic(err.Error())
+	}
+	_, err = stmt.Exec(id)
+   	if err != nil {
+	  panic(err.Error())
+	}
+
+	stmt, err = db.Prepare("DELETE FROM chargers WHERE department_id = ?")
+	if err != nil {
+	  panic(err.Error())
+	}
+	_, err = stmt.Exec(id)
+   	if err != nil {
+	  panic(err.Error())
+	}
+	fmt.Fprintf(w, "battery & charger options with department ID = %s was deleted",id)
 }
