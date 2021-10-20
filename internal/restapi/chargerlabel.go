@@ -140,3 +140,22 @@ func UpdateChargerLabels(w http.ResponseWriter, r *http.Request) {
 
 	send("update!", w)
 }
+
+func DeleteChargerLabels(w http.ResponseWriter, r *http.Request) {
+	idtmp := query(r, "serial_number")
+	id := idtmp[0]
+
+	db := open()
+	defer db.Close()
+	
+	stmt, err := db.Prepare("DELETE FROM charger_labels WHERE serial_number = ?")
+
+	if err != nil {
+	  panic(err.Error())
+	}
+	_, err = stmt.Exec(id)
+   	if err != nil {
+	  panic(err.Error())
+	}
+	fmt.Fprintf(w, "serial number = %s was deleted",id)
+}
