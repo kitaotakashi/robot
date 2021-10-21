@@ -1,3 +1,4 @@
 cmd/robot/nohup.out
 front
 ssl
+.env
