@@ -15,7 +15,7 @@ import (
 	"github.com/auth0/go-jwt-middleware"
 	"github.com/dgrijalva/jwt-go"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/gorilla/handlers"
+	//"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"net/http" //サーバを立てるために必要
 
@@ -237,7 +237,8 @@ func Server() error {
 
 	//return http.ListenAndServe(fmt.Sprintf(":%d", 80), router)
 	//return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "ssl/fullchain.pem", "ssl/server.key", router) //kitao追加 https
-	return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain.pem", "../../ssl/server.key", handlers.CORS(handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"}), handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"}), handlers.AllowedOrigins([]string{"*", "http://localhost:3000/"}))(router))
+	//return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain.pem", "../../ssl/server.key", handlers.CORS(handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"}), handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"}), handlers.AllowedOrigins([]string{"*", "http://localhost:3000/"}))(router))
+	return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain.pem", "../../ssl/server.key", router)
 
 	// http://18.180.144.98:80/
 	// https://jugem.live/
