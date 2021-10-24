@@ -29,8 +29,8 @@ func challengetoken(w http.ResponseWriter, r *http.Request) {
 func forCORS(next http.Handler) http.Handler {
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(r)
-		//origin := "http://localhost:3000"
 		w.Header().Set("Access-Control-Allow-Origin", "*")
+		//origin := "https://mico.center/"
 		//w.Header().Set("Access-Control-Allow-Origin", origin)
 
         w.Header().Set("Access-Control-Allow-Headers", "origin, X-Requested-With, Content-Type, Accept")
@@ -43,6 +43,8 @@ func forCORS(next http.Handler) http.Handler {
 			fmt.Println("get pf")
 			//w.Header().Set("Access-Control-Allow-Origin", "*")
 			w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
+			//w.Header().Set("Access-Control-Allow-Origin", "https://mico.center/")
+
 			//w.Header().Set("Access-Control-Allow-Headers", "origin, X-Requested-With, Content-Type, Accept")
 			w.Header().Set("Access-Control-Allow-Headers", "*")
 			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS, PUT")
