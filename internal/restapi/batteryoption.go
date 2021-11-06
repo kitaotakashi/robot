@@ -628,218 +628,266 @@ func UpdateBatteryOption(w http.ResponseWriter, r *http.Request) {
 	stmt, err := db.Prepare("UPDATE battery_options SET department_id = ? WHERE battery_option_id = ?")
 	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if did != ""{
 	_, err = stmt.Exec(did,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 	
 	  stmt, err = db.Prepare("UPDATE battery_options SET contract_id = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if contract != ""{ 
 	_, err = stmt.Exec(contract,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET update_date = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if udate != ""{ 
 	_, err = stmt.Exec(udate,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET info_type = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if info != ""{ 
 	_, err = stmt.Exec(info,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET option_name = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if name != ""{ 
 	_, err = stmt.Exec(name,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET forklift = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if forklift != ""{ 
 	_, err = stmt.Exec(forklift,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 	
 	stmt, err = db.Prepare("UPDATE battery_options SET type = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if otype != ""{  
 	_, err = stmt.Exec(otype,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET serial_number = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if serial != ""{ 
 	_, err = stmt.Exec(serial,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 	
 	stmt, err = db.Prepare("UPDATE battery_options SET voltage = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if voltage != ""{  
 	_, err = stmt.Exec(voltage,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET capacity = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if capacity != ""{  
 	_, err = stmt.Exec(capacity,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET weight = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if weight != ""{ 
 	_, err = stmt.Exec(weight,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET vertical = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if vertical != ""{  
 	_, err = stmt.Exec(vertical,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 	
 	stmt, err = db.Prepare("UPDATE battery_options SET horizontal = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if horizontal != ""{ 
 	_, err = stmt.Exec(horizontal,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 	
 	stmt, err = db.Prepare("UPDATE battery_options SET height = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if height != ""{  
 	_, err = stmt.Exec(height,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET how2change = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if how2 != ""{  
 	_, err = stmt.Exec(how2,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 	
 	stmt, err = db.Prepare("UPDATE battery_options SET daily_working_minute = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if dwm != ""{ 
 	_, err = stmt.Exec(dwm,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET daily_charging_minute = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if dcm != ""{  
 	_, err = stmt.Exec(dcm,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET number_of_change = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if noc != ""{  
 	_, err = stmt.Exec(noc,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 	
 	stmt, err = db.Prepare("UPDATE battery_options SET forklift_environment = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if environment != ""{  
 	_, err = stmt.Exec(environment,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 	
 	stmt, err = db.Prepare("UPDATE battery_options SET environment_else = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if els != ""{  
 	_, err = stmt.Exec(els,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET input_plug = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if input != ""{  
 	_, err = stmt.Exec(input,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET output_plug = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if output != ""{  
 	_, err = stmt.Exec(output,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET change_help = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if help != ""{ 
 	_, err = stmt.Exec(help,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE battery_options SET comment = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if comment != ""{ 
 	_, err = stmt.Exec(comment,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	send("update!", w)
 	

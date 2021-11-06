@@ -394,146 +394,178 @@ func UpdateCharger(w http.ResponseWriter, r *http.Request) {
   	if err != nil {
     	panic(err.Error())
   	} 
-	_, err = stmt.Exec(did,id)
-  	if err != nil {
-    	panic(err.Error())
-  	}
+	if did != "" {
+		_, err = stmt.Exec(did,id)
+		if err != nil {
+			panic(err.Error())
+		}
+	}
 
 	stmt, err = db.Prepare("UPDATE chargers SET contract_id = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if contract != "" {
 	_, err = stmt.Exec(contract,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 	
 	stmt, err = db.Prepare("UPDATE chargers SET update_date = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if udate != "" {
 	_, err = stmt.Exec(udate,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE chargers SET info_type = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if info != "" {
 	_, err = stmt.Exec(info,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE chargers SET charger_name = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if name != "" {
 	_, err = stmt.Exec(name,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE chargers SET charge_environment = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if environment != "" {
 	_, err = stmt.Exec(environment,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE chargers SET charge_environment_else = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if els != "" { 
 	_, err = stmt.Exec(els,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE chargers SET how2supply = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if how2 != "" { 
 	_, err = stmt.Exec(how2,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE chargers SET supply_plug = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if splug != "" {
 	_, err = stmt.Exec(splug,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE chargers SET supply_else = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if sels != "" {
 	_, err = stmt.Exec(sels,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE chargers SET power_supply_ampere = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if psa != "" { 
 	_, err = stmt.Exec(psa,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE chargers SET stand = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if stand != "" { 
 	_, err = stmt.Exec(stand,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 	
 	stmt, err = db.Prepare("UPDATE chargers SET power_supply2charger_cable_length = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if ps2c != "" {
 	_, err = stmt.Exec(ps2c,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 	
 	
 	stmt, err = db.Prepare("UPDATE chargers SET charger2forklift_cable_length = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if c2f != "" {
 	_, err = stmt.Exec(c2f,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 	
 	stmt, err = db.Prepare("UPDATE chargers SET charger_setting_help = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
-  	} 
+  	}
+	if help != "" { 
 	_, err = stmt.Exec(help,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	stmt, err = db.Prepare("UPDATE chargers SET comment = ? WHERE charger_id = ?")
   	if err != nil {
     	panic(err.Error())
   	} 
+	if comment != "" { 
 	_, err = stmt.Exec(comment,id)
   	if err != nil {
     	panic(err.Error())
   	}
+	}
 
 	send("update!", w)
 	
