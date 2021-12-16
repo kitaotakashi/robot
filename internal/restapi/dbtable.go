@@ -99,8 +99,8 @@ type unitElm struct { //要素名を変更
 	LastIOtime time.Time   `json:"last_io_time"`
 	//LastChargerError int   `json:"last_charger_error"`
 	//LastChargerErrorTime time.Time   `json:"last_charger_error_time"`
-	Latitude   float32     `json:"latitude"`
 	Longitude  float32     `json:"longitude"`
+	Latitude   float32     `json:"latitude"`
 	ChargeMode string	   `json:"charge_mode"`
 	BatteryCurrent float32 `json:"battery_current"`
 	BatteryVoltage float32 `json:"battery_voltage"`

@@ -311,7 +311,7 @@ func ContractDetailView(w http.ResponseWriter, r *http.Request) {
 		} else {
 			detail.Status.IsCharging = true
 		}
-		if time.Now().Sub(unitElm.Time) > time.Minute*5 {
+		if time.Now().Sub(unitElm.Time) > -5*time.Minute {
 			detail.Status.IsWorking = false
 		} else {
 			detail.Status.IsWorking = true

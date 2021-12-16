@@ -19,7 +19,7 @@ import (
 )
 
 func challengetoken(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "token")
+    fmt.Fprintf(w, "[token]")
 }
 
 func forCORS(next http.Handler) http.Handler {
@@ -169,7 +169,7 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 
 	fmt.Println("RoBOT Server Started Port 443")
 
-	//return http.ListenAndServe(fmt.Sprintf(":%d", 80), router)
+	//return http.ListenAndServe(fmt.Sprintf(":%d", 80), router)//encryptの証明時
 	return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain.pem", "../../ssl/server.key", router) //kitao追加 https
 	
 	/*
