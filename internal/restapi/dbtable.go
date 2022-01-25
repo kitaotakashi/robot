@@ -56,6 +56,7 @@ type contractElm struct {
 	ContractType   	string    `json:"contract_type"`
 	ExecutionDate  	time.Time `json:"execution_date"`
 	ExpirationDate 	time.Time `json:"expiration_date"`
+	DeliveryDate	time.Time `json:"delivery_date"`
 	//BillingDate    time.Time `json:"billing_date"`
 }
 

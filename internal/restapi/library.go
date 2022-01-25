@@ -23,7 +23,8 @@ func query(r *http.Request, k string) []string {
 func open() *sql.DB {
 	//db, err := sql.Open("mysql", "test_user:test_pass@tcp(10.0.1.229:3306)/test_db?parseTime=True")
 	//db, err := sql.Open("mysql", "test_user:test_pass@tcp(10.0.1.229:3306)/robot_db?parseTime=True")
-	db, err := sql.Open("mysql", "test_user:test_pass@tcp(10.0.1.229:3306)/mico_test?parseTime=True")
+	//db, err := sql.Open("mysql", "test_user:test_pass@tcp(10.0.1.229:3306)/mico_test?parseTime=True")
+	db, err := sql.Open("mysql", "admin:test_pass@tcp(10.0.1.229:3306)/mico_db?parseTime=True")
 	if err != nil {
 		panic(err.Error())
 	}

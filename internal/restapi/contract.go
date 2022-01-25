@@ -406,7 +406,8 @@ func CreateContract(w http.ResponseWriter, r *http.Request) {
 	ctype := keyVal["contract_type"]
 	st_date := keyVal["execution_date"]
 	ed_date := keyVal["expiration_date"]
-	fmt.Print(id,field,name,ctype,st_date,ed_date)
+	dr_date := keyVal["delivery_date"]
+	fmt.Print(id,field,name,ctype,st_date,ed_date,dr_date)
 	//fmt.Println("new customer name: ", name)
 
 	db := open()
@@ -462,6 +463,15 @@ func CreateContract(w http.ResponseWriter, r *http.Request) {
     	panic(err.Error())
   	} 
 	_, err = stmt.Exec(ed_date,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
+	stmt, err = db.Prepare("UPDATE contracts SET delivery_date = ? WHERE contract_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(dr_date,id)
   	if err != nil {
     	panic(err.Error())
   	}
