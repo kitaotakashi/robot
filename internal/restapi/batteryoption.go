@@ -168,6 +168,7 @@ func CreateBatteryOption(w http.ResponseWriter, r *http.Request) {
 	els := keyVal["environment_else"] 
 	input := keyVal["input_plug"]
 	output := keyVal["output_plug"]
+	length := keyVal["output_cable_length"]
 	help := keyVal["change_help"]
 	comment := keyVal["comment"]
 	request := keyVal["request"]
@@ -399,6 +400,15 @@ func CreateBatteryOption(w http.ResponseWriter, r *http.Request) {
     	panic(err.Error())
   	}
 
+	stmt, err = db.Prepare("UPDATE battery_options SET output_cable_length = ? WHERE battery_option_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	_, err = stmt.Exec(length,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+
 	stmt, err = db.Prepare("UPDATE battery_options SET change_help = ? WHERE battery_option_id = ?")
   	if err != nil {
     	panic(err.Error())
@@ -619,6 +629,7 @@ func UpdateBatteryOption(w http.ResponseWriter, r *http.Request) {
 	els := keyVal["environment_else"] 
 	input := keyVal["input_plug"]
 	output := keyVal["output_plug"]
+	length := keyVal["output_cable_lenght"]
 	help := keyVal["change_help"]
 	comment := keyVal["comment"]
 
@@ -862,6 +873,17 @@ func UpdateBatteryOption(w http.ResponseWriter, r *http.Request) {
   	}
 	if output != ""{  
 	_, err = stmt.Exec(output,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	}
+
+	stmt, err = db.Prepare("UPDATE battery_options SET output_cable_length = ? WHERE battery_option_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	if output != ""{  
+	_, err = stmt.Exec(length,id)
   	if err != nil {
     	panic(err.Error())
   	}

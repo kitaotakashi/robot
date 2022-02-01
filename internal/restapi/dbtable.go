@@ -155,6 +155,7 @@ type batteryOptionElm  struct{
 	EnvironmentElse		null.String `json:"environment_else"`
 	InputPlug			null.String `json:"input_plug"`
 	OutputPlug			null.String `json:"output_plug"`
+	OutputCableLength	sql.NullInt32		`json:"output_cable_length"`
 	ChangeHelp			null.String `json:"change_help"`
 	Comment				null.String	`json:"comment"`
 	Request				null.String     `json:"request"`
