@@ -629,7 +629,7 @@ func UpdateBatteryOption(w http.ResponseWriter, r *http.Request) {
 	els := keyVal["environment_else"] 
 	input := keyVal["input_plug"]
 	output := keyVal["output_plug"]
-	length := keyVal["output_cable_lenght"]
+	length := keyVal["output_cable_length"]
 	help := keyVal["change_help"]
 	comment := keyVal["comment"]
 
