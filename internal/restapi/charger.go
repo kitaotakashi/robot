@@ -386,6 +386,9 @@ func UpdateCharger(w http.ResponseWriter, r *http.Request) {
 	c2f := keyVal["charger2forklift_cable_length"]
 	help := keyVal["charger_setting_help"]
 	comment := keyVal["comment"]
+	pic1 :=	keyVal["pic_charger_stand"]
+	pic2 := keyVal["pic_power_supply"]
+	pic3 := keyVal["pic_supply_plug"]
 
 	db := open()
 	defer db.Close()
@@ -562,6 +565,39 @@ func UpdateCharger(w http.ResponseWriter, r *http.Request) {
   	} 
 	if comment != "" { 
 	_, err = stmt.Exec(comment,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	}
+
+	stmt, err = db.Prepare("UPDATE chargers SET pic_charger_stand = ? WHERE charger_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	if pic1 != "" { 
+	_, err = stmt.Exec(pic1,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	}
+
+	stmt, err = db.Prepare("UPDATE chargers SET pic_power_supply = ? WHERE charger_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	if pic2 != "" { 
+	_, err = stmt.Exec(pic2,id)
+  	if err != nil {
+    	panic(err.Error())
+  	}
+	}
+
+	stmt, err = db.Prepare("UPDATE chargers SET pic_supply_plug = ? WHERE charger_id = ?")
+  	if err != nil {
+    	panic(err.Error())
+  	} 
+	if pic3 != "" { 
+	_, err = stmt.Exec(pic3,id)
   	if err != nil {
     	panic(err.Error())
   	}
