@@ -227,3 +227,12 @@ type errorsElm struct {
 	ErrorMessage   string        `json:"error_message"`
 	RequiredAction string        `json:"required_action"`
 }
+
+//block
+type Pack struct {
+	BmsID			string `json:"bms_id"`
+	State 			string `json:"state"`//bmu_state
+	Current			float32 `json:"current"`
+	Energy			float32 `json:"energy"`
+	Capacity 		float32   `json:"capacity"`
+}

@@ -167,6 +167,9 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")
 	//router.HandleFunc("/.well-known/acme-challenge/[token]", challengetoken)//encryptの証明
 
+	//block
+	router.HandleFunc("/api/v1/block/packs/", db.GetPacks).Methods("GET")
+
 	fmt.Println("RoBOT Server Started Port 443")
 
 	//return http.ListenAndServe(fmt.Sprintf(":%d", 80), router)//encryptの証明時

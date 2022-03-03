@@ -6,6 +6,9 @@ import (
 	"log"
 	"net/http"
 	"reflect"
+	"github.com/joho/godotenv"
+	"fmt"
+	"os"
 )
 
 // query はkeyがkのクエリパラメータを返す
@@ -28,6 +31,26 @@ func open() *sql.DB {
 	if err != nil {
 		panic(err.Error())
 	}
+	return db
+}
+
+// block用
+func open_block_db() *sql.DB {
+	err := godotenv.Load(fmt.Sprintf("../%s.env", os.Getenv("GO_ENV")))
+	if err != nil {
+		log.Fatal(err)
+    }
+	host := os.Getenv("BLOCK_DB_HOST")
+	pass := os.Getenv("BLOCK_DB_PASS")
+	db_db := os.Getenv("BLOCK_DB_DB")
+	user := os.Getenv("BLOCK_DB_USER")
+
+	//db, err := sql.Open("postgres", "host="+host+" port=5432 user="+user+" password="+pass+" dbname="+db_db+" sslmode=disable binary_parameters=yes")
+	db, err := sql.Open("mysql", user+":"+pass+"@tcp("+host+":3306)/"+db_db+"?parseTime=True")
+	if err != nil {
+		panic(err.Error())
+	}
+	
 	return db
 }
 
