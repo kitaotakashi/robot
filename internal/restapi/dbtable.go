@@ -236,3 +236,25 @@ type Pack struct {
 	Energy			float32 `json:"energy"`
 	Capacity 		float32   `json:"capacity"`
 }
+
+type PackDetail struct {
+	BmsID			string `json:"bms_id"`
+	State 			string `json:"state"`//bmu_state
+	Current			float32 `json:"current"`
+	Energy			float32 `json:"energy"`
+	Capacity 		float32   `json:"capacity"`
+	BmuData			[]Bmu	`json:"bmu_data"`
+}
+
+type Bmu struct {
+	BmuID	string `json:"bmu_id"`
+	Energy	float32 `json:"energy"`
+}
+
+type ModuleDetail struct {
+	BmuID			string `json:"bmu_id"`
+	State 			string `json:"state"`//bmu_state
+	Current			float32 `json:"current"`
+	Energy			float32 `json:"energy"`
+	Capacity 		float32   `json:"capacity"`
+}

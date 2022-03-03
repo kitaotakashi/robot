@@ -169,6 +169,8 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 
 	//block
 	router.HandleFunc("/api/v1/block/packs/", db.GetPacks).Methods("GET")
+	router.HandleFunc("/api/v1/block/pack/", db.GetPackDetail).Methods("GET")
+	router.HandleFunc("/api/v1/block/module/", db.GetModuleDetail).Methods("GET")
 
 	fmt.Println("RoBOT Server Started Port 443")
 
