@@ -1,7 +1,7 @@
 package db
 
 import (
-	//"fmt"
+	"fmt"
 	"net/http"
 )
 
@@ -39,6 +39,15 @@ func GetPacks(w http.ResponseWriter, r *http.Request) {
 
 //bms詳細
 func GetPackDetail(w http.ResponseWriter, r *http.Request) {
+	q_bms_id := query(r, "bms_id")
+	if (len(q_bms_id)==0){
+		//send("please specify query parameter : device_id", w)
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("please specify query parameter : bms_id"))
+		return
+	}else{
+		fmt.Println(q_bms_id)
+	}
 	/*
 	//クエリパラメータの取得
 	q_device_id := query(r, "dms_id")
@@ -80,7 +89,15 @@ func GetPackDetail(w http.ResponseWriter, r *http.Request) {
 
 //bmu 詳細
 func GetModuleDetail(w http.ResponseWriter, r *http.Request) {
-
+	q_bmu_id := query(r, "bmu_id")
+	if (len(q_bmu_id)==0){
+		//send("please specify query parameter : device_id", w)
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("please specify query parameter : bmu_id"))
+		return
+	}else{
+		fmt.Println(q_bmu_id)
+	}
 	//db := open_block_db()
 	//defer db.Close()
 
