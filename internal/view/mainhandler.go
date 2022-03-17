@@ -15,3 +15,25 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 }
+
+func BlockHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("../../front/dist/index.html") //htmlからテンプレートを作成
+	if err != nil {
+		panic(err)
+	}
+	err = tmpl.Execute(w, nil) //テンプレートを実行(ブラウザに表示)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func MicoHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("../../front/build/index.html") //htmlからテンプレートを作成
+	if err != nil {
+		panic(err)
+	}
+	err = tmpl.Execute(w, nil) //テンプレートを実行(ブラウザに表示)
+	if err != nil {
+		panic(err)
+	}
+}

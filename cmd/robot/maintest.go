@@ -37,8 +37,8 @@ func forCORS(next http.Handler) http.Handler {
         // プリフライトリクエストの対応
         if r.Method == "OPTIONS" {
 			fmt.Println("get pf")
-			//w.Header().Set("Access-Control-Allow-Origin", "*")
-			w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+			//w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 			//w.Header().Set("Access-Control-Allow-Headers", "origin, X-Requested-With, Content-Type, Accept")
 			w.Header().Set("Access-Control-Allow-Headers", "*")
 			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS, PUT")
@@ -81,8 +81,13 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.Use(forCORS)
 	//front
 	router.HandleFunc("/test/", OpenHtml.MainHandler)
-	router.Handle("/", http.FileServer(http.Dir("../../front/build")))
-	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("../../front/build/static"))))
+	//router.Handle("/", http.FileServer(http.Dir("../../front/build")))
+	//router.HandleFunc("/mico/", OpenHtml.MicoHandler)
+	//router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("../../front/build/static"))))
+
+	//router.Handle("/block/", http.FileServer(http.Dir("../../front/dist")))
+	router.HandleFunc("/", OpenHtml.BlockHandler)
+	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("../../front/dist/assets"))))
 	//api
 	router.HandleFunc("/api/v1/units/", db.UnitsView).Methods("GET")
 	//router.HandleFunc("/api/v1/detaile/", db.DetaileView).Methods("GET")
