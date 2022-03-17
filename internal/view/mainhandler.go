@@ -17,7 +17,7 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func BlockHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("../../front/dist/index.html") //htmlからテンプレートを作成
+	tmpl, err := template.ParseFiles("../../front/dist_v3/index.html") //htmlからテンプレートを作成
 	if err != nil {
 		panic(err)
 	}

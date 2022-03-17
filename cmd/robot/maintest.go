@@ -81,13 +81,12 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.Use(forCORS)
 	//front
 	router.HandleFunc("/test/", OpenHtml.MainHandler)
-	//router.Handle("/", http.FileServer(http.Dir("../../front/build")))
-	//router.HandleFunc("/mico/", OpenHtml.MicoHandler)
-	//router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("../../front/build/static"))))
+	router.Handle("/", http.FileServer(http.Dir("../../front/build")))
+	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("../../front/build/static"))))
 
 	//router.Handle("/block/", http.FileServer(http.Dir("../../front/dist")))
-	router.HandleFunc("/", OpenHtml.BlockHandler)
-	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("../../front/dist/assets"))))
+	router.HandleFunc("/block/", OpenHtml.BlockHandler)
+	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("../../front/dist_v3/assets"))))
 	//api
 	router.HandleFunc("/api/v1/units/", db.UnitsView).Methods("GET")
 	//router.HandleFunc("/api/v1/detaile/", db.DetaileView).Methods("GET")
