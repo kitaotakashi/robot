@@ -84,9 +84,9 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.Handle("/", http.FileServer(http.Dir("../../front/build")))
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("../../front/build/static"))))
 
-	//router.Handle("/block/", http.FileServer(http.Dir("../../front/dist")))
 	router.HandleFunc("/block/", OpenHtml.BlockHandler)
-	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("../../front/dist_v3/assets"))))
+	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("../../front/dist/assets"))))
+	
 	//api
 	router.HandleFunc("/api/v1/units/", db.UnitsView).Methods("GET")
 	//router.HandleFunc("/api/v1/detaile/", db.DetaileView).Methods("GET")
