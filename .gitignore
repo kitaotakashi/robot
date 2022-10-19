@@ -2,3 +2,4 @@ cmd/robot/nohup.out
 front
 ssl
 .env
+cmd/robot/go1.13.5.linux-amd64.tar.gz
