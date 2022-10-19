@@ -18,6 +18,10 @@ import (
 	//"github.com/rs/cors"
 )
 
+//token変更
+//api追加
+//80でサーバー起動
+//token削除
 func challengetoken(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintf(w, "[token]")
 }
@@ -169,7 +173,7 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/chargertypes/", db.ChargerTypesView).Methods("GET")
 	//others
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")
-	//router.HandleFunc("/.well-known/acme-challenge/[token]", challengetoken)//encryptの証明
+	//router.HandleFunc("/.well-known/acme-challenge/[]", challengetoken)//encryptの証明
 
 	//block
 	router.HandleFunc("/api/v1/block/packs/", db.GetPacks).Methods("GET")

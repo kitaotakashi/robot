@@ -142,10 +142,18 @@ func DetailView(w http.ResponseWriter, r *http.Request) {
 		detail.Status.Soc = unitElm.Soc
 		//detail.Status.Soh = unitElm.Soh
 		//detail.Status.Capacity = unitElm.Capacity
-		detail.Status.Current = unitElm.OutputCurrent
-		detail.Status.Voltage = unitElm.OutputVoltage
+		detail.Status.Current = unitElm.BatteryCurrent
+		detail.Status.Voltage = unitElm.BatteryVoltage
+		detail.Status.OutputCurrent = unitElm.OutputCurrent
+		detail.Status.OutputVoltage = unitElm.OutputVoltage
 		detail.TimeStamps.Time = unitElm.Time
 		detail.Status.LastIOtime= unitElm.LastIOtime
+		detail.Status.UsageTime= unitElm.UsageTime
+		detail.Status.NumberOfCharges= unitElm.NumberOfCharges
+		detail.Status.MaxCellVoltage= unitElm.MaxCellVoltage
+		detail.Status.MinCellVoltage= unitElm.MinCellVoltage
+		detail.Status.MaxTemperature= unitElm.MaxTemperature
+		detail.Status.MinTemperature= unitElm.MinTemperature
 
 		//batteryDBからとる
 		var flg=0
