@@ -12,6 +12,7 @@ import (
 	//"../../db"
 	//db "app/internal/restapi"
 	db "../../internal/restapi"
+	mico2 "../../internal/restapi2"
 	_ "github.com/go-sql-driver/mysql"
 	//"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
@@ -91,6 +92,11 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/block/", OpenHtml.BlockHandler)
 	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("../../front/dist/assets"))))
 	
+	//api v2
+	router.HandleFunc("/api/v2/login/", mico2.Login).Methods("POST")
+	router.HandleFunc("/api/v2/batteries/", mico2.BatteriesView).Methods("GET")
+	//router.Handle("/api/v2/units/", jwtMiddleware.Handler(http.HandlerFunc(mico2.UnitsView))).Methods("GET")
+
 	//api
 	router.HandleFunc("/api/v1/units/", db.UnitsView).Methods("GET")
 	//router.HandleFunc("/api/v1/detaile/", db.DetaileView).Methods("GET")
@@ -173,7 +179,6 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v1/chargertypes/", db.ChargerTypesView).Methods("GET")
 	//others
 	//router.HandleFunc("/api/v1/unit/", db.UnitView).Methods("GET")
-	//router.HandleFunc("/.well-known/acme-challenge/[]", challengetoken)//encryptの証明
 
 	//block
 	router.HandleFunc("/api/v1/block/packs/", db.GetPacks).Methods("GET")
@@ -182,6 +187,7 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 
 	fmt.Println("RoBOT Server Started Port 443")
 
+	//router.HandleFunc("/.well-known/acme-challenge/[]", challengetoken)//encryptの証明
 	//return http.ListenAndServe(fmt.Sprintf(":%d", 80), router)//encryptの証明時
 	return http.ListenAndServeTLS(fmt.Sprintf(":%d", 443), "../../ssl/fullchain.pem", "../../ssl/server.key", router) //kitao追加 https
 	
