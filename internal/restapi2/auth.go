@@ -50,7 +50,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	//values.Add("client_secret", client_secret)
 	values.Add("username", username)
 	values.Add("password", password)
-	values.Add("connection", "Robot-User-DB")
+	//values.Add("connection", "Robot-User-DB")
 	//values.Add("scope","offline_access")
 	//values.Add("audience","https://rev-fl988hpj.us.auth0.com/api/v2/")
 

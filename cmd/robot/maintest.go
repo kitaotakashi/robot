@@ -6,7 +6,11 @@ package main
 import (
 	"fmt"      //標準入力など(デバッグ用なので最終的にはいらない...?)
 	"net/http" //サーバを立てるために必要
-	//"log"
+	"log"
+	"github.com/joho/godotenv"
+	"os"
+	"errors"
+	"encoding/json"
 
 	"../../internal/view"
 	//"../../db"
@@ -17,6 +21,8 @@ import (
 	//"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	//"github.com/rs/cors"
+	"github.com/auth0/go-jwt-middleware"
+	"github.com/dgrijalva/jwt-go"
 )
 
 //token変更
@@ -75,12 +81,65 @@ func forCORS(next http.Handler) http.Handler {
     })
 }
 
+type Response struct {
+	Message string `json:"message"`
+}
+
+type Jwks struct {
+	Keys []JSONWebKeys `json:"keys"`
+}
+
+type JSONWebKeys struct {
+	Kty string   `json:"kty"`
+	Kid string   `json:"kid"`
+	Use string   `json:"use"`
+	N   string   `json:"n"`
+	E   string   `json:"e"`
+	X5c []string `json:"x5c"`
+}
+
 func main() {
 	Server()
 }
 
 // Server はhttpリクエスト毎の処理を登録してサーバーを立てる
 func Server() error {//logの場合はreturnがいらないのでerrorを消す
+	//auth0のドメイン取得
+	err := godotenv.Load(fmt.Sprintf("../../%s.env", os.Getenv("GO_ENV")))
+	if err != nil {
+		log.Fatal(err)
+	}
+	auth_audience := os.Getenv("AUTH_AUDIENCE")
+	auth_iss := os.Getenv("AUTH_DOMAIN")
+
+	jwtMiddleware := jwtmiddleware.New(jwtmiddleware.Options{
+		ValidationKeyGetter: func(token *jwt.Token) (interface{}, error) {
+			// Verify 'aud' claim
+			//aud := "https://mico.center/"
+			aud := auth_audience
+			checkAud := token.Claims.(jwt.MapClaims).VerifyAudience(aud, false)
+			// fmt.Printf("%v", token)
+			if !checkAud {
+				return token, errors.New("Invalid audience.")
+			}
+			// Verify 'iss' claim
+			iss := auth_iss
+			checkIss := token.Claims.(jwt.MapClaims).VerifyIssuer(iss, false)
+			if !checkIss {
+				return token, errors.New("Invalid issuer.")
+			}
+
+			cert, err := getPemCert(token)
+			if err != nil {
+				panic(err.Error())
+			}
+
+			result, _ := jwt.ParseRSAPublicKeyFromPEM([]byte(cert))
+			return result, nil
+		},
+		SigningMethod: jwt.SigningMethodRS256,
+	})
+
 	//router := mux.NewRouter().StrictSlash(true)->corsが動かない原因かも
 	router := mux.NewRouter()
 	router.Use(forCORS)
@@ -94,8 +153,8 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	
 	//api v2
 	router.HandleFunc("/api/v2/login/", mico2.Login).Methods("POST")
-	router.HandleFunc("/api/v2/batteries/", mico2.BatteriesView).Methods("GET")
-	//router.Handle("/api/v2/units/", jwtMiddleware.Handler(http.HandlerFunc(mico2.UnitsView))).Methods("GET")
+	//router.HandleFunc("/api/v2/batteries/", mico2.BatteriesView).Methods("GET")
+	router.Handle("/api/v2/batteries/", jwtMiddleware.Handler(http.HandlerFunc(mico2.BatteriesView))).Methods("GET")
 
 	//api
 	router.HandleFunc("/api/v1/units/", db.UnitsView).Methods("GET")
@@ -206,4 +265,42 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	// http://18.180.144.98:80/
 	// https://jugem.live/
 	//nohup go run - &
+}
+
+func getPemCert(token *jwt.Token) (string, error) {
+	//token取得用のauth0 domainおよびclient_idをenvファイルから取得
+	err := godotenv.Load(fmt.Sprintf("../../%s.env", os.Getenv("GO_ENV")))
+	if err != nil {
+		log.Fatal(err)
+	}
+	auth_domain := os.Getenv("AUTH_DOMAIN")
+
+	cert := ""
+	//resp, err := http.Get("https://robot.jp.auth0.com/.well-known/jwks.json")
+	resp, err := http.Get(auth_domain + ".well-known/jwks.json")
+
+	if err != nil {
+		return cert, err
+	}
+	defer resp.Body.Close()
+
+	var jwks = Jwks{}
+	err = json.NewDecoder(resp.Body).Decode(&jwks)
+
+	if err != nil {
+		return cert, err
+	}
+
+	for k, _ := range jwks.Keys {
+		if token.Header["kid"] == jwks.Keys[k].Kid {
+			cert = "-----BEGIN CERTIFICATE-----\n" + jwks.Keys[k].X5c[0] + "\n-----END CERTIFICATE-----"
+		}
+	}
+
+	if cert == "" {
+		err := errors.New("Unable to find appropriate key.")
+		return cert, err
+	}
+
+	return cert, nil
 }
