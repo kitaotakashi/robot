@@ -36,7 +36,7 @@ type batteryData struct{
 }
 
 type managementElm struct{
-	IsRestration 	bool		`json:"is_registration"`
+	IsRegistered 		bool		`json:"is_registered"`
 	SerialNumber 	string		`json:"serial_number"`
 	Customer 		string		`json:"customer"`
 	IsError			bool		`json:"is_error"`	

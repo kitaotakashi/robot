@@ -20,6 +20,22 @@ func BatteriesView(w http.ResponseWriter, r *http.Request) {
 	if len(q_page)>0{
 		_q_page,_ = strconv.Atoi(q_page[0])
 	}
+	q_error := query(r, "error")
+	var _q_error int = 0//0:エラーなし、1:エラーあり
+	if len(q_error)>0 {
+		tmp,_ := strconv.Atoi(q_error[0])
+		if tmp==1{
+			_q_error = 1
+		}
+	}
+	q_reg := query(r, "registered")
+	var _q_reg int = 0//0:登録なし、1:登録あり
+	if len(q_reg)>0 {
+		tmp,_ := strconv.Atoi(q_reg[0])
+		if tmp==1{
+			_q_reg = 1
+		}
+	}
 
 	//env読み込み
 	err := godotenv.Load(fmt.Sprintf("../../%s.env", os.Getenv("GO_ENV")))
@@ -75,6 +91,39 @@ func BatteriesView(w http.ResponseWriter, r *http.Request) {
 			panic(err.Error())
 		}
 		battery.Data = unit
+		
+		//TODO:errorデータやregisterデータを取得しておく
+		var is_error bool
+		var is_registered bool
+
+		//test
+		is_error = false
+		is_registered = false
+
+		var is_error_var int = 0
+		if is_error{
+			is_error_var = 1
+		}
+		var is_reg_var int = 0
+		if is_registered{
+			is_reg_var = 1
+		}
+
+		battery.Management.IsError = is_error
+		battery.Management.IsRegistered = is_registered
+
+		//エラークエリが指定された場合
+		if len(q_error)>0{
+			if _q_error != is_error_var{
+				continue
+			}
+		}
+		//登録ずみクエリが指定された場合
+		if len(q_reg)>0{
+			if _q_reg!= is_reg_var{
+				continue
+			}
+		}
 		batteries = append(batteries,battery)
 	}
 	page.DataNum = len(batteries)
