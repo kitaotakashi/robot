@@ -30,16 +30,40 @@ type batteryPnt struct{
 	Data	[]batteryData	`json:"batteries"`
 }
 
+type manageInfoPnt struct{
+	Page	pageElm			`json:"page"`
+	Data	[]manageInfoData	`json:"manage_info"`
+}
+
 type batteryData struct{
 	Data 		unitData 		`json:"data"`
 	Management 	managementElm	`json:"management"`
+	Error		[]errorsElm		`json:"error"`
+}
+
+type manageInfoData struct{
+	SerialNumber	string		`json:"serial_number"`
+	UnitID			sql.NullInt32      `json:"unit_id"`
+	//UnitID			int     `json:"unit_id"`
+	BatteryType		string		`json:"battery_type"`
+	CreateAt		time.Time	`json:"create_at"`
+	Voltage			float32		`json:"voltage"`
+	Current			float32		`json:"current"`		
+	Customer 		string		`json:"customer"`
+	CarModel		string		`json:"car_model"`
+	Charger			string		`json:"charger"`
+	Seller			string		`json:"seller"`
+	Comment			string		`json:"comment"`
+	IsError			bool		`json:"is_error"`
 }
 
 type managementElm struct{
-	IsRegistered 		bool		`json:"is_registered"`
+	IsError			bool		`json:"is_error"`
+	IsRegistered 	bool		`json:"is_registered"`
 	SerialNumber 	string		`json:"serial_number"`
 	Customer 		string		`json:"customer"`
-	IsError			bool		`json:"is_error"`	
+	Voltage			float32		`json:"voltage"`
+	Current			float32		`json:"current"`
 }
 
 type unitData struct{
@@ -73,4 +97,16 @@ type errorsElm struct {
 	ErrorCategory	string 		 `json:"error_category"`
 	ErrorMessage   string        `json:"error_message"`
 	RequiredAction string        `json:"required_action"`
+	ErrorTime		time.Time	 `json:"error_time"`
+}
+
+type errorState struct {
+	UnitID			int 		`json:"unit_id"`
+	ErrorCode      	int 		`json:"error_code"`
+	ErrorTime		time.Time	`json:"error_time"`
+}
+
+type userElm struct {
+	UserName	string			`json:"user_name"`
+	UserRole	string			`json:"user_role"`
 }
