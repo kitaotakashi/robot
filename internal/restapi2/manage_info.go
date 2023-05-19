@@ -59,19 +59,44 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 	var res_data []manageInfoPnt
 	var manageInfoParent manageInfoPnt
 	var page pageElm
+	
 	//ページ数を取得
-	results1, err := db.Query("SELECT count(serial_number) FROM manage_info")
+	results1, err := db.Query("SELECT unit_id FROM manage_info")
 	if err != nil {
 		panic(err.Error())
 	}
-	var manage_info_num int
+	var manage_info_num int = 0
+	var units_list []int
 	for results1.Next() {
-		err = results1.Scan(&manage_info_num)
+		var unit_tmp sql.NullInt64
+		err = results1.Scan(&unit_tmp)
 		if err != nil {
 			panic(err.Error())
 		}
+		if unit_tmp.Valid{
+			units_list = append(units_list,int(unit_tmp.Int64))
+		}
+		manage_info_num += 1
 	}
-	max_page := int(manage_info_num/max_data_num)+1
+
+	results1, err = db.Query("SELECT unit_id FROM "+battery_table)
+	if err != nil {
+		panic(err.Error())
+	}
+	units_num := 0
+	for results1.Next() {
+		var unit_id_tmp int
+		err = results1.Scan(&unit_id_tmp)
+		if err != nil {
+			panic(err.Error())
+		}
+		if contains(units_list,unit_id_tmp){
+			continue
+		}
+		units_num += 1
+	}
+
+	max_page := int((manage_info_num+units_num)/max_data_num)+1
 	if _q_page > max_page{
 		_q_page = max_page
 	}
@@ -237,73 +262,22 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 	//情報登録されていないunitを取得
 	offset = (_q_page-1)*max_data_num - manage_info_num
 	rest_unit_max_num := max_data_num - offset
+	is_get_unit := false
 
 	//ページ数でoffsetを調整
 	if offset < 0{
 		if offset > -1*max_data_num{
-			var is_error bool
-			var is_error_cnt int
 			offset = 0
-			results1, err = db.Query("SELECT unit_id,soc,output_voltage,output_current FROM "+battery_table+" ORDER BY unit_id LIMIT "+strconv.Itoa(rest_unit_max_num)+" OFFSET "+strconv.Itoa(offset))
-			if err != nil {
-				panic(err.Error())
-			}
-			for results1.Next() {
-				var manage_info manageInfoData
-				var unit_id_tmp int
-				err = results1.Scan(&unit_id_tmp,&manage_info.SoC,&manage_info.Voltage,&manage_info.Current)
-				if err != nil {
-					panic(err.Error())
-				}
-				//fmt.Println(contains(unit_id_list,unit_id_tmp))
-				if contains(unit_id_list,unit_id_tmp){
-					continue
-				}else{
-					manage_info.UnitID.Valid=true
-					manage_info.UnitID.Int64=int64(unit_id_tmp)
-					manage_info.State = "情報未登録"
-					
-					query2 := "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.Itoa(unit_id_tmp)
-					results2,err := db.Query(query2)
-					if err != nil {
-						panic(err.Error())
-					}
-					for results2.Next() {
-						err = results2.Scan(&is_error_cnt)
-						if err != nil {
-							panic(err.Error())
-						}
-					}
-					if is_error_cnt>0{
-						is_error = true
-					}
-					var is_error_var int = 0
-					if is_error{
-						is_error_var = 1
-					}
-					//エラークエリが指定された場合
-					if len(q_error)>0{
-						if _q_error != is_error_var{
-							continue
-						}
-					}
-					manage_info.IsError = is_error
-					is_error = false
-
-					//登録ずみクエリが指定された場合
-					if len(q_reg)>0{
-						if _q_reg==1{
-							continue
-						}
-					}
-
-					manage_infos = append(manage_infos,manage_info)
-				}
-			}
+			is_get_unit = true
 		}
 	}else{
+		is_get_unit = true
+	}
+
+	if is_get_unit{
 		var is_error bool
 		var is_error_cnt int
+		
 		results1, err = db.Query("SELECT unit_id,soc,output_voltage,output_current FROM "+battery_table+" ORDER BY unit_id LIMIT "+strconv.Itoa(rest_unit_max_num)+" OFFSET "+strconv.Itoa(offset))
 		if err != nil {
 			panic(err.Error())
@@ -322,7 +296,7 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 				manage_info.UnitID.Valid=true
 				manage_info.UnitID.Int64=int64(unit_id_tmp)
 				manage_info.State = "情報未登録"
-
+				
 				query2 := "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.Itoa(unit_id_tmp)
 				results2,err := db.Query(query2)
 				if err != nil {
@@ -348,7 +322,6 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 				manage_info.IsError = is_error
-				is_error = false
 
 				//登録ずみクエリが指定された場合
 				if len(q_reg)>0{
