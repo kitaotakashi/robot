@@ -10,6 +10,7 @@ import (
 	"os"
 	"log"
 	"database/sql"
+	"github.com/dgrijalva/jwt-go"
 )
 
 func ManageInfoView(w http.ResponseWriter, r *http.Request) {
@@ -52,6 +53,22 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 	manage_info_table := os.Getenv("MANAGE_INFO_TABLE")
 	car_model_table := os.Getenv("CAR_MODEL_TABLE")
 	battery_table := os.Getenv("BATTERY_TABLE")
+
+	//ヘッダからAuthorizationを取得する
+	h := r.Header["Authorization"]
+
+	//tokenをdecode
+	tokenString := h[0][7:]//Baerer以下を取り出し
+
+	token, err := jwt.Parse(tokenString, nil)
+    if token == nil {
+        panic(err.Error())
+    }
+    claims, _ := token.Claims.(jwt.MapClaims)
+
+	//roll取得
+	user_role := claims["https://classmethod.jp/roles"].([]interface{})[0]
+	fmt.Println(user_role)
 
 	db := open()
 	defer db.Close()

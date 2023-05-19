@@ -155,6 +155,11 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.HandleFunc("/api/v2/login/", mico2.Login).Methods("POST")
 	//router.HandleFunc("/api/v2/batteries/", mico2.BatteriesView).Methods("GET")
 	router.Handle("/api/v2/batteries/", jwtMiddleware.Handler(http.HandlerFunc(mico2.BatteriesView))).Methods("GET")
+	router.Handle("/api/v2/batteries/detail/", jwtMiddleware.Handler(http.HandlerFunc(mico2.BatteryDetailView))).Methods("GET")
+	router.Handle("/api/v2/user/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetUser))).Methods("GET")
+	router.Handle("/api/v2/manage_info/", jwtMiddleware.Handler(http.HandlerFunc(mico2.ManageInfoView))).Methods("GET")
+	router.Handle("/api/v2/error/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetErrorList))).Methods("GET")
+	router.Handle("/api/v2/car_model/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetCarModelList))).Methods("GET")
 
 	//api
 	router.HandleFunc("/api/v1/units/", db.UnitsView).Methods("GET")

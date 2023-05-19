@@ -37,6 +37,12 @@ type manageInfoPnt struct{
 
 type batteryData struct{
 	Data 		unitData 		`json:"data"`
+	Management 	managementMinElm	`json:"management"`
+	//Error		[]errorsElm		`json:"error"`
+}
+
+type batteryDetailData struct{
+	Data 		unitData 		`json:"data"`
 	Management 	managementElm	`json:"management"`
 	Error		[]errorsElm		`json:"error"`
 }
@@ -66,6 +72,13 @@ type managementElm struct{
 	Customer 		string		`json:"customer"`
 	Voltage			float32		`json:"voltage"`
 	Current			float32		`json:"current"`
+}
+
+type managementMinElm struct{
+	IsError			bool		`json:"is_error"`
+	IsRegistered 	bool		`json:"is_registered"`
+	SerialNumber 	string		`json:"serial_number"`
+	//Customer 		string		`json:"customer"`
 }
 
 type unitData struct{
@@ -111,4 +124,17 @@ type errorState struct {
 type userElm struct {
 	UserName	string			`json:"user_name"`
 	UserRole	string			`json:"user_role"`
+}
+
+type errorsListElm struct{
+	ErrorCode      int 			 `json:"error_code"`
+	ErrorCategory	string 		 `json:"error_category"`
+	ErrorMessage   string        `json:"error_message"`
+	RequiredAction string        `json:"required_action"`
+}
+
+type carModelListElm struct{
+	CarModelID      int 		 `json:"car_model_id"`
+	CarModelName	string 		 `json:"car_model_name"`
+	Comment   		string       `json:"comment"`
 }
