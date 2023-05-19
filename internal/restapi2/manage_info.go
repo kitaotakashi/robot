@@ -49,6 +49,8 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
     }
 	max_data_num,_ := strconv.Atoi(os.Getenv("MAX_DATA_NUM"))
+	manage_info_table := os.Getenv("MANAGE_INFO_TABLE")
+	car_model_table := os.Getenv("CAR_MODEL_TABLE")
 
 	db := open()
 	defer db.Close()
@@ -84,7 +86,11 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 	page.PageMax = max_page
 
 	var manage_infos []manageInfoData
-	results1, err = db.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM manage_info ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
+	results1, err = db.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM "+manage_info_table+" ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
+	//TODO:カーモデルidが指定された場合
+	if len(q_car_model_id)>0{
+		results1, err = db.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM "+manage_info_table+" WHERE car_model_id = "+strconv.Itoa(_q_car_model_id)+" ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
+	}
 	if err != nil {
 		panic(err.Error())
 	}
@@ -120,7 +126,18 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 		//car model id
 		if car_model_id.Valid {
 			//TODO:car_model listから名前を取得
-			fmt.Println(car_model_id.Int32)
+			query2 := "SELECT car_model_name FROM "+car_model_table+" WHERE car_model_id = "+strconv.Itoa(int(car_model_id.Int32))
+			results2,err := db.Query(query2)
+			//results2,err := db.Query(query2,strconv.Itoa(int(car_model_id.Int32)))
+			if err != nil {
+				panic(err.Error())
+			}
+			for results2.Next() {
+				err = results2.Scan(&manage_info.CarModel)
+				if err != nil {
+					panic(err.Error())
+				}
+			}
 		}else{
 			manage_info.CarModel = ""
 		}
@@ -134,7 +151,7 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 
 		//seller
 		if seller.Valid {
-			manage_info.Seller = charger.String
+			manage_info.Seller = seller.String
 		}else{
 			manage_info.Seller = ""
 		}
@@ -147,33 +164,51 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 		}
 		
 		//TODO:errorデータやregisterデータを取得しておく
-		//var is_error bool
-		//var is_registered bool
+		var is_error bool
+		var is_registered bool
 
+		var is_error_cnt int
+		if manage_info.UnitID.Valid{
+			is_registered = true
+
+			query2 := "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.Itoa(int(manage_info.UnitID.Int32))
+			results2,err := db.Query(query2)
+			if err != nil {
+				panic(err.Error())
+			}
+			for results2.Next() {
+				err = results2.Scan(&is_error_cnt)
+				if err != nil {
+					panic(err.Error())
+				}
+			}
+			//fmt.Println(is_error_cnt)
+			if is_error_cnt>0{
+				is_error = true
+			}
+		}
+		var is_error_var int = 0
+		if is_error{
+			is_error_var = 1
+		}
 		//エラークエリが指定された場合
 		if len(q_error)>0{
-			fmt.Println(_q_error)
-			continue
-			/*
 			if _q_error != is_error_var{
 				continue
-			}*/
+			}
+		}
+
+		var is_reg_var int = 0
+		if is_registered{
+			is_reg_var = 1
 		}
 		//登録ずみクエリが指定された場合
 		if len(q_reg)>0{
-			fmt.Println(_q_reg)
-			continue
-			/*
 			if _q_reg!= is_reg_var{
 				continue
-			}*/
+			}
 		}
 
-		//TODO:カーモデルidが指定された場合
-		if len(q_car_model_id)>0{
-			fmt.Println(_q_car_model_id)
-			continue
-		}
 		manage_infos = append(manage_infos,manage_info)
 	}
 	page.DataNum = len(manage_infos)
