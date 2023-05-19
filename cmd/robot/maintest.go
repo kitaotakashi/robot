@@ -158,6 +158,9 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.Handle("/api/v2/batteries/detail/", jwtMiddleware.Handler(http.HandlerFunc(mico2.BatteryDetailView))).Methods("GET")
 	router.Handle("/api/v2/user/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetUser))).Methods("GET")
 	router.Handle("/api/v2/manage_info/", jwtMiddleware.Handler(http.HandlerFunc(mico2.ManageInfoView))).Methods("GET")
+	router.Handle("/api/v2/manage_info/add/", jwtMiddleware.Handler(http.HandlerFunc(mico2.AddManageInfo))).Methods("POST")
+	router.Handle("/api/v2/manage_info/edit/", jwtMiddleware.Handler(http.HandlerFunc(mico2.EditManageInfo))).Methods("POST")
+	router.Handle("/api/v2/manage_info/delete/", jwtMiddleware.Handler(http.HandlerFunc(mico2.DeleteManageInfo))).Methods("POST")
 	router.Handle("/api/v2/error/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetErrorList))).Methods("GET")
 	router.Handle("/api/v2/car_model/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetCarModelList))).Methods("GET")
 

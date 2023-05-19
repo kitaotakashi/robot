@@ -11,6 +11,8 @@ import (
 	"log"
 	"database/sql"
 	"github.com/dgrijalva/jwt-go"
+	"io/ioutil"
+	"encoding/json"
 )
 
 func ManageInfoView(w http.ResponseWriter, r *http.Request) {
@@ -290,6 +292,9 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 	}else{
 		is_get_unit = true
 	}
+	if len(q_car_model_id)>0{
+		is_get_unit = false
+	}
 
 	if is_get_unit{
 		var is_error bool
@@ -359,4 +364,392 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 	res_data = append(res_data,manageInfoParent)
 
 	send(res_data, w)
+}
+
+func AddManageInfo(w http.ResponseWriter, r *http.Request) {
+	//ヘッダからAuthorizationを取得する
+	h := r.Header["Authorization"]
+
+	//tokenをdecode
+	tokenString := h[0][7:]//Baerer以下を取り出し
+
+	token, err := jwt.Parse(tokenString, nil)
+    if token == nil {
+        panic(err.Error())
+    }
+    claims, _ := token.Claims.(jwt.MapClaims)
+
+	//user mali取得
+	//user_mail := claims["https://classmethod.jp/email"]
+	//roll取得
+	user_role := claims["https://classmethod.jp/roles"].([]interface{})[0]
+
+	if user_role != "admin"{
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("You Dont have access right"))
+		return
+	}
+
+	db := open()
+	defer db.Close()
+
+	//env読み込み
+	err = godotenv.Load(fmt.Sprintf("../../%s.env", os.Getenv("GO_ENV")))
+	if err != nil {
+		log.Fatal(err)
+    }
+	manage_info_table := os.Getenv("MANAGE_INFO_TABLE")
+
+	jst := time.FixedZone("Asia/Tokyo", 9*60*60)
+
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	keyVal := make(map[string]string)
+	json.Unmarshal(body, &keyVal)
+
+	var serial_number,unit_id,battery_type,customer,car_model_id,charger,seller,comment string
+
+	//serial_numberがあるかどうか
+	if len(keyVal["serial_number"]) > 0{
+		if CheckInt(keyVal["serial_number"]){
+			serial_number = keyVal["serial_number"]
+			//シリアルナンバーが既に使われていないか
+			results1, err := db.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE serial_number = "+serial_number)
+			if err != nil {
+				panic(err.Error())
+			}
+			var cnt int
+			for results1.Next() {
+				err = results1.Scan(&cnt)
+				if err != nil {
+					panic(err.Error())
+				}
+			}
+			if cnt>0{
+				w.WriteHeader(http.StatusBadRequest)
+				w.Write([]byte("This serial number has already exists"))
+				return
+			}
+		}else{
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("Please Specify Parameters:serial_number with CORRECT type(int)"))
+			return
+		}
+	}else{
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("Missing Parameters:serial_number"))
+		return
+	}
+
+	if len(keyVal["unit_id"]) > 0 {
+		if CheckInt(keyVal["unit_id"]){
+			unit_id = keyVal["unit_id"]
+
+			//unit_idが別のmanage_infoに登録されていないかchk
+			results1, err := db.Query("SELECT serial_number FROM "+manage_info_table+" WHERE unit_id = "+unit_id)
+			if err != nil {
+				panic(err.Error())
+			}
+			var serial_number_already []int
+			for results1.Next() {
+				var tmp int
+				err = results1.Scan(&tmp)
+				if err != nil {
+					panic(err.Error())
+				}
+				serial_number_already = append(serial_number_already,tmp)
+			}
+			if len(serial_number_already)>0{
+				w.WriteHeader(http.StatusBadRequest)
+				w.Write([]byte("This unit_id has already registered (serial number : "+strconv.Itoa(serial_number_already[0])+")"))
+				return
+			}
+		}else{
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("Please Specify Parameters:unit_id with CORRECT type(int)"))
+			return
+		}
+	}
+	
+	if len(keyVal["battery_type"])>0{
+		battery_type = keyVal["battery_type"]
+	}
+
+	if len(keyVal["customer"])>0{
+		customer = keyVal["customer"]
+	}
+
+	if len(keyVal["car_model_id"])>0{
+		if CheckInt(keyVal["car_model_id"]){
+			car_model_id = keyVal["car_model_id"]
+		}else{
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("Please Specify Parameters:car_model_id with CORRECT type(int)"))
+			return
+		}
+	}
+
+	if len(keyVal["charger"])>0{
+		charger = keyVal["charger"]
+	}
+
+	if len(keyVal["seller"])>0{
+		seller = keyVal["seller"]
+	}
+
+	if len(keyVal["comment"])>0{
+		comment = keyVal["comment"]
+	}
+
+	//mage_infoの作成時はcreate_atをサーバー側で追加
+	var create_at string = TransTimestampToString(time.Now().In(jst))
+
+	//query = "INSERT INTO "+manage_info_table+" (serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment) VALUES ()
+	if len(keyVal["unit_id"]) == 0{
+		stmtIns, err := db.Prepare(fmt.Sprintf("INSERT INTO %s (serial_number,battery_type,create_at,customer,car_model_id,charger,seller,comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", manage_info_table))
+		if err != nil {
+			panic(err.Error())
+		}
+		defer stmtIns.Close()
+		_, err = stmtIns.Exec(serial_number,battery_type,create_at,customer,car_model_id,charger,seller,comment)
+	}else{
+		stmtIns, err := db.Prepare(fmt.Sprintf("INSERT INTO %s (serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", manage_info_table))
+		if err != nil {
+		panic(err.Error())
+		}
+		defer stmtIns.Close()
+		_, err = stmtIns.Exec(serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment)
+	}
+
+	send("add manage information",w)
+}
+
+func EditManageInfo(w http.ResponseWriter, r *http.Request) {
+	q_serial_number := query(r, "serial_number")
+	var _q_serial_number string
+	if len(q_serial_number)>0 && CheckInt(q_serial_number[0]){
+		_q_serial_number = q_serial_number[0]
+	}else{
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("Missing Parameters or Incorrect Format:serial_number(int)"))
+		return
+	}
+
+	//ヘッダからAuthorizationを取得する
+	h := r.Header["Authorization"]
+
+	//tokenをdecode
+	tokenString := h[0][7:]//Baerer以下を取り出し
+
+	token, err := jwt.Parse(tokenString, nil)
+    if token == nil {
+        panic(err.Error())
+    }
+    claims, _ := token.Claims.(jwt.MapClaims)
+
+	//user mali取得
+	//user_mail := claims["https://classmethod.jp/email"]
+	//roll取得
+	user_role := claims["https://classmethod.jp/roles"].([]interface{})[0]
+
+	if user_role != "admin"{
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("You Dont have access right"))
+		return
+	}
+
+	db := open()
+	defer db.Close()
+
+	//env読み込み
+	err = godotenv.Load(fmt.Sprintf("../../%s.env", os.Getenv("GO_ENV")))
+	if err != nil {
+		log.Fatal(err)
+    }
+	manage_info_table := os.Getenv("MANAGE_INFO_TABLE")
+
+	//serial numberが存在するかchkする
+	results1, err := db.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE serial_number = "+_q_serial_number)
+	if err != nil {
+		panic(err.Error())
+	}
+	var cnt int
+	for results1.Next() {
+		err = results1.Scan(&cnt)
+		if err != nil {
+			panic(err.Error())
+		}
+	}
+	if cnt==0{
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("There is no manage_info with such serial_number"))
+		return
+	}
+
+	jst := time.FixedZone("Asia/Tokyo", 9*60*60)
+
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	keyVal := make(map[string]string)
+	json.Unmarshal(body, &keyVal)
+
+	var unit_id,battery_type,customer,car_model_id,charger,seller,comment string
+
+	if len(keyVal["unit_id"]) > 0 {
+		if CheckInt(keyVal["unit_id"]){
+			unit_id = keyVal["unit_id"]
+
+			//unit_idが別のmanage_infoに登録されていないかchk
+			results1, err := db.Query("SELECT serial_number FROM "+manage_info_table+" WHERE unit_id = "+unit_id)
+			if err != nil {
+				panic(err.Error())
+			}
+			var serial_number_already []int
+			for results1.Next() {
+				var tmp int
+				err = results1.Scan(&tmp)
+				if err != nil {
+					panic(err.Error())
+				}
+				serial_number_already = append(serial_number_already,tmp)
+			}
+			if len(serial_number_already)>0{
+				w.WriteHeader(http.StatusBadRequest)
+				w.Write([]byte("This unit_id has already registered (serial number : "+strconv.Itoa(serial_number_already[0])+")"))
+				return
+			}
+		}else{
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("Please Specify Parameters:unit_id with CORRECT type(int)"))
+			return
+		}
+	}
+	
+	if len(keyVal["battery_type"])>0{
+		battery_type = keyVal["battery_type"]
+	}
+
+	if len(keyVal["customer"])>0{
+		customer = keyVal["customer"]
+	}
+
+	if len(keyVal["car_model_id"])>0{
+		if CheckInt(keyVal["car_model_id"]){
+			car_model_id = keyVal["car_model_id"]
+		}else{
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("Please Specify Parameters:car_model_id with CORRECT type(int)"))
+			return
+		}
+	}
+
+	if len(keyVal["charger"])>0{
+		charger = keyVal["charger"]
+	}
+
+	if len(keyVal["seller"])>0{
+		seller = keyVal["seller"]
+	}
+
+	if len(keyVal["comment"])>0{
+		comment = keyVal["comment"]
+	}
+
+	//mage_infoの作成時はcreate_atをサーバー側で追加
+	var create_at string = TransTimestampToString(time.Now().In(jst))
+
+	//query = "INSERT INTO "+manage_info_table+" (serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment) VALUES ()
+	if len(keyVal["unit_id"]) == 0{
+		stmtIns, err := db.Prepare(fmt.Sprintf("UPDATE %s SET battery_type = ?,create_at = ?,customer = ?,car_model_id = ?,charger = ?,seller = ?,comment = ? WHERE (serial_number = ?)", manage_info_table))
+		if err != nil {
+			panic(err.Error())
+		}
+		defer stmtIns.Close()
+		_, err = stmtIns.Exec(battery_type,create_at,customer,car_model_id,charger,seller,comment,_q_serial_number)
+	}else{
+		stmtIns, err := db.Prepare(fmt.Sprintf("UPDATE %s SET unit_id = ?, battery_type = ?,create_at = ?,customer = ?,car_model_id = ?,charger = ?,seller = ?,comment = ? WHERE (serial_number = ?)", manage_info_table))
+		if err != nil {
+		panic(err.Error())
+		}
+		defer stmtIns.Close()
+		_, err = stmtIns.Exec(unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment,_q_serial_number)
+	}
+
+	send("edit manage information:serial number="+_q_serial_number,w)
+}
+
+func DeleteManageInfo(w http.ResponseWriter, r *http.Request) {
+	q_serial_number := query(r, "serial_number")
+	var _q_serial_number string
+	if len(q_serial_number)>0 && CheckInt(q_serial_number[0]){
+		_q_serial_number = q_serial_number[0]
+	}else{
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("Missing Parameters or Incorrect Format:serial_number(int)"))
+		return
+	}
+
+	//ヘッダからAuthorizationを取得する
+	h := r.Header["Authorization"]
+
+	//tokenをdecode
+	tokenString := h[0][7:]//Baerer以下を取り出し
+
+	token, err := jwt.Parse(tokenString, nil)
+    if token == nil {
+        panic(err.Error())
+    }
+    claims, _ := token.Claims.(jwt.MapClaims)
+
+	//user mali取得
+	//user_mail := claims["https://classmethod.jp/email"]
+	//roll取得
+	user_role := claims["https://classmethod.jp/roles"].([]interface{})[0]
+
+	if user_role != "admin"{
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("You Dont have access right"))
+		return
+	}
+
+	db := open()
+	defer db.Close()
+
+	//env読み込み
+	err = godotenv.Load(fmt.Sprintf("../../%s.env", os.Getenv("GO_ENV")))
+	if err != nil {
+		log.Fatal(err)
+    }
+	manage_info_table := os.Getenv("MANAGE_INFO_TABLE")
+
+	//serial numberが存在するかchkする
+	results1, err := db.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE serial_number = "+_q_serial_number)
+	if err != nil {
+		panic(err.Error())
+	}
+	var cnt int
+	for results1.Next() {
+		err = results1.Scan(&cnt)
+		if err != nil {
+			panic(err.Error())
+		}
+	}
+	if cnt==0{
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("There is no manage_info with such serial_number"))
+		return
+	}
+
+	_, err = db.Query("DELETE FROM "+manage_info_table+" WHERE serial_number = "+_q_serial_number)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	send("delete manage information:serial number="+_q_serial_number,w)
 }

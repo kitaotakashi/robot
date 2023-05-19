@@ -9,6 +9,9 @@ import (
 	"github.com/joho/godotenv"
 	"fmt"
 	"os"
+	"time"
+	"regexp"
+	"strconv"
 )
 
 // query はkeyがkのクエリパラメータを返す
@@ -75,4 +78,44 @@ func contains(elems []int, v int) bool {
         }
     }
     return false
+}
+
+func TransTimestampToString(_timestamp time.Time) string{
+	const daylayout = "2006/01/02"
+	const timelayout = "15:04:05"
+	timestamp_str := _timestamp.Format(daylayout) + " " + _timestamp.Format(timelayout)
+	//fmt.Println(timestamp_str)
+	return timestamp_str
+}
+
+func TransStringToTimestamp(_timestamp_str string) time.Time{
+	loc, _ := time.LoadLocation("Asia/Tokyo")
+	const layout = "2006-01-02 15:04:05"
+	//t,_ := time.Parse(layout, _timestamp_str)
+	t,_ := time.ParseInLocation(layout, _timestamp_str, loc)
+	//fmt.Println(t)
+	return t
+}
+
+// チェック処理
+func CheckIsDate(dateStr string) bool {
+    // 削除する文字列を定義
+    reg := regexp.MustCompile(`[-|/|:| |　]`)
+
+    // 指定文字を削除
+    str := reg.ReplaceAllString(dateStr, "")
+
+    // 数値の値に対してフォーマットを定義
+    format := string([]rune("20060102150405")[:len(str)])
+
+    // パース処理 → 日付ではない場合はエラー
+    v, err := time.Parse(format, str)
+
+    //return err == nil
+	return v.Year() != 0 && err == nil
+}
+
+func CheckInt(_x string)bool{
+	_, err := strconv.Atoi(_x)
+	return err == nil 
 }
