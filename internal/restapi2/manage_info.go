@@ -51,6 +51,7 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 	max_data_num,_ := strconv.Atoi(os.Getenv("MAX_DATA_NUM"))
 	manage_info_table := os.Getenv("MANAGE_INFO_TABLE")
 	car_model_table := os.Getenv("CAR_MODEL_TABLE")
+	battery_table := os.Getenv("BATTERY_TABLE")
 
 	db := open()
 	defer db.Close()
@@ -86,6 +87,8 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 	page.PageMax = max_page
 
 	var manage_infos []manageInfoData
+	var unit_id_list []int
+
 	results1, err = db.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM "+manage_info_table+" ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
 	//TODO:カーモデルidが指定された場合
 	if len(q_car_model_id)>0{
@@ -170,9 +173,23 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 		var is_error_cnt int
 		if manage_info.UnitID.Valid{
 			is_registered = true
+			unit_id_list = append(unit_id_list,int(manage_info.UnitID.Int64))
 
-			query2 := "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.Itoa(int(manage_info.UnitID.Int32))
+			//unit_idからvoltage,current,socを取得
+			query2 := "SELECT soc,output_voltage,output_current FROM "+battery_table+" WHERE unit_id = "+strconv.Itoa(int(manage_info.UnitID.Int64))
 			results2,err := db.Query(query2)
+			if err != nil {
+				panic(err.Error())
+			}
+			for results2.Next() {
+				err = results2.Scan(&manage_info.SoC,&manage_info.Voltage,&manage_info.Current)
+				if err != nil {
+					panic(err.Error())
+				}
+			}
+
+			query2 = "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.Itoa(int(manage_info.UnitID.Int64))
+			results2,err = db.Query(query2)
 			if err != nil {
 				panic(err.Error())
 			}
@@ -186,11 +203,16 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 			if is_error_cnt>0{
 				is_error = true
 			}
+			manage_info.IsError = is_error
+			manage_info.State = "登録済み"
+		}else{
+			manage_info.State = "実機未登録"
 		}
 		var is_error_var int = 0
 		if is_error{
 			is_error_var = 1
 		}
+		is_error = false
 		//エラークエリが指定された場合
 		if len(q_error)>0{
 			if _q_error != is_error_var{
@@ -211,6 +233,135 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 
 		manage_infos = append(manage_infos,manage_info)
 	}
+
+	//情報登録されていないunitを取得
+	offset = (_q_page-1)*max_data_num - manage_info_num
+	rest_unit_max_num := max_data_num - offset
+
+	//ページ数でoffsetを調整
+	if offset < 0{
+		if offset > -1*max_data_num{
+			var is_error bool
+			var is_error_cnt int
+			offset = 0
+			results1, err = db.Query("SELECT unit_id,soc,output_voltage,output_current FROM "+battery_table+" ORDER BY unit_id LIMIT "+strconv.Itoa(rest_unit_max_num)+" OFFSET "+strconv.Itoa(offset))
+			if err != nil {
+				panic(err.Error())
+			}
+			for results1.Next() {
+				var manage_info manageInfoData
+				var unit_id_tmp int
+				err = results1.Scan(&unit_id_tmp,&manage_info.SoC,&manage_info.Voltage,&manage_info.Current)
+				if err != nil {
+					panic(err.Error())
+				}
+				//fmt.Println(contains(unit_id_list,unit_id_tmp))
+				if contains(unit_id_list,unit_id_tmp){
+					continue
+				}else{
+					manage_info.UnitID.Valid=true
+					manage_info.UnitID.Int64=int64(unit_id_tmp)
+					manage_info.State = "情報未登録"
+					
+					query2 := "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.Itoa(unit_id_tmp)
+					results2,err := db.Query(query2)
+					if err != nil {
+						panic(err.Error())
+					}
+					for results2.Next() {
+						err = results2.Scan(&is_error_cnt)
+						if err != nil {
+							panic(err.Error())
+						}
+					}
+					if is_error_cnt>0{
+						is_error = true
+					}
+					var is_error_var int = 0
+					if is_error{
+						is_error_var = 1
+					}
+					//エラークエリが指定された場合
+					if len(q_error)>0{
+						if _q_error != is_error_var{
+							continue
+						}
+					}
+					manage_info.IsError = is_error
+					is_error = false
+
+					//登録ずみクエリが指定された場合
+					if len(q_reg)>0{
+						if _q_reg==1{
+							continue
+						}
+					}
+
+					manage_infos = append(manage_infos,manage_info)
+				}
+			}
+		}
+	}else{
+		var is_error bool
+		var is_error_cnt int
+		results1, err = db.Query("SELECT unit_id,soc,output_voltage,output_current FROM "+battery_table+" ORDER BY unit_id LIMIT "+strconv.Itoa(rest_unit_max_num)+" OFFSET "+strconv.Itoa(offset))
+		if err != nil {
+			panic(err.Error())
+		}
+		for results1.Next() {
+			var manage_info manageInfoData
+			var unit_id_tmp int
+			err = results1.Scan(&unit_id_tmp,&manage_info.SoC,&manage_info.Voltage,&manage_info.Current)
+			if err != nil {
+				panic(err.Error())
+			}
+			//fmt.Println(contains(unit_id_list,unit_id_tmp))
+			if contains(unit_id_list,unit_id_tmp){
+				continue
+			}else{
+				manage_info.UnitID.Valid=true
+				manage_info.UnitID.Int64=int64(unit_id_tmp)
+				manage_info.State = "情報未登録"
+
+				query2 := "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.Itoa(unit_id_tmp)
+				results2,err := db.Query(query2)
+				if err != nil {
+					panic(err.Error())
+				}
+				for results2.Next() {
+					err = results2.Scan(&is_error_cnt)
+					if err != nil {
+						panic(err.Error())
+					}
+				}
+				if is_error_cnt>0{
+					is_error = true
+				}
+				var is_error_var int = 0
+				if is_error{
+					is_error_var = 1
+				}
+				//エラークエリが指定された場合
+				if len(q_error)>0{
+					if _q_error != is_error_var{
+						continue
+					}
+				}
+				manage_info.IsError = is_error
+				is_error = false
+
+				//登録ずみクエリが指定された場合
+				if len(q_reg)>0{
+					if _q_reg==1{
+						continue
+					}
+				}
+
+				manage_infos = append(manage_infos,manage_info)
+			}
+		}
+	}
+
 	page.DataNum = len(manage_infos)
 
 	manageInfoParent.Page = page

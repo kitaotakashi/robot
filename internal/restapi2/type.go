@@ -43,18 +43,20 @@ type batteryData struct{
 
 type manageInfoData struct{
 	SerialNumber	string		`json:"serial_number"`
-	UnitID			sql.NullInt32      `json:"unit_id"`
+	UnitID			sql.NullInt64      `json:"unit_id"`
 	//UnitID			int     `json:"unit_id"`
 	BatteryType		string		`json:"battery_type"`
 	CreateAt		time.Time	`json:"create_at"`
 	Voltage			float32		`json:"voltage"`
-	Current			float32		`json:"current"`		
+	Current			float32		`json:"current"`
+	SoC				float32     `json:"soc"`
 	Customer 		string		`json:"customer"`
 	CarModel		string		`json:"car_model"`
 	Charger			string		`json:"charger"`
 	Seller			string		`json:"seller"`
 	Comment			string		`json:"comment"`
 	IsError			bool		`json:"is_error"`
+	State    		string		`json:"registration_state"`
 }
 
 type managementElm struct{

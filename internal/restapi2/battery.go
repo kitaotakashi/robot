@@ -43,6 +43,8 @@ func BatteriesView(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
     }
 	max_data_num,_ := strconv.Atoi(os.Getenv("MAX_DATA_NUM"))
+	manage_info_table := os.Getenv("MANAGE_INFO_TABLE")
+	battery_table := os.Getenv("BATTERY_TABLE")
 
 	db := open()
 	defer db.Close()
@@ -78,7 +80,7 @@ func BatteriesView(w http.ResponseWriter, r *http.Request) {
 	page.PageMax = max_page
 
 	var batteries []batteryData
-	results1, err = db.Query("SELECT * FROM units ORDER BY unit_id LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
+	results1, err = db.Query("SELECT * FROM "+battery_table+" ORDER BY unit_id LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
 	if err != nil {
 		panic(err.Error())
 	}
@@ -99,6 +101,21 @@ func BatteriesView(w http.ResponseWriter, r *http.Request) {
 		//test
 		is_error = false
 		is_registered = false
+		results2, err := db.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE unit_id = "+unit.UnitID)
+		if err != nil {
+			panic(err.Error())
+		}	
+		for results2.Next() {
+			var cnt int
+			err = results2.Scan(&cnt)
+			if err != nil {
+				panic(err.Error())
+			}
+			if cnt>0{
+				is_registered = true
+			}
+
+		}
 
 		var is_error_var int = 0
 		if is_error{

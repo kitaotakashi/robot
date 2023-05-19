@@ -66,3 +66,13 @@ func columns(i interface{}) []interface{} {
 	}
 	return columns
 }
+
+
+func contains(elems []int, v int) bool {
+    for _, s := range elems {
+        if v == s {
+            return true
+        }
+    }
+    return false
+}
