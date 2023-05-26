@@ -13,6 +13,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"io/ioutil"
 	"encoding/json"
+	"strings"
 )
 
 func ManageInfoView(w http.ResponseWriter, r *http.Request) {
@@ -480,6 +481,32 @@ func AddManageInfo(w http.ResponseWriter, r *http.Request) {
 
 	if len(keyVal["customer"])>0{
 		customer = keyVal["customer"]
+
+		//cutomer_listに名前を登録
+		//同じcustomer_nameが存在するかchk
+		fmt.Println("SELECT count(customer_id) FROM customer_list WHERE customer_name = '"+customer+"'")
+		if strings.Contains(customer,";")==false{
+			results1, err := db.Query("SELECT count(customer_id) FROM customer_list WHERE customer_name = '"+customer+"'")
+			if err != nil {
+				panic(err.Error())
+			}
+			var tmp int = 0
+			for results1.Next() {
+				err = results1.Scan(&tmp)
+				if err != nil {
+					panic(err.Error())
+				}
+			}
+			//存在しない場合、登録
+			if tmp==0{
+				stmtIns, err := db.Prepare(fmt.Sprintf("INSERT INTO %s (customer_name) VALUES (?)", "customer_list"))
+				if err != nil {
+					panic(err.Error())
+				}
+				defer stmtIns.Close()
+				_, err = stmtIns.Exec(customer)
+			}
+		}
 	}
 
 	if len(keyVal["car_model_id"])>0{

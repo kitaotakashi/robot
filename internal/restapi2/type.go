@@ -138,3 +138,9 @@ type carModelListElm struct{
 	CarModelName	string 		 `json:"car_model_name"`
 	Comment   		string       `json:"comment"`
 }
+
+type customerListElm struct{
+	CustomerID      int			`json:"customer_id"`
+	CustomerName	string		`json:"customer_name"`
+	Comment   		string       `json:"comment"`
+}
