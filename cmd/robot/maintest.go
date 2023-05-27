@@ -40,8 +40,8 @@ func forCORS(next http.Handler) http.Handler {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		//w.Header().Set("Access-Control-Allow-Origin", origin)
 
-        w.Header().Set("Access-Control-Allow-Headers", "origin, X-Requested-With, Content-Type, Accept")
-		//w.Header().Set("Access-Control-Allow-Headers", "*")
+        //w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
+		w.Header().Set("Access-Control-Allow-Headers", "*")
 		
         w.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS, PUT")
 		//w.Header().Set("Access-Control-Allow-Credentials", "true")
@@ -152,17 +152,18 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("../../front/dist/assets"))))
 	
 	//api v2
-	router.HandleFunc("/api/v2/login/", mico2.Login).Methods("POST")
+	router.HandleFunc("/api/v2/login/", mico2.Login)
 	//router.HandleFunc("/api/v2/batteries/", mico2.BatteriesView).Methods("GET")
-	router.Handle("/api/v2/batteries/", jwtMiddleware.Handler(http.HandlerFunc(mico2.BatteriesView))).Methods("GET")
-	router.Handle("/api/v2/batteries/detail/", jwtMiddleware.Handler(http.HandlerFunc(mico2.BatteryDetailView))).Methods("GET")
-	router.Handle("/api/v2/user/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetUser))).Methods("GET")
-	router.Handle("/api/v2/manage_info/", jwtMiddleware.Handler(http.HandlerFunc(mico2.ManageInfoView))).Methods("GET")
-	router.Handle("/api/v2/manage_info/add/", jwtMiddleware.Handler(http.HandlerFunc(mico2.AddManageInfo))).Methods("POST")
-	router.Handle("/api/v2/manage_info/edit/", jwtMiddleware.Handler(http.HandlerFunc(mico2.EditManageInfo))).Methods("POST")
-	router.Handle("/api/v2/manage_info/delete/", jwtMiddleware.Handler(http.HandlerFunc(mico2.DeleteManageInfo))).Methods("POST")
-	router.Handle("/api/v2/error/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetErrorList))).Methods("GET")
-	router.Handle("/api/v2/car_model/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetCarModelList))).Methods("GET")
+	router.Handle("/api/v2/batteries/", jwtMiddleware.Handler(http.HandlerFunc(mico2.BatteriesView)))
+	router.Handle("/api/v2/batteries/detail/", jwtMiddleware.Handler(http.HandlerFunc(mico2.BatteryDetailView)))
+	router.Handle("/api/v2/user/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetUser)))
+	router.Handle("/api/v2/manage_info/", jwtMiddleware.Handler(http.HandlerFunc(mico2.ManageInfoView)))
+	router.Handle("/api/v2/manage_info/add/", jwtMiddleware.Handler(http.HandlerFunc(mico2.AddManageInfo)))
+	router.Handle("/api/v2/manage_info/edit/", jwtMiddleware.Handler(http.HandlerFunc(mico2.EditManageInfo)))
+	router.Handle("/api/v2/manage_info/delete/", jwtMiddleware.Handler(http.HandlerFunc(mico2.DeleteManageInfo)))
+	router.Handle("/api/v2/error/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetErrorList)))
+	router.Handle("/api/v2/car_model/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetCarModelList)))
+	router.Handle("/api/v2/customer_list/", jwtMiddleware.Handler(http.HandlerFunc(mico2.GetCustomerList)))
 
 	//api
 	router.HandleFunc("/api/v1/units/", db.UnitsView).Methods("GET")

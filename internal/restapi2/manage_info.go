@@ -484,7 +484,7 @@ func AddManageInfo(w http.ResponseWriter, r *http.Request) {
 
 		//cutomer_listに名前を登録
 		//同じcustomer_nameが存在するかchk
-		fmt.Println("SELECT count(customer_id) FROM customer_list WHERE customer_name = '"+customer+"'")
+		//fmt.Println("SELECT count(customer_id) FROM customer_list WHERE customer_name = '"+customer+"'")
 		if strings.Contains(customer,";")==false{
 			results1, err := db.Query("SELECT count(customer_id) FROM customer_list WHERE customer_name = '"+customer+"'")
 			if err != nil {
