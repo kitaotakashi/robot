@@ -146,9 +146,10 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 		var manage_info manageInfoData
 
 		var car_model_id sql.NullInt32
+		var unit_id sql.NullInt64
 		var battery_type,customer,charger,seller,comment sql.NullString
 
-		err = results1.Scan(&manage_info.SerialNumber,&manage_info.UnitID,&battery_type,&manage_info.CreateAt,&customer,&car_model_id,&charger,&seller,&comment)
+		err = results1.Scan(&manage_info.SerialNumber,&unit_id,&battery_type,&manage_info.CreateAt,&customer,&car_model_id,&charger,&seller,&comment)
 		if err != nil {
 			panic(err.Error())
 		}
@@ -156,6 +157,13 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 		//ust->jst表記に変換
 		jst := time.FixedZone("Asia/Tokyo", 9*60*60)
 		manage_info.CreateAt = manage_info.CreateAt.In(jst).Add(-9*time.Hour)
+
+		//unit id
+		if unit_id.Valid {
+			manage_info.UnitID = strconv.FormatInt(unit_id.Int64, 10)
+		}else{
+			manage_info.UnitID = ""
+		}
 
 		//バッテリータイプ
 		if battery_type.Valid {
@@ -216,12 +224,12 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 		var is_registered bool
 
 		var is_error_cnt int
-		if manage_info.UnitID.Valid{
+		if unit_id.Valid{
 			is_registered = true
-			unit_id_list = append(unit_id_list,int(manage_info.UnitID.Int64))
+			unit_id_list = append(unit_id_list,int(unit_id.Int64))
 
 			//unit_idからvoltage,current,socを取得
-			query2 := "SELECT soc,output_voltage,output_current FROM "+battery_table+" WHERE unit_id = "+strconv.Itoa(int(manage_info.UnitID.Int64))
+			query2 := "SELECT soc,output_voltage,output_current FROM "+battery_table+" WHERE unit_id = "+strconv.Itoa(int(unit_id.Int64))
 			results2,err := db.Query(query2)
 			if err != nil {
 				panic(err.Error())
@@ -233,7 +241,7 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 
-			query2 = "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.Itoa(int(manage_info.UnitID.Int64))
+			query2 = "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.Itoa(int(unit_id.Int64))
 			results2,err = db.Query(query2)
 			if err != nil {
 				panic(err.Error())
@@ -307,20 +315,19 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 		}
 		for results1.Next() {
 			var manage_info manageInfoData
-			var unit_id_tmp int
+			var unit_id_tmp int64
 			err = results1.Scan(&unit_id_tmp,&manage_info.SoC,&manage_info.Voltage,&manage_info.Current)
 			if err != nil {
 				panic(err.Error())
 			}
 			//fmt.Println(contains(unit_id_list,unit_id_tmp))
-			if contains(unit_id_list,unit_id_tmp){
+			if contains(unit_id_list,int(unit_id_tmp)){
 				continue
 			}else{
-				manage_info.UnitID.Valid=true
-				manage_info.UnitID.Int64=int64(unit_id_tmp)
+				manage_info.UnitID=strconv.FormatInt(unit_id_tmp,10)
 				manage_info.State = "情報未登録"
 				
-				query2 := "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.Itoa(unit_id_tmp)
+				query2 := "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.FormatInt(unit_id_tmp,10)
 				results2,err := db.Query(query2)
 				if err != nil {
 					panic(err.Error())

@@ -49,7 +49,7 @@ type batteryDetailData struct{
 
 type manageInfoData struct{
 	SerialNumber	string		`json:"serial_number"`
-	UnitID			sql.NullInt64      `json:"unit_id"`
+	UnitID			string      `json:"unit_id"`
 	//UnitID			int     `json:"unit_id"`
 	BatteryType		string		`json:"battery_type"`
 	CreateAt		time.Time	`json:"create_at"`
