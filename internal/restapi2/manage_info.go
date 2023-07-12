@@ -24,6 +24,19 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 	if len(q_page)>0{
 		_q_page,_ = strconv.Atoi(q_page[0])
 	}
+
+	q_serial_number := query(r, "serial_number")
+	var _q_serial_number string
+	if len(q_serial_number)>0{
+		if CheckInt(q_serial_number[0]){
+			_q_serial_number = q_serial_number[0]
+		}else{
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("Missing Parameters or Incorrect Format:serial_number(int)"))
+			return
+		}	
+	}
+
 	q_error := query(r, "error")
 	var _q_error int = 0//0:エラーなし、1:エラーあり
 	if len(q_error)>0 {
@@ -130,6 +143,10 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 	//test
 	page.PageNow = _q_page
 	page.PageMax = max_page
+	if len(q_serial_number)>0{
+		page.PageNow = 1
+		page.PageMax = 1
+	}
 
 	var manage_infos []manageInfoData
 	var unit_id_list []int
@@ -138,6 +155,8 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 	//TODO:カーモデルidが指定された場合
 	if len(q_car_model_id)>0{
 		results1, err = db.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM "+manage_info_table+" WHERE car_model_id = "+strconv.Itoa(_q_car_model_id)+" ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
+	}else if len(q_serial_number)>0{
+		results1, err = db.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM "+manage_info_table+" WHERE serial_number = "+_q_serial_number+" ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
 	}
 	if err != nil {
 		panic(err.Error())
@@ -302,6 +321,9 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 		is_get_unit = true
 	}
 	if len(q_car_model_id)>0{
+		is_get_unit = false
+	}
+	if len(q_serial_number)>0{
 		is_get_unit = false
 	}
 

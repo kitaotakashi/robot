@@ -45,6 +45,7 @@ func open() *sql.DB {
 	if err != nil {
 		panic(err.Error())
 	}
+	db.SetMaxOpenConns(100)
 	return db
 }
 

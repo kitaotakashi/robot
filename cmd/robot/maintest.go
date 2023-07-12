@@ -6,6 +6,8 @@ package main
 import (
 	"fmt"      //標準入力など(デバッグ用なので最終的にはいらない...?)
 	"net/http" //サーバを立てるために必要
+	"net/http/httputil"
+	"net/url"
 	"log"
 	"github.com/joho/godotenv"
 	"os"
@@ -30,7 +32,7 @@ import (
 //80でサーバー起動
 //token削除
 func challengetoken(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "[token]")
+    fmt.Fprintf(w, "[]")
 }
 
 func forCORS(next http.Handler) http.Handler {
@@ -40,8 +42,8 @@ func forCORS(next http.Handler) http.Handler {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		//w.Header().Set("Access-Control-Allow-Origin", origin)
 
-        //w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
-		w.Header().Set("Access-Control-Allow-Headers", "*")
+        w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
+		//w.Header().Set("Access-Control-Allow-Headers", "*")
 		
         w.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS, PUT")
 		//w.Header().Set("Access-Control-Allow-Credentials", "true")
@@ -102,6 +104,12 @@ func main() {
 	Server()
 }
 
+func MicoRedirectHandler(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "text/html")
+    w.Header().Set("location", "http://mico.center:444")
+    w.WriteHeader(http.StatusMovedPermanently) // 301 Moved Permanently
+}
+
 // Server はhttpリクエスト毎の処理を登録してサーバーを立てる
 func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	//auth0のドメイン取得
@@ -143,10 +151,52 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 	//router := mux.NewRouter().StrictSlash(true)->corsが動かない原因かも
 	router := mux.NewRouter()
 	router.Use(forCORS)
+
 	//front
 	router.HandleFunc("/test/", OpenHtml.MainHandler)
-	router.Handle("/", http.FileServer(http.Dir("../../front/build")))
-	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("../../front/build/static"))))
+	
+	version := 2
+	if version==1 {
+		router.Handle("/", http.FileServer(http.Dir("../../front/build")))
+		router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("../../front/build/static"))))
+	}else if version==2{
+		//mico_v2
+		//router.Handle("/", http.FileServer(http.Dir("../../front/out")))
+		url1_str :="http://localhost:3000/"
+		url1, _ := url.Parse(url1_str)
+		router.Handle("/", httputil.NewSingleHostReverseProxy(url1))
+		//router.Handle("/", http.FileServer(http.Dir("../../front/out")))
+
+		url2_str :="http://localhost:3000/_next/"
+		url2, _ := url.Parse(url2_str)
+		router.PathPrefix("/_next/").Handler(http.StripPrefix("/_next/", httputil.NewSingleHostReverseProxy(url2)))
+
+		url3_str :="http://localhost:3000/battery/"
+		url3, _ := url.Parse(url3_str)
+		router.PathPrefix("/battery/").Handler(http.StripPrefix("/battery/", httputil.NewSingleHostReverseProxy(url3)))
+		
+		/*
+		router.HandleFunc("/battery/detail", OpenHtml.MicoDetailHandler).Queries("unitId", "{unitId}").Queries("serialNo", "{serialNo}")
+		router.HandleFunc("/battery/detail", OpenHtml.MicoDetailHandler).Queries("unitId", "{unitId}")
+		router.HandleFunc("/battery/detail", OpenHtml.MicoDetailHandler).Queries("serialNo", "{serialNo}")
+		router.HandleFunc("/battery/edit", OpenHtml.MicoEditHandler).Queries("serialNo", "{serialNo}")
+		router.HandleFunc("/battery/add", OpenHtml.MicoAddHandler)
+		router.HandleFunc("/battery/changeunit", OpenHtml.MicoChangeUnitHandler).Queries("serialNo", "{serialNo}")
+
+		router.HandleFunc("/battery/detail.txt", OpenHtml.MicoDetailTextHandler).Queries("unitId", "{unitId}").Queries("serialNo", "{serialNo}")
+		router.HandleFunc("/battery/detail.txt", OpenHtml.MicoDetailTextHandler).Queries("unitId", "{unitId}")
+		router.HandleFunc("/battery/detail.txt", OpenHtml.MicoDetailTextHandler).Queries("serialNo", "{serialNo}")
+		router.HandleFunc("/battery/edit.txt", OpenHtml.MicoEditTextHandler).Queries("serialNo", "{serialNo}")
+		router.HandleFunc("/battery/add.txt", OpenHtml.MicoAddTextHandler)
+		router.HandleFunc("/battery/changeunit.txit", OpenHtml.MicoChangeUnitTextHandler).Queries("serialNo", "{serialNo}")
+
+		/*
+		router.PathPrefix("/_next/").Handler(http.StripPrefix("/_next/", http.FileServer(http.Dir("../../front/out/_next"))))
+		//router.PathPrefix("/battery/").Handler(http.StripPrefix("/battery/", http.FileServer(http.Dir("../../front/out/battery"))))
+		router.HandleFunc("/404.html", OpenHtml.Mico404Handler)
+		*/
+		
+	}
 
 	router.HandleFunc("/block/", OpenHtml.BlockHandler)
 	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("../../front/dist/assets"))))
