@@ -175,27 +175,6 @@ func Server() error {//logの場合はreturnがいらないのでerrorを消す
 		url3, _ := url.Parse(url3_str)
 		router.PathPrefix("/battery/").Handler(http.StripPrefix("/battery/", httputil.NewSingleHostReverseProxy(url3)))
 		
-		/*
-		router.HandleFunc("/battery/detail", OpenHtml.MicoDetailHandler).Queries("unitId", "{unitId}").Queries("serialNo", "{serialNo}")
-		router.HandleFunc("/battery/detail", OpenHtml.MicoDetailHandler).Queries("unitId", "{unitId}")
-		router.HandleFunc("/battery/detail", OpenHtml.MicoDetailHandler).Queries("serialNo", "{serialNo}")
-		router.HandleFunc("/battery/edit", OpenHtml.MicoEditHandler).Queries("serialNo", "{serialNo}")
-		router.HandleFunc("/battery/add", OpenHtml.MicoAddHandler)
-		router.HandleFunc("/battery/changeunit", OpenHtml.MicoChangeUnitHandler).Queries("serialNo", "{serialNo}")
-
-		router.HandleFunc("/battery/detail.txt", OpenHtml.MicoDetailTextHandler).Queries("unitId", "{unitId}").Queries("serialNo", "{serialNo}")
-		router.HandleFunc("/battery/detail.txt", OpenHtml.MicoDetailTextHandler).Queries("unitId", "{unitId}")
-		router.HandleFunc("/battery/detail.txt", OpenHtml.MicoDetailTextHandler).Queries("serialNo", "{serialNo}")
-		router.HandleFunc("/battery/edit.txt", OpenHtml.MicoEditTextHandler).Queries("serialNo", "{serialNo}")
-		router.HandleFunc("/battery/add.txt", OpenHtml.MicoAddTextHandler)
-		router.HandleFunc("/battery/changeunit.txit", OpenHtml.MicoChangeUnitTextHandler).Queries("serialNo", "{serialNo}")
-
-		/*
-		router.PathPrefix("/_next/").Handler(http.StripPrefix("/_next/", http.FileServer(http.Dir("../../front/out/_next"))))
-		//router.PathPrefix("/battery/").Handler(http.StripPrefix("/battery/", http.FileServer(http.Dir("../../front/out/battery"))))
-		router.HandleFunc("/404.html", OpenHtml.Mico404Handler)
-		*/
-		
 	}
 
 	router.HandleFunc("/block/", OpenHtml.BlockHandler)
