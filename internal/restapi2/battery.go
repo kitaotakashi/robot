@@ -245,7 +245,7 @@ func BatteryDetailView(w http.ResponseWriter, r *http.Request) {
 		var is_error bool
 		var is_registered bool
 
-		results2, err := db.Query("SELECT error_code,error_time FROM "+error_state_table+" WHERE object_id = "+_q_unit_id)
+		results2, err := db.Query("SELECT error_code,MAX(error_time) FROM "+error_state_table+" WHERE object_id = "+_q_unit_id + " GROUP BY object_id")
 		if err != nil {
 			panic(err.Error())
 		}

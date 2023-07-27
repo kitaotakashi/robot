@@ -248,7 +248,7 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 			unit_id_list = append(unit_id_list,int(unit_id.Int64))
 
 			//unit_idからvoltage,current,socを取得
-			query2 := "SELECT soc,output_voltage,output_current FROM "+battery_table+" WHERE unit_id = "+strconv.Itoa(int(unit_id.Int64))
+			query2 := "SELECT soc,battery_voltage,battery_current FROM "+battery_table+" WHERE unit_id = "+strconv.Itoa(int(unit_id.Int64))
 			results2,err := db.Query(query2)
 			if err != nil {
 				panic(err.Error())
@@ -673,7 +673,9 @@ func EditManageInfo(w http.ResponseWriter, r *http.Request) {
 				if err != nil {
 					panic(err.Error())
 				}
-				serial_number_already = append(serial_number_already,tmp)
+				if _q_serial_number != strconv.Itoa(tmp){
+					serial_number_already = append(serial_number_already,tmp)
+				}
 			}
 			if len(serial_number_already)>0{
 				w.WriteHeader(http.StatusBadRequest)
@@ -722,7 +724,7 @@ func EditManageInfo(w http.ResponseWriter, r *http.Request) {
 
 	//query = "INSERT INTO "+manage_info_table+" (serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment) VALUES ()
 	if len(keyVal["unit_id"]) == 0{
-		stmtIns, err := db.Prepare(fmt.Sprintf("UPDATE %s SET battery_type = ?,create_at = ?,customer = ?,car_model_id = ?,charger = ?,seller = ?,comment = ? WHERE (serial_number = ?)", manage_info_table))
+		stmtIns, err := db.Prepare(fmt.Sprintf("UPDATE %s SET unit_id = NULL, battery_type = ?,create_at = ?,customer = ?,car_model_id = ?,charger = ?,seller = ?,comment = ? WHERE (serial_number = ?)", manage_info_table))
 		if err != nil {
 			panic(err.Error())
 		}
