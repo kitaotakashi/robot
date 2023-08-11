@@ -655,7 +655,13 @@ func EditManageInfo(w http.ResponseWriter, r *http.Request) {
 	keyVal := make(map[string]string)
 	json.Unmarshal(body, &keyVal)
 
-	var unit_id,battery_type,customer,car_model_id,charger,seller,comment string
+	var serial_number,unit_id,battery_type,customer,car_model_id,charger,seller,comment string
+
+	if len(keyVal["serial_number"])>0{
+		serial_number = keyVal["serial_number"]
+	}else{
+		serial_number = _q_serial_number
+	}
 
 	if len(keyVal["unit_id"]) > 0 {
 		if CheckInt(keyVal["unit_id"]){
@@ -724,19 +730,19 @@ func EditManageInfo(w http.ResponseWriter, r *http.Request) {
 
 	//query = "INSERT INTO "+manage_info_table+" (serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment) VALUES ()
 	if len(keyVal["unit_id"]) == 0{
-		stmtIns, err := db.Prepare(fmt.Sprintf("UPDATE %s SET unit_id = NULL, battery_type = ?,create_at = ?,customer = ?,car_model_id = ?,charger = ?,seller = ?,comment = ? WHERE (serial_number = ?)", manage_info_table))
+		stmtIns, err := db.Prepare(fmt.Sprintf("UPDATE %s SET unit_id = NULL, serial_number = ?, battery_type = ?,create_at = ?,customer = ?,car_model_id = ?,charger = ?,seller = ?,comment = ? WHERE (serial_number = ?)", manage_info_table))
 		if err != nil {
 			panic(err.Error())
 		}
 		defer stmtIns.Close()
-		_, err = stmtIns.Exec(battery_type,create_at,customer,car_model_id,charger,seller,comment,_q_serial_number)
+		_, err = stmtIns.Exec(serial_number, battery_type,create_at,customer,car_model_id,charger,seller,comment,_q_serial_number)
 	}else{
-		stmtIns, err := db.Prepare(fmt.Sprintf("UPDATE %s SET unit_id = ?, battery_type = ?,create_at = ?,customer = ?,car_model_id = ?,charger = ?,seller = ?,comment = ? WHERE (serial_number = ?)", manage_info_table))
+		stmtIns, err := db.Prepare(fmt.Sprintf("UPDATE %s SET unit_id = ?, serial_number = ?, battery_type = ?,create_at = ?,customer = ?,car_model_id = ?,charger = ?,seller = ?,comment = ? WHERE (serial_number = ?)", manage_info_table))
 		if err != nil {
 		panic(err.Error())
 		}
 		defer stmtIns.Close()
-		_, err = stmtIns.Exec(unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment,_q_serial_number)
+		_, err = stmtIns.Exec(unit_id,serial_number, battery_type,create_at,customer,car_model_id,charger,seller,comment,_q_serial_number)
 	}
 
 	send("edit manage information:serial number="+_q_serial_number,w)
