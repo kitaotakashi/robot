@@ -658,7 +658,30 @@ func EditManageInfo(w http.ResponseWriter, r *http.Request) {
 	var serial_number,unit_id,battery_type,customer,car_model_id,charger,seller,comment string
 
 	if len(keyVal["serial_number"])>0{
-		serial_number = keyVal["serial_number"]
+		if CheckInt(keyVal["serial_number"]){
+			serial_number = keyVal["serial_number"]
+			//シリアルナンバーが既に使われていないか
+			results1, err := db.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE serial_number = "+serial_number)
+			if err != nil {
+				panic(err.Error())
+			}
+			var cnt int
+			for results1.Next() {
+				err = results1.Scan(&cnt)
+				if err != nil {
+					panic(err.Error())
+				}
+			}
+			if cnt>0{
+				w.WriteHeader(http.StatusBadRequest)
+				w.Write([]byte("This serial number has already exists"))
+				return
+			}
+		}else{
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("Please Specify Parameters:serial_number with CORRECT type(int)"))
+			return
+		}
 	}else{
 		serial_number = _q_serial_number
 	}
