@@ -55,6 +55,8 @@ type manageInfoData struct{
 	CreateAt		time.Time	`json:"create_at"`
 	Voltage			float32		`json:"voltage"`
 	Current			float32		`json:"current"`
+	OutputVoltage	float32		`json:"output_voltage"`
+	OutputCurrent	float32		`json:"output_current"`
 	SoC				float32     `json:"soc"`
 	Customer 		string		`json:"customer"`
 	CarModel		string		`json:"car_model"`

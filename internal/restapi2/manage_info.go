@@ -248,13 +248,13 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 			unit_id_list = append(unit_id_list,int(unit_id.Int64))
 
 			//unit_idからvoltage,current,socを取得
-			query2 := "SELECT soc,battery_voltage,battery_current FROM "+battery_table+" WHERE unit_id = "+strconv.Itoa(int(unit_id.Int64))
+			query2 := "SELECT soc,battery_voltage,battery_current,output_voltage,output_current FROM "+battery_table+" WHERE unit_id = "+strconv.Itoa(int(unit_id.Int64))
 			results2,err := db.Query(query2)
 			if err != nil {
 				panic(err.Error())
 			}
 			for results2.Next() {
-				err = results2.Scan(&manage_info.SoC,&manage_info.Voltage,&manage_info.Current)
+				err = results2.Scan(&manage_info.SoC,&manage_info.Voltage,&manage_info.Current,&manage_info.OutputVoltage,&manage_info.OutputCurrent)
 				if err != nil {
 					panic(err.Error())
 				}
