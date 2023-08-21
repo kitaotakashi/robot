@@ -273,6 +273,8 @@ func BatteryDetailView(w http.ResponseWriter, r *http.Request) {
 		battery_elm.Error = errors
 		if len(errors)>0{
 			is_error = true
+		}else{
+			battery_elm.Error = []errorsElm{}
 		}
 		
 		results2, err = db.Query("SELECT serial_number,customer FROM "+manage_info_table+" WHERE unit_id = "+_q_unit_id)
