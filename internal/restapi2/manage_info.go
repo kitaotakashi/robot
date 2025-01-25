@@ -88,6 +88,8 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 
 	db := open()
 	defer db.Close()
+	db_bmu := open_bms()
+	defer  db_bmu.Close()
 
 	var res_data []manageInfoPnt
 	var manageInfoParent manageInfoPnt
@@ -151,12 +153,16 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 	var manage_infos []manageInfoData
 	var unit_id_list []int
 
-	results1, err = db.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM "+manage_info_table+" ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
-	//TODO:カーモデルidが指定された場合
-	if len(q_car_model_id)>0{
-		results1, err = db.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM "+manage_info_table+" WHERE car_model_id = "+strconv.Itoa(_q_car_model_id)+" ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
-	}else if len(q_serial_number)>0{
-		results1, err = db.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM "+manage_info_table+" WHERE serial_number = "+_q_serial_number+" ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
+	if(user_role!="bms_user"){
+		results1, err = db.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM "+manage_info_table+" ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
+		//TODO:カーモデルidが指定された場合
+		if len(q_car_model_id)>0{
+			results1, err = db.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM "+manage_info_table+" WHERE car_model_id = "+strconv.Itoa(_q_car_model_id)+" ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
+		}else if len(q_serial_number)>0{
+			results1, err = db.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM "+manage_info_table+" WHERE serial_number = "+_q_serial_number+" ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
+		}
+	}else if(user_role=="bms_user"){
+		results1, err = db_bmu.Query("SELECT serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment FROM "+manage_info_table+" ORDER BY serial_number LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
 	}
 	if err != nil {
 		panic(err.Error())
@@ -248,32 +254,34 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 			unit_id_list = append(unit_id_list,int(unit_id.Int64))
 
 			//unit_idからvoltage,current,socを取得
-			query2 := "SELECT soc,battery_voltage,battery_current,output_voltage,output_current FROM "+battery_table+" WHERE unit_id = "+strconv.Itoa(int(unit_id.Int64))
-			results2,err := db.Query(query2)
-			if err != nil {
-				panic(err.Error())
-			}
-			for results2.Next() {
-				err = results2.Scan(&manage_info.SoC,&manage_info.Voltage,&manage_info.Current,&manage_info.OutputVoltage,&manage_info.OutputCurrent)
+			if(user_role!="bms_user"){
+				query2 := "SELECT soc,battery_voltage,battery_current,output_voltage,output_current FROM "+battery_table+" WHERE unit_id = "+strconv.Itoa(int(unit_id.Int64))
+				results2,err := db.Query(query2)
 				if err != nil {
 					panic(err.Error())
 				}
-			}
+				for results2.Next() {
+					err = results2.Scan(&manage_info.SoC,&manage_info.Voltage,&manage_info.Current,&manage_info.OutputVoltage,&manage_info.OutputCurrent)
+					if err != nil {
+						panic(err.Error())
+					}
+				}
 
-			query2 = "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.Itoa(int(unit_id.Int64))
-			results2,err = db.Query(query2)
-			if err != nil {
-				panic(err.Error())
-			}
-			for results2.Next() {
-				err = results2.Scan(&is_error_cnt)
+				query2 = "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.Itoa(int(unit_id.Int64))
+				results2,err = db.Query(query2)
 				if err != nil {
 					panic(err.Error())
 				}
-			}
-			//fmt.Println(is_error_cnt)
-			if is_error_cnt>0{
-				is_error = true
+				for results2.Next() {
+					err = results2.Scan(&is_error_cnt)
+					if err != nil {
+						panic(err.Error())
+					}
+				}
+				//fmt.Println(is_error_cnt)
+				if is_error_cnt>0{
+					is_error = true
+				}
 			}
 			manage_info.IsError = is_error
 			manage_info.State = "登録済み"
@@ -332,13 +340,28 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 		var is_error_cnt int
 		
 		results1, err = db.Query("SELECT unit_id,soc,output_voltage,output_current FROM "+battery_table+" ORDER BY unit_id LIMIT "+strconv.Itoa(rest_unit_max_num)+" OFFSET "+strconv.Itoa(offset))
+		if(user_role=="bms_user"){
+			results1, err = db_bmu.Query("SELECT bmu_id,energy,energy100,vcell13 FROM bmu ORDER BY bmu_id")
+		}
 		if err != nil {
 			panic(err.Error())
 		}
 		for results1.Next() {
 			var manage_info manageInfoData
 			var unit_id_tmp int64
-			err = results1.Scan(&unit_id_tmp,&manage_info.SoC,&manage_info.Voltage,&manage_info.Current)
+			var bmu_id_tmp uint64
+			if(user_role=="bms_user"){
+				var energy_tmp, energy_100_tmp int64
+				err = results1.Scan(&bmu_id_tmp,&energy_tmp,&energy_100_tmp,&manage_info.Voltage)
+
+				soc_cul := float32(0.0) 
+				if energy_100_tmp != 0 {
+					soc_cul = 100 * float32(energy_tmp)/float32(energy_100_tmp)
+				}
+				manage_info.SoC=soc_cul
+			}else{
+				err = results1.Scan(&unit_id_tmp,&manage_info.SoC,&manage_info.Voltage,&manage_info.Current)
+			}
 			if err != nil {
 				panic(err.Error())
 			}
@@ -346,7 +369,11 @@ func ManageInfoView(w http.ResponseWriter, r *http.Request) {
 			if contains(unit_id_list,int(unit_id_tmp)){
 				continue
 			}else{
-				manage_info.UnitID=strconv.FormatInt(unit_id_tmp,10)
+				if(user_role!="bms_user"){
+					manage_info.UnitID=strconv.FormatInt(unit_id_tmp,10)
+				}else{
+					manage_info.UnitID=strconv.FormatUint(bmu_id_tmp,10)
+				}
 				manage_info.State = "情報未登録"
 				
 				query2 := "SELECT COUNT(error_code) FROM error_states WHERE object_id = "+strconv.FormatInt(unit_id_tmp,10)
@@ -423,6 +450,9 @@ func AddManageInfo(w http.ResponseWriter, r *http.Request) {
 	db := open()
 	defer db.Close()
 
+	db_bmu := open_bms()
+	defer db.Close()
+
 	//env読み込み
 	err = godotenv.Load(fmt.Sprintf("../../%s.env", os.Getenv("GO_ENV")))
 	if err != nil {
@@ -448,6 +478,9 @@ func AddManageInfo(w http.ResponseWriter, r *http.Request) {
 			serial_number = keyVal["serial_number"]
 			//シリアルナンバーが既に使われていないか
 			results1, err := db.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE serial_number = "+serial_number)
+			if(user_role!="bms_user"){
+				results1, err = db_bmu.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE serial_number = "+serial_number)
+			}
 			if err != nil {
 				panic(err.Error())
 			}
@@ -480,6 +513,9 @@ func AddManageInfo(w http.ResponseWriter, r *http.Request) {
 
 			//unit_idが別のmanage_infoに登録されていないかchk
 			results1, err := db.Query("SELECT serial_number FROM "+manage_info_table+" WHERE unit_id = "+unit_id)
+			if(user_role=="bms_user"){
+				results1, err = db_bmu.Query("SELECT serial_number FROM "+manage_info_table+" WHERE unit_id = "+unit_id)
+			}
 			if err != nil {
 				panic(err.Error())
 			}
@@ -516,6 +552,9 @@ func AddManageInfo(w http.ResponseWriter, r *http.Request) {
 		//fmt.Println("SELECT count(customer_id) FROM customer_list WHERE customer_name = '"+customer+"'")
 		if strings.Contains(customer,";")==false{
 			results1, err := db.Query("SELECT count(customer_id) FROM customer_list WHERE customer_name = '"+customer+"'")
+			if(user_role=="bms_user"){
+				results1, err = db_bmu.Query("SELECT count(customer_id) FROM customer_list WHERE customer_name = '"+customer+"'")
+			}
 			if err != nil {
 				panic(err.Error())
 			}
@@ -529,6 +568,9 @@ func AddManageInfo(w http.ResponseWriter, r *http.Request) {
 			//存在しない場合、登録
 			if tmp==0{
 				stmtIns, err := db.Prepare(fmt.Sprintf("INSERT INTO %s (customer_name) VALUES (?)", "customer_list"))
+				if(user_role=="bms_user"){
+					stmtIns, err = db_bmu.Prepare(fmt.Sprintf("INSERT INTO %s (customer_name) VALUES (?)", "customer_list"))
+				}
 				if err != nil {
 					panic(err.Error())
 				}
@@ -620,6 +662,9 @@ func EditManageInfo(w http.ResponseWriter, r *http.Request) {
 	db := open()
 	defer db.Close()
 
+	db_bmu := open_bms()
+	defer db_bmu.Close()
+
 	//env読み込み
 	err = godotenv.Load(fmt.Sprintf("../../%s.env", os.Getenv("GO_ENV")))
 	if err != nil {
@@ -629,6 +674,9 @@ func EditManageInfo(w http.ResponseWriter, r *http.Request) {
 
 	//serial numberが存在するかchkする
 	results1, err := db.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE serial_number = "+_q_serial_number)
+	if(user_role=="bms_user"){
+		results1, err = db_bmu.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE serial_number = "+_q_serial_number)
+	}
 	if err != nil {
 		panic(err.Error())
 	}
@@ -662,6 +710,9 @@ func EditManageInfo(w http.ResponseWriter, r *http.Request) {
 			serial_number = keyVal["serial_number"]
 			//シリアルナンバーが既に使われていないか
 			results1, err := db.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE serial_number = "+serial_number)
+			if(user_role=="bms_user"){
+				results1, err = db_bmu.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE serial_number = "+serial_number)
+			}
 			if err != nil {
 				panic(err.Error())
 			}
@@ -692,6 +743,9 @@ func EditManageInfo(w http.ResponseWriter, r *http.Request) {
 
 			//unit_idが別のmanage_infoに登録されていないかchk
 			results1, err := db.Query("SELECT serial_number FROM "+manage_info_table+" WHERE unit_id = "+unit_id)
+			if(user_role=="bms_user"){
+				results1, err = db_bmu.Query("SELECT serial_number FROM "+manage_info_table+" WHERE unit_id = "+unit_id)
+			}
 			if err != nil {
 				panic(err.Error())
 			}
@@ -754,6 +808,9 @@ func EditManageInfo(w http.ResponseWriter, r *http.Request) {
 	//query = "INSERT INTO "+manage_info_table+" (serial_number,unit_id,battery_type,create_at,customer,car_model_id,charger,seller,comment) VALUES ()
 	if len(keyVal["unit_id"]) == 0{
 		stmtIns, err := db.Prepare(fmt.Sprintf("UPDATE %s SET unit_id = NULL, serial_number = ?, battery_type = ?,create_at = ?,customer = ?,car_model_id = ?,charger = ?,seller = ?,comment = ? WHERE (serial_number = ?)", manage_info_table))
+		if(user_role=="bms_user"){
+			stmtIns, err = db_bmu.Prepare(fmt.Sprintf("UPDATE %s SET unit_id = NULL, serial_number = ?, battery_type = ?,create_at = ?,customer = ?,car_model_id = ?,charger = ?,seller = ?,comment = ? WHERE (serial_number = ?)", manage_info_table))
+		}
 		if err != nil {
 			panic(err.Error())
 		}
@@ -761,6 +818,9 @@ func EditManageInfo(w http.ResponseWriter, r *http.Request) {
 		_, err = stmtIns.Exec(serial_number, battery_type,create_at,customer,car_model_id,charger,seller,comment,_q_serial_number)
 	}else{
 		stmtIns, err := db.Prepare(fmt.Sprintf("UPDATE %s SET unit_id = ?, serial_number = ?, battery_type = ?,create_at = ?,customer = ?,car_model_id = ?,charger = ?,seller = ?,comment = ? WHERE (serial_number = ?)", manage_info_table))
+		if(user_role=="bms_user"){
+			stmtIns, err = db_bmu.Prepare(fmt.Sprintf("UPDATE %s SET unit_id = ?, serial_number = ?, battery_type = ?,create_at = ?,customer = ?,car_model_id = ?,charger = ?,seller = ?,comment = ? WHERE (serial_number = ?)", manage_info_table))
+		}
 		if err != nil {
 		panic(err.Error())
 		}
@@ -808,6 +868,9 @@ func DeleteManageInfo(w http.ResponseWriter, r *http.Request) {
 	db := open()
 	defer db.Close()
 
+	db_bmu := open_bms()
+	defer db_bmu.Close()
+
 	//env読み込み
 	err = godotenv.Load(fmt.Sprintf("../../%s.env", os.Getenv("GO_ENV")))
 	if err != nil {
@@ -817,6 +880,9 @@ func DeleteManageInfo(w http.ResponseWriter, r *http.Request) {
 
 	//serial numberが存在するかchkする
 	results1, err := db.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE serial_number = "+_q_serial_number)
+	if(user_role=="bms_user"){
+		results1, err = db_bmu.Query("SELECT count(serial_number) FROM "+manage_info_table+" WHERE serial_number = "+_q_serial_number)
+	}
 	if err != nil {
 		panic(err.Error())
 	}
@@ -834,6 +900,9 @@ func DeleteManageInfo(w http.ResponseWriter, r *http.Request) {
 	}
 
 	_, err = db.Query("DELETE FROM "+manage_info_table+" WHERE serial_number = "+_q_serial_number)
+	if(user_role=="bms_user"){
+		_, err = db_bmu.Query("DELETE FROM "+manage_info_table+" WHERE serial_number = "+_q_serial_number)
+	}
 	if err != nil {
 		panic(err.Error())
 	}

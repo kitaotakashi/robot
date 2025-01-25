@@ -69,11 +69,17 @@ func BatteriesView(w http.ResponseWriter, r *http.Request) {
 	db := open()
 	defer db.Close()
 
+	db_bmu := open_bms()
+	defer  db_bmu.Close()
+	
 	var res_data []batteryPnt
 	var batteryParent batteryPnt
 	var page pageElm
 	//ページ数を取得
 	results1, err := db.Query("SELECT count(unit_id) FROM units")
+	if(user_role=="bms_user"){
+		results1, err = db_bmu.Query("SELECT count(bmu_id) FROM bmu")
+	}
 	if err != nil {
 		panic(err.Error())
 	}
@@ -101,55 +107,96 @@ func BatteriesView(w http.ResponseWriter, r *http.Request) {
 
 	var batteries []batteryData
 	results1, err = db.Query("SELECT * FROM "+battery_table+" ORDER BY unit_id LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
+	if(user_role=="bms_user"){
+		results1, err = db_bmu.Query("SELECT * FROM bmu ORDER BY bmu_id LIMIT "+strconv.Itoa(max_data_num)+" OFFSET "+strconv.Itoa(offset))
+	}
 	if err != nil {
 		panic(err.Error())
 	}
 	for results1.Next() {
 		var battery batteryData
 		var unit	unitData
+		var unitBMU unitBMUData
 		Columns := columns(&unit)
+		if(user_role=="bms_user"){
+			Columns = columns(&unitBMU) 
+		}
 		err = results1.Scan(Columns...)
 		if err != nil {
 			panic(err.Error())
 		}
 		battery.Data = unit
+		if(user_role=="bms_user"){
+			battery.Data = TransferBMUtoUnitData(unitBMU)
+		}
 		
 		//TODO:errorデータやregisterデータを取得しておく
 		var is_error bool
 		var is_registered bool
-
-		results2, err := db.Query("SELECT count(error_code) FROM "+error_state_table+" WHERE object_id = "+unit.UnitID)
-		if err != nil {
-			panic(err.Error())
-		}
-		for results2.Next() {
-			var cnt int
-			err = results2.Scan(&cnt)
-			if err != nil {
-				panic(err.Error())
-			}
-			if cnt>0{
-				is_error = true
-			}
-		}
-		
-		results2, err = db.Query("SELECT serial_number FROM "+manage_info_table+" WHERE unit_id = "+unit.UnitID)
-		if err != nil {
-			panic(err.Error())
-		}	
-		for results2.Next() {
-			err = results2.Scan(&battery.Management.SerialNumber)
-			if err != nil {
-				panic(err.Error())
-			}
-			is_registered = true
-		}
-
+		var is_reg_var int = 0
 		var is_error_var int = 0
+		if(user_role!="bms_user"){
+			results2, err := db.Query("SELECT count(error_code) FROM "+error_state_table+" WHERE object_id = "+unit.UnitID)
+			if err != nil {
+				panic(err.Error())
+			}
+			for results2.Next() {
+				var cnt int
+				err = results2.Scan(&cnt)
+				if err != nil {
+					panic(err.Error())
+				}
+				if cnt>0{
+					is_error = true
+				}
+			}
+		
+			results2, err = db.Query("SELECT serial_number FROM "+manage_info_table+" WHERE unit_id = "+unit.UnitID)
+			if err != nil {
+				panic(err.Error())
+			}	
+			for results2.Next() {
+				err = results2.Scan(&battery.Management.SerialNumber)
+				if err != nil {
+					panic(err.Error())
+				}
+				is_registered = true
+			}
+		}else if(user_role=="bms_user"){
+			var bmu_id = fmt.Sprintf("%d", unitBMU.BmuID)
+
+			results2, err := db.Query("SELECT count(error_code) FROM "+error_state_table+" WHERE object_id = "+bmu_id)
+			if err != nil {
+				panic(err.Error())
+			}
+			for results2.Next() {
+				var cnt int
+				err = results2.Scan(&cnt)
+				if err != nil {
+					panic(err.Error())
+				}
+				if cnt>0{
+					is_error = true
+				}
+			}
+		
+			results2, err = db.Query("SELECT serial_number FROM "+manage_info_table+" WHERE unit_id = "+bmu_id)
+			if err != nil {
+				panic(err.Error())
+			}	
+			for results2.Next() {
+				err = results2.Scan(&battery.Management.SerialNumber)
+				if err != nil {
+					panic(err.Error())
+				}
+				is_registered = true
+			}
+		}
+
 		if is_error{
 			is_error_var = 1
 		}
-		var is_reg_var int = 0
+		
 		if is_registered{
 			is_reg_var = 1
 		}
@@ -225,21 +272,38 @@ func BatteryDetailView(w http.ResponseWriter, r *http.Request) {
 
 	db := open()
 	defer db.Close()
+	db_bmu := open_bms()
+	defer  db_bmu.Close()
 
 	var battery []batteryDetailData
 	results1, err := db.Query("SELECT * FROM "+battery_table+" WHERE unit_id="+_q_unit_id)
+	if(user_role=="bms_user"){
+		results1, err = db_bmu.Query("SELECT * FROM bmu WHERE bmu_id="+_q_unit_id)
+	}
 	if err != nil {
 		panic(err.Error())
 	}
 	for results1.Next() {
 		var battery_elm batteryDetailData
 		var unit	unitData
+		var unitBMU unitBMUData
 		Columns := columns(&unit)
+		if(user_role=="bms_user"){
+			Columns = columns(&unitBMU) 
+		}
 		err = results1.Scan(Columns...)
 		if err != nil {
 			panic(err.Error())
 		}
 		battery_elm.Data = unit
+		if(user_role=="bms_user"){
+			battery_elm.Data = TransferBMUtoUnitData(unitBMU)
+		}
+
+		//is_chargingをcheck
+		if battery_elm.Data.IsCharging == ""{
+			battery_elm.Data.IsCharging = battery_elm.Data.ChargeMode//"close";
+		}
 		
 		//TODO:errorデータやregisterデータを取得しておく
 		var is_error bool

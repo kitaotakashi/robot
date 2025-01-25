@@ -38,6 +38,7 @@ type manageInfoPnt struct{
 type batteryData struct{
 	Data 		unitData 		`json:"data"`
 	Management 	managementMinElm	`json:"management"`
+	//Data_BMU 	unitBMUData 		`json:"data_bmu"`
 	//Error		[]errorsElm		`json:"error"`
 }
 
@@ -107,6 +108,53 @@ type unitData struct{
 	MinCellVoltage float32 `json:"min_cell_voltage"`
 	MaxTemperature float32 `json:"max_temperature"`
 	MinTemperature float32 `json:"min_temperature"`
+}
+
+type unitBMUData struct {
+    BmuID         uint64    `json:"bmu_id"`
+    Time            time.Time `json:"time"`
+    LastIOTime      time.Time `json:"last_io_time"`
+    ErrCode         string    `json:"err_code"`         // char(1)
+    VCell0          float32   `json:"vcell0"`
+    VCell1          float32   `json:"vcell1"`
+    VCell2          float32   `json:"vcell2"`
+    VCell3          float32   `json:"vcell3"`
+    VCell4          float32   `json:"vcell4"`
+    VCell5          float32   `json:"vcell5"`
+    VCell6          float32   `json:"vcell6"`
+    VCell7          float32   `json:"vcell7"`
+    VCell8          float32   `json:"vcell8"`
+    VCell9          float32   `json:"vcell9"`
+    VCell10         float32   `json:"vcell10"`
+    VCell11         float32   `json:"vcell11"`
+    VCell12         float32   `json:"vcell12"`
+    VCell13         float32   `json:"vcell13"`
+    WorkState       string    `json:"work_state"`       // char(16)
+    ViSense50       float32   `json:"visense50"`        // float
+    ViSense10       float32   `json:"visense10"`        // float
+    Vim050          uint16    `json:"vim050"`          // smallint unsigned
+    Vim010          uint16    `json:"vim010"`          // smallint unsigned
+    TAdr0           int16     `json:"tadr0"`           // smallint
+    TAdr1           int16     `json:"tadr1"`           // smallint
+    VtPCB0          float32   `json:"vt_pcb0"`         // float
+    VtPCB1          float32   `json:"vt_pcb1"`         // float
+    BatteryLED      string    `json:"battery_led"`     // enum('01','02','04','08','10')
+    FetState        string    `json:"fet_state"`       // enum('00','01','02','03')
+    BalanceNow      string    `json:"balance_now"`     // char(16)
+    ChargeNum       uint32    `json:"charge_num"`      // int unsigned
+    DischargeNum    uint32    `json:"discharge_num"`   // int unsigned
+    OvChNum         uint32    `json:"ovch_num"`        // int unsigned
+    OvDisNum        uint32    `json:"ovdis_num"`       // int unsigned
+    OvChargeNum     uint32    `json:"ovcharge_num"`    // int unsigned
+    OvDischargeNum  uint32    `json:"ovdischarge_num"` // int unsigned
+    ShortNum        uint32    `json:"short_num"`       // int unsigned
+    UDTEMPechNum    uint32    `json:"udtempech_num"`   // int unsigned
+    UDTEMPedisNum   uint32    `json:"udtempedis_num"`  // int unsigned
+    OVTEMPechNum    uint32    `json:"ovtempech_num"`   // int unsigned
+    OVTEMPedisNum   uint32    `json:"ovtempedis_num"`  // int unsigned
+    Energy          uint32    `json:"energy"`          // int unsigned
+    Energy100       uint32    `json:"energy100"`       // int unsigned
+    IntDetection    string    `json:"int_detection"`   // char(2)
 }
 
 type errorsElm struct {

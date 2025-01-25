@@ -49,6 +49,30 @@ func open() *sql.DB {
 	return db
 }
 
+// open はデータベースと接続する
+func open_bms() *sql.DB {
+	err := godotenv.Load(fmt.Sprintf("../../%s.env", os.Getenv("GO_ENV")))
+	if err != nil {
+		log.Fatal(err)
+    }
+	host := os.Getenv("MICO_DB_HOST")
+	pass := os.Getenv("MICO_DB_PASS")
+	db_db := os.Getenv("MICO_BMU_DB")
+	user := os.Getenv("MICO_DB_USER")
+
+	//db, err := sql.Open("mysql", "test_user:test_pass@tcp(10.0.1.229:3306)/test_db?parseTime=True")
+	//db, err := sql.Open("mysql", "test_user:test_pass@tcp(10.0.1.229:3306)/robot_db?parseTime=True")
+	//db, err := sql.Open("mysql", "test_user:test_pass@tcp(10.0.1.229:3306)/mico_test?parseTime=True")
+	//db, err := sql.Open("mysql", "test_user:test_pass@tcp(10.0.1.229:3306)/mico_db?parseTime=True")
+	//db, err := sql.Open("mysql", "test_user:test_pass@tcp(robot-db-test1.c5cxisymyipj.ap-northeast-1.rds.amazonaws.com:3306)/mico_db?parseTime=True")
+	db, err := sql.Open("mysql", user+":"+pass+"@tcp("+host+":3306)/"+db_db+"?parseTime=True")
+	if err != nil {
+		panic(err.Error())
+	}
+	db.SetMaxOpenConns(100)
+	return db
+}
+
 // send はフロントにjsonデータを送る
 func send(data interface{}, w http.ResponseWriter) {
 	responseBody, err := json.Marshal(data)
@@ -119,4 +143,36 @@ func CheckIsDate(dateStr string) bool {
 func CheckInt(_x string)bool{
 	_, err := strconv.Atoi(_x)
 	return err == nil 
+}
+
+func TransferBMUtoUnitData(bmuData unitBMUData) unitData {
+    // Energy100が0の場合はゼロ除算を防ぐ
+    socValue := float32(0.0)
+    if bmuData.Energy100 != 0 {
+        socValue =100 * float32(bmuData.Energy) / float32(bmuData.Energy100)
+    }
+
+    return unitData{
+        UnitID:         fmt.Sprintf("%d", bmuData.BmuID), // BmuID を UnitID に変換（string型）
+        Time:           bmuData.Time,                   // Time
+        BmsVersion:     "",                             // BmsVersion は空文字列
+        LastIOtime:     bmuData.LastIOTime,             // LastIOTime
+        Longitude:      0.0,                            // Longitude (初期値)
+        Latitude:       0.0,                            // Latitude (初期値)
+        ChargeMode:     "",                             // ChargeMode (初期値)
+        BatteryCurrent: 0.0,                            // BatteryCurrent (初期値)
+        BatteryVoltage: 0.0,                            // BatteryVoltage (初期値)
+        BatteryError:   sql.NullInt32{},                // BatteryError (初期値: NULL)
+        Soc:            socValue,                       // Soc を Energy / Energy100 で計算
+        OutputCurrent:  0.0,                            // OutputCurrent (初期値)
+        OutputVoltage:  0.0,                            // OutputVoltage (初期値)
+        IsCharging:     "",                             // IsCharging (初期値)
+        ChargerError:   0,                              // ChargerError (初期値)
+        UsageTime:      0.0,                            // UsageTime (初期値)
+        NumberOfCharges: int(bmuData.ChargeNum),             // ChargeNum を NumberOfCharges にマッピング
+        MaxCellVoltage: bmuData.VCell0,                 // VCell0 を MaxCellVoltage にマッピング
+        MinCellVoltage: bmuData.VCell13,                // VCell13 を MinCellVoltage にマッピング
+        MaxTemperature: 0.0,                            // MaxTemperature (初期値)
+        MinTemperature: 0.0,                            // MinTemperature (初期値)
+    }
 }
