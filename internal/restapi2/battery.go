@@ -129,7 +129,7 @@ func BatteriesView(w http.ResponseWriter, r *http.Request) {
 		if(user_role=="bms_user"){
 			battery.Data = TransferBMUtoUnitData(unitBMU)
 		}
-		
+
 		//TODO:errorデータやregisterデータを取得しておく
 		var is_error bool
 		var is_registered bool

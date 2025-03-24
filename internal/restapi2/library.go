@@ -189,7 +189,7 @@ func TransferBMUtoUnitData(bmuData unitBMUData) unitData {
 		Rthc2 = float32(10000 * bmuData.TAdr1/(4096 - bmuData.TAdr1))
 	}
 	min_temperature := 3435.0 / (math.Log(float64(Rthc2)/10000.0) + (3435.0 / 25.0))
-	
+
     return unitData{
         UnitID:         fmt.Sprintf("%d", bmuData.BmuID), // BmuID を UnitID に変換（string型）
         Time:           bmuData.Time,                   // Time
@@ -208,10 +208,12 @@ func TransferBMUtoUnitData(bmuData unitBMUData) unitData {
         ChargerError:   0,                              // ChargerError (初期値)
         UsageTime:      0.0,                            // UsageTime (初期値)
         NumberOfCharges: int(bmuData.ChargeNum),             // ChargeNum を NumberOfCharges にマッピング
-        MaxCellVoltage: vmax,                 // VCell0 を MaxCellVoltage にマッピング
-        MinCellVoltage: vmin,                // VCell13 を MinCellVoltage にマッピング
-        MaxTemperature: float32(max_temperature),                            // MaxTemperature (初期値)
-        MinTemperature: float32(min_temperature),                            // MinTemperature (初期値)
+        MaxCellVoltage: safeFloat32(float64(vmax), 0.0),                 // VCell0 を MaxCellVoltage にマッピング
+        MinCellVoltage: safeFloat32(float64(vmin), 0.0),                // VCell13 を MinCellVoltage にマッピング
+		MaxTemperature: safeFloat32(max_temperature, 25.0),
+		MinTemperature: safeFloat32(min_temperature, 25.0),
+        //MaxTemperature: float32(max_temperature),                            // MaxTemperature (初期値)
+        //MinTemperature: float32(min_temperature),                            // MinTemperature (初期値)
     }
 }
 
@@ -237,4 +239,19 @@ func GetMinMax(bmu unitBMUData) (min, max float32) {
 		}
 	}
 	return
+}
+
+// `NaN` チェック関数（NaNならデフォルト値を返す）
+func safeFloat32(value float64, defaultValue float32) float32 {
+    if math.IsNaN(value) {
+        return defaultValue
+    }
+    return float32(value)
+}
+
+func safeInt32(value sql.NullInt32, defaultValue int32) sql.NullInt32 {
+    if !value.Valid {
+        return sql.NullInt32{Int32: defaultValue, Valid: true}
+    }
+    return value
 }
